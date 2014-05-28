@@ -1,0 +1,7 @@
+package eu.europa.ema
+
+rule "rule 1" 
+	when eval( true ) 
+then
+    System.out.println("Empty rule executed");
+end
