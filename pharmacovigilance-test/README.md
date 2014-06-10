@@ -13,3 +13,4 @@ In this small tutorial is showed how to create a Camel application that uses the
 
 *    [Weblogic installation and configuration](weblogic.md)
 *    [Application tutorial](application.md)
+*    [LogStash tutorial](logstash.md)

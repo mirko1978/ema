@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" />
+	<!-- Standard output appender -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>DEBUG</level>
@@ -10,30 +10,55 @@
 			<Pattern>%d{HH:mm:ss.SSS} [%50.50t] %-50.50c{1} %-5p %m%n</Pattern>
 		</layout>
 	</appender>
-<!--  	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+	
+	<!-- LogStash appender. The logs are sent by tcp to Logstash -->
+	<appender name="LOGSTASH" class="eu.europa.ema.log.LogStashSocketAppender">
+		<remoteHost>localhost</remoteHost>
+		<port>6000</port>
+		<reconnectionDelay>10000</reconnectionDelay>
+		<includeCallerData>false</includeCallerData>
+		<encoder class="eu.europa.ema.log.LogStashEncoder">
+			<IncludeCallerInfo>true</IncludeCallerInfo>			
+		</encoder>
+	</appender>		
+		
+<!--  
+	
+	Define the timestamp for the filename
+	<timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss" />
+	
+	This appender writes the JSON logs in a file. The example is from https://github.com/logstash/logstash-logback-encoder
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 			<level>INFO</level>
 		</filter>
 		<file>results-${bySecond}.log</file>
 		<append>true</append>
-		 encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
-			by default 
-		<encoder>
-			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
-			</pattern>
+		<layout class="ch.qos.logback.classic.PatternLayout">	
+			<Pattern>%d{HH:mm:ss.SSS} [%50.50t] %-50.50c{1} %-5p %m%n</Pattern>
+		</layout>
+		<encoder class="net.logstash.logback.encoder.LogstashEncoder">
+			<includeCallerInfo>true</includeCallerInfo>		
 		</encoder>
 	</appender>
-	-->
-
-	<!-- <logger name="eu.europa.ema.cr.backbone.scanner.impl" level="DEBUG" 
-		additivity="false"> <appender-ref ref="STDOUT" /> </logger> <logger name="org.apache.cxf" 
-		level="FINE" /> <logger name="org.springframework" level="WARN" /> -->
+	
+	This logger is appending the logs only to STDOUT
+	<logger name="eu.europa.ema.cr.backbone.scanner.impl" level="DEBUG" additivity="false"> 
+		<appender-ref ref="STDOUT" /> 
+	</logger> 
+		
+	This log logs everything for the package org.apache.cxf
+	<logger name="org.apache.cxf" level="FINE" /> 
+	
+	This log logs only the warnings for the package org.springframework
+	<logger name="org.springframework" level="WARN" /> 
+		-->
 	<logger name="org.kie" level="debug" />
 	<logger name="org.jboss.weld" level="debug" />
 	<logger name="eu.europa.ema" level="debug" />
 
 	<root level="info">
 		<appender-ref ref="STDOUT" />
-		<!-- <appender-ref ref="FILE" /> -->
+		<appender-ref ref="LOGSTASH" />
 	</root>
 </configuration>

@@ -8,19 +8,19 @@ This guide is about how configure Weblogic 12c (12.1.2) on Windows environment i
 Oracle Weblogic [website](http://www.oracle.com/technetwork/middleware/weblogic/downloads/wls-main-097127.html)
 
 *    Download the version Generic (880 MB). The file is `wls121200.jar`
-*    Weblogic installation
+*	Locate the virtual machine that you would use to use with Weblogic. Make sure that is in the path with:
 
->*    Locate the virtual machine that you would use to use with Weblogic. Make sure that is in the path with:
->>`echo %PATH%`  
->>`echo %JAVA_HOME%`  
->> In this tutorial we are using Java SDK 7
+		echo %PATH%  
+		echo %JAVA_HOME%  
+In this tutorial we are using Java SDK 7
 
->*    Open a cmd as administrator in the windows box  
->*    Go where you downloaded the jar with the usual `CD` command. Please pay attention to **not have white spaces in the path**
->*    Install with the command 
->>`java -jar wls121200.jar`  
+*	Open a cmd as administrator in the windows box  
+*	Go where you downloaded the jar with the usual `CD` command. Please pay attention to **not have white spaces in the path**
+*	Install with the command 
 
->*    The agency standard path for the installation is `C:\devtools\weblogic\12.1.2`. This path is used as reference in the tutorial.
+		java -jar wls121200.jar
+
+*	The agency standard path for the installation is `C:\devtools\weblogic\12.1.2`. This path is used as reference in the tutorial.
 
 *    Install all the components, including the examples (they can be useful as reference).
 *    In this tutorial the defualt user is `weblogic` and the passowrd is `weblogic1`
@@ -30,18 +30,19 @@ Oracle Weblogic [website](http://www.oracle.com/technetwork/middleware/weblogic/
 
 *    Open a cmd and go `C:\devtools\weblogic\12.1.2\wlserver\common\bin`
 *    Run the configuration command with
->>`config.cmd`
+*    
+		config.cmd
 
 *   Check in the templates _All templates_
 *   Do not configure as a cluster
 *   The domain name used in this tutorial is *base_domain*
 *   Go to the domain folder `C:\devtools\weblogic\12.1.2\user_projects\domains\base_domain` edit the file `startWebLogic.cmd`
 
-> Add in the line 2 the follow in order to delete environment variable CLASSPATH. Weblogic cannot handle environment variable with path with white spaces inside.
+Add in the line 2 the follow in order to delete environment variable CLASSPATH. Weblogic cannot handle environment variable with path with white spaces inside.
 
->> `SET CLASSPATH=`
+		SET CLASSPATH=
 
-> Exit and save the file
+Exit and save the file
 
 *    Launch weblogic server. Can be done executing `startWebLogic.cmd` or via Eclipse. 
 
@@ -52,7 +53,9 @@ This tutorial is using Weblogic as JPA. JMS, JTA provider. In order to do that i
 *    Access to [http://localhost:7001/console/](http://localhost:7001/console/) with user `weblogic` and password `weblogic1`
 *    In the left box **Domain Structure** expand *Environment* and then click on *Server*. The right part of the page is showing **Summary of Servers** the server configurations.
 *    Click on the *New* button. A new page **Create a New Server** appears.
-*    Choose a server name like `Server-0` and a server port like `7002`. Then click on *Finish*
+*    Choose a server name like `Server-0` and a server port like `7002`. 
+*    Please note that can be necessary to create also a new machine. In this case just follow the default configuration and name.
+*    Then click on *Finish*
 *    Launch `C:\devtools\weblogic\12.1.2\user_projects\domains\base_domain\bin\startNodeManager.cmd` in order to manage the new created server
 *    Go to the console and on **Summary of Servers** click on *Control* tab. Select the server `Server-0` and click the *Start* button.
 
@@ -92,11 +95,11 @@ Access to [http://localhost:7001/console/](http://localhost:7001/console/) with 
 *    Click on *New* button. A new page **Create a New JMS Server** appears
 *    Go through the creation wizard with the follow configuration:
 
->> Name: JMSServer-0  
->> Persistent Store: (none)  
->> Target: Server-0  (or choose an available server)
+		Name: JMSServer-0  
+		Persistent Store: (none)  
+		Target: Server-0  (or choose an available server)
 
-> The JMS server should now be visible in the list with Health OK.
+The JMS server should now be visible in the list with Health OK.
 
 ### 4.2.3 Create a JMS Module
 
@@ -104,13 +107,13 @@ Access to [http://localhost:7001/console/](http://localhost:7001/console/) with 
 *    Click on *New* button. A new page **Create JMS System Module** appears
 *    Go through the creation wizard with the follow configuration:
 
->> Name: JMSModule-0   
->> Leave the other options empty  
->> Targets: Server-0  (or choose the same one as the JMS server)
+		Name: JMSModule-0   
+		Leave the other options empty  
+		Targets: Server-0  (or choose the same one as the JMS server)
   
 *    Press *Next*
   
->> Leave “Would you like to add resources to this JMS system module” unchecked and  press Finish .
+Leave “Would you like to add resources to this JMS system module” unchecked and  press Finish .
 
 ### 4.2.4 Create a SubDeployment
 
@@ -120,11 +123,11 @@ A subdeployment is not necessary for the JMS queue to work, but it allows you to
 *    Select `JMSModule-0`
 *    Select the **Subdeployments** tab and New
 
->> Subdeployment Name: SdQueue-0
+		Subdeployment Name: SdQueue-0
   
 *    Press Next
 *    Here you can select the target(s) for the subdeployment. You can choose either Servers (i.e. WebLogic managed servers, such as the soa_server1) or JMS Servers such as the JMS Server created earlier. As the purpose of our subdeployment in this example is to target a specific JMS server, we will choose the JMS Server option.   
-*    Select the 'Server-0' created earlier  
+*    Select the `Server-0` created earlier  
 *    Press Finish
 
 ### 4.2.5 Create a Connection Factory
@@ -134,9 +137,9 @@ A subdeployment is not necessary for the JMS queue to work, but it allows you to
 *    Press the *New* button.
 *    Select *Connection Factory*  and *Next* button.
 
->> Name: ConnectionFactory-0   
->> JNDI Name: jms/cf0  
->> Leave the other values at default
+		Name: ConnectionFactory-0   
+		JNDI Name: jms/cf0  
+		Leave the other values at default
 
 *    On the *Targets* page, select the *Advanced Targeting*  button and select *SdQueue-0*
 *    Press *Finish*
@@ -150,13 +153,13 @@ The connection factory should be listed on the following page with SdQueue-0 and
 *    Press the *New* button.
 *    Select *Queue* and *Next* button
 
->> Name: Queue-0  
->> JNDI Name: jms/queue0  
->> Template: None  
+		Name: Queue-0  
+		JNDI Name: jms/queue0  
+		Template: None  
 
 *    Press Next
   
->> Subdeployments: SdQueue-0
+		Subdeployments: SdQueue-0
   
 *    Press *Finish*
 
@@ -166,23 +169,23 @@ The connection factory should be listed on the following page with SdQueue-0 and
 *    In the left box **Domain Structure** expand *Services* and then click on *Data soruce*. The right part of the page is showing **Summary of JDBC Data Sources**.
 *    Click on *New* button then select "New Generic datasource*
 
->> Name: EV7 Dev    
->> JNDI Name: jdbc/ev7  
->> Database type: Oracle
+		Name: EV7 Dev    
+		JNDI Name: jdbc/ev7  
+		Database type: Oracle
 
 *    Press Next
 
->> Database Driver: Oracle's driver (Thin XA) for Instance connection; Version:9.0.1 and later
+		Database Driver: Oracle's driver (Thin XA) for Instance connection; Version:9.0.1 and later
 
 *    Press Next
 *    Press Next
 
->> Database Name: YourDatabaseName  
->> Host Name: YourHostName  
->> Port: YourPort  
->> Database User Name: YourUserName  
->> Password: YourPassword  
->> Confirm Password: YourPasswordAgain
+		Database Name: YourDatabaseName  
+		Host Name: YourHostName  
+		Port: YourPort  
+		Database User Name: YourUserName  
+		Password: YourPassword  
+		Confirm Password: YourPasswordAgain
 
 *    Press Next
 *    Press *Test Configuration* and if everything is fine press *Finish*

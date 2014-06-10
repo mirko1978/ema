@@ -5,7 +5,16 @@ import org.springframework.stereotype.Component;
 
 import eu.europa.ema.jpa.DatabaseJPAWriter;
 import eu.europa.ema.springjdbc.DatabaseJdbcWriter;
-
+/**
+ * 
+ * Camel route configuration
+ * 
+ * @author  Mirko Bernardoni bernardonim (created by)
+ * @author  $Author: replacedWhenCheckedIn $ (last change by)
+ * @version $Revision: 1.1 $ (cvs revision)
+ * @since 10 Jun 2014 (creation date)
+ * @revisionDate  $Date: 2003/12/19 10:51:34 10 Jun 2014 $
+ */
 @Component("MyRouteBuilder")
 public class MyRouteBuilder extends SpringRouteBuilder {
 
@@ -17,7 +26,7 @@ public class MyRouteBuilder extends SpringRouteBuilder {
         // Shutdown timeout to 5 seconds (default 5 minutes)
         getContext().getShutdownStrategy().setTimeout(5);
 
-        // Avoid to resent in the quueue as loop
+        // Avoid to resent in the queue as loop
         // errorHandler(
         // deadLetterChannel("mock:dead")
         // .logStackTrace(true)
