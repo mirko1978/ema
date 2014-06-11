@@ -94,17 +94,20 @@ The protocol expected is JSON.
 Logback can be used to send logs via TCP with the class `ch.qos.logback.classic.net.SocketAppender` but the messages sent are the Java serialization of the implementation of `ch.qos.logback.classic.spi.ILoggingEvent`.  
 The serialization is done without calling any encoder. That's make impossible to use the default class!  
 
-In order to solve the transport issue a new appender class has been done `eu.europa.ema.log.LogStashSocketAppender`.  
- This class is not for production use but enough stable for the tutorial. A refactor and some test should be done before using it in production.  
-`LogStashSocketAppender` is a merge from `SocketAppender` class tree, for more details please look the class source code.
+In order to solve the transport issue a new appender class has been done [eu.europa.ema.log.LogStashSocketAppender](../../main/java/eu/europa/ema/log/LogStashSocketAppender.java).  
+ This class is not for production use but enough stable for the tutorial. A refactor and some test should be done before using 
+ it in production. [LogStashSocketAppender](../../main/java/eu/europa/ema/log/LogStashSocketAppender.java) is a merge from `SocketAppender` class tree, for more details please look the class source code.
 
 ## 3.2 Sending JSON as log messages
-Slf4j as default send string messages, not JSON. In order to create the proper logstash JSON with all the necessary java fields the library [logstash-logback-encoder](https://github.com/logstash/logstash-logback-encoder). It is doing a good job for the translation, however has been written for the use with file system or syslog.   
+Slf4j as default send string messages, not JSON. In order to create the proper logstash JSON with all the necessary java fields 
+the library [logstash-logback-encoder](https://github.com/logstash/logstash-logback-encoder). It is doing a good job for the 
+translation, however has been written for the use with file system or syslog.   
 The missing piece is an encoder that can be configurable for:
 
 *    Encoding charset. The TCP protocol doesn't define the encoding charset then server and client have to have an agreement about. In the tutorial it is used the default (UTF-8)
 *    Define the character for the new line. It is a well known problem, Windows uses 2 character for the new line, unix just one.
 
-Again the solution is implementing a proper encoder that utilizes the logstash-logback-encoder library for encoding the messages from log to JSON. The encoder is `eu.europa.ema.log.LogStashEncoder`.  
+Again the solution is implementing a proper encoder that utilizes the logstash-logback-encoder library for encoding the messages from log to JSON. 
+The encoder is [eu.europa.ema.log.LogStashEncoder](../../main/java/eu/europa/ema/log/LogStashEncoder.java).  
 This class is not for production use but enough stable for the tutorial. A refactor and some test should be done before using it in production.  
 Please, look at the class for any details.

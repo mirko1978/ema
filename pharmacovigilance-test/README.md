@@ -14,3 +14,14 @@ In this small tutorial is showed how to create a Camel application that uses the
 *    [Weblogic installation and configuration](src/site/markdown/weblogic.md)
 *    [Application tutorial](src/site/markdown/application.md)
 *    [LogStash tutorial](src/site/markdown/logstash.md)
+
+## Build instructions
+
+This project uses Maven then in order to produce the war:
+
+    mvn package
+    
+In order to create the documentation
+
+    mvn site
+    
