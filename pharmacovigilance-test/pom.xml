@@ -182,7 +182,7 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.7.7</version>
 		</dependency>
-		
+
 		<!-- Logging with LogStash -->
 		<dependency>
 			<groupId>net.logstash.logback</groupId>
@@ -226,6 +226,18 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.3</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.doxia</groupId>
+						<artifactId>doxia-module-markdown</artifactId>
+						<version>1.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 		<finalName>test-war</finalName>
 	</build>
@@ -241,4 +253,148 @@
 		<name>European Medicines Agency</name>
 		<url>http://www.ema.europa.eu/</url>
 	</organization>
+
+	<!-- Maven site related -->
+	<developers>
+		<developer>
+			<id>bernardonim</id>
+			<name>Mirko Bernardoni</name>
+			<email></email>
+			<organization>European Medicines Agency</organization>
+			<organizationUrl>http://www.ema.europa.eu</organizationUrl>
+			<roles>
+				<role>Solution Architect</role>
+			</roles>
+			<timezone>GMT</timezone>
+		</developer>
+		<developer>
+			<id>prandid</id>
+			<name>Davide Prandi</name>
+			<email></email>
+			<organization>European Medicines Agency</organization>
+			<organizationUrl>http://www.ema.europa.eu</organizationUrl>
+			<roles>
+				<role>Solution Architect</role>
+			</roles>
+			<timezone>GMT</timezone>
+		</developer>
+		<developer>
+			<id>rahov</id>
+			<name>Vinay Raho</name>
+			<email></email>
+			<organization>European Medicines Agency</organization>
+			<organizationUrl>http://www.ema.europa.eu</organizationUrl>
+			<roles>
+				<role>Solution Architect</role>
+			</roles>
+			<timezone>GMT</timezone>
+		</developer>
+	</developers>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>2.7</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<!-- <report>dependencies</report> -->
+							<report>index</report>
+							<report>dependency-info</report>
+							<report>dependency-convergence</report>
+							<report>summary</report>
+							<report>project-team</report>
+							<report>cim</report>
+							<report>license</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>taglist-maven-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<tags>
+						<tag>fixme</tag>
+						<tag>FixMe</tag>
+						<tag>FIXME</tag>
+						<tag>@todo</tag>
+						<tag>todo</tag>
+						<tag>TODO</tag>
+						<tag>xxx</tag>
+						<tag>@deprecated</tag>
+					</tags>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.12.1</version>
+				<configuration>
+					<configLocation>config/maven_checks.xml</configLocation>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					<excludes>**/generated/*.java</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<repositoryUrl>--</repositoryUrl>
+					<artifactItems />
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<targetJdk>1.7</targetJdk>
+					<format>xml</format>
+					<linkXref>true</linkXref>
+					<sourceEncoding>UTF-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<excludes>
+						<exclude>**/generated/*.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<showSuccess>true</showSuccess>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>emma-maven-plugin</artifactId>
+				<version>1.0-alpha-3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.4</version>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

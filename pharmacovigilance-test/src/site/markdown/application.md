@@ -39,7 +39,7 @@ Add the follow dependecy to Maven
 # 2. Camel configuration
 
 In this tutorial Camel is using Spring but the routes are done via Java DSL.  
-The `web.xml` loads the Spring context that loads all the Camel routes.  
+The [web.xml](src/main/webapp/WEB-INF/web.xml) loads the Spring context that loads all the Camel routes.  
 When a new message appear in the JMS queue the routes are triggered.  
 In short terms the application is event-driven.  
 The main class that contains all the routes is `MyRouteBuilder.class`.  
