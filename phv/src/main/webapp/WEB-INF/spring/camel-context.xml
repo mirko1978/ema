@@ -107,6 +107,9 @@
 	</bean>
 	
 	<!-- Including Drools -->
-	<import resource="drools-context.xml"/>
+	<!-- <import resource="drools-context.xml"/>  -->
+	
+	<!-- Message Handler -->
+	<import resource="/message-handler-context.xml"/>
 
 </beans>
