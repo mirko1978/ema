@@ -14,15 +14,16 @@ Oracle Weblogic [website](http://www.oracle.com/technetwork/middleware/weblogic/
 		echo %JAVA_HOME%  
 In this tutorial we are using Java SDK 7
 
-*	Open a cmd as administrator in the windows box  
+*	Open a cmd as **administrator** in the windows box  
 *	Go where you downloaded the jar with the usual `CD` command. Please pay attention to **not have white spaces in the path**
 *	Install with the command 
 
-		java -jar wls121200.jar
+		%JAVA_HOME%\bin\java -jar wls121200.jar
 
 *	The agency standard path for the installation is `C:\devtools\weblogic\12.1.2`. This path is used as reference in the tutorial.
 
 *    Install all the components, including the examples (they can be useful as reference).
+*    select "I agree to remain uninformed of critical security issues in my configuration" if a prompt appears.
 *    In this tutorial the defualt user is `weblogic` and the passowrd is `weblogic1`
 *    Change the permissions property for the folder `C:\devtools\weblogic\12.1.2` in order to have full control from the local user.
 
@@ -34,11 +35,12 @@ In this tutorial we are using Java SDK 7
 		config.cmd
 
 *   Check in the templates _All templates_
-*   Do not configure as a cluster
+*   Do not check any boxes in the Advanced configurations
+*   Do not check Start Admin Server
 *   The domain name used in this tutorial is *base_domain*
 *   Go to the domain folder `C:\devtools\weblogic\12.1.2\user_projects\domains\base_domain` edit the file `startWebLogic.cmd`
 
-Add in the line 2 the follow in order to delete environment variable CLASSPATH. Weblogic cannot handle environment variable with path with white spaces inside.
+At line 2 add the following in order to delete environment variable CLASSPATH. Weblogic cannot handle environment variable with path with white spaces inside.
 
 		SET CLASSPATH=
 
@@ -50,10 +52,11 @@ Exit and save the file
 
 This tutorial is using Weblogic as JPA. JMS, JTA provider. In order to do that it is necessary to configure a new server. The assumption is that the weblogic server is running. You can start it through Eclipse or via script.
 
-*    Access to [http://localhost:7001/console/](http://localhost:7001/console/) with user `weblogic` and password `weblogic1`
+*    Access to [http://localhost:7001/console/](http://localhost:7001/console/) with user `weblogic` and password `weblogic1`. On first access it will take a while for admin server to deploy and run.  However the browser keeps refreshing to check the availability.
 *    In the left box **Domain Structure** expand *Environment* and then click on *Server*. The right part of the page is showing **Summary of Servers** the server configurations.
 *    Click on the *New* button. A new page **Create a New Server** appears.
 *    Choose a server name like `Server-0` and a server port like `7002`. 
+*    Do not configure as a cluster, leave as stand-alone
 *    Please note that can be necessary to create also a new machine. In this case just follow the default configuration and name.
 *    Then click on *Finish*
 *    Launch `C:\devtools\weblogic\12.1.2\user_projects\domains\base_domain\bin\startNodeManager.cmd` in order to manage the new created server
@@ -127,13 +130,13 @@ A subdeployment is not necessary for the JMS queue to work, but it allows you to
   
 *    Press Next
 *    Here you can select the target(s) for the subdeployment. You can choose either Servers (i.e. WebLogic managed servers, such as the soa_server1) or JMS Servers such as the JMS Server created earlier. As the purpose of our subdeployment in this example is to target a specific JMS server, we will choose the JMS Server option.   
-*    Select the `Server-0` created earlier  
+*    Select the `JMSServer-0` created earlier  
 *    Press Finish
 
 ### 4.2.5 Create a Connection Factory
 
 *    In the left box **Domain Structure** expand *Services* and then *Messaging* then click on *JMS Modules*. The right part of the page is showing **Summary of JMS Modules**.
-*    Select `JMSModule-0`
+*    Select (click) `JMSModule-0`
 *    Press the *New* button.
 *    Select *Connection Factory*  and *Next* button.
 
@@ -149,7 +152,7 @@ The connection factory should be listed on the following page with SdQueue-0 and
 ### 4.2.6 Create a JMS Queue
 
 *    In the left box **Domain Structure** expand *Services* and then *Messaging* then click on *JMS Modules*. The right part of the page is showing **Summary of JMS Modules**.
-*    Select `JMSModule-0`
+*    Select (click) `JMSModule-0`
 *    Press the *New* button.
 *    Select *Queue* and *Next* button
 
