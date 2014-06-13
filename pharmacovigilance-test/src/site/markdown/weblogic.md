@@ -14,15 +14,16 @@ Oracle Weblogic [website](http://www.oracle.com/technetwork/middleware/weblogic/
 		echo %JAVA_HOME%  
 In this tutorial we are using Java SDK 7
 
-*	Open a cmd as administrator in the windows box  
+*	Open a cmd as **administrator** in the windows box  
 *	Go where you downloaded the jar with the usual `CD` command. Please pay attention to **not have white spaces in the path**
 *	Install with the command 
 
-		java -jar wls121200.jar
+		%JAVA_HOME%\bin\java -jar wls121200.jar
 
 *	The agency standard path for the installation is `C:\devtools\weblogic\12.1.2`. This path is used as reference in the tutorial.
 
 *    Install all the components, including the examples (they can be useful as reference).
+*    select "I agree to remain uninformed of critical security issues in my configuration" if a prompt appears.
 *    In this tutorial the defualt user is `weblogic` and the passowrd is `weblogic1`
 *    Change the permissions property for the folder `C:\devtools\weblogic\12.1.2` in order to have full control from the local user.
 
