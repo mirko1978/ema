@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+	<context:annotation-config />
+
+	<bean id="AdrValidationHumanRouter" class="eu.europa.ema.phv.adrvalidationhuman.AdrValidationHumanRouter" />
+	<bean id="AdrReportAggregationStrategy" class="eu.europa.ema.phv.adrvalidationhuman.AdrReportAggregationStrategy" />
+	
+	<!-- Processor -->
+	<bean id="AdrHumanBRValidation" class="eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanBRValidation" />
+	<bean id="AdrHumanExternalProcedure" class="eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanExternalProcedure" />
+
+</beans>

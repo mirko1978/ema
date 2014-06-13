@@ -40,7 +40,7 @@
 				<exclusion>
 					<groupId>asm</groupId>
 					<artifactId>asm</artifactId>
-				</exclusion>
+				</exclusion>				
 			</exclusions>
 		</dependency>
 		<dependency>

@@ -3,11 +3,15 @@
  */
 package eu.europa.ema.phv.messagehandler;
 
+import javax.inject.Inject;
+
 import org.apache.camel.spring.SpringRouteBuilder;
+
 import eu.europa.ema.phv.common.exception.UnexpectedResultException;
+import eu.europa.ema.phv.common.util.JmsCamelUrl;
 
 /**
- * T
+ * Route definition for the Message Handler component
  * 
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
@@ -15,23 +19,20 @@ import eu.europa.ema.phv.common.exception.UnexpectedResultException;
  * @revisionDate $Date: 2003/12/19 10:51:34 12 Jun 2014 $
  */
 public class MessageHandlerRouter extends SpringRouteBuilder {
-    private static final String AXWAY_EP = "jms:queue:jms/axway?concurrentConsumers=20&asyncConsumer=true";
+    
+    // Component internal camel route
     private static final String VALID_EP ="direct:valid";
     private static final String INVALID_EP ="direct:invalid";
-    private static final String OUTBOUND_EP = "jms:queue:/jms/outbound";
     private static final String MESSAGE_STORE_EP="direct:messageStore";
     private static final String CONTINUE_ROUTING_EP="direct:continueRouting";
-    private static final String ADR_PARSER_HUMAN_EP="jms:queue:jms/parser/human/adr";
+    
+    @Inject
+    private JmsCamelUrl camelUrl;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.apache.camel.builder.RouteBuilder#configure()
-     */
     @Override
     public void configure() throws Exception {
         //@formatter:off
-        from(AXWAY_EP)
+        from(camelUrl.getGatewayHumanAdr())
             .transacted()
             .processRef("XmlValidator")
             .choice()
@@ -53,7 +54,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
             .processRef("MetadataExtractor")
             .to("direct:messageStore")
             .beanRef("AckTranslator")
-        .to(OUTBOUND_EP);
+        .to(camelUrl.getOutboundMessage());
         //@formatter:on        
     }
 
@@ -69,6 +70,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         
         //@formatter:off        
         from(MESSAGE_STORE_EP)
+            .transacted()
             .beanRef("StoreEnricher");
         // @formatter:on
         // TODO: Call the persistence layer here
@@ -78,10 +80,10 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
              .filter(header("foo").isEqualTo("bar")) // TODO: Filter by NOT Webtrader
              .choice()
                 .when(header("foo").isEqualTo("bar")) // TODO: is Icsr to EMA
-                    .to(ADR_PARSER_HUMAN_EP)
+                    .to(camelUrl.getAdrParserHuman())
                 .when(header("foo").isEqualTo("cheese")) // TODO: is Rerouting
                     .beanRef("RoutingTranslator")
-                    .to(OUTBOUND_EP)
+                    .to(camelUrl.getOutboundMessage())
                 .otherwise()
                     .throwException(new UnexpectedResultException("Message not recognized by the router"));
         // @formatter:on

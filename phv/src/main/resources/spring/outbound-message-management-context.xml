@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Configures the Camel Context -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:context="http://www.springframework.org/schema/context"
@@ -14,21 +12,14 @@
        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 	<context:annotation-config />
-	<context:component-scan
-		base-package="eu.europa.ema.phv.messagehandler" />
-		
-	<bean id="MessageHandlerRouter" class="eu.europa.ema.phv.messagehandler.MessageHandlerRouter"/>
-	
-	<!-- Enricher -->
-	<bean id="MetadataEnricher" class="eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher"/>
-	<bean id="StoreEnricher" class="eu.europa.ema.phv.messagehandler.enricher.StoreEnricher"/>
-	
-	<!-- Processor -->
-	<bean id="MetadataExtractor" class="eu.europa.ema.phv.messagehandler.processor.MetadataExtractor"/>
-	<bean id="XmlValidator" class="eu.europa.ema.phv.messagehandler.processor.XmlValidator"/>
-	
-	<!-- Translator  -->
-	<bean id="AckTranslator" class="eu.europa.ema.phv.messagehandler.translator.AckTranslator"/>
-	<bean id="RoutingTranslator" class="eu.europa.ema.phv.messagehandler.processor.RoutingTranslator"/>
-	
+
+	<bean id="OuboundMessageManagementRouter"
+		class="eu.europa.ema.phv.outboundmessagemanagement.OuboundMessageManagementRouter" />
+
+	<!-- Translator -->
+	<bean id="AckXmlTranslator"
+		class="eu.europa.ema.phv.outboundmessagemanagement.translator.AckXmlTranslator" />
+	<bean id="OuboundMessageManagementRouter"
+		class="eu.europa.ema.phv.outboundmessagemanagement.translator.IcsrXmlTranslator" />
+
 </beans>
