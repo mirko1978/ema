@@ -52,7 +52,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         from(INVALID_EP)
             .transacted()
             .processRef("MetadataExtractor")
-            .to("direct:messageStore")
+            .to(MESSAGE_STORE_EP)
             .beanRef("AckTranslator")
         .to(camelUrl.getOutboundMessage());
         //@formatter:on        
