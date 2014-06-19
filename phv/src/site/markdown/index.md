@@ -4,9 +4,9 @@ This stes of documents are tutorial related how to configure the development env
 
 ## Table of contents
 
-*	[Weblogic installation and configuration](src/site/markdown/weblogic.mdl)
-*	[Eclipse](src/site/markdown/eclipse.md)
-*	[HA Testing](src/site/markdown/ha_testing.md)
+*	[Weblogic installation and configuration](weblogic.html)
+*	[Eclipse](eclipse.html)
+*	[HA Testing](ha_testing.html)
 
 
 # Pharmacovigilance Introduction
@@ -38,5 +38,3 @@ In order to create the documentation
 
     mvn site
 
-
-    
