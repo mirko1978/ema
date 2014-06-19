@@ -29,9 +29,9 @@ public class QueueSend {
 
     public final static String QUEUE = "ud_queue"; //"jms/phv/gateway/human/adr_UDQ_mig";
 
-    public final static int SLEEP = 50;
+    public final static int SLEEP = 500;
     
-    public final static int TEST_DURATION = (1000 / SLEEP) * 60 * 3;
+    public final static int TEST_DURATION = (1000 / SLEEP) * 60 * 50;
 
     private QueueConnectionFactory qconFactory;
 

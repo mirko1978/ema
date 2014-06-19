@@ -25,11 +25,11 @@ public class QueueReceive {
 
     public final static String WLS_URL = "t3://localhost:7002,localhost:7003";
 
-    public final static String JMS_FACTORY = "ud_cf";//"jms/phv/connectionFactory";
+    public final static String JMS_FACTORY = "ud_cf";// "jms/phv/connectionFactory";
 
-    public final static String QUEUE = "ud_queue"; //"jms/phv/gateway/human/adr_UDQ_mig";;
+    public final static String QUEUE = "ud_queue"; // "jms/phv/gateway/human/adr_UDQ_mig";;
 
-    public final static long SLEEP = 500;
+    public final static long SLEEP = 1000;
 
     private QueueConnectionFactory qconFactory;
 
@@ -79,15 +79,17 @@ public class QueueReceive {
         MessageConsumer consumer = qsession.createConsumer(queue);
         while (true) {
             try {
-                Message msg = consumer.receive();
-                String msgText;
-                if (msg instanceof TextMessage) {
-                    msgText = ((TextMessage) msg).getText();
+                Message msg = consumer.receive(50);
+                if (msg != null) {
+                    String msgText;
+                    if (msg instanceof TextMessage) {
+                        msgText = ((TextMessage) msg).getText();
+                    }
+                    else {
+                        msgText = msg.toString();
+                    }
+                    System.out.println(format.format(Calendar.getInstance().getTime()) + " > " + msgText);
                 }
-                else {
-                    msgText = msg.toString();
-                }
-                System.out.println(format.format(Calendar.getInstance().getTime()) + " > " + msgText);
                 qsession.commit();
                 Thread.sleep(SLEEP);
             }
@@ -95,6 +97,8 @@ public class QueueReceive {
             }
             catch (JMSException je) {
                 je.printStackTrace();
+            }
+            finally {
                 qcon = qconFactory.createQueueConnection();
                 qsession = qcon.createQueueSession(true, Session.SESSION_TRANSACTED);
                 queue = (Queue) initialContext.lookup(QUEUE);
