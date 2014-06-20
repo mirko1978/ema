@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<xml-java-binding-schema xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc">
+   <xjc:serializable uid="1" />
+</xml-java-binding-schema>

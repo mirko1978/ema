@@ -41,7 +41,7 @@
 				<exclusion>
 					<groupId>asm</groupId>
 					<artifactId>asm</artifactId>
-				</exclusion>				
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -248,42 +248,39 @@
 				</configuration>
 			</plugin>
 			<plugin>
-<<<<<<< HEAD
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <!-- packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName -->
-                    <!-- packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack</packageName -->
-                    <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.master</packageName>
-                    <dtd>true</dtd>
-               		<xmlschema>false</xmlschema>
-               		<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-               		<!-->bindingDirectory>${project.basedir}/src/main/java</bindingDirectory-->
-                    <schemaDirectory>${project.basedir}/src/main/resources/schema</schemaDirectory>
-                  	<clearOutputDir>false</clearOutputDir> 
-                 	<!--  schemaFiles>icsr21xml.dtd</schemaFiles -->
-                 	<!--  schemaFiles>ichicsrack11xml.dtd</schemaFiles -->
-                 	<schemaFiles>masterreport21xml.dtd</schemaFiles>
-             		<extension>true</extension>
-                 	<verbose>true</verbose>
-                </configuration>
-            </plugin>
-             <plugin>
-             	<groupId>org.apache.maven.plugins</groupId>
-        		<artifactId>maven-war-plugin</artifactId>
-        		<version>2.2</version>
-	      </plugin>
-            
-=======
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName> -->
+					<packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack</packageName>
+					<!-- <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.master</packageName> -->
+					<dtd>true</dtd>
+					<xmlschema>false</xmlschema>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<schemaDirectory>${project.basedir}/src/main/resources/schema</schemaDirectory>
+					<clearOutputDir>false</clearOutputDir>
+					<!-- <schemaFiles>icsr21xml.dtd</schemaFiles> -->
+					<schemaFiles>ichicsrack11xml.dtd</schemaFiles>
+					<!-- <schemaFiles>masterreport21xml.dtd</schemaFiles> -->
+					<extension>true</extension>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.3</version>
@@ -295,11 +292,10 @@
 					</dependency>
 				</dependencies>
 			</plugin>
->>>>>>> branch 'master' of https://github.com/mirko1978/pharmacovigilance.git
 		</plugins>
-		
+
 	</build>
-	
+
 	<!-- Maven site related -->
 	<developers>
 		<developer>
@@ -336,7 +332,7 @@
 			<timezone>GMT</timezone>
 		</developer>
 	</developers>
-	
+
 	<reporting>
 		<plugins>
 			<plugin>
@@ -349,7 +345,7 @@
 							<report>index</report>
 							<report>dependency-info</report>
 							<report>dependency-convergence</report>
-							<report>summary</report>							
+							<report>summary</report>
 							<report>cim</report>
 							<report>license</report>
 							<report>project-team</report>
@@ -442,5 +438,5 @@
 				<version>2.5.4</version>
 			</plugin>
 		</plugins>
-	</reporting>	
+	</reporting>
 </project>
