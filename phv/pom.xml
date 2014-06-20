@@ -259,14 +259,20 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName>
+                    <!-- packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName -->
+                    <!-- packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack</packageName -->
+                    <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.master</packageName>
                     <dtd>true</dtd>
                		<xmlschema>false</xmlschema>
                		<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-               		<bindingDirectory>${project.basedir}/src/main/java</bindingDirectory>
+               		<!-->bindingDirectory>${project.basedir}/src/main/java</bindingDirectory-->
                     <schemaDirectory>${project.basedir}/src/main/resources/schema</schemaDirectory>
                   	<clearOutputDir>false</clearOutputDir> 
-                 	<!-- >schemaFiles>icsr21xml.dtd</schemaFiles-->
+                 	<!--  schemaFiles>icsr21xml.dtd</schemaFiles -->
+                 	<!--  schemaFiles>ichicsrack11xml.dtd</schemaFiles -->
+                 	<schemaFiles>masterreport21xml.dtd</schemaFiles>
+             		<extension>true</extension>
+                 	<verbose>true</verbose>
                 </configuration>
             </plugin>
              <plugin>

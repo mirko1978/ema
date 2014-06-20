@@ -6,5 +6,5 @@
             <wls:package-name>org.slf4j.*</wls:package-name>           
         </wls:prefer-application-packages>
     </wls:container-descriptor>
-    <wls:context-root>test-war</wls:context-root>
+    <wls:context-root>phv</wls:context-root>
 </wls:weblogic-web-app>
