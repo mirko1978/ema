@@ -41,8 +41,10 @@ In this tutorial we are using Java SDK 7
 *   Go to the domain folder `C:\devtools\weblogic\12.1.2\user_projects\domains\base_domain` edit the file `startWebLogic.cmd`
 
 At line 2 add the following in order to delete environment variable CLASSPATH. Weblogic cannot handle environment variable with path with white spaces inside.
+In addition there is a clash of variable in the default EMA environment for the variable MW_HOME
 
 		SET CLASSPATH=
+		SET MW_HOME=
 
 Exit and save the file
 
