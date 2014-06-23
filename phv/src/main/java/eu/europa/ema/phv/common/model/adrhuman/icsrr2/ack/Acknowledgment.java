@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 03:16:34 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack;
 
 import java.io.Serializable;
@@ -20,35 +19,30 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "messageacknowledgment",
-    "reportacknowledgment"
-})
+@XmlType(name = "", propOrder = { "messageacknowledgment", "reportacknowledgment" })
 @XmlRootElement(name = "acknowledgment")
-public class Acknowledgment
-    implements Serializable
-{
+public class Acknowledgment implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     @XmlElement(required = true)
     protected Messageacknowledgment messageacknowledgment;
+
     protected List<Reportacknowledgment> reportacknowledgment;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -57,10 +51,8 @@ public class Acknowledgment
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -69,10 +61,8 @@ public class Acknowledgment
     /**
      * Gets the value of the messageacknowledgment property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Messageacknowledgment }
-     *     
+     * @return possible object is {@link Messageacknowledgment }
+     * 
      */
     public Messageacknowledgment getMessageacknowledgment() {
         return messageacknowledgment;
@@ -81,10 +71,8 @@ public class Acknowledgment
     /**
      * Sets the value of the messageacknowledgment property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Messageacknowledgment }
-     *     
+     * @param value allowed object is {@link Messageacknowledgment }
+     * 
      */
     public void setMessageacknowledgment(Messageacknowledgment value) {
         this.messageacknowledgment = value;
@@ -94,15 +82,16 @@ public class Acknowledgment
      * Gets the value of the reportacknowledgment property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the reportacknowledgment property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the reportacknowledgment property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getReportacknowledgment().add(newItem);
+     * getReportacknowledgment().add(newItem);
      * </pre>
      * 
      * 

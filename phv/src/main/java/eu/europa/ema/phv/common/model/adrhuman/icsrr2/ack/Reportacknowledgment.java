@@ -5,12 +5,12 @@
 // Generated on: 2014.06.20 at 03:16:34 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -21,43 +21,43 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Authoritynumb;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Companynumb;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Receiptdate;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Receiptdateformat;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Safetyreportid;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Safetyreportversion;
 
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "safetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment"
-})
+@XmlType(name = "", propOrder = { "safetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment" })
 @XmlRootElement(name = "reportacknowledgment")
-public class Reportacknowledgment
-    implements Serializable
-{
+public class Reportacknowledgment implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
-    @XmlElements({
-        @XmlElement(name = "safetyreportversion", type = Safetyreportversion.class),
-        @XmlElement(name = "safetyreportid", type = Safetyreportid.class),
-        @XmlElement(name = "localreportnumb", type = Localreportnumb.class),
-        @XmlElement(name = "authoritynumb", type = Authoritynumb.class),
-        @XmlElement(name = "companynumb", type = Companynumb.class),
-        @XmlElement(name = "receiptdateformat", type = Receiptdateformat.class),
-        @XmlElement(name = "receiptdate", type = Receiptdate.class),
-        @XmlElement(name = "reportacknowledgmentcode", type = Reportacknowledgmentcode.class),
-        @XmlElement(name = "errormessagecomment", type = Errormessagecomment.class)
-    })
+
+    @XmlElements({ @XmlElement(name = "safetyreportversion", type = Safetyreportversion.class),
+            @XmlElement(name = "safetyreportid", type = Safetyreportid.class),
+            @XmlElement(name = "localreportnumb", type = Localreportnumb.class),
+            @XmlElement(name = "authoritynumb", type = Authoritynumb.class),
+            @XmlElement(name = "companynumb", type = Companynumb.class),
+            @XmlElement(name = "receiptdateformat", type = Receiptdateformat.class),
+            @XmlElement(name = "receiptdate", type = Receiptdate.class),
+            @XmlElement(name = "reportacknowledgmentcode", type = Reportacknowledgmentcode.class),
+            @XmlElement(name = "errormessagecomment", type = Errormessagecomment.class) })
     protected List<Serializable> safetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -66,42 +66,41 @@ public class Reportacknowledgment
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
     }
 
     /**
-     * Gets the value of the safetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment property.
+     * Gets the value of the
+     * safetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment
+     * property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the safetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the
+     * safetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment
+     * property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getSafetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment().add(newItem);
+     * getSafetyreportversionOrSafetyreportidOrLocalreportnumbOrAuthoritynumbOrCompanynumbOrReceiptdateformatOrReceiptdateOrReportacknowledgmentcodeOrErrormessagecomment()
+     *         .add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Safetyreportversion }
-     * {@link Safetyreportid }
-     * {@link Localreportnumb }
-     * {@link Authoritynumb }
-     * {@link Companynumb }
-     * {@link Receiptdateformat }
-     * {@link Receiptdate }
-     * {@link Reportacknowledgmentcode }
-     * {@link Errormessagecomment }
+     * {@link Safetyreportversion } {@link Safetyreportid }
+     * {@link Localreportnumb } {@link Authoritynumb } {@link Companynumb }
+     * {@link Receiptdateformat } {@link Receiptdate }
+     * {@link Reportacknowledgmentcode } {@link Errormessagecomment }
      * 
      * 
      */

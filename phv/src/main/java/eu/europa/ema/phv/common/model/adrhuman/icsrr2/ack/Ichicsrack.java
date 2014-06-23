@@ -5,10 +5,10 @@
 // Generated on: 2014.06.20 at 03:16:34 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack;
 
 import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -18,36 +18,33 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Ichicsrmessageheader;
 
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "ichicsrmessageheader",
-    "acknowledgment"
-})
+@XmlType(name = "", propOrder = { "ichicsrmessageheader", "acknowledgment" })
 @XmlRootElement(name = "ichicsrack")
-public class Ichicsrack
-    implements Serializable
-{
+public class Ichicsrack implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     @XmlElement(required = true)
     protected Ichicsrmessageheader ichicsrmessageheader;
+
     @XmlElement(required = true)
     protected Acknowledgment acknowledgment;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -56,10 +53,8 @@ public class Ichicsrack
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -68,10 +63,8 @@ public class Ichicsrack
     /**
      * Gets the value of the ichicsrmessageheader property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Ichicsrmessageheader }
-     *     
+     * @return possible object is {@link Ichicsrmessageheader }
+     * 
      */
     public Ichicsrmessageheader getIchicsrmessageheader() {
         return ichicsrmessageheader;
@@ -80,10 +73,8 @@ public class Ichicsrack
     /**
      * Sets the value of the ichicsrmessageheader property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Ichicsrmessageheader }
-     *     
+     * @param value allowed object is {@link Ichicsrmessageheader }
+     * 
      */
     public void setIchicsrmessageheader(Ichicsrmessageheader value) {
         this.ichicsrmessageheader = value;
@@ -92,10 +83,8 @@ public class Ichicsrack
     /**
      * Gets the value of the acknowledgment property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Acknowledgment }
-     *     
+     * @return possible object is {@link Acknowledgment }
+     * 
      */
     public Acknowledgment getAcknowledgment() {
         return acknowledgment;
@@ -104,10 +93,8 @@ public class Ichicsrack
     /**
      * Sets the value of the acknowledgment property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Acknowledgment }
-     *     
+     * @param value allowed object is {@link Acknowledgment }
+     * 
      */
     public void setAcknowledgment(Acknowledgment value) {
         this.acknowledgment = value;

@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 03:16:34 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack;
 
 import java.io.Serializable;
@@ -18,32 +17,28 @@ import javax.xml.bind.annotation.XmlValue;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "value"
-})
+@XmlType(name = "", propOrder = { "value" })
 @XmlRootElement(name = "localreportnumb")
-public class Localreportnumb implements Serializable
-{
+public class Localreportnumb implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     @XmlValue
     protected String value;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -52,10 +47,8 @@ public class Localreportnumb implements Serializable
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -64,10 +57,8 @@ public class Localreportnumb implements Serializable
     /**
      * Gets the value of the value property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getvalue() {
         return value;
@@ -76,10 +67,8 @@ public class Localreportnumb implements Serializable
     /**
      * Sets the value of the value property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setvalue(String value) {
         this.value = value;
