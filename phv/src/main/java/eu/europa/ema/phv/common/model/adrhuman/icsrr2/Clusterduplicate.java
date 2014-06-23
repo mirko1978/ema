@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -15,30 +14,24 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "localnumber"
-})
+@XmlType(name = "", propOrder = { "localnumber" })
 @XmlRootElement(name = "clusterduplicate")
-public class Clusterduplicate
-    implements Serializable
-{
+public class Clusterduplicate implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlElement(required = true)
     protected Localnumber localnumber;
 
     /**
      * Gets the value of the localnumber property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Localnumber }
-     *     
+     * @return possible object is {@link Localnumber }
+     * 
      */
     public Localnumber getLocalnumber() {
         return localnumber;
@@ -47,10 +40,8 @@ public class Clusterduplicate
     /**
      * Sets the value of the localnumber property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Localnumber }
-     *     
+     * @param value allowed object is {@link Localnumber }
+     * 
      */
     public void setLocalnumber(Localnumber value) {
         this.localnumber = value;

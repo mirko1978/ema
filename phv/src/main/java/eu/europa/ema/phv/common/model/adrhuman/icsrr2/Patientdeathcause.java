@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,34 +16,29 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "patientdeathreportmeddraversion",
-    "patientdeathreport"
-})
+@XmlType(name = "", propOrder = { "patientdeathreportmeddraversion", "patientdeathreport" })
 @XmlRootElement(name = "patientdeathcause")
-public class Patientdeathcause
-    implements Serializable
-{
+public class Patientdeathcause implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Patientdeathreportmeddraversion patientdeathreportmeddraversion;
+
     protected Patientdeathreport patientdeathreport;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -53,10 +47,8 @@ public class Patientdeathcause
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -65,10 +57,8 @@ public class Patientdeathcause
     /**
      * Gets the value of the patientdeathreportmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdeathreportmeddraversion }
-     *     
+     * @return possible object is {@link Patientdeathreportmeddraversion }
+     * 
      */
     public Patientdeathreportmeddraversion getPatientdeathreportmeddraversion() {
         return patientdeathreportmeddraversion;
@@ -77,10 +67,8 @@ public class Patientdeathcause
     /**
      * Sets the value of the patientdeathreportmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdeathreportmeddraversion }
-     *     
+     * @param value allowed object is {@link Patientdeathreportmeddraversion }
+     * 
      */
     public void setPatientdeathreportmeddraversion(Patientdeathreportmeddraversion value) {
         this.patientdeathreportmeddraversion = value;
@@ -89,10 +77,8 @@ public class Patientdeathcause
     /**
      * Gets the value of the patientdeathreport property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdeathreport }
-     *     
+     * @return possible object is {@link Patientdeathreport }
+     * 
      */
     public Patientdeathreport getPatientdeathreport() {
         return patientdeathreport;
@@ -101,10 +87,8 @@ public class Patientdeathcause
     /**
      * Sets the value of the patientdeathreport property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdeathreport }
-     *     
+     * @param value allowed object is {@link Patientdeathreport }
+     * 
      */
     public void setPatientdeathreport(Patientdeathreport value) {
         this.patientdeathreport = value;

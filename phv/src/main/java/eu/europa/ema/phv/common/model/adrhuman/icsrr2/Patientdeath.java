@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -19,40 +18,36 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "patientdeathdateformat",
-    "patientdeathdate",
-    "patientautopsyyesno",
-    "patientdeathcause",
-    "patientautopsy"
-})
+@XmlType(name = "", propOrder = { "patientdeathdateformat", "patientdeathdate", "patientautopsyyesno",
+        "patientdeathcause", "patientautopsy" })
 @XmlRootElement(name = "patientdeath")
-public class Patientdeath
-    implements Serializable
-{
+public class Patientdeath implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Patientdeathdateformat patientdeathdateformat;
+
     protected Patientdeathdate patientdeathdate;
+
     protected Patientautopsyyesno patientautopsyyesno;
+
     protected List<Patientdeathcause> patientdeathcause;
+
     protected List<Patientautopsy> patientautopsy;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -61,10 +56,8 @@ public class Patientdeath
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -73,10 +66,8 @@ public class Patientdeath
     /**
      * Gets the value of the patientdeathdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdeathdateformat }
-     *     
+     * @return possible object is {@link Patientdeathdateformat }
+     * 
      */
     public Patientdeathdateformat getPatientdeathdateformat() {
         return patientdeathdateformat;
@@ -85,10 +76,8 @@ public class Patientdeath
     /**
      * Sets the value of the patientdeathdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdeathdateformat }
-     *     
+     * @param value allowed object is {@link Patientdeathdateformat }
+     * 
      */
     public void setPatientdeathdateformat(Patientdeathdateformat value) {
         this.patientdeathdateformat = value;
@@ -97,10 +86,8 @@ public class Patientdeath
     /**
      * Gets the value of the patientdeathdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdeathdate }
-     *     
+     * @return possible object is {@link Patientdeathdate }
+     * 
      */
     public Patientdeathdate getPatientdeathdate() {
         return patientdeathdate;
@@ -109,10 +96,8 @@ public class Patientdeath
     /**
      * Sets the value of the patientdeathdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdeathdate }
-     *     
+     * @param value allowed object is {@link Patientdeathdate }
+     * 
      */
     public void setPatientdeathdate(Patientdeathdate value) {
         this.patientdeathdate = value;
@@ -121,10 +106,8 @@ public class Patientdeath
     /**
      * Gets the value of the patientautopsyyesno property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientautopsyyesno }
-     *     
+     * @return possible object is {@link Patientautopsyyesno }
+     * 
      */
     public Patientautopsyyesno getPatientautopsyyesno() {
         return patientautopsyyesno;
@@ -133,10 +116,8 @@ public class Patientdeath
     /**
      * Sets the value of the patientautopsyyesno property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientautopsyyesno }
-     *     
+     * @param value allowed object is {@link Patientautopsyyesno }
+     * 
      */
     public void setPatientautopsyyesno(Patientautopsyyesno value) {
         this.patientautopsyyesno = value;
@@ -146,15 +127,16 @@ public class Patientdeath
      * Gets the value of the patientdeathcause property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the patientdeathcause property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the patientdeathcause property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getPatientdeathcause().add(newItem);
+     * getPatientdeathcause().add(newItem);
      * </pre>
      * 
      * 
@@ -175,15 +157,16 @@ public class Patientdeath
      * Gets the value of the patientautopsy property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the patientautopsy property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the patientautopsy property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getPatientautopsy().add(newItem);
+     * getPatientautopsy().add(newItem);
      * </pre>
      * 
      * 

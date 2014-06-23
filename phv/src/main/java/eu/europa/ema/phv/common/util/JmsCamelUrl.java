@@ -50,4 +50,39 @@ public class JmsCamelUrl {
         return gatewayOutbox;
     }
 
+    /**
+     * @param gatewayHumanAdr the gatewayHumanAdr to set
+     */
+    public void setGatewayHumanAdr(String gatewayHumanAdr) {
+        this.gatewayHumanAdr = gatewayHumanAdr;
+    }
+
+    /**
+     * @param outboundMessage the outboundMessage to set
+     */
+    public void setOutboundMessage(String outboundMessage) {
+        this.outboundMessage = outboundMessage;
+    }
+
+    /**
+     * @param adrParserHuman the adrParserHuman to set
+     */
+    public void setAdrParserHuman(String adrParserHuman) {
+        this.adrParserHuman = adrParserHuman;
+    }
+
+    /**
+     * @param adrValidationHuman the adrValidationHuman to set
+     */
+    public void setAdrValidationHuman(String adrValidationHuman) {
+        this.adrValidationHuman = adrValidationHuman;
+    }
+
+    /**
+     * @param gatewayOutbox the gatewayOutbox to set
+     */
+    public void setGatewayOutbox(String gatewayOutbox) {
+        this.gatewayOutbox = gatewayOutbox;
+    }
+
 }

@@ -16,9 +16,7 @@
 	<context:annotation-config />
 	<context:component-scan base-package="eu.europa.ema.phv.common.util" />
 
-	<!-- <util:properties id="jmsProperties" location="classpath:/jms.properties" 
-		/> -->
-	<context:property-placeholder location="classpath:/jms.properties" />
+	<context:property-placeholder location="classpath:/jms-${spring.profiles.active}.properties" order="2"/>
 
 	<bean id="JmsCamelUrl" class="eu.europa.ema.phv.common.util.JmsCamelUrl" />
 

@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -18,35 +17,30 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "drugrecuractionmeddraversion",
-    "drugrecuraction"
-})
+@XmlType(name = "", propOrder = { "drugrecuractionmeddraversion", "drugrecuraction" })
 @XmlRootElement(name = "drugrecurrence")
-public class Drugrecurrence
-    implements Serializable
-{
+public class Drugrecurrence implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Drugrecuractionmeddraversion drugrecuractionmeddraversion;
+
     @XmlElement(required = true)
     protected Drugrecuraction drugrecuraction;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -55,10 +49,8 @@ public class Drugrecurrence
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -67,10 +59,8 @@ public class Drugrecurrence
     /**
      * Gets the value of the drugrecuractionmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Drugrecuractionmeddraversion }
-     *     
+     * @return possible object is {@link Drugrecuractionmeddraversion }
+     * 
      */
     public Drugrecuractionmeddraversion getDrugrecuractionmeddraversion() {
         return drugrecuractionmeddraversion;
@@ -79,10 +69,8 @@ public class Drugrecurrence
     /**
      * Sets the value of the drugrecuractionmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Drugrecuractionmeddraversion }
-     *     
+     * @param value allowed object is {@link Drugrecuractionmeddraversion }
+     * 
      */
     public void setDrugrecuractionmeddraversion(Drugrecuractionmeddraversion value) {
         this.drugrecuractionmeddraversion = value;
@@ -91,10 +79,8 @@ public class Drugrecurrence
     /**
      * Gets the value of the drugrecuraction property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Drugrecuraction }
-     *     
+     * @return possible object is {@link Drugrecuraction }
+     * 
      */
     public Drugrecuraction getDrugrecuraction() {
         return drugrecuraction;
@@ -103,10 +89,8 @@ public class Drugrecurrence
     /**
      * Sets the value of the drugrecuraction property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Drugrecuraction }
-     *     
+     * @param value allowed object is {@link Drugrecuraction }
+     * 
      */
     public void setDrugrecuraction(Drugrecuraction value) {
         this.drugrecuraction = value;

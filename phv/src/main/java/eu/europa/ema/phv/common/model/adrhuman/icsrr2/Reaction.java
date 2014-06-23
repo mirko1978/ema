@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,64 +16,62 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "primarysourcereaction",
-    "reactionmeddraversionllt",
-    "reactionmeddrallt",
-    "reactionmeddraversionpt",
-    "reactionmeddrapt",
-    "termhighlighted",
-    "reactionstartdateformat",
-    "reactionstartdate",
-    "reactionenddateformat",
-    "reactionenddate",
-    "reactionduration",
-    "reactiondurationunit",
-    "reactionfirsttime",
-    "reactionfirsttimeunit",
-    "reactionlasttime",
-    "reactionlasttimeunit",
-    "reactionoutcome"
-})
+@XmlType(name = "", propOrder = { "primarysourcereaction", "reactionmeddraversionllt", "reactionmeddrallt",
+        "reactionmeddraversionpt", "reactionmeddrapt", "termhighlighted", "reactionstartdateformat",
+        "reactionstartdate", "reactionenddateformat", "reactionenddate", "reactionduration", "reactiondurationunit",
+        "reactionfirsttime", "reactionfirsttimeunit", "reactionlasttime", "reactionlasttimeunit", "reactionoutcome" })
 @XmlRootElement(name = "reaction")
-public class Reaction
-    implements Serializable
-{
+public class Reaction implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Primarysourcereaction primarysourcereaction;
+
     protected Reactionmeddraversionllt reactionmeddraversionllt;
+
     protected Reactionmeddrallt reactionmeddrallt;
+
     protected Reactionmeddraversionpt reactionmeddraversionpt;
+
     protected Reactionmeddrapt reactionmeddrapt;
+
     protected Termhighlighted termhighlighted;
+
     protected Reactionstartdateformat reactionstartdateformat;
+
     protected Reactionstartdate reactionstartdate;
+
     protected Reactionenddateformat reactionenddateformat;
+
     protected Reactionenddate reactionenddate;
+
     protected Reactionduration reactionduration;
+
     protected Reactiondurationunit reactiondurationunit;
+
     protected Reactionfirsttime reactionfirsttime;
+
     protected Reactionfirsttimeunit reactionfirsttimeunit;
+
     protected Reactionlasttime reactionlasttime;
+
     protected Reactionlasttimeunit reactionlasttimeunit;
+
     protected Reactionoutcome reactionoutcome;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -83,10 +80,8 @@ public class Reaction
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -95,10 +90,8 @@ public class Reaction
     /**
      * Gets the value of the primarysourcereaction property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Primarysourcereaction }
-     *     
+     * @return possible object is {@link Primarysourcereaction }
+     * 
      */
     public Primarysourcereaction getPrimarysourcereaction() {
         return primarysourcereaction;
@@ -107,10 +100,8 @@ public class Reaction
     /**
      * Sets the value of the primarysourcereaction property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Primarysourcereaction }
-     *     
+     * @param value allowed object is {@link Primarysourcereaction }
+     * 
      */
     public void setPrimarysourcereaction(Primarysourcereaction value) {
         this.primarysourcereaction = value;
@@ -119,10 +110,8 @@ public class Reaction
     /**
      * Gets the value of the reactionmeddraversionllt property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionmeddraversionllt }
-     *     
+     * @return possible object is {@link Reactionmeddraversionllt }
+     * 
      */
     public Reactionmeddraversionllt getReactionmeddraversionllt() {
         return reactionmeddraversionllt;
@@ -131,10 +120,8 @@ public class Reaction
     /**
      * Sets the value of the reactionmeddraversionllt property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionmeddraversionllt }
-     *     
+     * @param value allowed object is {@link Reactionmeddraversionllt }
+     * 
      */
     public void setReactionmeddraversionllt(Reactionmeddraversionllt value) {
         this.reactionmeddraversionllt = value;
@@ -143,10 +130,8 @@ public class Reaction
     /**
      * Gets the value of the reactionmeddrallt property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionmeddrallt }
-     *     
+     * @return possible object is {@link Reactionmeddrallt }
+     * 
      */
     public Reactionmeddrallt getReactionmeddrallt() {
         return reactionmeddrallt;
@@ -155,10 +140,8 @@ public class Reaction
     /**
      * Sets the value of the reactionmeddrallt property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionmeddrallt }
-     *     
+     * @param value allowed object is {@link Reactionmeddrallt }
+     * 
      */
     public void setReactionmeddrallt(Reactionmeddrallt value) {
         this.reactionmeddrallt = value;
@@ -167,10 +150,8 @@ public class Reaction
     /**
      * Gets the value of the reactionmeddraversionpt property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionmeddraversionpt }
-     *     
+     * @return possible object is {@link Reactionmeddraversionpt }
+     * 
      */
     public Reactionmeddraversionpt getReactionmeddraversionpt() {
         return reactionmeddraversionpt;
@@ -179,10 +160,8 @@ public class Reaction
     /**
      * Sets the value of the reactionmeddraversionpt property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionmeddraversionpt }
-     *     
+     * @param value allowed object is {@link Reactionmeddraversionpt }
+     * 
      */
     public void setReactionmeddraversionpt(Reactionmeddraversionpt value) {
         this.reactionmeddraversionpt = value;
@@ -191,10 +170,8 @@ public class Reaction
     /**
      * Gets the value of the reactionmeddrapt property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionmeddrapt }
-     *     
+     * @return possible object is {@link Reactionmeddrapt }
+     * 
      */
     public Reactionmeddrapt getReactionmeddrapt() {
         return reactionmeddrapt;
@@ -203,10 +180,8 @@ public class Reaction
     /**
      * Sets the value of the reactionmeddrapt property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionmeddrapt }
-     *     
+     * @param value allowed object is {@link Reactionmeddrapt }
+     * 
      */
     public void setReactionmeddrapt(Reactionmeddrapt value) {
         this.reactionmeddrapt = value;
@@ -215,10 +190,8 @@ public class Reaction
     /**
      * Gets the value of the termhighlighted property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Termhighlighted }
-     *     
+     * @return possible object is {@link Termhighlighted }
+     * 
      */
     public Termhighlighted getTermhighlighted() {
         return termhighlighted;
@@ -227,10 +200,8 @@ public class Reaction
     /**
      * Sets the value of the termhighlighted property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Termhighlighted }
-     *     
+     * @param value allowed object is {@link Termhighlighted }
+     * 
      */
     public void setTermhighlighted(Termhighlighted value) {
         this.termhighlighted = value;
@@ -239,10 +210,8 @@ public class Reaction
     /**
      * Gets the value of the reactionstartdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionstartdateformat }
-     *     
+     * @return possible object is {@link Reactionstartdateformat }
+     * 
      */
     public Reactionstartdateformat getReactionstartdateformat() {
         return reactionstartdateformat;
@@ -251,10 +220,8 @@ public class Reaction
     /**
      * Sets the value of the reactionstartdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionstartdateformat }
-     *     
+     * @param value allowed object is {@link Reactionstartdateformat }
+     * 
      */
     public void setReactionstartdateformat(Reactionstartdateformat value) {
         this.reactionstartdateformat = value;
@@ -263,10 +230,8 @@ public class Reaction
     /**
      * Gets the value of the reactionstartdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionstartdate }
-     *     
+     * @return possible object is {@link Reactionstartdate }
+     * 
      */
     public Reactionstartdate getReactionstartdate() {
         return reactionstartdate;
@@ -275,10 +240,8 @@ public class Reaction
     /**
      * Sets the value of the reactionstartdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionstartdate }
-     *     
+     * @param value allowed object is {@link Reactionstartdate }
+     * 
      */
     public void setReactionstartdate(Reactionstartdate value) {
         this.reactionstartdate = value;
@@ -287,10 +250,8 @@ public class Reaction
     /**
      * Gets the value of the reactionenddateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionenddateformat }
-     *     
+     * @return possible object is {@link Reactionenddateformat }
+     * 
      */
     public Reactionenddateformat getReactionenddateformat() {
         return reactionenddateformat;
@@ -299,10 +260,8 @@ public class Reaction
     /**
      * Sets the value of the reactionenddateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionenddateformat }
-     *     
+     * @param value allowed object is {@link Reactionenddateformat }
+     * 
      */
     public void setReactionenddateformat(Reactionenddateformat value) {
         this.reactionenddateformat = value;
@@ -311,10 +270,8 @@ public class Reaction
     /**
      * Gets the value of the reactionenddate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionenddate }
-     *     
+     * @return possible object is {@link Reactionenddate }
+     * 
      */
     public Reactionenddate getReactionenddate() {
         return reactionenddate;
@@ -323,10 +280,8 @@ public class Reaction
     /**
      * Sets the value of the reactionenddate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionenddate }
-     *     
+     * @param value allowed object is {@link Reactionenddate }
+     * 
      */
     public void setReactionenddate(Reactionenddate value) {
         this.reactionenddate = value;
@@ -335,10 +290,8 @@ public class Reaction
     /**
      * Gets the value of the reactionduration property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionduration }
-     *     
+     * @return possible object is {@link Reactionduration }
+     * 
      */
     public Reactionduration getReactionduration() {
         return reactionduration;
@@ -347,10 +300,8 @@ public class Reaction
     /**
      * Sets the value of the reactionduration property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionduration }
-     *     
+     * @param value allowed object is {@link Reactionduration }
+     * 
      */
     public void setReactionduration(Reactionduration value) {
         this.reactionduration = value;
@@ -359,10 +310,8 @@ public class Reaction
     /**
      * Gets the value of the reactiondurationunit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactiondurationunit }
-     *     
+     * @return possible object is {@link Reactiondurationunit }
+     * 
      */
     public Reactiondurationunit getReactiondurationunit() {
         return reactiondurationunit;
@@ -371,10 +320,8 @@ public class Reaction
     /**
      * Sets the value of the reactiondurationunit property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactiondurationunit }
-     *     
+     * @param value allowed object is {@link Reactiondurationunit }
+     * 
      */
     public void setReactiondurationunit(Reactiondurationunit value) {
         this.reactiondurationunit = value;
@@ -383,10 +330,8 @@ public class Reaction
     /**
      * Gets the value of the reactionfirsttime property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionfirsttime }
-     *     
+     * @return possible object is {@link Reactionfirsttime }
+     * 
      */
     public Reactionfirsttime getReactionfirsttime() {
         return reactionfirsttime;
@@ -395,10 +340,8 @@ public class Reaction
     /**
      * Sets the value of the reactionfirsttime property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionfirsttime }
-     *     
+     * @param value allowed object is {@link Reactionfirsttime }
+     * 
      */
     public void setReactionfirsttime(Reactionfirsttime value) {
         this.reactionfirsttime = value;
@@ -407,10 +350,8 @@ public class Reaction
     /**
      * Gets the value of the reactionfirsttimeunit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionfirsttimeunit }
-     *     
+     * @return possible object is {@link Reactionfirsttimeunit }
+     * 
      */
     public Reactionfirsttimeunit getReactionfirsttimeunit() {
         return reactionfirsttimeunit;
@@ -419,10 +360,8 @@ public class Reaction
     /**
      * Sets the value of the reactionfirsttimeunit property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionfirsttimeunit }
-     *     
+     * @param value allowed object is {@link Reactionfirsttimeunit }
+     * 
      */
     public void setReactionfirsttimeunit(Reactionfirsttimeunit value) {
         this.reactionfirsttimeunit = value;
@@ -431,10 +370,8 @@ public class Reaction
     /**
      * Gets the value of the reactionlasttime property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionlasttime }
-     *     
+     * @return possible object is {@link Reactionlasttime }
+     * 
      */
     public Reactionlasttime getReactionlasttime() {
         return reactionlasttime;
@@ -443,10 +380,8 @@ public class Reaction
     /**
      * Sets the value of the reactionlasttime property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionlasttime }
-     *     
+     * @param value allowed object is {@link Reactionlasttime }
+     * 
      */
     public void setReactionlasttime(Reactionlasttime value) {
         this.reactionlasttime = value;
@@ -455,10 +390,8 @@ public class Reaction
     /**
      * Gets the value of the reactionlasttimeunit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionlasttimeunit }
-     *     
+     * @return possible object is {@link Reactionlasttimeunit }
+     * 
      */
     public Reactionlasttimeunit getReactionlasttimeunit() {
         return reactionlasttimeunit;
@@ -467,10 +400,8 @@ public class Reaction
     /**
      * Sets the value of the reactionlasttimeunit property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionlasttimeunit }
-     *     
+     * @param value allowed object is {@link Reactionlasttimeunit }
+     * 
      */
     public void setReactionlasttimeunit(Reactionlasttimeunit value) {
         this.reactionlasttimeunit = value;
@@ -479,10 +410,8 @@ public class Reaction
     /**
      * Gets the value of the reactionoutcome property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reactionoutcome }
-     *     
+     * @return possible object is {@link Reactionoutcome }
+     * 
      */
     public Reactionoutcome getReactionoutcome() {
         return reactionoutcome;
@@ -491,10 +420,8 @@ public class Reaction
     /**
      * Sets the value of the reactionoutcome property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reactionoutcome }
-     *     
+     * @param value allowed object is {@link Reactionoutcome }
+     * 
      */
     public void setReactionoutcome(Reactionoutcome value) {
         this.reactionoutcome = value;

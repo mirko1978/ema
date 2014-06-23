@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -19,56 +18,53 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "parentidentification",
-    "parentbirthdateformat",
-    "parentbirthdate",
-    "parentage",
-    "parentageunit",
-    "parentlastmenstrualdateformat",
-    "parentlastmenstrualdate",
-    "parentweight",
-    "parentheight",
-    "parentsex",
-    "parentmedicalrelevanttext",
-    "parentmedicalhistoryepisode",
-    "parentpastdrugtherapy"
-})
+@XmlType(name = "", propOrder = { "parentidentification", "parentbirthdateformat", "parentbirthdate", "parentage",
+        "parentageunit", "parentlastmenstrualdateformat", "parentlastmenstrualdate", "parentweight", "parentheight",
+        "parentsex", "parentmedicalrelevanttext", "parentmedicalhistoryepisode", "parentpastdrugtherapy" })
 @XmlRootElement(name = "parent")
-public class Parent
-    implements Serializable
-{
+public class Parent implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Parentidentification parentidentification;
+
     protected Parentbirthdateformat parentbirthdateformat;
+
     protected Parentbirthdate parentbirthdate;
+
     protected Parentage parentage;
+
     protected Parentageunit parentageunit;
+
     protected Parentlastmenstrualdateformat parentlastmenstrualdateformat;
+
     protected Parentlastmenstrualdate parentlastmenstrualdate;
+
     protected Parentweight parentweight;
+
     protected Parentheight parentheight;
+
     protected Parentsex parentsex;
+
     protected Parentmedicalrelevanttext parentmedicalrelevanttext;
+
     protected List<Parentmedicalhistoryepisode> parentmedicalhistoryepisode;
+
     protected List<Parentpastdrugtherapy> parentpastdrugtherapy;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -77,10 +73,8 @@ public class Parent
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -89,10 +83,8 @@ public class Parent
     /**
      * Gets the value of the parentidentification property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentidentification }
-     *     
+     * @return possible object is {@link Parentidentification }
+     * 
      */
     public Parentidentification getParentidentification() {
         return parentidentification;
@@ -101,10 +93,8 @@ public class Parent
     /**
      * Sets the value of the parentidentification property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentidentification }
-     *     
+     * @param value allowed object is {@link Parentidentification }
+     * 
      */
     public void setParentidentification(Parentidentification value) {
         this.parentidentification = value;
@@ -113,10 +103,8 @@ public class Parent
     /**
      * Gets the value of the parentbirthdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentbirthdateformat }
-     *     
+     * @return possible object is {@link Parentbirthdateformat }
+     * 
      */
     public Parentbirthdateformat getParentbirthdateformat() {
         return parentbirthdateformat;
@@ -125,10 +113,8 @@ public class Parent
     /**
      * Sets the value of the parentbirthdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentbirthdateformat }
-     *     
+     * @param value allowed object is {@link Parentbirthdateformat }
+     * 
      */
     public void setParentbirthdateformat(Parentbirthdateformat value) {
         this.parentbirthdateformat = value;
@@ -137,10 +123,8 @@ public class Parent
     /**
      * Gets the value of the parentbirthdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentbirthdate }
-     *     
+     * @return possible object is {@link Parentbirthdate }
+     * 
      */
     public Parentbirthdate getParentbirthdate() {
         return parentbirthdate;
@@ -149,10 +133,8 @@ public class Parent
     /**
      * Sets the value of the parentbirthdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentbirthdate }
-     *     
+     * @param value allowed object is {@link Parentbirthdate }
+     * 
      */
     public void setParentbirthdate(Parentbirthdate value) {
         this.parentbirthdate = value;
@@ -161,10 +143,8 @@ public class Parent
     /**
      * Gets the value of the parentage property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentage }
-     *     
+     * @return possible object is {@link Parentage }
+     * 
      */
     public Parentage getParentage() {
         return parentage;
@@ -173,10 +153,8 @@ public class Parent
     /**
      * Sets the value of the parentage property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentage }
-     *     
+     * @param value allowed object is {@link Parentage }
+     * 
      */
     public void setParentage(Parentage value) {
         this.parentage = value;
@@ -185,10 +163,8 @@ public class Parent
     /**
      * Gets the value of the parentageunit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentageunit }
-     *     
+     * @return possible object is {@link Parentageunit }
+     * 
      */
     public Parentageunit getParentageunit() {
         return parentageunit;
@@ -197,10 +173,8 @@ public class Parent
     /**
      * Sets the value of the parentageunit property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentageunit }
-     *     
+     * @param value allowed object is {@link Parentageunit }
+     * 
      */
     public void setParentageunit(Parentageunit value) {
         this.parentageunit = value;
@@ -209,10 +183,8 @@ public class Parent
     /**
      * Gets the value of the parentlastmenstrualdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentlastmenstrualdateformat }
-     *     
+     * @return possible object is {@link Parentlastmenstrualdateformat }
+     * 
      */
     public Parentlastmenstrualdateformat getParentlastmenstrualdateformat() {
         return parentlastmenstrualdateformat;
@@ -221,10 +193,8 @@ public class Parent
     /**
      * Sets the value of the parentlastmenstrualdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentlastmenstrualdateformat }
-     *     
+     * @param value allowed object is {@link Parentlastmenstrualdateformat }
+     * 
      */
     public void setParentlastmenstrualdateformat(Parentlastmenstrualdateformat value) {
         this.parentlastmenstrualdateformat = value;
@@ -233,10 +203,8 @@ public class Parent
     /**
      * Gets the value of the parentlastmenstrualdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentlastmenstrualdate }
-     *     
+     * @return possible object is {@link Parentlastmenstrualdate }
+     * 
      */
     public Parentlastmenstrualdate getParentlastmenstrualdate() {
         return parentlastmenstrualdate;
@@ -245,10 +213,8 @@ public class Parent
     /**
      * Sets the value of the parentlastmenstrualdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentlastmenstrualdate }
-     *     
+     * @param value allowed object is {@link Parentlastmenstrualdate }
+     * 
      */
     public void setParentlastmenstrualdate(Parentlastmenstrualdate value) {
         this.parentlastmenstrualdate = value;
@@ -257,10 +223,8 @@ public class Parent
     /**
      * Gets the value of the parentweight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentweight }
-     *     
+     * @return possible object is {@link Parentweight }
+     * 
      */
     public Parentweight getParentweight() {
         return parentweight;
@@ -269,10 +233,8 @@ public class Parent
     /**
      * Sets the value of the parentweight property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentweight }
-     *     
+     * @param value allowed object is {@link Parentweight }
+     * 
      */
     public void setParentweight(Parentweight value) {
         this.parentweight = value;
@@ -281,10 +243,8 @@ public class Parent
     /**
      * Gets the value of the parentheight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentheight }
-     *     
+     * @return possible object is {@link Parentheight }
+     * 
      */
     public Parentheight getParentheight() {
         return parentheight;
@@ -293,10 +253,8 @@ public class Parent
     /**
      * Sets the value of the parentheight property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentheight }
-     *     
+     * @param value allowed object is {@link Parentheight }
+     * 
      */
     public void setParentheight(Parentheight value) {
         this.parentheight = value;
@@ -305,10 +263,8 @@ public class Parent
     /**
      * Gets the value of the parentsex property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentsex }
-     *     
+     * @return possible object is {@link Parentsex }
+     * 
      */
     public Parentsex getParentsex() {
         return parentsex;
@@ -317,10 +273,8 @@ public class Parent
     /**
      * Sets the value of the parentsex property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentsex }
-     *     
+     * @param value allowed object is {@link Parentsex }
+     * 
      */
     public void setParentsex(Parentsex value) {
         this.parentsex = value;
@@ -329,10 +283,8 @@ public class Parent
     /**
      * Gets the value of the parentmedicalrelevanttext property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentmedicalrelevanttext }
-     *     
+     * @return possible object is {@link Parentmedicalrelevanttext }
+     * 
      */
     public Parentmedicalrelevanttext getParentmedicalrelevanttext() {
         return parentmedicalrelevanttext;
@@ -341,10 +293,8 @@ public class Parent
     /**
      * Sets the value of the parentmedicalrelevanttext property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentmedicalrelevanttext }
-     *     
+     * @param value allowed object is {@link Parentmedicalrelevanttext }
+     * 
      */
     public void setParentmedicalrelevanttext(Parentmedicalrelevanttext value) {
         this.parentmedicalrelevanttext = value;
@@ -354,15 +304,16 @@ public class Parent
      * Gets the value of the parentmedicalhistoryepisode property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the parentmedicalhistoryepisode property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the parentmedicalhistoryepisode property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getParentmedicalhistoryepisode().add(newItem);
+     * getParentmedicalhistoryepisode().add(newItem);
      * </pre>
      * 
      * 
@@ -383,15 +334,16 @@ public class Parent
      * Gets the value of the parentpastdrugtherapy property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the parentpastdrugtherapy property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the parentpastdrugtherapy property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getParentpastdrugtherapy().add(newItem);
+     * getParentpastdrugtherapy().add(newItem);
      * </pre>
      * 
      * 

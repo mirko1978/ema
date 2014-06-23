@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,32 +16,27 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "linkreportnumb"
-})
+@XmlType(name = "", propOrder = { "linkreportnumb" })
 @XmlRootElement(name = "linkedreport")
-public class Linkedreport
-    implements Serializable
-{
+public class Linkedreport implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Linkreportnumb linkreportnumb;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -51,10 +45,8 @@ public class Linkedreport
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -63,10 +55,8 @@ public class Linkedreport
     /**
      * Gets the value of the linkreportnumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Linkreportnumb }
-     *     
+     * @return possible object is {@link Linkreportnumb }
+     * 
      */
     public Linkreportnumb getLinkreportnumb() {
         return linkreportnumb;
@@ -75,10 +65,8 @@ public class Linkedreport
     /**
      * Sets the value of the linkreportnumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Linkreportnumb }
-     *     
+     * @param value allowed object is {@link Linkreportnumb }
+     * 
      */
     public void setLinkreportnumb(Linkreportnumb value) {
         this.linkreportnumb = value;

@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,48 +16,45 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "parentdrugname",
-    "parentdrugstartdateformat",
-    "parentdrugstartdate",
-    "parentdrugenddateformat",
-    "parentdrugenddate",
-    "parentdrgindicationmeddraversion",
-    "parentdrugindication",
-    "parentdrgreactionmeddraversion",
-    "parentdrugreaction"
-})
+@XmlType(name = "", propOrder = { "parentdrugname", "parentdrugstartdateformat", "parentdrugstartdate",
+        "parentdrugenddateformat", "parentdrugenddate", "parentdrgindicationmeddraversion", "parentdrugindication",
+        "parentdrgreactionmeddraversion", "parentdrugreaction" })
 @XmlRootElement(name = "parentpastdrugtherapy")
-public class Parentpastdrugtherapy
-    implements Serializable
-{
+public class Parentpastdrugtherapy implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Parentdrugname parentdrugname;
+
     protected Parentdrugstartdateformat parentdrugstartdateformat;
+
     protected Parentdrugstartdate parentdrugstartdate;
+
     protected Parentdrugenddateformat parentdrugenddateformat;
+
     protected Parentdrugenddate parentdrugenddate;
+
     protected Parentdrgindicationmeddraversion parentdrgindicationmeddraversion;
+
     protected Parentdrugindication parentdrugindication;
+
     protected Parentdrgreactionmeddraversion parentdrgreactionmeddraversion;
+
     protected Parentdrugreaction parentdrugreaction;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -67,10 +63,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -79,10 +73,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrugname property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrugname }
-     *     
+     * @return possible object is {@link Parentdrugname }
+     * 
      */
     public Parentdrugname getParentdrugname() {
         return parentdrugname;
@@ -91,10 +83,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrugname property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrugname }
-     *     
+     * @param value allowed object is {@link Parentdrugname }
+     * 
      */
     public void setParentdrugname(Parentdrugname value) {
         this.parentdrugname = value;
@@ -103,10 +93,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrugstartdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrugstartdateformat }
-     *     
+     * @return possible object is {@link Parentdrugstartdateformat }
+     * 
      */
     public Parentdrugstartdateformat getParentdrugstartdateformat() {
         return parentdrugstartdateformat;
@@ -115,10 +103,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrugstartdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrugstartdateformat }
-     *     
+     * @param value allowed object is {@link Parentdrugstartdateformat }
+     * 
      */
     public void setParentdrugstartdateformat(Parentdrugstartdateformat value) {
         this.parentdrugstartdateformat = value;
@@ -127,10 +113,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrugstartdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrugstartdate }
-     *     
+     * @return possible object is {@link Parentdrugstartdate }
+     * 
      */
     public Parentdrugstartdate getParentdrugstartdate() {
         return parentdrugstartdate;
@@ -139,10 +123,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrugstartdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrugstartdate }
-     *     
+     * @param value allowed object is {@link Parentdrugstartdate }
+     * 
      */
     public void setParentdrugstartdate(Parentdrugstartdate value) {
         this.parentdrugstartdate = value;
@@ -151,10 +133,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrugenddateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrugenddateformat }
-     *     
+     * @return possible object is {@link Parentdrugenddateformat }
+     * 
      */
     public Parentdrugenddateformat getParentdrugenddateformat() {
         return parentdrugenddateformat;
@@ -163,10 +143,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrugenddateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrugenddateformat }
-     *     
+     * @param value allowed object is {@link Parentdrugenddateformat }
+     * 
      */
     public void setParentdrugenddateformat(Parentdrugenddateformat value) {
         this.parentdrugenddateformat = value;
@@ -175,10 +153,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrugenddate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrugenddate }
-     *     
+     * @return possible object is {@link Parentdrugenddate }
+     * 
      */
     public Parentdrugenddate getParentdrugenddate() {
         return parentdrugenddate;
@@ -187,10 +163,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrugenddate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrugenddate }
-     *     
+     * @param value allowed object is {@link Parentdrugenddate }
+     * 
      */
     public void setParentdrugenddate(Parentdrugenddate value) {
         this.parentdrugenddate = value;
@@ -199,10 +173,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrgindicationmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrgindicationmeddraversion }
-     *     
+     * @return possible object is {@link Parentdrgindicationmeddraversion }
+     * 
      */
     public Parentdrgindicationmeddraversion getParentdrgindicationmeddraversion() {
         return parentdrgindicationmeddraversion;
@@ -211,10 +183,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrgindicationmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrgindicationmeddraversion }
-     *     
+     * @param value allowed object is {@link Parentdrgindicationmeddraversion }
+     * 
      */
     public void setParentdrgindicationmeddraversion(Parentdrgindicationmeddraversion value) {
         this.parentdrgindicationmeddraversion = value;
@@ -223,10 +193,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrugindication property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrugindication }
-     *     
+     * @return possible object is {@link Parentdrugindication }
+     * 
      */
     public Parentdrugindication getParentdrugindication() {
         return parentdrugindication;
@@ -235,10 +203,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrugindication property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrugindication }
-     *     
+     * @param value allowed object is {@link Parentdrugindication }
+     * 
      */
     public void setParentdrugindication(Parentdrugindication value) {
         this.parentdrugindication = value;
@@ -247,10 +213,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrgreactionmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrgreactionmeddraversion }
-     *     
+     * @return possible object is {@link Parentdrgreactionmeddraversion }
+     * 
      */
     public Parentdrgreactionmeddraversion getParentdrgreactionmeddraversion() {
         return parentdrgreactionmeddraversion;
@@ -259,10 +223,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrgreactionmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrgreactionmeddraversion }
-     *     
+     * @param value allowed object is {@link Parentdrgreactionmeddraversion }
+     * 
      */
     public void setParentdrgreactionmeddraversion(Parentdrgreactionmeddraversion value) {
         this.parentdrgreactionmeddraversion = value;
@@ -271,10 +233,8 @@ public class Parentpastdrugtherapy
     /**
      * Gets the value of the parentdrugreaction property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parentdrugreaction }
-     *     
+     * @return possible object is {@link Parentdrugreaction }
+     * 
      */
     public Parentdrugreaction getParentdrugreaction() {
         return parentdrugreaction;
@@ -283,10 +243,8 @@ public class Parentpastdrugtherapy
     /**
      * Sets the value of the parentdrugreaction property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parentdrugreaction }
-     *     
+     * @param value allowed object is {@link Parentdrugreaction }
+     * 
      */
     public void setParentdrugreaction(Parentdrugreaction value) {
         this.parentdrugreaction = value;

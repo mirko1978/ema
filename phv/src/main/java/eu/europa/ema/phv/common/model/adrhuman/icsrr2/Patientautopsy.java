@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,34 +16,29 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "patientdetermautopsmeddraversion",
-    "patientdetermineautopsy"
-})
+@XmlType(name = "", propOrder = { "patientdetermautopsmeddraversion", "patientdetermineautopsy" })
 @XmlRootElement(name = "patientautopsy")
-public class Patientautopsy
-    implements Serializable
-{
+public class Patientautopsy implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Patientdetermautopsmeddraversion patientdetermautopsmeddraversion;
+
     protected Patientdetermineautopsy patientdetermineautopsy;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -53,10 +47,8 @@ public class Patientautopsy
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -65,10 +57,8 @@ public class Patientautopsy
     /**
      * Gets the value of the patientdetermautopsmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdetermautopsmeddraversion }
-     *     
+     * @return possible object is {@link Patientdetermautopsmeddraversion }
+     * 
      */
     public Patientdetermautopsmeddraversion getPatientdetermautopsmeddraversion() {
         return patientdetermautopsmeddraversion;
@@ -77,10 +67,8 @@ public class Patientautopsy
     /**
      * Sets the value of the patientdetermautopsmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdetermautopsmeddraversion }
-     *     
+     * @param value allowed object is {@link Patientdetermautopsmeddraversion }
+     * 
      */
     public void setPatientdetermautopsmeddraversion(Patientdetermautopsmeddraversion value) {
         this.patientdetermautopsmeddraversion = value;
@@ -89,10 +77,8 @@ public class Patientautopsy
     /**
      * Gets the value of the patientdetermineautopsy property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdetermineautopsy }
-     *     
+     * @return possible object is {@link Patientdetermineautopsy }
+     * 
      */
     public Patientdetermineautopsy getPatientdetermineautopsy() {
         return patientdetermineautopsy;
@@ -101,10 +87,8 @@ public class Patientautopsy
     /**
      * Sets the value of the patientdetermineautopsy property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdetermineautopsy }
-     *     
+     * @param value allowed object is {@link Patientdetermineautopsy }
+     * 
      */
     public void setPatientdetermineautopsy(Patientdetermineautopsy value) {
         this.patientdetermineautopsy = value;

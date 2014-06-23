@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,40 +16,36 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "drugreactionassesmeddraversion",
-    "drugreactionasses",
-    "drugassessmentsource",
-    "drugassessmentmethod",
-    "drugresult"
-})
+@XmlType(name = "", propOrder = { "drugreactionassesmeddraversion", "drugreactionasses", "drugassessmentsource",
+        "drugassessmentmethod", "drugresult" })
 @XmlRootElement(name = "drugreactionrelatedness")
-public class Drugreactionrelatedness
-    implements Serializable
-{
+public class Drugreactionrelatedness implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Drugreactionassesmeddraversion drugreactionassesmeddraversion;
+
     protected Drugreactionasses drugreactionasses;
+
     protected Drugassessmentsource drugassessmentsource;
+
     protected Drugassessmentmethod drugassessmentmethod;
+
     protected Drugresult drugresult;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -59,10 +54,8 @@ public class Drugreactionrelatedness
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -71,10 +64,8 @@ public class Drugreactionrelatedness
     /**
      * Gets the value of the drugreactionassesmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Drugreactionassesmeddraversion }
-     *     
+     * @return possible object is {@link Drugreactionassesmeddraversion }
+     * 
      */
     public Drugreactionassesmeddraversion getDrugreactionassesmeddraversion() {
         return drugreactionassesmeddraversion;
@@ -83,10 +74,8 @@ public class Drugreactionrelatedness
     /**
      * Sets the value of the drugreactionassesmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Drugreactionassesmeddraversion }
-     *     
+     * @param value allowed object is {@link Drugreactionassesmeddraversion }
+     * 
      */
     public void setDrugreactionassesmeddraversion(Drugreactionassesmeddraversion value) {
         this.drugreactionassesmeddraversion = value;
@@ -95,10 +84,8 @@ public class Drugreactionrelatedness
     /**
      * Gets the value of the drugreactionasses property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Drugreactionasses }
-     *     
+     * @return possible object is {@link Drugreactionasses }
+     * 
      */
     public Drugreactionasses getDrugreactionasses() {
         return drugreactionasses;
@@ -107,10 +94,8 @@ public class Drugreactionrelatedness
     /**
      * Sets the value of the drugreactionasses property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Drugreactionasses }
-     *     
+     * @param value allowed object is {@link Drugreactionasses }
+     * 
      */
     public void setDrugreactionasses(Drugreactionasses value) {
         this.drugreactionasses = value;
@@ -119,10 +104,8 @@ public class Drugreactionrelatedness
     /**
      * Gets the value of the drugassessmentsource property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Drugassessmentsource }
-     *     
+     * @return possible object is {@link Drugassessmentsource }
+     * 
      */
     public Drugassessmentsource getDrugassessmentsource() {
         return drugassessmentsource;
@@ -131,10 +114,8 @@ public class Drugreactionrelatedness
     /**
      * Sets the value of the drugassessmentsource property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Drugassessmentsource }
-     *     
+     * @param value allowed object is {@link Drugassessmentsource }
+     * 
      */
     public void setDrugassessmentsource(Drugassessmentsource value) {
         this.drugassessmentsource = value;
@@ -143,10 +124,8 @@ public class Drugreactionrelatedness
     /**
      * Gets the value of the drugassessmentmethod property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Drugassessmentmethod }
-     *     
+     * @return possible object is {@link Drugassessmentmethod }
+     * 
      */
     public Drugassessmentmethod getDrugassessmentmethod() {
         return drugassessmentmethod;
@@ -155,10 +134,8 @@ public class Drugreactionrelatedness
     /**
      * Sets the value of the drugassessmentmethod property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Drugassessmentmethod }
-     *     
+     * @param value allowed object is {@link Drugassessmentmethod }
+     * 
      */
     public void setDrugassessmentmethod(Drugassessmentmethod value) {
         this.drugassessmentmethod = value;
@@ -167,10 +144,8 @@ public class Drugreactionrelatedness
     /**
      * Gets the value of the drugresult property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Drugresult }
-     *     
+     * @return possible object is {@link Drugresult }
+     * 
      */
     public Drugresult getDrugresult() {
         return drugresult;
@@ -179,10 +154,8 @@ public class Drugreactionrelatedness
     /**
      * Sets the value of the drugresult property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Drugresult }
-     *     
+     * @param value allowed object is {@link Drugresult }
+     * 
      */
     public void setDrugresult(Drugresult value) {
         this.drugresult = value;

@@ -26,9 +26,10 @@ public class AdrParserHumanRouter extends SpringRouteBuilder {
     public void configure() throws Exception {
         //@formatter:off
         from(camelUrl.getAdrParserHuman())
-            .transacted()
-            .split()
-                .tokenizeXML("safetyreport")
+            .transacted()           
+            .log("Message received: ${body.icsr.ichicsrmessageheader.messagenumb.getvalue()}")            
+            .split()                                
+                .method("ReportSplitter")                
                 .parallelProcessing()
         .to(camelUrl.getAdrValidationHuman());
         //@formatter:on

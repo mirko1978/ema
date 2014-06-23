@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,62 +16,60 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "reportertitle",
-    "reportergivename",
-    "reportermiddlename",
-    "reporterfamilyname",
-    "reporterorganization",
-    "reporterdepartment",
-    "reporterstreet",
-    "reportercity",
-    "reporterstate",
-    "reporterpostcode",
-    "reportercountry",
-    "qualification",
-    "literaturereference",
-    "studyname",
-    "sponsorstudynumb",
-    "observestudytype"
-})
+@XmlType(name = "", propOrder = { "reportertitle", "reportergivename", "reportermiddlename", "reporterfamilyname",
+        "reporterorganization", "reporterdepartment", "reporterstreet", "reportercity", "reporterstate",
+        "reporterpostcode", "reportercountry", "qualification", "literaturereference", "studyname", "sponsorstudynumb",
+        "observestudytype" })
 @XmlRootElement(name = "primarysource")
-public class Primarysource
-    implements Serializable
-{
+public class Primarysource implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Reportertitle reportertitle;
+
     protected Reportergivename reportergivename;
+
     protected Reportermiddlename reportermiddlename;
+
     protected Reporterfamilyname reporterfamilyname;
+
     protected Reporterorganization reporterorganization;
+
     protected Reporterdepartment reporterdepartment;
+
     protected Reporterstreet reporterstreet;
+
     protected Reportercity reportercity;
+
     protected Reporterstate reporterstate;
+
     protected Reporterpostcode reporterpostcode;
+
     protected Reportercountry reportercountry;
+
     protected Qualification qualification;
+
     protected Literaturereference literaturereference;
+
     protected Studyname studyname;
+
     protected Sponsorstudynumb sponsorstudynumb;
+
     protected Observestudytype observestudytype;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -81,10 +78,8 @@ public class Primarysource
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -93,10 +88,8 @@ public class Primarysource
     /**
      * Gets the value of the reportertitle property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reportertitle }
-     *     
+     * @return possible object is {@link Reportertitle }
+     * 
      */
     public Reportertitle getReportertitle() {
         return reportertitle;
@@ -105,10 +98,8 @@ public class Primarysource
     /**
      * Sets the value of the reportertitle property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reportertitle }
-     *     
+     * @param value allowed object is {@link Reportertitle }
+     * 
      */
     public void setReportertitle(Reportertitle value) {
         this.reportertitle = value;
@@ -117,10 +108,8 @@ public class Primarysource
     /**
      * Gets the value of the reportergivename property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reportergivename }
-     *     
+     * @return possible object is {@link Reportergivename }
+     * 
      */
     public Reportergivename getReportergivename() {
         return reportergivename;
@@ -129,10 +118,8 @@ public class Primarysource
     /**
      * Sets the value of the reportergivename property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reportergivename }
-     *     
+     * @param value allowed object is {@link Reportergivename }
+     * 
      */
     public void setReportergivename(Reportergivename value) {
         this.reportergivename = value;
@@ -141,10 +128,8 @@ public class Primarysource
     /**
      * Gets the value of the reportermiddlename property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reportermiddlename }
-     *     
+     * @return possible object is {@link Reportermiddlename }
+     * 
      */
     public Reportermiddlename getReportermiddlename() {
         return reportermiddlename;
@@ -153,10 +138,8 @@ public class Primarysource
     /**
      * Sets the value of the reportermiddlename property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reportermiddlename }
-     *     
+     * @param value allowed object is {@link Reportermiddlename }
+     * 
      */
     public void setReportermiddlename(Reportermiddlename value) {
         this.reportermiddlename = value;
@@ -165,10 +148,8 @@ public class Primarysource
     /**
      * Gets the value of the reporterfamilyname property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reporterfamilyname }
-     *     
+     * @return possible object is {@link Reporterfamilyname }
+     * 
      */
     public Reporterfamilyname getReporterfamilyname() {
         return reporterfamilyname;
@@ -177,10 +158,8 @@ public class Primarysource
     /**
      * Sets the value of the reporterfamilyname property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reporterfamilyname }
-     *     
+     * @param value allowed object is {@link Reporterfamilyname }
+     * 
      */
     public void setReporterfamilyname(Reporterfamilyname value) {
         this.reporterfamilyname = value;
@@ -189,10 +168,8 @@ public class Primarysource
     /**
      * Gets the value of the reporterorganization property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reporterorganization }
-     *     
+     * @return possible object is {@link Reporterorganization }
+     * 
      */
     public Reporterorganization getReporterorganization() {
         return reporterorganization;
@@ -201,10 +178,8 @@ public class Primarysource
     /**
      * Sets the value of the reporterorganization property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reporterorganization }
-     *     
+     * @param value allowed object is {@link Reporterorganization }
+     * 
      */
     public void setReporterorganization(Reporterorganization value) {
         this.reporterorganization = value;
@@ -213,10 +188,8 @@ public class Primarysource
     /**
      * Gets the value of the reporterdepartment property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reporterdepartment }
-     *     
+     * @return possible object is {@link Reporterdepartment }
+     * 
      */
     public Reporterdepartment getReporterdepartment() {
         return reporterdepartment;
@@ -225,10 +198,8 @@ public class Primarysource
     /**
      * Sets the value of the reporterdepartment property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reporterdepartment }
-     *     
+     * @param value allowed object is {@link Reporterdepartment }
+     * 
      */
     public void setReporterdepartment(Reporterdepartment value) {
         this.reporterdepartment = value;
@@ -237,10 +208,8 @@ public class Primarysource
     /**
      * Gets the value of the reporterstreet property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reporterstreet }
-     *     
+     * @return possible object is {@link Reporterstreet }
+     * 
      */
     public Reporterstreet getReporterstreet() {
         return reporterstreet;
@@ -249,10 +218,8 @@ public class Primarysource
     /**
      * Sets the value of the reporterstreet property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reporterstreet }
-     *     
+     * @param value allowed object is {@link Reporterstreet }
+     * 
      */
     public void setReporterstreet(Reporterstreet value) {
         this.reporterstreet = value;
@@ -261,10 +228,8 @@ public class Primarysource
     /**
      * Gets the value of the reportercity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reportercity }
-     *     
+     * @return possible object is {@link Reportercity }
+     * 
      */
     public Reportercity getReportercity() {
         return reportercity;
@@ -273,10 +238,8 @@ public class Primarysource
     /**
      * Sets the value of the reportercity property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reportercity }
-     *     
+     * @param value allowed object is {@link Reportercity }
+     * 
      */
     public void setReportercity(Reportercity value) {
         this.reportercity = value;
@@ -285,10 +248,8 @@ public class Primarysource
     /**
      * Gets the value of the reporterstate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reporterstate }
-     *     
+     * @return possible object is {@link Reporterstate }
+     * 
      */
     public Reporterstate getReporterstate() {
         return reporterstate;
@@ -297,10 +258,8 @@ public class Primarysource
     /**
      * Sets the value of the reporterstate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reporterstate }
-     *     
+     * @param value allowed object is {@link Reporterstate }
+     * 
      */
     public void setReporterstate(Reporterstate value) {
         this.reporterstate = value;
@@ -309,10 +268,8 @@ public class Primarysource
     /**
      * Gets the value of the reporterpostcode property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reporterpostcode }
-     *     
+     * @return possible object is {@link Reporterpostcode }
+     * 
      */
     public Reporterpostcode getReporterpostcode() {
         return reporterpostcode;
@@ -321,10 +278,8 @@ public class Primarysource
     /**
      * Sets the value of the reporterpostcode property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reporterpostcode }
-     *     
+     * @param value allowed object is {@link Reporterpostcode }
+     * 
      */
     public void setReporterpostcode(Reporterpostcode value) {
         this.reporterpostcode = value;
@@ -333,10 +288,8 @@ public class Primarysource
     /**
      * Gets the value of the reportercountry property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reportercountry }
-     *     
+     * @return possible object is {@link Reportercountry }
+     * 
      */
     public Reportercountry getReportercountry() {
         return reportercountry;
@@ -345,10 +298,8 @@ public class Primarysource
     /**
      * Sets the value of the reportercountry property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reportercountry }
-     *     
+     * @param value allowed object is {@link Reportercountry }
+     * 
      */
     public void setReportercountry(Reportercountry value) {
         this.reportercountry = value;
@@ -357,10 +308,8 @@ public class Primarysource
     /**
      * Gets the value of the qualification property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Qualification }
-     *     
+     * @return possible object is {@link Qualification }
+     * 
      */
     public Qualification getQualification() {
         return qualification;
@@ -369,10 +318,8 @@ public class Primarysource
     /**
      * Sets the value of the qualification property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Qualification }
-     *     
+     * @param value allowed object is {@link Qualification }
+     * 
      */
     public void setQualification(Qualification value) {
         this.qualification = value;
@@ -381,10 +328,8 @@ public class Primarysource
     /**
      * Gets the value of the literaturereference property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Literaturereference }
-     *     
+     * @return possible object is {@link Literaturereference }
+     * 
      */
     public Literaturereference getLiteraturereference() {
         return literaturereference;
@@ -393,10 +338,8 @@ public class Primarysource
     /**
      * Sets the value of the literaturereference property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Literaturereference }
-     *     
+     * @param value allowed object is {@link Literaturereference }
+     * 
      */
     public void setLiteraturereference(Literaturereference value) {
         this.literaturereference = value;
@@ -405,10 +348,8 @@ public class Primarysource
     /**
      * Gets the value of the studyname property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Studyname }
-     *     
+     * @return possible object is {@link Studyname }
+     * 
      */
     public Studyname getStudyname() {
         return studyname;
@@ -417,10 +358,8 @@ public class Primarysource
     /**
      * Sets the value of the studyname property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Studyname }
-     *     
+     * @param value allowed object is {@link Studyname }
+     * 
      */
     public void setStudyname(Studyname value) {
         this.studyname = value;
@@ -429,10 +368,8 @@ public class Primarysource
     /**
      * Gets the value of the sponsorstudynumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sponsorstudynumb }
-     *     
+     * @return possible object is {@link Sponsorstudynumb }
+     * 
      */
     public Sponsorstudynumb getSponsorstudynumb() {
         return sponsorstudynumb;
@@ -441,10 +378,8 @@ public class Primarysource
     /**
      * Sets the value of the sponsorstudynumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sponsorstudynumb }
-     *     
+     * @param value allowed object is {@link Sponsorstudynumb }
+     * 
      */
     public void setSponsorstudynumb(Sponsorstudynumb value) {
         this.sponsorstudynumb = value;
@@ -453,10 +388,8 @@ public class Primarysource
     /**
      * Gets the value of the observestudytype property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Observestudytype }
-     *     
+     * @return possible object is {@link Observestudytype }
+     * 
      */
     public Observestudytype getObservestudytype() {
         return observestudytype;
@@ -465,10 +398,8 @@ public class Primarysource
     /**
      * Sets the value of the observestudytype property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Observestudytype }
-     *     
+     * @param value allowed object is {@link Observestudytype }
+     * 
      */
     public void setObservestudytype(Observestudytype value) {
         this.observestudytype = value;

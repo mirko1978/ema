@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -18,33 +17,28 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "activesubstancename"
-})
+@XmlType(name = "", propOrder = { "activesubstancename" })
 @XmlRootElement(name = "activesubstance")
-public class Activesubstance
-    implements Serializable
-{
+public class Activesubstance implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     @XmlElement(required = true)
     protected Activesubstancename activesubstancename;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -53,10 +47,8 @@ public class Activesubstance
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -65,10 +57,8 @@ public class Activesubstance
     /**
      * Gets the value of the activesubstancename property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Activesubstancename }
-     *     
+     * @return possible object is {@link Activesubstancename }
+     * 
      */
     public Activesubstancename getActivesubstancename() {
         return activesubstancename;
@@ -77,10 +67,8 @@ public class Activesubstance
     /**
      * Sets the value of the activesubstancename property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Activesubstancename }
-     *     
+     * @param value allowed object is {@link Activesubstancename }
+     * 
      */
     public void setActivesubstancename(Activesubstancename value) {
         this.activesubstancename = value;

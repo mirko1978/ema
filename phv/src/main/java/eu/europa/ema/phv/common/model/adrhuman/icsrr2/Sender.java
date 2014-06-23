@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,68 +16,66 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "sendertype",
-    "senderorganization",
-    "senderdepartment",
-    "sendertitle",
-    "sendergivename",
-    "sendermiddlename",
-    "senderfamilyname",
-    "senderstreetaddress",
-    "sendercity",
-    "senderstate",
-    "senderpostcode",
-    "sendercountrycode",
-    "sendertel",
-    "sendertelextension",
-    "sendertelcountrycode",
-    "senderfax",
-    "senderfaxextension",
-    "senderfaxcountrycode",
-    "senderemailaddress"
-})
+@XmlType(name = "", propOrder = { "sendertype", "senderorganization", "senderdepartment", "sendertitle",
+        "sendergivename", "sendermiddlename", "senderfamilyname", "senderstreetaddress", "sendercity", "senderstate",
+        "senderpostcode", "sendercountrycode", "sendertel", "sendertelextension", "sendertelcountrycode", "senderfax",
+        "senderfaxextension", "senderfaxcountrycode", "senderemailaddress" })
 @XmlRootElement(name = "sender")
-public class Sender
-    implements Serializable
-{
+public class Sender implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Sendertype sendertype;
+
     protected Senderorganization senderorganization;
+
     protected Senderdepartment senderdepartment;
+
     protected Sendertitle sendertitle;
+
     protected Sendergivename sendergivename;
+
     protected Sendermiddlename sendermiddlename;
+
     protected Senderfamilyname senderfamilyname;
+
     protected Senderstreetaddress senderstreetaddress;
+
     protected Sendercity sendercity;
+
     protected Senderstate senderstate;
+
     protected Senderpostcode senderpostcode;
+
     protected Sendercountrycode sendercountrycode;
+
     protected Sendertel sendertel;
+
     protected Sendertelextension sendertelextension;
+
     protected Sendertelcountrycode sendertelcountrycode;
+
     protected Senderfax senderfax;
+
     protected Senderfaxextension senderfaxextension;
+
     protected Senderfaxcountrycode senderfaxcountrycode;
+
     protected Senderemailaddress senderemailaddress;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -87,10 +84,8 @@ public class Sender
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -99,10 +94,8 @@ public class Sender
     /**
      * Gets the value of the sendertype property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendertype }
-     *     
+     * @return possible object is {@link Sendertype }
+     * 
      */
     public Sendertype getSendertype() {
         return sendertype;
@@ -111,10 +104,8 @@ public class Sender
     /**
      * Sets the value of the sendertype property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendertype }
-     *     
+     * @param value allowed object is {@link Sendertype }
+     * 
      */
     public void setSendertype(Sendertype value) {
         this.sendertype = value;
@@ -123,10 +114,8 @@ public class Sender
     /**
      * Gets the value of the senderorganization property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderorganization }
-     *     
+     * @return possible object is {@link Senderorganization }
+     * 
      */
     public Senderorganization getSenderorganization() {
         return senderorganization;
@@ -135,10 +124,8 @@ public class Sender
     /**
      * Sets the value of the senderorganization property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderorganization }
-     *     
+     * @param value allowed object is {@link Senderorganization }
+     * 
      */
     public void setSenderorganization(Senderorganization value) {
         this.senderorganization = value;
@@ -147,10 +134,8 @@ public class Sender
     /**
      * Gets the value of the senderdepartment property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderdepartment }
-     *     
+     * @return possible object is {@link Senderdepartment }
+     * 
      */
     public Senderdepartment getSenderdepartment() {
         return senderdepartment;
@@ -159,10 +144,8 @@ public class Sender
     /**
      * Sets the value of the senderdepartment property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderdepartment }
-     *     
+     * @param value allowed object is {@link Senderdepartment }
+     * 
      */
     public void setSenderdepartment(Senderdepartment value) {
         this.senderdepartment = value;
@@ -171,10 +154,8 @@ public class Sender
     /**
      * Gets the value of the sendertitle property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendertitle }
-     *     
+     * @return possible object is {@link Sendertitle }
+     * 
      */
     public Sendertitle getSendertitle() {
         return sendertitle;
@@ -183,10 +164,8 @@ public class Sender
     /**
      * Sets the value of the sendertitle property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendertitle }
-     *     
+     * @param value allowed object is {@link Sendertitle }
+     * 
      */
     public void setSendertitle(Sendertitle value) {
         this.sendertitle = value;
@@ -195,10 +174,8 @@ public class Sender
     /**
      * Gets the value of the sendergivename property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendergivename }
-     *     
+     * @return possible object is {@link Sendergivename }
+     * 
      */
     public Sendergivename getSendergivename() {
         return sendergivename;
@@ -207,10 +184,8 @@ public class Sender
     /**
      * Sets the value of the sendergivename property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendergivename }
-     *     
+     * @param value allowed object is {@link Sendergivename }
+     * 
      */
     public void setSendergivename(Sendergivename value) {
         this.sendergivename = value;
@@ -219,10 +194,8 @@ public class Sender
     /**
      * Gets the value of the sendermiddlename property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendermiddlename }
-     *     
+     * @return possible object is {@link Sendermiddlename }
+     * 
      */
     public Sendermiddlename getSendermiddlename() {
         return sendermiddlename;
@@ -231,10 +204,8 @@ public class Sender
     /**
      * Sets the value of the sendermiddlename property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendermiddlename }
-     *     
+     * @param value allowed object is {@link Sendermiddlename }
+     * 
      */
     public void setSendermiddlename(Sendermiddlename value) {
         this.sendermiddlename = value;
@@ -243,10 +214,8 @@ public class Sender
     /**
      * Gets the value of the senderfamilyname property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderfamilyname }
-     *     
+     * @return possible object is {@link Senderfamilyname }
+     * 
      */
     public Senderfamilyname getSenderfamilyname() {
         return senderfamilyname;
@@ -255,10 +224,8 @@ public class Sender
     /**
      * Sets the value of the senderfamilyname property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderfamilyname }
-     *     
+     * @param value allowed object is {@link Senderfamilyname }
+     * 
      */
     public void setSenderfamilyname(Senderfamilyname value) {
         this.senderfamilyname = value;
@@ -267,10 +234,8 @@ public class Sender
     /**
      * Gets the value of the senderstreetaddress property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderstreetaddress }
-     *     
+     * @return possible object is {@link Senderstreetaddress }
+     * 
      */
     public Senderstreetaddress getSenderstreetaddress() {
         return senderstreetaddress;
@@ -279,10 +244,8 @@ public class Sender
     /**
      * Sets the value of the senderstreetaddress property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderstreetaddress }
-     *     
+     * @param value allowed object is {@link Senderstreetaddress }
+     * 
      */
     public void setSenderstreetaddress(Senderstreetaddress value) {
         this.senderstreetaddress = value;
@@ -291,10 +254,8 @@ public class Sender
     /**
      * Gets the value of the sendercity property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendercity }
-     *     
+     * @return possible object is {@link Sendercity }
+     * 
      */
     public Sendercity getSendercity() {
         return sendercity;
@@ -303,10 +264,8 @@ public class Sender
     /**
      * Sets the value of the sendercity property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendercity }
-     *     
+     * @param value allowed object is {@link Sendercity }
+     * 
      */
     public void setSendercity(Sendercity value) {
         this.sendercity = value;
@@ -315,10 +274,8 @@ public class Sender
     /**
      * Gets the value of the senderstate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderstate }
-     *     
+     * @return possible object is {@link Senderstate }
+     * 
      */
     public Senderstate getSenderstate() {
         return senderstate;
@@ -327,10 +284,8 @@ public class Sender
     /**
      * Sets the value of the senderstate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderstate }
-     *     
+     * @param value allowed object is {@link Senderstate }
+     * 
      */
     public void setSenderstate(Senderstate value) {
         this.senderstate = value;
@@ -339,10 +294,8 @@ public class Sender
     /**
      * Gets the value of the senderpostcode property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderpostcode }
-     *     
+     * @return possible object is {@link Senderpostcode }
+     * 
      */
     public Senderpostcode getSenderpostcode() {
         return senderpostcode;
@@ -351,10 +304,8 @@ public class Sender
     /**
      * Sets the value of the senderpostcode property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderpostcode }
-     *     
+     * @param value allowed object is {@link Senderpostcode }
+     * 
      */
     public void setSenderpostcode(Senderpostcode value) {
         this.senderpostcode = value;
@@ -363,10 +314,8 @@ public class Sender
     /**
      * Gets the value of the sendercountrycode property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendercountrycode }
-     *     
+     * @return possible object is {@link Sendercountrycode }
+     * 
      */
     public Sendercountrycode getSendercountrycode() {
         return sendercountrycode;
@@ -375,10 +324,8 @@ public class Sender
     /**
      * Sets the value of the sendercountrycode property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendercountrycode }
-     *     
+     * @param value allowed object is {@link Sendercountrycode }
+     * 
      */
     public void setSendercountrycode(Sendercountrycode value) {
         this.sendercountrycode = value;
@@ -387,10 +334,8 @@ public class Sender
     /**
      * Gets the value of the sendertel property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendertel }
-     *     
+     * @return possible object is {@link Sendertel }
+     * 
      */
     public Sendertel getSendertel() {
         return sendertel;
@@ -399,10 +344,8 @@ public class Sender
     /**
      * Sets the value of the sendertel property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendertel }
-     *     
+     * @param value allowed object is {@link Sendertel }
+     * 
      */
     public void setSendertel(Sendertel value) {
         this.sendertel = value;
@@ -411,10 +354,8 @@ public class Sender
     /**
      * Gets the value of the sendertelextension property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendertelextension }
-     *     
+     * @return possible object is {@link Sendertelextension }
+     * 
      */
     public Sendertelextension getSendertelextension() {
         return sendertelextension;
@@ -423,10 +364,8 @@ public class Sender
     /**
      * Sets the value of the sendertelextension property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendertelextension }
-     *     
+     * @param value allowed object is {@link Sendertelextension }
+     * 
      */
     public void setSendertelextension(Sendertelextension value) {
         this.sendertelextension = value;
@@ -435,10 +374,8 @@ public class Sender
     /**
      * Gets the value of the sendertelcountrycode property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sendertelcountrycode }
-     *     
+     * @return possible object is {@link Sendertelcountrycode }
+     * 
      */
     public Sendertelcountrycode getSendertelcountrycode() {
         return sendertelcountrycode;
@@ -447,10 +384,8 @@ public class Sender
     /**
      * Sets the value of the sendertelcountrycode property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sendertelcountrycode }
-     *     
+     * @param value allowed object is {@link Sendertelcountrycode }
+     * 
      */
     public void setSendertelcountrycode(Sendertelcountrycode value) {
         this.sendertelcountrycode = value;
@@ -459,10 +394,8 @@ public class Sender
     /**
      * Gets the value of the senderfax property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderfax }
-     *     
+     * @return possible object is {@link Senderfax }
+     * 
      */
     public Senderfax getSenderfax() {
         return senderfax;
@@ -471,10 +404,8 @@ public class Sender
     /**
      * Sets the value of the senderfax property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderfax }
-     *     
+     * @param value allowed object is {@link Senderfax }
+     * 
      */
     public void setSenderfax(Senderfax value) {
         this.senderfax = value;
@@ -483,10 +414,8 @@ public class Sender
     /**
      * Gets the value of the senderfaxextension property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderfaxextension }
-     *     
+     * @return possible object is {@link Senderfaxextension }
+     * 
      */
     public Senderfaxextension getSenderfaxextension() {
         return senderfaxextension;
@@ -495,10 +424,8 @@ public class Sender
     /**
      * Sets the value of the senderfaxextension property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderfaxextension }
-     *     
+     * @param value allowed object is {@link Senderfaxextension }
+     * 
      */
     public void setSenderfaxextension(Senderfaxextension value) {
         this.senderfaxextension = value;
@@ -507,10 +434,8 @@ public class Sender
     /**
      * Gets the value of the senderfaxcountrycode property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderfaxcountrycode }
-     *     
+     * @return possible object is {@link Senderfaxcountrycode }
+     * 
      */
     public Senderfaxcountrycode getSenderfaxcountrycode() {
         return senderfaxcountrycode;
@@ -519,10 +444,8 @@ public class Sender
     /**
      * Sets the value of the senderfaxcountrycode property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderfaxcountrycode }
-     *     
+     * @param value allowed object is {@link Senderfaxcountrycode }
+     * 
      */
     public void setSenderfaxcountrycode(Senderfaxcountrycode value) {
         this.senderfaxcountrycode = value;
@@ -531,10 +454,8 @@ public class Sender
     /**
      * Gets the value of the senderemailaddress property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Senderemailaddress }
-     *     
+     * @return possible object is {@link Senderemailaddress }
+     * 
      */
     public Senderemailaddress getSenderemailaddress() {
         return senderemailaddress;
@@ -543,10 +464,8 @@ public class Sender
     /**
      * Sets the value of the senderemailaddress property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Senderemailaddress }
-     *     
+     * @param value allowed object is {@link Senderemailaddress }
+     * 
      */
     public void setSenderemailaddress(Senderemailaddress value) {
         this.senderemailaddress = value;

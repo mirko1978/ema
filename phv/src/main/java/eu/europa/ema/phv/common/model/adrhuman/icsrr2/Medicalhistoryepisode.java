@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,46 +16,43 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "patientepisodenamemeddraversion",
-    "patientepisodename",
-    "patientmedicalstartdateformat",
-    "patientmedicalstartdate",
-    "patientmedicalcontinue",
-    "patientmedicalenddateformat",
-    "patientmedicalenddate",
-    "patientmedicalcomment"
-})
+@XmlType(name = "", propOrder = { "patientepisodenamemeddraversion", "patientepisodename",
+        "patientmedicalstartdateformat", "patientmedicalstartdate", "patientmedicalcontinue",
+        "patientmedicalenddateformat", "patientmedicalenddate", "patientmedicalcomment" })
 @XmlRootElement(name = "medicalhistoryepisode")
-public class Medicalhistoryepisode
-    implements Serializable
-{
+public class Medicalhistoryepisode implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Patientepisodenamemeddraversion patientepisodenamemeddraversion;
+
     protected Patientepisodename patientepisodename;
+
     protected Patientmedicalstartdateformat patientmedicalstartdateformat;
+
     protected Patientmedicalstartdate patientmedicalstartdate;
+
     protected Patientmedicalcontinue patientmedicalcontinue;
+
     protected Patientmedicalenddateformat patientmedicalenddateformat;
+
     protected Patientmedicalenddate patientmedicalenddate;
+
     protected Patientmedicalcomment patientmedicalcomment;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -65,10 +61,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -77,10 +71,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientepisodenamemeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientepisodenamemeddraversion }
-     *     
+     * @return possible object is {@link Patientepisodenamemeddraversion }
+     * 
      */
     public Patientepisodenamemeddraversion getPatientepisodenamemeddraversion() {
         return patientepisodenamemeddraversion;
@@ -89,10 +81,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientepisodenamemeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientepisodenamemeddraversion }
-     *     
+     * @param value allowed object is {@link Patientepisodenamemeddraversion }
+     * 
      */
     public void setPatientepisodenamemeddraversion(Patientepisodenamemeddraversion value) {
         this.patientepisodenamemeddraversion = value;
@@ -101,10 +91,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientepisodename property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientepisodename }
-     *     
+     * @return possible object is {@link Patientepisodename }
+     * 
      */
     public Patientepisodename getPatientepisodename() {
         return patientepisodename;
@@ -113,10 +101,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientepisodename property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientepisodename }
-     *     
+     * @param value allowed object is {@link Patientepisodename }
+     * 
      */
     public void setPatientepisodename(Patientepisodename value) {
         this.patientepisodename = value;
@@ -125,10 +111,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientmedicalstartdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientmedicalstartdateformat }
-     *     
+     * @return possible object is {@link Patientmedicalstartdateformat }
+     * 
      */
     public Patientmedicalstartdateformat getPatientmedicalstartdateformat() {
         return patientmedicalstartdateformat;
@@ -137,10 +121,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientmedicalstartdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientmedicalstartdateformat }
-     *     
+     * @param value allowed object is {@link Patientmedicalstartdateformat }
+     * 
      */
     public void setPatientmedicalstartdateformat(Patientmedicalstartdateformat value) {
         this.patientmedicalstartdateformat = value;
@@ -149,10 +131,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientmedicalstartdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientmedicalstartdate }
-     *     
+     * @return possible object is {@link Patientmedicalstartdate }
+     * 
      */
     public Patientmedicalstartdate getPatientmedicalstartdate() {
         return patientmedicalstartdate;
@@ -161,10 +141,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientmedicalstartdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientmedicalstartdate }
-     *     
+     * @param value allowed object is {@link Patientmedicalstartdate }
+     * 
      */
     public void setPatientmedicalstartdate(Patientmedicalstartdate value) {
         this.patientmedicalstartdate = value;
@@ -173,10 +151,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientmedicalcontinue property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientmedicalcontinue }
-     *     
+     * @return possible object is {@link Patientmedicalcontinue }
+     * 
      */
     public Patientmedicalcontinue getPatientmedicalcontinue() {
         return patientmedicalcontinue;
@@ -185,10 +161,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientmedicalcontinue property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientmedicalcontinue }
-     *     
+     * @param value allowed object is {@link Patientmedicalcontinue }
+     * 
      */
     public void setPatientmedicalcontinue(Patientmedicalcontinue value) {
         this.patientmedicalcontinue = value;
@@ -197,10 +171,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientmedicalenddateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientmedicalenddateformat }
-     *     
+     * @return possible object is {@link Patientmedicalenddateformat }
+     * 
      */
     public Patientmedicalenddateformat getPatientmedicalenddateformat() {
         return patientmedicalenddateformat;
@@ -209,10 +181,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientmedicalenddateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientmedicalenddateformat }
-     *     
+     * @param value allowed object is {@link Patientmedicalenddateformat }
+     * 
      */
     public void setPatientmedicalenddateformat(Patientmedicalenddateformat value) {
         this.patientmedicalenddateformat = value;
@@ -221,10 +191,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientmedicalenddate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientmedicalenddate }
-     *     
+     * @return possible object is {@link Patientmedicalenddate }
+     * 
      */
     public Patientmedicalenddate getPatientmedicalenddate() {
         return patientmedicalenddate;
@@ -233,10 +201,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientmedicalenddate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientmedicalenddate }
-     *     
+     * @param value allowed object is {@link Patientmedicalenddate }
+     * 
      */
     public void setPatientmedicalenddate(Patientmedicalenddate value) {
         this.patientmedicalenddate = value;
@@ -245,10 +211,8 @@ public class Medicalhistoryepisode
     /**
      * Gets the value of the patientmedicalcomment property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientmedicalcomment }
-     *     
+     * @return possible object is {@link Patientmedicalcomment }
+     * 
      */
     public Patientmedicalcomment getPatientmedicalcomment() {
         return patientmedicalcomment;
@@ -257,10 +221,8 @@ public class Medicalhistoryepisode
     /**
      * Sets the value of the patientmedicalcomment property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientmedicalcomment }
-     *     
+     * @param value allowed object is {@link Patientmedicalcomment }
+     * 
      */
     public void setPatientmedicalcomment(Patientmedicalcomment value) {
         this.patientmedicalcomment = value;

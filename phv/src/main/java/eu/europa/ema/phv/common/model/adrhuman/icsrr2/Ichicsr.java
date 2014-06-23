@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -20,36 +19,31 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "ichicsrmessageheader",
-    "safetyreport"
-})
+@XmlType(name = "", propOrder = { "ichicsrmessageheader", "safetyreport" })
 @XmlRootElement(name = "ichicsr")
-public class Ichicsr
-    implements Serializable
-{
+public class Ichicsr implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang", required = true)
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     @XmlElement(required = true)
     protected Ichicsrmessageheader ichicsrmessageheader;
+
     @XmlElement(required = true)
     protected List<Safetyreport> safetyreport;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -58,10 +52,8 @@ public class Ichicsr
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -70,10 +62,8 @@ public class Ichicsr
     /**
      * Gets the value of the ichicsrmessageheader property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Ichicsrmessageheader }
-     *     
+     * @return possible object is {@link Ichicsrmessageheader }
+     * 
      */
     public Ichicsrmessageheader getIchicsrmessageheader() {
         return ichicsrmessageheader;
@@ -82,10 +72,8 @@ public class Ichicsr
     /**
      * Sets the value of the ichicsrmessageheader property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Ichicsrmessageheader }
-     *     
+     * @param value allowed object is {@link Ichicsrmessageheader }
+     * 
      */
     public void setIchicsrmessageheader(Ichicsrmessageheader value) {
         this.ichicsrmessageheader = value;
@@ -95,15 +83,16 @@ public class Ichicsr
      * Gets the value of the safetyreport property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the safetyreport property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the safetyreport property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getSafetyreport().add(newItem);
+     * getSafetyreport().add(newItem);
      * </pre>
      * 
      * 

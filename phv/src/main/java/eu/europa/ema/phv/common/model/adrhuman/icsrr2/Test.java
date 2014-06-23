@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,46 +16,42 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "testdateformat",
-    "testdate",
-    "testname",
-    "testresult",
-    "testunit",
-    "lowtestrange",
-    "hightestrange",
-    "moreinformation"
-})
+@XmlType(name = "", propOrder = { "testdateformat", "testdate", "testname", "testresult", "testunit", "lowtestrange",
+        "hightestrange", "moreinformation" })
 @XmlRootElement(name = "test")
-public class Test
-    implements Serializable
-{
+public class Test implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Testdateformat testdateformat;
+
     protected Testdate testdate;
+
     protected Testname testname;
+
     protected Testresult testresult;
+
     protected Testunit testunit;
+
     protected Lowtestrange lowtestrange;
+
     protected Hightestrange hightestrange;
+
     protected Moreinformation moreinformation;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -65,10 +60,8 @@ public class Test
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -77,10 +70,8 @@ public class Test
     /**
      * Gets the value of the testdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Testdateformat }
-     *     
+     * @return possible object is {@link Testdateformat }
+     * 
      */
     public Testdateformat getTestdateformat() {
         return testdateformat;
@@ -89,10 +80,8 @@ public class Test
     /**
      * Sets the value of the testdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Testdateformat }
-     *     
+     * @param value allowed object is {@link Testdateformat }
+     * 
      */
     public void setTestdateformat(Testdateformat value) {
         this.testdateformat = value;
@@ -101,10 +90,8 @@ public class Test
     /**
      * Gets the value of the testdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Testdate }
-     *     
+     * @return possible object is {@link Testdate }
+     * 
      */
     public Testdate getTestdate() {
         return testdate;
@@ -113,10 +100,8 @@ public class Test
     /**
      * Sets the value of the testdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Testdate }
-     *     
+     * @param value allowed object is {@link Testdate }
+     * 
      */
     public void setTestdate(Testdate value) {
         this.testdate = value;
@@ -125,10 +110,8 @@ public class Test
     /**
      * Gets the value of the testname property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Testname }
-     *     
+     * @return possible object is {@link Testname }
+     * 
      */
     public Testname getTestname() {
         return testname;
@@ -137,10 +120,8 @@ public class Test
     /**
      * Sets the value of the testname property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Testname }
-     *     
+     * @param value allowed object is {@link Testname }
+     * 
      */
     public void setTestname(Testname value) {
         this.testname = value;
@@ -149,10 +130,8 @@ public class Test
     /**
      * Gets the value of the testresult property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Testresult }
-     *     
+     * @return possible object is {@link Testresult }
+     * 
      */
     public Testresult getTestresult() {
         return testresult;
@@ -161,10 +140,8 @@ public class Test
     /**
      * Sets the value of the testresult property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Testresult }
-     *     
+     * @param value allowed object is {@link Testresult }
+     * 
      */
     public void setTestresult(Testresult value) {
         this.testresult = value;
@@ -173,10 +150,8 @@ public class Test
     /**
      * Gets the value of the testunit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Testunit }
-     *     
+     * @return possible object is {@link Testunit }
+     * 
      */
     public Testunit getTestunit() {
         return testunit;
@@ -185,10 +160,8 @@ public class Test
     /**
      * Sets the value of the testunit property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Testunit }
-     *     
+     * @param value allowed object is {@link Testunit }
+     * 
      */
     public void setTestunit(Testunit value) {
         this.testunit = value;
@@ -197,10 +170,8 @@ public class Test
     /**
      * Gets the value of the lowtestrange property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Lowtestrange }
-     *     
+     * @return possible object is {@link Lowtestrange }
+     * 
      */
     public Lowtestrange getLowtestrange() {
         return lowtestrange;
@@ -209,10 +180,8 @@ public class Test
     /**
      * Sets the value of the lowtestrange property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Lowtestrange }
-     *     
+     * @param value allowed object is {@link Lowtestrange }
+     * 
      */
     public void setLowtestrange(Lowtestrange value) {
         this.lowtestrange = value;
@@ -221,10 +190,8 @@ public class Test
     /**
      * Gets the value of the hightestrange property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Hightestrange }
-     *     
+     * @return possible object is {@link Hightestrange }
+     * 
      */
     public Hightestrange getHightestrange() {
         return hightestrange;
@@ -233,10 +200,8 @@ public class Test
     /**
      * Sets the value of the hightestrange property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Hightestrange }
-     *     
+     * @param value allowed object is {@link Hightestrange }
+     * 
      */
     public void setHightestrange(Hightestrange value) {
         this.hightestrange = value;
@@ -245,10 +210,8 @@ public class Test
     /**
      * Gets the value of the moreinformation property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Moreinformation }
-     *     
+     * @return possible object is {@link Moreinformation }
+     * 
      */
     public Moreinformation getMoreinformation() {
         return moreinformation;
@@ -257,10 +220,8 @@ public class Test
     /**
      * Sets the value of the moreinformation property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Moreinformation }
-     *     
+     * @param value allowed object is {@link Moreinformation }
+     * 
      */
     public void setMoreinformation(Moreinformation value) {
         this.moreinformation = value;

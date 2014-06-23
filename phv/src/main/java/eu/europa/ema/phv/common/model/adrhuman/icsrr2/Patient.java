@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -20,86 +19,86 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "patientinitial",
-    "patientgpmedicalrecordnumb",
-    "patientspecialistrecordnumb",
-    "patienthospitalrecordnumb",
-    "patientinvestigationnumb",
-    "patientbirthdateformat",
-    "patientbirthdate",
-    "patientonsetage",
-    "patientonsetageunit",
-    "gestationperiod",
-    "gestationperiodunit",
-    "patientagegroup",
-    "patientweight",
-    "patientheight",
-    "patientsex",
-    "lastmenstrualdateformat",
-    "patientlastmenstrualdate",
-    "patientmedicalhistorytext",
-    "resultstestsprocedures",
-    "medicalhistoryepisode",
-    "patientpastdrugtherapy",
-    "patientdeath",
-    "parent",
-    "reaction",
-    "test",
-    "drug",
-    "summary"
-})
+@XmlType(name = "", propOrder = { "patientinitial", "patientgpmedicalrecordnumb", "patientspecialistrecordnumb",
+        "patienthospitalrecordnumb", "patientinvestigationnumb", "patientbirthdateformat", "patientbirthdate",
+        "patientonsetage", "patientonsetageunit", "gestationperiod", "gestationperiodunit", "patientagegroup",
+        "patientweight", "patientheight", "patientsex", "lastmenstrualdateformat", "patientlastmenstrualdate",
+        "patientmedicalhistorytext", "resultstestsprocedures", "medicalhistoryepisode", "patientpastdrugtherapy",
+        "patientdeath", "parent", "reaction", "test", "drug", "summary" })
 @XmlRootElement(name = "patient")
-public class Patient
-    implements Serializable
-{
+public class Patient implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Patientinitial patientinitial;
+
     protected Patientgpmedicalrecordnumb patientgpmedicalrecordnumb;
+
     protected Patientspecialistrecordnumb patientspecialistrecordnumb;
+
     protected Patienthospitalrecordnumb patienthospitalrecordnumb;
+
     protected Patientinvestigationnumb patientinvestigationnumb;
+
     protected Patientbirthdateformat patientbirthdateformat;
+
     protected Patientbirthdate patientbirthdate;
+
     protected Patientonsetage patientonsetage;
+
     protected Patientonsetageunit patientonsetageunit;
+
     protected Gestationperiod gestationperiod;
+
     protected Gestationperiodunit gestationperiodunit;
+
     protected Patientagegroup patientagegroup;
+
     protected Patientweight patientweight;
+
     protected Patientheight patientheight;
+
     protected Patientsex patientsex;
+
     protected Lastmenstrualdateformat lastmenstrualdateformat;
+
     protected Patientlastmenstrualdate patientlastmenstrualdate;
+
     protected Patientmedicalhistorytext patientmedicalhistorytext;
+
     protected Resultstestsprocedures resultstestsprocedures;
+
     protected List<Medicalhistoryepisode> medicalhistoryepisode;
+
     protected List<Patientpastdrugtherapy> patientpastdrugtherapy;
+
     protected Patientdeath patientdeath;
+
     protected Parent parent;
+
     @XmlElement(required = true)
     protected List<Reaction> reaction;
+
     protected List<Test> test;
+
     @XmlElement(required = true)
     protected List<Drug> drug;
+
     protected Summary summary;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -108,10 +107,8 @@ public class Patient
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -120,10 +117,8 @@ public class Patient
     /**
      * Gets the value of the patientinitial property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientinitial }
-     *     
+     * @return possible object is {@link Patientinitial }
+     * 
      */
     public Patientinitial getPatientinitial() {
         return patientinitial;
@@ -132,10 +127,8 @@ public class Patient
     /**
      * Sets the value of the patientinitial property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientinitial }
-     *     
+     * @param value allowed object is {@link Patientinitial }
+     * 
      */
     public void setPatientinitial(Patientinitial value) {
         this.patientinitial = value;
@@ -144,10 +137,8 @@ public class Patient
     /**
      * Gets the value of the patientgpmedicalrecordnumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientgpmedicalrecordnumb }
-     *     
+     * @return possible object is {@link Patientgpmedicalrecordnumb }
+     * 
      */
     public Patientgpmedicalrecordnumb getPatientgpmedicalrecordnumb() {
         return patientgpmedicalrecordnumb;
@@ -156,10 +147,8 @@ public class Patient
     /**
      * Sets the value of the patientgpmedicalrecordnumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientgpmedicalrecordnumb }
-     *     
+     * @param value allowed object is {@link Patientgpmedicalrecordnumb }
+     * 
      */
     public void setPatientgpmedicalrecordnumb(Patientgpmedicalrecordnumb value) {
         this.patientgpmedicalrecordnumb = value;
@@ -168,10 +157,8 @@ public class Patient
     /**
      * Gets the value of the patientspecialistrecordnumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientspecialistrecordnumb }
-     *     
+     * @return possible object is {@link Patientspecialistrecordnumb }
+     * 
      */
     public Patientspecialistrecordnumb getPatientspecialistrecordnumb() {
         return patientspecialistrecordnumb;
@@ -180,10 +167,8 @@ public class Patient
     /**
      * Sets the value of the patientspecialistrecordnumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientspecialistrecordnumb }
-     *     
+     * @param value allowed object is {@link Patientspecialistrecordnumb }
+     * 
      */
     public void setPatientspecialistrecordnumb(Patientspecialistrecordnumb value) {
         this.patientspecialistrecordnumb = value;
@@ -192,10 +177,8 @@ public class Patient
     /**
      * Gets the value of the patienthospitalrecordnumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patienthospitalrecordnumb }
-     *     
+     * @return possible object is {@link Patienthospitalrecordnumb }
+     * 
      */
     public Patienthospitalrecordnumb getPatienthospitalrecordnumb() {
         return patienthospitalrecordnumb;
@@ -204,10 +187,8 @@ public class Patient
     /**
      * Sets the value of the patienthospitalrecordnumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patienthospitalrecordnumb }
-     *     
+     * @param value allowed object is {@link Patienthospitalrecordnumb }
+     * 
      */
     public void setPatienthospitalrecordnumb(Patienthospitalrecordnumb value) {
         this.patienthospitalrecordnumb = value;
@@ -216,10 +197,8 @@ public class Patient
     /**
      * Gets the value of the patientinvestigationnumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientinvestigationnumb }
-     *     
+     * @return possible object is {@link Patientinvestigationnumb }
+     * 
      */
     public Patientinvestigationnumb getPatientinvestigationnumb() {
         return patientinvestigationnumb;
@@ -228,10 +207,8 @@ public class Patient
     /**
      * Sets the value of the patientinvestigationnumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientinvestigationnumb }
-     *     
+     * @param value allowed object is {@link Patientinvestigationnumb }
+     * 
      */
     public void setPatientinvestigationnumb(Patientinvestigationnumb value) {
         this.patientinvestigationnumb = value;
@@ -240,10 +217,8 @@ public class Patient
     /**
      * Gets the value of the patientbirthdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientbirthdateformat }
-     *     
+     * @return possible object is {@link Patientbirthdateformat }
+     * 
      */
     public Patientbirthdateformat getPatientbirthdateformat() {
         return patientbirthdateformat;
@@ -252,10 +227,8 @@ public class Patient
     /**
      * Sets the value of the patientbirthdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientbirthdateformat }
-     *     
+     * @param value allowed object is {@link Patientbirthdateformat }
+     * 
      */
     public void setPatientbirthdateformat(Patientbirthdateformat value) {
         this.patientbirthdateformat = value;
@@ -264,10 +237,8 @@ public class Patient
     /**
      * Gets the value of the patientbirthdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientbirthdate }
-     *     
+     * @return possible object is {@link Patientbirthdate }
+     * 
      */
     public Patientbirthdate getPatientbirthdate() {
         return patientbirthdate;
@@ -276,10 +247,8 @@ public class Patient
     /**
      * Sets the value of the patientbirthdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientbirthdate }
-     *     
+     * @param value allowed object is {@link Patientbirthdate }
+     * 
      */
     public void setPatientbirthdate(Patientbirthdate value) {
         this.patientbirthdate = value;
@@ -288,10 +257,8 @@ public class Patient
     /**
      * Gets the value of the patientonsetage property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientonsetage }
-     *     
+     * @return possible object is {@link Patientonsetage }
+     * 
      */
     public Patientonsetage getPatientonsetage() {
         return patientonsetage;
@@ -300,10 +267,8 @@ public class Patient
     /**
      * Sets the value of the patientonsetage property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientonsetage }
-     *     
+     * @param value allowed object is {@link Patientonsetage }
+     * 
      */
     public void setPatientonsetage(Patientonsetage value) {
         this.patientonsetage = value;
@@ -312,10 +277,8 @@ public class Patient
     /**
      * Gets the value of the patientonsetageunit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientonsetageunit }
-     *     
+     * @return possible object is {@link Patientonsetageunit }
+     * 
      */
     public Patientonsetageunit getPatientonsetageunit() {
         return patientonsetageunit;
@@ -324,10 +287,8 @@ public class Patient
     /**
      * Sets the value of the patientonsetageunit property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientonsetageunit }
-     *     
+     * @param value allowed object is {@link Patientonsetageunit }
+     * 
      */
     public void setPatientonsetageunit(Patientonsetageunit value) {
         this.patientonsetageunit = value;
@@ -336,10 +297,8 @@ public class Patient
     /**
      * Gets the value of the gestationperiod property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Gestationperiod }
-     *     
+     * @return possible object is {@link Gestationperiod }
+     * 
      */
     public Gestationperiod getGestationperiod() {
         return gestationperiod;
@@ -348,10 +307,8 @@ public class Patient
     /**
      * Sets the value of the gestationperiod property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Gestationperiod }
-     *     
+     * @param value allowed object is {@link Gestationperiod }
+     * 
      */
     public void setGestationperiod(Gestationperiod value) {
         this.gestationperiod = value;
@@ -360,10 +317,8 @@ public class Patient
     /**
      * Gets the value of the gestationperiodunit property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Gestationperiodunit }
-     *     
+     * @return possible object is {@link Gestationperiodunit }
+     * 
      */
     public Gestationperiodunit getGestationperiodunit() {
         return gestationperiodunit;
@@ -372,10 +327,8 @@ public class Patient
     /**
      * Sets the value of the gestationperiodunit property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Gestationperiodunit }
-     *     
+     * @param value allowed object is {@link Gestationperiodunit }
+     * 
      */
     public void setGestationperiodunit(Gestationperiodunit value) {
         this.gestationperiodunit = value;
@@ -384,10 +337,8 @@ public class Patient
     /**
      * Gets the value of the patientagegroup property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientagegroup }
-     *     
+     * @return possible object is {@link Patientagegroup }
+     * 
      */
     public Patientagegroup getPatientagegroup() {
         return patientagegroup;
@@ -396,10 +347,8 @@ public class Patient
     /**
      * Sets the value of the patientagegroup property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientagegroup }
-     *     
+     * @param value allowed object is {@link Patientagegroup }
+     * 
      */
     public void setPatientagegroup(Patientagegroup value) {
         this.patientagegroup = value;
@@ -408,10 +357,8 @@ public class Patient
     /**
      * Gets the value of the patientweight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientweight }
-     *     
+     * @return possible object is {@link Patientweight }
+     * 
      */
     public Patientweight getPatientweight() {
         return patientweight;
@@ -420,10 +367,8 @@ public class Patient
     /**
      * Sets the value of the patientweight property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientweight }
-     *     
+     * @param value allowed object is {@link Patientweight }
+     * 
      */
     public void setPatientweight(Patientweight value) {
         this.patientweight = value;
@@ -432,10 +377,8 @@ public class Patient
     /**
      * Gets the value of the patientheight property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientheight }
-     *     
+     * @return possible object is {@link Patientheight }
+     * 
      */
     public Patientheight getPatientheight() {
         return patientheight;
@@ -444,10 +387,8 @@ public class Patient
     /**
      * Sets the value of the patientheight property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientheight }
-     *     
+     * @param value allowed object is {@link Patientheight }
+     * 
      */
     public void setPatientheight(Patientheight value) {
         this.patientheight = value;
@@ -456,10 +397,8 @@ public class Patient
     /**
      * Gets the value of the patientsex property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientsex }
-     *     
+     * @return possible object is {@link Patientsex }
+     * 
      */
     public Patientsex getPatientsex() {
         return patientsex;
@@ -468,10 +407,8 @@ public class Patient
     /**
      * Sets the value of the patientsex property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientsex }
-     *     
+     * @param value allowed object is {@link Patientsex }
+     * 
      */
     public void setPatientsex(Patientsex value) {
         this.patientsex = value;
@@ -480,10 +417,8 @@ public class Patient
     /**
      * Gets the value of the lastmenstrualdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Lastmenstrualdateformat }
-     *     
+     * @return possible object is {@link Lastmenstrualdateformat }
+     * 
      */
     public Lastmenstrualdateformat getLastmenstrualdateformat() {
         return lastmenstrualdateformat;
@@ -492,10 +427,8 @@ public class Patient
     /**
      * Sets the value of the lastmenstrualdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Lastmenstrualdateformat }
-     *     
+     * @param value allowed object is {@link Lastmenstrualdateformat }
+     * 
      */
     public void setLastmenstrualdateformat(Lastmenstrualdateformat value) {
         this.lastmenstrualdateformat = value;
@@ -504,10 +437,8 @@ public class Patient
     /**
      * Gets the value of the patientlastmenstrualdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientlastmenstrualdate }
-     *     
+     * @return possible object is {@link Patientlastmenstrualdate }
+     * 
      */
     public Patientlastmenstrualdate getPatientlastmenstrualdate() {
         return patientlastmenstrualdate;
@@ -516,10 +447,8 @@ public class Patient
     /**
      * Sets the value of the patientlastmenstrualdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientlastmenstrualdate }
-     *     
+     * @param value allowed object is {@link Patientlastmenstrualdate }
+     * 
      */
     public void setPatientlastmenstrualdate(Patientlastmenstrualdate value) {
         this.patientlastmenstrualdate = value;
@@ -528,10 +457,8 @@ public class Patient
     /**
      * Gets the value of the patientmedicalhistorytext property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientmedicalhistorytext }
-     *     
+     * @return possible object is {@link Patientmedicalhistorytext }
+     * 
      */
     public Patientmedicalhistorytext getPatientmedicalhistorytext() {
         return patientmedicalhistorytext;
@@ -540,10 +467,8 @@ public class Patient
     /**
      * Sets the value of the patientmedicalhistorytext property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientmedicalhistorytext }
-     *     
+     * @param value allowed object is {@link Patientmedicalhistorytext }
+     * 
      */
     public void setPatientmedicalhistorytext(Patientmedicalhistorytext value) {
         this.patientmedicalhistorytext = value;
@@ -552,10 +477,8 @@ public class Patient
     /**
      * Gets the value of the resultstestsprocedures property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Resultstestsprocedures }
-     *     
+     * @return possible object is {@link Resultstestsprocedures }
+     * 
      */
     public Resultstestsprocedures getResultstestsprocedures() {
         return resultstestsprocedures;
@@ -564,10 +487,8 @@ public class Patient
     /**
      * Sets the value of the resultstestsprocedures property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Resultstestsprocedures }
-     *     
+     * @param value allowed object is {@link Resultstestsprocedures }
+     * 
      */
     public void setResultstestsprocedures(Resultstestsprocedures value) {
         this.resultstestsprocedures = value;
@@ -577,15 +498,16 @@ public class Patient
      * Gets the value of the medicalhistoryepisode property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the medicalhistoryepisode property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the medicalhistoryepisode property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getMedicalhistoryepisode().add(newItem);
+     * getMedicalhistoryepisode().add(newItem);
      * </pre>
      * 
      * 
@@ -606,15 +528,16 @@ public class Patient
      * Gets the value of the patientpastdrugtherapy property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the patientpastdrugtherapy property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the patientpastdrugtherapy property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getPatientpastdrugtherapy().add(newItem);
+     * getPatientpastdrugtherapy().add(newItem);
      * </pre>
      * 
      * 
@@ -634,10 +557,8 @@ public class Patient
     /**
      * Gets the value of the patientdeath property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdeath }
-     *     
+     * @return possible object is {@link Patientdeath }
+     * 
      */
     public Patientdeath getPatientdeath() {
         return patientdeath;
@@ -646,10 +567,8 @@ public class Patient
     /**
      * Sets the value of the patientdeath property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdeath }
-     *     
+     * @param value allowed object is {@link Patientdeath }
+     * 
      */
     public void setPatientdeath(Patientdeath value) {
         this.patientdeath = value;
@@ -658,10 +577,8 @@ public class Patient
     /**
      * Gets the value of the parent property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Parent }
-     *     
+     * @return possible object is {@link Parent }
+     * 
      */
     public Parent getParent() {
         return parent;
@@ -670,10 +587,8 @@ public class Patient
     /**
      * Sets the value of the parent property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Parent }
-     *     
+     * @param value allowed object is {@link Parent }
+     * 
      */
     public void setParent(Parent value) {
         this.parent = value;
@@ -683,21 +598,21 @@ public class Patient
      * Gets the value of the reaction property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the reaction property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the reaction property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getReaction().add(newItem);
+     * getReaction().add(newItem);
      * </pre>
      * 
      * 
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Reaction }
+     * Objects of the following type(s) are allowed in the list {@link Reaction }
      * 
      * 
      */
@@ -712,21 +627,21 @@ public class Patient
      * Gets the value of the test property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the test property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the test property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getTest().add(newItem);
+     * getTest().add(newItem);
      * </pre>
      * 
      * 
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Test }
+     * Objects of the following type(s) are allowed in the list {@link Test }
      * 
      * 
      */
@@ -741,21 +656,21 @@ public class Patient
      * Gets the value of the drug property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the drug property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the drug property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getDrug().add(newItem);
+     * getDrug().add(newItem);
      * </pre>
      * 
      * 
      * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Drug }
+     * Objects of the following type(s) are allowed in the list {@link Drug }
      * 
      * 
      */
@@ -769,10 +684,8 @@ public class Patient
     /**
      * Gets the value of the summary property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Summary }
-     *     
+     * @return possible object is {@link Summary }
+     * 
      */
     public Summary getSummary() {
         return summary;
@@ -781,10 +694,8 @@ public class Patient
     /**
      * Sets the value of the summary property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Summary }
-     *     
+     * @param value allowed object is {@link Summary }
+     * 
      */
     public void setSummary(Summary value) {
         this.summary = value;

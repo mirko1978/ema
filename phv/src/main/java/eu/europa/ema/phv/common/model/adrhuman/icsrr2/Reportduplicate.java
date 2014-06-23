@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,34 +16,29 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "duplicatesource",
-    "duplicatenumb"
-})
+@XmlType(name = "", propOrder = { "duplicatesource", "duplicatenumb" })
 @XmlRootElement(name = "reportduplicate")
-public class Reportduplicate
-    implements Serializable
-{
+public class Reportduplicate implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Duplicatesource duplicatesource;
+
     protected Duplicatenumb duplicatenumb;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -53,10 +47,8 @@ public class Reportduplicate
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -65,10 +57,8 @@ public class Reportduplicate
     /**
      * Gets the value of the duplicatesource property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Duplicatesource }
-     *     
+     * @return possible object is {@link Duplicatesource }
+     * 
      */
     public Duplicatesource getDuplicatesource() {
         return duplicatesource;
@@ -77,10 +67,8 @@ public class Reportduplicate
     /**
      * Sets the value of the duplicatesource property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Duplicatesource }
-     *     
+     * @param value allowed object is {@link Duplicatesource }
+     * 
      */
     public void setDuplicatesource(Duplicatesource value) {
         this.duplicatesource = value;
@@ -89,10 +77,8 @@ public class Reportduplicate
     /**
      * Gets the value of the duplicatenumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Duplicatenumb }
-     *     
+     * @return possible object is {@link Duplicatenumb }
+     * 
      */
     public Duplicatenumb getDuplicatenumb() {
         return duplicatenumb;
@@ -101,10 +87,8 @@ public class Reportduplicate
     /**
      * Sets the value of the duplicatenumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Duplicatenumb }
-     *     
+     * @param value allowed object is {@link Duplicatenumb }
+     * 
      */
     public void setDuplicatenumb(Duplicatenumb value) {
         this.duplicatenumb = value;

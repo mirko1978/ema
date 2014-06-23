@@ -23,9 +23,33 @@ public class IcsrR2ReportMessage implements Serializable {
 
     private MessageMetadata metadata;
 
-    private Integer number;
+    private Integer index;
 
     private Integer total;
+
+    private IcsrR2Header header;
+
+    /**
+     * 
+     */
+    public IcsrR2ReportMessage() {
+    }
+
+    /**
+     * @param report
+     * @param metadata
+     * @param index
+     * @param total
+     * @param header
+     */
+    public IcsrR2ReportMessage(Safetyreport report, MessageMetadata metadata, Integer index, Integer total,
+            IcsrR2Header header) {
+        this.report = report;
+        this.metadata = metadata;
+        this.index = index;
+        this.total = total;
+        this.header = header;
+    }
 
     /**
      * @return the metadata
@@ -42,17 +66,31 @@ public class IcsrR2ReportMessage implements Serializable {
     }
 
     /**
-     * @return the number
+     * @return the report
      */
-    public Integer getNumber() {
-        return number;
+    public Safetyreport getReport() {
+        return report;
     }
 
     /**
-     * @param number the number to set
+     * @param report the report to set
      */
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setReport(Safetyreport report) {
+        this.report = report;
+    }
+
+    /**
+     * @return the index
+     */
+    public Integer getIndex() {
+        return index;
+    }
+
+    /**
+     * @param index the index to set
+     */
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 
     /**
@@ -70,17 +108,17 @@ public class IcsrR2ReportMessage implements Serializable {
     }
 
     /**
-     * @return the report
+     * @return the header
      */
-    public Safetyreport getReport() {
-        return report;
+    public IcsrR2Header getHeader() {
+        return header;
     }
 
     /**
-     * @param report the report to set
+     * @param header the header to set
      */
-    public void setReport(Safetyreport report) {
-        this.report = report;
+    public void setHeader(IcsrR2Header header) {
+        this.header = header;
     }
 
 }

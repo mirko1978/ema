@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -20,103 +19,104 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "safetyreportversion",
-    "safetyreportid",
-    "primarysourcecountry",
-    "occurcountry",
-    "transmissiondateformat",
-    "transmissiondate",
-    "reporttype",
-    "serious",
-    "seriousnessdeath",
-    "seriousnesslifethreatening",
-    "seriousnesshospitalization",
-    "seriousnessdisabling",
-    "seriousnesscongenitalanomali",
-    "seriousnessother",
-    "receivedateformat",
-    "receivedate",
-    "receiptdateformat",
-    "receiptdate",
-    "additionaldocument",
-    "documentlist",
-    "fulfillexpeditecriteria",
-    "authoritynumb",
-    "companynumb",
-    "duplicate",
-    "casenullification",
-    "nullificationreason",
-    "medicallyconfirm",
-    "reportduplicate",
-    "linkedreport",
-    "primarysource",
-    "sender",
-    "receiver",
-    "patient",
-    "clusterduplicate"
-})
+@XmlType(name = "", propOrder = { "safetyreportversion", "safetyreportid", "primarysourcecountry", "occurcountry",
+        "transmissiondateformat", "transmissiondate", "reporttype", "serious", "seriousnessdeath",
+        "seriousnesslifethreatening", "seriousnesshospitalization", "seriousnessdisabling",
+        "seriousnesscongenitalanomali", "seriousnessother", "receivedateformat", "receivedate", "receiptdateformat",
+        "receiptdate", "additionaldocument", "documentlist", "fulfillexpeditecriteria", "authoritynumb", "companynumb",
+        "duplicate", "casenullification", "nullificationreason", "medicallyconfirm", "reportduplicate", "linkedreport",
+        "primarysource", "sender", "receiver", "patient", "clusterduplicate" })
 @XmlRootElement(name = "safetyreport")
-public class Safetyreport
-    implements Serializable
-{
+public class Safetyreport implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Safetyreportversion safetyreportversion;
+
     @XmlElement(required = true)
     protected Safetyreportid safetyreportid;
+
     protected Primarysourcecountry primarysourcecountry;
+
     protected Occurcountry occurcountry;
+
     protected Transmissiondateformat transmissiondateformat;
+
     protected Transmissiondate transmissiondate;
+
     protected Reporttype reporttype;
+
     protected Serious serious;
+
     protected Seriousnessdeath seriousnessdeath;
+
     protected Seriousnesslifethreatening seriousnesslifethreatening;
+
     protected Seriousnesshospitalization seriousnesshospitalization;
+
     protected Seriousnessdisabling seriousnessdisabling;
+
     protected Seriousnesscongenitalanomali seriousnesscongenitalanomali;
+
     protected Seriousnessother seriousnessother;
+
     protected Receivedateformat receivedateformat;
+
     protected Receivedate receivedate;
+
     protected Receiptdateformat receiptdateformat;
+
     protected Receiptdate receiptdate;
+
     protected Additionaldocument additionaldocument;
+
     protected Documentlist documentlist;
+
     protected Fulfillexpeditecriteria fulfillexpeditecriteria;
+
     protected Authoritynumb authoritynumb;
+
     protected Companynumb companynumb;
+
     protected Duplicate duplicate;
+
     protected Casenullification casenullification;
+
     protected Nullificationreason nullificationreason;
+
     protected Medicallyconfirm medicallyconfirm;
+
     protected List<Reportduplicate> reportduplicate;
+
     protected List<Linkedreport> linkedreport;
+
     @XmlElement(required = true)
     protected List<Primarysource> primarysource;
+
     @XmlElement(required = true)
     protected Sender sender;
+
     @XmlElement(required = true)
     protected Receiver receiver;
+
     @XmlElement(required = true)
     protected Patient patient;
+
     protected List<Clusterduplicate> clusterduplicate;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -125,10 +125,8 @@ public class Safetyreport
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -137,10 +135,8 @@ public class Safetyreport
     /**
      * Gets the value of the safetyreportversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Safetyreportversion }
-     *     
+     * @return possible object is {@link Safetyreportversion }
+     * 
      */
     public Safetyreportversion getSafetyreportversion() {
         return safetyreportversion;
@@ -149,10 +145,8 @@ public class Safetyreport
     /**
      * Sets the value of the safetyreportversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Safetyreportversion }
-     *     
+     * @param value allowed object is {@link Safetyreportversion }
+     * 
      */
     public void setSafetyreportversion(Safetyreportversion value) {
         this.safetyreportversion = value;
@@ -161,10 +155,8 @@ public class Safetyreport
     /**
      * Gets the value of the safetyreportid property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Safetyreportid }
-     *     
+     * @return possible object is {@link Safetyreportid }
+     * 
      */
     public Safetyreportid getSafetyreportid() {
         return safetyreportid;
@@ -173,10 +165,8 @@ public class Safetyreport
     /**
      * Sets the value of the safetyreportid property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Safetyreportid }
-     *     
+     * @param value allowed object is {@link Safetyreportid }
+     * 
      */
     public void setSafetyreportid(Safetyreportid value) {
         this.safetyreportid = value;
@@ -185,10 +175,8 @@ public class Safetyreport
     /**
      * Gets the value of the primarysourcecountry property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Primarysourcecountry }
-     *     
+     * @return possible object is {@link Primarysourcecountry }
+     * 
      */
     public Primarysourcecountry getPrimarysourcecountry() {
         return primarysourcecountry;
@@ -197,10 +185,8 @@ public class Safetyreport
     /**
      * Sets the value of the primarysourcecountry property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Primarysourcecountry }
-     *     
+     * @param value allowed object is {@link Primarysourcecountry }
+     * 
      */
     public void setPrimarysourcecountry(Primarysourcecountry value) {
         this.primarysourcecountry = value;
@@ -209,10 +195,8 @@ public class Safetyreport
     /**
      * Gets the value of the occurcountry property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Occurcountry }
-     *     
+     * @return possible object is {@link Occurcountry }
+     * 
      */
     public Occurcountry getOccurcountry() {
         return occurcountry;
@@ -221,10 +205,8 @@ public class Safetyreport
     /**
      * Sets the value of the occurcountry property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Occurcountry }
-     *     
+     * @param value allowed object is {@link Occurcountry }
+     * 
      */
     public void setOccurcountry(Occurcountry value) {
         this.occurcountry = value;
@@ -233,10 +215,8 @@ public class Safetyreport
     /**
      * Gets the value of the transmissiondateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Transmissiondateformat }
-     *     
+     * @return possible object is {@link Transmissiondateformat }
+     * 
      */
     public Transmissiondateformat getTransmissiondateformat() {
         return transmissiondateformat;
@@ -245,10 +225,8 @@ public class Safetyreport
     /**
      * Sets the value of the transmissiondateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Transmissiondateformat }
-     *     
+     * @param value allowed object is {@link Transmissiondateformat }
+     * 
      */
     public void setTransmissiondateformat(Transmissiondateformat value) {
         this.transmissiondateformat = value;
@@ -257,10 +235,8 @@ public class Safetyreport
     /**
      * Gets the value of the transmissiondate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Transmissiondate }
-     *     
+     * @return possible object is {@link Transmissiondate }
+     * 
      */
     public Transmissiondate getTransmissiondate() {
         return transmissiondate;
@@ -269,10 +245,8 @@ public class Safetyreport
     /**
      * Sets the value of the transmissiondate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Transmissiondate }
-     *     
+     * @param value allowed object is {@link Transmissiondate }
+     * 
      */
     public void setTransmissiondate(Transmissiondate value) {
         this.transmissiondate = value;
@@ -281,10 +255,8 @@ public class Safetyreport
     /**
      * Gets the value of the reporttype property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Reporttype }
-     *     
+     * @return possible object is {@link Reporttype }
+     * 
      */
     public Reporttype getReporttype() {
         return reporttype;
@@ -293,10 +265,8 @@ public class Safetyreport
     /**
      * Sets the value of the reporttype property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Reporttype }
-     *     
+     * @param value allowed object is {@link Reporttype }
+     * 
      */
     public void setReporttype(Reporttype value) {
         this.reporttype = value;
@@ -305,10 +275,8 @@ public class Safetyreport
     /**
      * Gets the value of the serious property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Serious }
-     *     
+     * @return possible object is {@link Serious }
+     * 
      */
     public Serious getSerious() {
         return serious;
@@ -317,10 +285,8 @@ public class Safetyreport
     /**
      * Sets the value of the serious property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Serious }
-     *     
+     * @param value allowed object is {@link Serious }
+     * 
      */
     public void setSerious(Serious value) {
         this.serious = value;
@@ -329,10 +295,8 @@ public class Safetyreport
     /**
      * Gets the value of the seriousnessdeath property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Seriousnessdeath }
-     *     
+     * @return possible object is {@link Seriousnessdeath }
+     * 
      */
     public Seriousnessdeath getSeriousnessdeath() {
         return seriousnessdeath;
@@ -341,10 +305,8 @@ public class Safetyreport
     /**
      * Sets the value of the seriousnessdeath property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Seriousnessdeath }
-     *     
+     * @param value allowed object is {@link Seriousnessdeath }
+     * 
      */
     public void setSeriousnessdeath(Seriousnessdeath value) {
         this.seriousnessdeath = value;
@@ -353,10 +315,8 @@ public class Safetyreport
     /**
      * Gets the value of the seriousnesslifethreatening property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Seriousnesslifethreatening }
-     *     
+     * @return possible object is {@link Seriousnesslifethreatening }
+     * 
      */
     public Seriousnesslifethreatening getSeriousnesslifethreatening() {
         return seriousnesslifethreatening;
@@ -365,10 +325,8 @@ public class Safetyreport
     /**
      * Sets the value of the seriousnesslifethreatening property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Seriousnesslifethreatening }
-     *     
+     * @param value allowed object is {@link Seriousnesslifethreatening }
+     * 
      */
     public void setSeriousnesslifethreatening(Seriousnesslifethreatening value) {
         this.seriousnesslifethreatening = value;
@@ -377,10 +335,8 @@ public class Safetyreport
     /**
      * Gets the value of the seriousnesshospitalization property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Seriousnesshospitalization }
-     *     
+     * @return possible object is {@link Seriousnesshospitalization }
+     * 
      */
     public Seriousnesshospitalization getSeriousnesshospitalization() {
         return seriousnesshospitalization;
@@ -389,10 +345,8 @@ public class Safetyreport
     /**
      * Sets the value of the seriousnesshospitalization property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Seriousnesshospitalization }
-     *     
+     * @param value allowed object is {@link Seriousnesshospitalization }
+     * 
      */
     public void setSeriousnesshospitalization(Seriousnesshospitalization value) {
         this.seriousnesshospitalization = value;
@@ -401,10 +355,8 @@ public class Safetyreport
     /**
      * Gets the value of the seriousnessdisabling property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Seriousnessdisabling }
-     *     
+     * @return possible object is {@link Seriousnessdisabling }
+     * 
      */
     public Seriousnessdisabling getSeriousnessdisabling() {
         return seriousnessdisabling;
@@ -413,10 +365,8 @@ public class Safetyreport
     /**
      * Sets the value of the seriousnessdisabling property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Seriousnessdisabling }
-     *     
+     * @param value allowed object is {@link Seriousnessdisabling }
+     * 
      */
     public void setSeriousnessdisabling(Seriousnessdisabling value) {
         this.seriousnessdisabling = value;
@@ -425,10 +375,8 @@ public class Safetyreport
     /**
      * Gets the value of the seriousnesscongenitalanomali property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Seriousnesscongenitalanomali }
-     *     
+     * @return possible object is {@link Seriousnesscongenitalanomali }
+     * 
      */
     public Seriousnesscongenitalanomali getSeriousnesscongenitalanomali() {
         return seriousnesscongenitalanomali;
@@ -437,10 +385,8 @@ public class Safetyreport
     /**
      * Sets the value of the seriousnesscongenitalanomali property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Seriousnesscongenitalanomali }
-     *     
+     * @param value allowed object is {@link Seriousnesscongenitalanomali }
+     * 
      */
     public void setSeriousnesscongenitalanomali(Seriousnesscongenitalanomali value) {
         this.seriousnesscongenitalanomali = value;
@@ -449,10 +395,8 @@ public class Safetyreport
     /**
      * Gets the value of the seriousnessother property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Seriousnessother }
-     *     
+     * @return possible object is {@link Seriousnessother }
+     * 
      */
     public Seriousnessother getSeriousnessother() {
         return seriousnessother;
@@ -461,10 +405,8 @@ public class Safetyreport
     /**
      * Sets the value of the seriousnessother property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Seriousnessother }
-     *     
+     * @param value allowed object is {@link Seriousnessother }
+     * 
      */
     public void setSeriousnessother(Seriousnessother value) {
         this.seriousnessother = value;
@@ -473,10 +415,8 @@ public class Safetyreport
     /**
      * Gets the value of the receivedateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Receivedateformat }
-     *     
+     * @return possible object is {@link Receivedateformat }
+     * 
      */
     public Receivedateformat getReceivedateformat() {
         return receivedateformat;
@@ -485,10 +425,8 @@ public class Safetyreport
     /**
      * Sets the value of the receivedateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Receivedateformat }
-     *     
+     * @param value allowed object is {@link Receivedateformat }
+     * 
      */
     public void setReceivedateformat(Receivedateformat value) {
         this.receivedateformat = value;
@@ -497,10 +435,8 @@ public class Safetyreport
     /**
      * Gets the value of the receivedate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Receivedate }
-     *     
+     * @return possible object is {@link Receivedate }
+     * 
      */
     public Receivedate getReceivedate() {
         return receivedate;
@@ -509,10 +445,8 @@ public class Safetyreport
     /**
      * Sets the value of the receivedate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Receivedate }
-     *     
+     * @param value allowed object is {@link Receivedate }
+     * 
      */
     public void setReceivedate(Receivedate value) {
         this.receivedate = value;
@@ -521,10 +455,8 @@ public class Safetyreport
     /**
      * Gets the value of the receiptdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Receiptdateformat }
-     *     
+     * @return possible object is {@link Receiptdateformat }
+     * 
      */
     public Receiptdateformat getReceiptdateformat() {
         return receiptdateformat;
@@ -533,10 +465,8 @@ public class Safetyreport
     /**
      * Sets the value of the receiptdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Receiptdateformat }
-     *     
+     * @param value allowed object is {@link Receiptdateformat }
+     * 
      */
     public void setReceiptdateformat(Receiptdateformat value) {
         this.receiptdateformat = value;
@@ -545,10 +475,8 @@ public class Safetyreport
     /**
      * Gets the value of the receiptdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Receiptdate }
-     *     
+     * @return possible object is {@link Receiptdate }
+     * 
      */
     public Receiptdate getReceiptdate() {
         return receiptdate;
@@ -557,10 +485,8 @@ public class Safetyreport
     /**
      * Sets the value of the receiptdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Receiptdate }
-     *     
+     * @param value allowed object is {@link Receiptdate }
+     * 
      */
     public void setReceiptdate(Receiptdate value) {
         this.receiptdate = value;
@@ -569,10 +495,8 @@ public class Safetyreport
     /**
      * Gets the value of the additionaldocument property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Additionaldocument }
-     *     
+     * @return possible object is {@link Additionaldocument }
+     * 
      */
     public Additionaldocument getAdditionaldocument() {
         return additionaldocument;
@@ -581,10 +505,8 @@ public class Safetyreport
     /**
      * Sets the value of the additionaldocument property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Additionaldocument }
-     *     
+     * @param value allowed object is {@link Additionaldocument }
+     * 
      */
     public void setAdditionaldocument(Additionaldocument value) {
         this.additionaldocument = value;
@@ -593,10 +515,8 @@ public class Safetyreport
     /**
      * Gets the value of the documentlist property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Documentlist }
-     *     
+     * @return possible object is {@link Documentlist }
+     * 
      */
     public Documentlist getDocumentlist() {
         return documentlist;
@@ -605,10 +525,8 @@ public class Safetyreport
     /**
      * Sets the value of the documentlist property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Documentlist }
-     *     
+     * @param value allowed object is {@link Documentlist }
+     * 
      */
     public void setDocumentlist(Documentlist value) {
         this.documentlist = value;
@@ -617,10 +535,8 @@ public class Safetyreport
     /**
      * Gets the value of the fulfillexpeditecriteria property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Fulfillexpeditecriteria }
-     *     
+     * @return possible object is {@link Fulfillexpeditecriteria }
+     * 
      */
     public Fulfillexpeditecriteria getFulfillexpeditecriteria() {
         return fulfillexpeditecriteria;
@@ -629,10 +545,8 @@ public class Safetyreport
     /**
      * Sets the value of the fulfillexpeditecriteria property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Fulfillexpeditecriteria }
-     *     
+     * @param value allowed object is {@link Fulfillexpeditecriteria }
+     * 
      */
     public void setFulfillexpeditecriteria(Fulfillexpeditecriteria value) {
         this.fulfillexpeditecriteria = value;
@@ -641,10 +555,8 @@ public class Safetyreport
     /**
      * Gets the value of the authoritynumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Authoritynumb }
-     *     
+     * @return possible object is {@link Authoritynumb }
+     * 
      */
     public Authoritynumb getAuthoritynumb() {
         return authoritynumb;
@@ -653,10 +565,8 @@ public class Safetyreport
     /**
      * Sets the value of the authoritynumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Authoritynumb }
-     *     
+     * @param value allowed object is {@link Authoritynumb }
+     * 
      */
     public void setAuthoritynumb(Authoritynumb value) {
         this.authoritynumb = value;
@@ -665,10 +575,8 @@ public class Safetyreport
     /**
      * Gets the value of the companynumb property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Companynumb }
-     *     
+     * @return possible object is {@link Companynumb }
+     * 
      */
     public Companynumb getCompanynumb() {
         return companynumb;
@@ -677,10 +585,8 @@ public class Safetyreport
     /**
      * Sets the value of the companynumb property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Companynumb }
-     *     
+     * @param value allowed object is {@link Companynumb }
+     * 
      */
     public void setCompanynumb(Companynumb value) {
         this.companynumb = value;
@@ -689,10 +595,8 @@ public class Safetyreport
     /**
      * Gets the value of the duplicate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Duplicate }
-     *     
+     * @return possible object is {@link Duplicate }
+     * 
      */
     public Duplicate getDuplicate() {
         return duplicate;
@@ -701,10 +605,8 @@ public class Safetyreport
     /**
      * Sets the value of the duplicate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Duplicate }
-     *     
+     * @param value allowed object is {@link Duplicate }
+     * 
      */
     public void setDuplicate(Duplicate value) {
         this.duplicate = value;
@@ -713,10 +615,8 @@ public class Safetyreport
     /**
      * Gets the value of the casenullification property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Casenullification }
-     *     
+     * @return possible object is {@link Casenullification }
+     * 
      */
     public Casenullification getCasenullification() {
         return casenullification;
@@ -725,10 +625,8 @@ public class Safetyreport
     /**
      * Sets the value of the casenullification property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Casenullification }
-     *     
+     * @param value allowed object is {@link Casenullification }
+     * 
      */
     public void setCasenullification(Casenullification value) {
         this.casenullification = value;
@@ -737,10 +635,8 @@ public class Safetyreport
     /**
      * Gets the value of the nullificationreason property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Nullificationreason }
-     *     
+     * @return possible object is {@link Nullificationreason }
+     * 
      */
     public Nullificationreason getNullificationreason() {
         return nullificationreason;
@@ -749,10 +645,8 @@ public class Safetyreport
     /**
      * Sets the value of the nullificationreason property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Nullificationreason }
-     *     
+     * @param value allowed object is {@link Nullificationreason }
+     * 
      */
     public void setNullificationreason(Nullificationreason value) {
         this.nullificationreason = value;
@@ -761,10 +655,8 @@ public class Safetyreport
     /**
      * Gets the value of the medicallyconfirm property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Medicallyconfirm }
-     *     
+     * @return possible object is {@link Medicallyconfirm }
+     * 
      */
     public Medicallyconfirm getMedicallyconfirm() {
         return medicallyconfirm;
@@ -773,10 +665,8 @@ public class Safetyreport
     /**
      * Sets the value of the medicallyconfirm property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Medicallyconfirm }
-     *     
+     * @param value allowed object is {@link Medicallyconfirm }
+     * 
      */
     public void setMedicallyconfirm(Medicallyconfirm value) {
         this.medicallyconfirm = value;
@@ -786,15 +676,16 @@ public class Safetyreport
      * Gets the value of the reportduplicate property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the reportduplicate property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the reportduplicate property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getReportduplicate().add(newItem);
+     * getReportduplicate().add(newItem);
      * </pre>
      * 
      * 
@@ -815,15 +706,16 @@ public class Safetyreport
      * Gets the value of the linkedreport property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the linkedreport property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the linkedreport property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getLinkedreport().add(newItem);
+     * getLinkedreport().add(newItem);
      * </pre>
      * 
      * 
@@ -844,15 +736,16 @@ public class Safetyreport
      * Gets the value of the primarysource property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the primarysource property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the primarysource property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getPrimarysource().add(newItem);
+     * getPrimarysource().add(newItem);
      * </pre>
      * 
      * 
@@ -872,10 +765,8 @@ public class Safetyreport
     /**
      * Gets the value of the sender property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Sender }
-     *     
+     * @return possible object is {@link Sender }
+     * 
      */
     public Sender getSender() {
         return sender;
@@ -884,10 +775,8 @@ public class Safetyreport
     /**
      * Sets the value of the sender property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Sender }
-     *     
+     * @param value allowed object is {@link Sender }
+     * 
      */
     public void setSender(Sender value) {
         this.sender = value;
@@ -896,10 +785,8 @@ public class Safetyreport
     /**
      * Gets the value of the receiver property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Receiver }
-     *     
+     * @return possible object is {@link Receiver }
+     * 
      */
     public Receiver getReceiver() {
         return receiver;
@@ -908,10 +795,8 @@ public class Safetyreport
     /**
      * Sets the value of the receiver property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Receiver }
-     *     
+     * @param value allowed object is {@link Receiver }
+     * 
      */
     public void setReceiver(Receiver value) {
         this.receiver = value;
@@ -920,10 +805,8 @@ public class Safetyreport
     /**
      * Gets the value of the patient property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patient }
-     *     
+     * @return possible object is {@link Patient }
+     * 
      */
     public Patient getPatient() {
         return patient;
@@ -932,10 +815,8 @@ public class Safetyreport
     /**
      * Sets the value of the patient property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patient }
-     *     
+     * @param value allowed object is {@link Patient }
+     * 
      */
     public void setPatient(Patient value) {
         this.patient = value;
@@ -945,15 +826,16 @@ public class Safetyreport
      * Gets the value of the clusterduplicate property.
      * 
      * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the clusterduplicate property.
+     * This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the clusterduplicate property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
+     * 
      * <pre>
-     *    getClusterduplicate().add(newItem);
+     * getClusterduplicate().add(newItem);
      * </pre>
      * 
      * 

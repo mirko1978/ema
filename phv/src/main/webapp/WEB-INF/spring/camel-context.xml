@@ -13,10 +13,6 @@
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-	<context:annotation-config />
-	<context:component-scan
-		base-package="eu.europa.ema, eu.europa.ema.springjdbc, eu.europa.ema.jpa" />
-
 	<!-- -->
 	<!-- Simple JTA example just to commit the results -->
 	<!-- -->
@@ -44,7 +40,7 @@
 		<property name="environment">
 			<props>
 				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
-				<prop key="java.naming.provider.url">t3://localhost:7002</prop>
+				<prop key="java.naming.provider.url">${jms.naming.provider}</prop>
 			</props>
 		</property>
 	</bean>
@@ -56,7 +52,7 @@
 
 	<bean id="jmsConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiTemplate" ref="jmsJndiTemplate" />
-		<property name="jndiName" value="jms/cf0" />
+		<property name="jndiName" value="${jms.connection.factory}" />
 	</bean>
 
 	<!-- Queue not transactional -->
@@ -88,7 +84,7 @@
 	</bean>
 
 	<!-- Spring JDBC template -->
-	<jee:jndi-lookup id="jdbcDataSource" jndi-name="jdbc/ev7" />
+	<jee:jndi-lookup id="jdbcDataSource" jndi-name="${jdbc.icsr}" />
 
 	<!-- Camel JPA (ref. to JPA section above) -->
 	<bean id="camelJPA" class="org.apache.camel.component.jpa.JpaComponent">
@@ -105,8 +101,12 @@
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW" />
 	</bean>
-	
-	<!-- Including Drools -->
-	<import resource="drools-context.xml"/>
+
+	<!-- -->
+	<!-- Includes -->
+	<!-- -->
+
+	<import resource="classpath:/spring/util-context.xml" />
+	<import resource="classpath:/spring/adr-parser-human-context.xml" />
 
 </beans>

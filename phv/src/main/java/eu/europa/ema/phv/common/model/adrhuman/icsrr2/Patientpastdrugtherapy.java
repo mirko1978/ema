@@ -5,7 +5,6 @@
 // Generated on: 2014.06.20 at 05:38:27 PM BST 
 //
 
-
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import java.io.Serializable;
@@ -17,48 +16,45 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "patientdrugname",
-    "patientdrugstartdateformat",
-    "patientdrugstartdate",
-    "patientdrugenddateformat",
-    "patientdrugenddate",
-    "patientindicationmeddraversion",
-    "patientdrugindication",
-    "patientdrgreactionmeddraversion",
-    "patientdrugreaction"
-})
+@XmlType(name = "", propOrder = { "patientdrugname", "patientdrugstartdateformat", "patientdrugstartdate",
+        "patientdrugenddateformat", "patientdrugenddate", "patientindicationmeddraversion", "patientdrugindication",
+        "patientdrgreactionmeddraversion", "patientdrugreaction" })
 @XmlRootElement(name = "patientpastdrugtherapy")
-public class Patientpastdrugtherapy
-    implements Serializable
-{
+public class Patientpastdrugtherapy implements Serializable {
 
     private final static long serialVersionUID = 1L;
+
     @XmlAttribute(name = "lang")
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
+
     protected Patientdrugname patientdrugname;
+
     protected Patientdrugstartdateformat patientdrugstartdateformat;
+
     protected Patientdrugstartdate patientdrugstartdate;
+
     protected Patientdrugenddateformat patientdrugenddateformat;
+
     protected Patientdrugenddate patientdrugenddate;
+
     protected Patientindicationmeddraversion patientindicationmeddraversion;
+
     protected Patientdrugindication patientdrugindication;
+
     protected Patientdrgreactionmeddraversion patientdrgreactionmeddraversion;
+
     protected Patientdrugreaction patientdrugreaction;
 
     /**
      * Gets the value of the lang property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * @return possible object is {@link String }
+     * 
      */
     public String getLang() {
         return lang;
@@ -67,10 +63,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the lang property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param value allowed object is {@link String }
+     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -79,10 +73,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrugname property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrugname }
-     *     
+     * @return possible object is {@link Patientdrugname }
+     * 
      */
     public Patientdrugname getPatientdrugname() {
         return patientdrugname;
@@ -91,10 +83,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrugname property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrugname }
-     *     
+     * @param value allowed object is {@link Patientdrugname }
+     * 
      */
     public void setPatientdrugname(Patientdrugname value) {
         this.patientdrugname = value;
@@ -103,10 +93,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrugstartdateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrugstartdateformat }
-     *     
+     * @return possible object is {@link Patientdrugstartdateformat }
+     * 
      */
     public Patientdrugstartdateformat getPatientdrugstartdateformat() {
         return patientdrugstartdateformat;
@@ -115,10 +103,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrugstartdateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrugstartdateformat }
-     *     
+     * @param value allowed object is {@link Patientdrugstartdateformat }
+     * 
      */
     public void setPatientdrugstartdateformat(Patientdrugstartdateformat value) {
         this.patientdrugstartdateformat = value;
@@ -127,10 +113,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrugstartdate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrugstartdate }
-     *     
+     * @return possible object is {@link Patientdrugstartdate }
+     * 
      */
     public Patientdrugstartdate getPatientdrugstartdate() {
         return patientdrugstartdate;
@@ -139,10 +123,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrugstartdate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrugstartdate }
-     *     
+     * @param value allowed object is {@link Patientdrugstartdate }
+     * 
      */
     public void setPatientdrugstartdate(Patientdrugstartdate value) {
         this.patientdrugstartdate = value;
@@ -151,10 +133,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrugenddateformat property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrugenddateformat }
-     *     
+     * @return possible object is {@link Patientdrugenddateformat }
+     * 
      */
     public Patientdrugenddateformat getPatientdrugenddateformat() {
         return patientdrugenddateformat;
@@ -163,10 +143,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrugenddateformat property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrugenddateformat }
-     *     
+     * @param value allowed object is {@link Patientdrugenddateformat }
+     * 
      */
     public void setPatientdrugenddateformat(Patientdrugenddateformat value) {
         this.patientdrugenddateformat = value;
@@ -175,10 +153,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrugenddate property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrugenddate }
-     *     
+     * @return possible object is {@link Patientdrugenddate }
+     * 
      */
     public Patientdrugenddate getPatientdrugenddate() {
         return patientdrugenddate;
@@ -187,10 +163,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrugenddate property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrugenddate }
-     *     
+     * @param value allowed object is {@link Patientdrugenddate }
+     * 
      */
     public void setPatientdrugenddate(Patientdrugenddate value) {
         this.patientdrugenddate = value;
@@ -199,10 +173,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientindicationmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientindicationmeddraversion }
-     *     
+     * @return possible object is {@link Patientindicationmeddraversion }
+     * 
      */
     public Patientindicationmeddraversion getPatientindicationmeddraversion() {
         return patientindicationmeddraversion;
@@ -211,10 +183,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientindicationmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientindicationmeddraversion }
-     *     
+     * @param value allowed object is {@link Patientindicationmeddraversion }
+     * 
      */
     public void setPatientindicationmeddraversion(Patientindicationmeddraversion value) {
         this.patientindicationmeddraversion = value;
@@ -223,10 +193,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrugindication property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrugindication }
-     *     
+     * @return possible object is {@link Patientdrugindication }
+     * 
      */
     public Patientdrugindication getPatientdrugindication() {
         return patientdrugindication;
@@ -235,10 +203,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrugindication property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrugindication }
-     *     
+     * @param value allowed object is {@link Patientdrugindication }
+     * 
      */
     public void setPatientdrugindication(Patientdrugindication value) {
         this.patientdrugindication = value;
@@ -247,10 +213,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrgreactionmeddraversion property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrgreactionmeddraversion }
-     *     
+     * @return possible object is {@link Patientdrgreactionmeddraversion }
+     * 
      */
     public Patientdrgreactionmeddraversion getPatientdrgreactionmeddraversion() {
         return patientdrgreactionmeddraversion;
@@ -259,10 +223,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrgreactionmeddraversion property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrgreactionmeddraversion }
-     *     
+     * @param value allowed object is {@link Patientdrgreactionmeddraversion }
+     * 
      */
     public void setPatientdrgreactionmeddraversion(Patientdrgreactionmeddraversion value) {
         this.patientdrgreactionmeddraversion = value;
@@ -271,10 +233,8 @@ public class Patientpastdrugtherapy
     /**
      * Gets the value of the patientdrugreaction property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Patientdrugreaction }
-     *     
+     * @return possible object is {@link Patientdrugreaction }
+     * 
      */
     public Patientdrugreaction getPatientdrugreaction() {
         return patientdrugreaction;
@@ -283,10 +243,8 @@ public class Patientpastdrugtherapy
     /**
      * Sets the value of the patientdrugreaction property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Patientdrugreaction }
-     *     
+     * @param value allowed object is {@link Patientdrugreaction }
+     * 
      */
     public void setPatientdrugreaction(Patientdrugreaction value) {
         this.patientdrugreaction = value;

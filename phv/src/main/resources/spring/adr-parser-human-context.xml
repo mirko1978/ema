@@ -14,5 +14,6 @@
 	<context:annotation-config />
 
 	<bean id="AdrParserHumanRouter" class="eu.europa.ema.phv.adrparserhuman.AdrParserHumanRouter" />
+	<bean id="ReportSplitter" class="eu.europa.ema.phv.adrparserhuman.ReportSplitter" />
 
 </beans>
