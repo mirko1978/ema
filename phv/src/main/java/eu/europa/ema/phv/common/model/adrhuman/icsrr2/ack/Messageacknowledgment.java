@@ -18,6 +18,11 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.MessageIdentifier;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagedate;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagedateformat;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagenumb;
+
 /**
  * 
  */
@@ -34,22 +39,23 @@ public class Messageacknowledgment implements Serializable {
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
 
-    @XmlElement(required = true)
-    protected Icsrmessagenumb icsrmessagenumb;
+    @XmlElement(required = true, name = "icsrmessagenumb")
+    protected Messagenumb icsrmessagenumb;
 
-    protected Localmessagenumb localmessagenumb;
+    @XmlElement(name = "localmessagenumb")
+    protected Messagenumb localmessagenumb;
 
-    @XmlElement(required = true)
-    protected Icsrmessagesenderidentifier icsrmessagesenderidentifier;
+    @XmlElement(required = true, name = "icsrmessagesenderidentifier")
+    protected MessageIdentifier icsrmessagesenderidentifier;
 
-    @XmlElement(required = true)
-    protected Icsrmessagereceiveridentifier icsrmessagereceiveridentifier;
+    @XmlElement(required = true, name = "icsrmessagereceiveridentifier")
+    protected MessageIdentifier icsrmessagereceiveridentifier;
 
-    @XmlElement(required = true)
-    protected Icsrmessagedateformat icsrmessagedateformat;
+    @XmlElement(required = true, name = "icsrmessagedateformat")
+    protected Messagedateformat icsrmessagedateformat;
 
-    @XmlElement(required = true)
-    protected Icsrmessagedate icsrmessagedate;
+    @XmlElement(required = true, name = "icsrmessagedate")
+    protected Messagedate icsrmessagedate;
 
     @XmlElement(required = true)
     protected Transmissionacknowledgmentcode transmissionacknowledgmentcode;
@@ -79,120 +85,120 @@ public class Messageacknowledgment implements Serializable {
     /**
      * Gets the value of the icsrmessagenumb property.
      * 
-     * @return possible object is {@link Icsrmessagenumb }
+     * @return possible object is {@link Messagenumb }
      * 
      */
-    public Icsrmessagenumb getIcsrmessagenumb() {
+    public Messagenumb getIcsrmessagenumb() {
         return icsrmessagenumb;
     }
 
     /**
      * Sets the value of the icsrmessagenumb property.
      * 
-     * @param value allowed object is {@link Icsrmessagenumb }
+     * @param value allowed object is {@link Messagenumb }
      * 
      */
-    public void setIcsrmessagenumb(Icsrmessagenumb value) {
+    public void setIcsrmessagenumb(Messagenumb value) {
         this.icsrmessagenumb = value;
     }
 
     /**
      * Gets the value of the localmessagenumb property.
      * 
-     * @return possible object is {@link Localmessagenumb }
+     * @return possible object is {@link Messagenumb }
      * 
      */
-    public Localmessagenumb getLocalmessagenumb() {
+    public Messagenumb getLocalmessagenumb() {
         return localmessagenumb;
     }
 
     /**
      * Sets the value of the localmessagenumb property.
      * 
-     * @param value allowed object is {@link Localmessagenumb }
+     * @param value allowed object is {@link Messagenumb }
      * 
      */
-    public void setLocalmessagenumb(Localmessagenumb value) {
+    public void setLocalmessagenumb(Messagenumb value) {
         this.localmessagenumb = value;
     }
 
     /**
      * Gets the value of the icsrmessagesenderidentifier property.
      * 
-     * @return possible object is {@link Icsrmessagesenderidentifier }
+     * @return possible object is {@link MessageIdentifier }
      * 
      */
-    public Icsrmessagesenderidentifier getIcsrmessagesenderidentifier() {
+    public MessageIdentifier getIcsrmessagesenderidentifier() {
         return icsrmessagesenderidentifier;
     }
 
     /**
      * Sets the value of the icsrmessagesenderidentifier property.
      * 
-     * @param value allowed object is {@link Icsrmessagesenderidentifier }
+     * @param value allowed object is {@link MessageIdentifier }
      * 
      */
-    public void setIcsrmessagesenderidentifier(Icsrmessagesenderidentifier value) {
+    public void setIcsrmessagesenderidentifier(MessageIdentifier value) {
         this.icsrmessagesenderidentifier = value;
     }
 
     /**
      * Gets the value of the icsrmessagereceiveridentifier property.
      * 
-     * @return possible object is {@link Icsrmessagereceiveridentifier }
+     * @return possible object is {@link MessageIdentifier }
      * 
      */
-    public Icsrmessagereceiveridentifier getIcsrmessagereceiveridentifier() {
+    public MessageIdentifier getIcsrmessagereceiveridentifier() {
         return icsrmessagereceiveridentifier;
     }
 
     /**
      * Sets the value of the icsrmessagereceiveridentifier property.
      * 
-     * @param value allowed object is {@link Icsrmessagereceiveridentifier }
+     * @param value allowed object is {@link MessageIdentifier }
      * 
      */
-    public void setIcsrmessagereceiveridentifier(Icsrmessagereceiveridentifier value) {
+    public void setIcsrmessagereceiveridentifier(MessageIdentifier value) {
         this.icsrmessagereceiveridentifier = value;
     }
 
     /**
      * Gets the value of the icsrmessagedateformat property.
      * 
-     * @return possible object is {@link Icsrmessagedateformat }
+     * @return possible object is {@link Messagedateformat }
      * 
      */
-    public Icsrmessagedateformat getIcsrmessagedateformat() {
+    public Messagedateformat getIcsrmessagedateformat() {
         return icsrmessagedateformat;
     }
 
     /**
      * Sets the value of the icsrmessagedateformat property.
      * 
-     * @param value allowed object is {@link Icsrmessagedateformat }
+     * @param value allowed object is {@link Messagedateformat }
      * 
      */
-    public void setIcsrmessagedateformat(Icsrmessagedateformat value) {
+    public void setIcsrmessagedateformat(Messagedateformat value) {
         this.icsrmessagedateformat = value;
     }
 
     /**
      * Gets the value of the icsrmessagedate property.
      * 
-     * @return possible object is {@link Icsrmessagedate }
+     * @return possible object is {@link Messagedate }
      * 
      */
-    public Icsrmessagedate getIcsrmessagedate() {
+    public Messagedate getIcsrmessagedate() {
         return icsrmessagedate;
     }
 
     /**
      * Sets the value of the icsrmessagedate property.
      * 
-     * @param value allowed object is {@link Icsrmessagedate }
+     * @param value allowed object is {@link Messagedate }
      * 
      */
-    public void setIcsrmessagedate(Icsrmessagedate value) {
+    public void setIcsrmessagedate(Messagedate value) {
         this.icsrmessagedate = value;
     }
 

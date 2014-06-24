@@ -826,14 +826,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Messagereceiveridentifier }
-     * 
-     */
-    public Messagereceiveridentifier createMessagereceiveridentifier() {
-        return new Messagereceiveridentifier();
-    }
-
-    /**
      * Create an instance of {@link Sendertitle }
      * 
      */
@@ -1306,11 +1298,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Messagesenderidentifier }
+     * Create an instance of {@link MessageIdentifier }
      * 
      */
-    public Messagesenderidentifier createMessagesenderidentifier() {
-        return new Messagesenderidentifier();
+    public MessageIdentifier createMessagesenderidentifier() {
+        return new MessageIdentifier();
     }
 
     /**

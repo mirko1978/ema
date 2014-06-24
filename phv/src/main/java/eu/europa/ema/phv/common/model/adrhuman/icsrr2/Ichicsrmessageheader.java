@@ -45,10 +45,10 @@ public class Ichicsrmessageheader implements Serializable {
     protected Messagenumb messagenumb;
 
     @XmlElement(required = true)
-    protected Messagesenderidentifier messagesenderidentifier;
+    protected MessageIdentifier messagesenderidentifier;
 
-    @XmlElement(required = true)
-    protected Messagereceiveridentifier messagereceiveridentifier;
+    @XmlElement(required = true, name="messagereceiveridentifier")
+    protected MessageIdentifier messagereceiveridentifier;
 
     @XmlElement(required = true)
     protected Messagedateformat messagedateformat;
@@ -159,40 +159,40 @@ public class Ichicsrmessageheader implements Serializable {
     /**
      * Gets the value of the messagesenderidentifier property.
      * 
-     * @return possible object is {@link Messagesenderidentifier }
+     * @return possible object is {@link MessageIdentifier }
      * 
      */
-    public Messagesenderidentifier getMessagesenderidentifier() {
+    public MessageIdentifier getMessagesenderidentifier() {
         return messagesenderidentifier;
     }
 
     /**
      * Sets the value of the messagesenderidentifier property.
      * 
-     * @param value allowed object is {@link Messagesenderidentifier }
+     * @param value allowed object is {@link MessageIdentifier }
      * 
      */
-    public void setMessagesenderidentifier(Messagesenderidentifier value) {
+    public void setMessagesenderidentifier(MessageIdentifier value) {
         this.messagesenderidentifier = value;
     }
 
     /**
      * Gets the value of the messagereceiveridentifier property.
      * 
-     * @return possible object is {@link Messagereceiveridentifier }
+     * @return possible object is {@link MessageIdentifier }
      * 
      */
-    public Messagereceiveridentifier getMessagereceiveridentifier() {
+    public MessageIdentifier getMessagereceiveridentifier() {
         return messagereceiveridentifier;
     }
 
     /**
      * Sets the value of the messagereceiveridentifier property.
      * 
-     * @param value allowed object is {@link Messagereceiveridentifier }
+     * @param value allowed object is {@link MessageIdentifier }
      * 
      */
-    public void setMessagereceiveridentifier(Messagereceiveridentifier value) {
+    public void setMessagereceiveridentifier(MessageIdentifier value) {
         this.messagereceiveridentifier = value;
     }
 
