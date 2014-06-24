@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="windows-1252" ?>
-<!-- TOBE: configure with the right JNI!
-
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
   	
-	<persistence-unit name="recordJTA" transaction-type="JTA">
+	<persistence-unit name="icsrR2Jta" transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>jdbc/ev7</jta-data-source>
-		<class>eu.europa.ema.jpa.Record</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ActiveSubstance</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ActiveSubstanceInterpreted</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Alert</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Cluster</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ClusterDuplicate</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ClusterLog</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Drug</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.DrugInterpreted</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.DrugreActionRelated</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.DrugreCurrence</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.FlagStatus</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.FlagStatusPK</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.LinkedReport</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.MessageAck</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.NarrativeTranslation</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.IParent</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ParentMedicalHistory</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ParentPastDrugTherapy</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Patient</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.PatientAutopsy</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.PatientDeath</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.PatientDeathCause</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.PatientMedicalHistory</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.PatientPastDrugTherapy</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.PrimarySource</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Reaction</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Receiver</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ReportAck</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ReportComment</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ReportDuplicate</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.RLocking</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.RLog</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReports</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReportsPK</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Sender</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Summary</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Test</class>
 		<properties>
 			 <property name="eclipselink.target-server" value="WebLogic"/>		
 		</properties>
 	</persistence-unit>
 	
 </persistence>
--->

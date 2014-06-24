@@ -3,21 +3,16 @@
  */
 package eu.europa.ema.phv.adrvalidationhuman;
 
-import javax.inject.Inject;
-
-import org.apache.camel.Exchange;
-import org.apache.camel.processor.aggregate.AggregationStrategy;
-import org.mvel2.ast.IsDef;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import weblogic.ejbgen.MessageDriven.AcknowledgeMode;
-import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Acknowledgment;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Ichicsrack;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Reportacknowledgment;
 import eu.europa.ema.phv.common.util.IcsrR2AckUtility;
+import org.apache.camel.Exchange;
+import org.apache.camel.processor.aggregate.AggregationStrategy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.inject.Inject;
 
 /**
  * TODO Class meaningful description...
@@ -54,7 +49,7 @@ public class AdrReportAggregationStrategy implements AggregationStrategy {
         // Last element
         if (totalArrived.intValue() == report.getTotal().intValue()) {
             if(icsrAck.getAcknowledgment().getReportacknowledgment().isEmpty()) {
-                icsrAck.getAcknowledgment().getMessageacknowledgment().setTransmissionacknowledgmentcode(IcsrAckCode.ICSR_WARNING);
+//                icsrAck.getAcknowledgment().getMessageacknowledgment().setTransmissionacknowledgmentcode(IcsrAckCode.ICSR_WARNING);
             }
         }
         newExchange.getOut().setBody(icsrAck);

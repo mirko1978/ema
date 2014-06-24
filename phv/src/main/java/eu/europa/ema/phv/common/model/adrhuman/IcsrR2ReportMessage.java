@@ -3,9 +3,9 @@
  */
 package eu.europa.ema.phv.common.model.adrhuman;
 
-import java.io.Serializable;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Safetyreport;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Safetyreport;
+import java.io.Serializable;
 
 /**
  * Describe the single report message with the related metadata

@@ -64,8 +64,34 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
 
-		<dependency>
+
+        <dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-jms</artifactId>
 			<version>${camel.version}</version>
@@ -171,6 +197,39 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>17.0</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>2.5.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>2.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>org.eclipse.persistence.moxy</artifactId>
+			<version>2.5.1</version>
+			<!--scope>compile</scope-->
+		</dependency>
+
+
 		<!-- Please note that eclipse link 2.5.1 has a better management for the 
 			errors. In order to use it properly it is necessary to add the follow line 
 			to weblogic.xml file <wls:prefer-application-packages> <wls:package-name>org.eclipse.persistence.*</wls:package-name> 
@@ -194,8 +253,14 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.7.7</version>
 		</dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.1.2</version>
+        </dependency>
 
-		<!-- Logging with LogStash -->
+
+        <!-- Logging with LogStash -->
 		<dependency>
 			<groupId>net.logstash.logback</groupId>
 			<artifactId>logstash-logback-encoder</artifactId>
@@ -269,14 +334,13 @@
 					<!-- NOT USED: <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName> -->
 					<!-- <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack</packageName> -->
 					<packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName>
-					<dtd>true</dtd>
-					<xmlschema>false</xmlschema>
-					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<!-- <dtd>true</dtd> <xmlschema>false</xmlschema> <outputDirectory>${project.basedir}/src/main/java</outputDirectory> -->
 					<schemaDirectory>${project.basedir}/src/main/resources/schema</schemaDirectory>
 					<clearOutputDir>false</clearOutputDir>
 					<!-- NOT USED: <schemaFiles>icsr21xml.dtd</schemaFiles> -->
 					<!-- <schemaFiles>ichicsrack11xml.dtd</schemaFiles> -->
-					<schemaFiles>masterreport21xml.dtd</schemaFiles>
+					<!-- <schemaFiles>masterreport21xml.dtd</schemaFiles> -->
+					<schemaFiles>hsafetymessage21.xsd</schemaFiles>
 					<extension>true</extension>
 					<verbose>true</verbose>
 				</configuration>
@@ -412,7 +476,7 @@
 				<configuration>
 					<targetJdk>1.7</targetJdk>
 					<format>xml</format>
-					<linkXref>true</linkXref>
+					<!--linkXref>true</linkXref -->
 					<sourceEncoding>UTF-8</sourceEncoding>
 					<minimumTokens>100</minimumTokens>
 					<excludes>

@@ -7,21 +7,15 @@
 
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack;
 
-import java.io.Serializable;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.MessageIdentifier;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Messagedate;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Messagedateformat;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Messagenumb;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.MessageIdentifier;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagedate;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagedateformat;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagenumb;
+import java.io.Serializable;
 
 /**
  * 

@@ -7,26 +7,14 @@
 
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack;
 
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.*;
+
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElements;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Authoritynumb;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Companynumb;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Receiptdate;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Receiptdateformat;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Safetyreportid;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Safetyreportversion;
 
 /**
  * 

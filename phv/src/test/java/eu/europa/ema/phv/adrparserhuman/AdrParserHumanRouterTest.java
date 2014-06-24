@@ -3,13 +3,10 @@
  */
 package eu.europa.ema.phv.adrparserhuman;
 
-import java.util.Date;
-
-import javax.inject.Inject;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-
+import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
+import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Ichicsr;
+import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import org.apache.camel.CamelContext;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
@@ -24,10 +21,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
-import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Ichicsr;
-import eu.europa.ema.phv.common.util.JmsCamelUrl;
+import javax.inject.Inject;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import java.util.Date;
 
 /**
  * TTest the ADR parser human router

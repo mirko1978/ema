@@ -3,9 +3,9 @@
  */
 package eu.europa.ema.phv.common.model.adrhuman;
 
-import java.io.Serializable;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Ichicsrmessageheader;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Ichicsrmessageheader;
+import java.io.Serializable;
 
 /**
  * Collect all the ICSR R2 header

@@ -3,18 +3,17 @@
  */
 package eu.europa.ema.phv.adrparserhuman;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2Header;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
 import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Ichicsr;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Safetyreport;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Ichicsr;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Safetyreport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Split an ICSR messages in {@link IcsrR2ReportMessage} <br/>

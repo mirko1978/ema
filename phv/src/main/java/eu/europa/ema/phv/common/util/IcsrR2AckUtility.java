@@ -3,22 +3,15 @@
  */
 package eu.europa.ema.phv.common.util;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode;
 import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Ichicsrmessageheader;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.MessageIdentifier;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagedate;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagedateformat;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messageformatrelease;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messageformatversion;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagenumb;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.Messagetype;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Acknowledgment;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Ichicsrack;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Messageacknowledgment;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Utility for managing the Icsr R2 Ack
