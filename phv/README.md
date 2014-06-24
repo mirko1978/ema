@@ -1,4 +1,15 @@
-# Pharmacovigilance
+# Pharmacovigilance Development documentation
+
+This stes of documents are tutorial related how to configure the development environment and servers.
+
+## Table of contents
+
+*	[Weblogic installation and configuration](src/site/markdown/weblogic.md)
+*	[Eclipse](src/site/markdown/eclipse.md)
+*	[HA Testing](src/site/markdown/ha_testing.md)
+
+
+# Pharmacovigilance Introduction
 
 Pharmacovigilance "Poller & Parser" technology refresh in Java 7.
 
@@ -10,26 +21,7 @@ The technology stack used is:
 *    Camel
 *    Spring framework
 *    Drools
-*    Persistance layer done with JTA (XA), JPA fully managed by Weblogic 12c 
-
-## Servers naming conventions
-
-PHV[1][2]_{environment].domain  
-
-Where:  
-**[1]** can be:
-
-* **A** in case of Application layer
-* **D** in case of database server
-* **W** in case of Web layer
-
-**[2]** is the server number
-
-**[environment]** is the environment like **DEV**, **TEST**
-
-Example:
-
-PHVA01-DEV	is a PHV related server number 01 in the Application layer in the DEV environment
+*    Persistence layer done with JTA (XA), JPA fully managed by Weblogic 12c 
 
 ## Package naming convention
 
@@ -45,4 +37,3 @@ This project uses Maven then in order to produce the war:
 In order to create the documentation
 
     mvn site
-    
