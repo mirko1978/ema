@@ -1,3 +1,8 @@
+# 0. Install Maven 
+
+Download software and install from here. Version 3.2.1
+URL: http://maven.apache.org/download.cgi
+
 # 1. Maven configuration
 
 [Pom.xml](../../../pom.xml) contains a set of exclusion in order to use the right dependencies inside Weblogic 12c.  
