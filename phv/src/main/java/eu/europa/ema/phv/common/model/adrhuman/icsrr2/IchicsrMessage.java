@@ -24,9 +24,10 @@ import java.util.List;
 @Table(name="I_ICHICSRMESSAGE")
 @NamedQuery(name="IchicsrMessage.findAll", query="SELECT i FROM IchicsrMessage i")
 public class IchicsrMessage implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = 1382010238440221655L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_ICHICSRMESSAGE", unique=true, nullable=false, precision=10)
 	@XmlTransient
@@ -136,9 +137,9 @@ public class IchicsrMessage implements Serializable {
 	private MessageAck IMessageack;
 
 	//bi-directional many-to-one association to SafetyReports
-	@OneToMany(mappedBy="IIchicsrmessage")
+	@OneToMany(mappedBy= "ichicsrMessage")
 	@XmlElement(name="safetyreport")
-	private List<SafetyReports> ISafetyreports;
+	private List<SafetyReports> safetyReports;
 
 	public IchicsrMessage() {
 	}
@@ -327,12 +328,12 @@ public class IchicsrMessage implements Serializable {
 		this.IMessageack = IMessageack;
 	}
 
-	public List<SafetyReports> getISafetyreports() {
-		return this.ISafetyreports;
+	public List<SafetyReports> getSafetyReports() {
+		return this.safetyReports;
 	}
 
-	public void setISafetyreports(List<SafetyReports> ISafetyreports) {
-		this.ISafetyreports = ISafetyreports;
+	public void setSafetyReports(List<SafetyReports> ISafetyreports) {
+		this.safetyReports = ISafetyreports;
 	}
 	
 
@@ -366,15 +367,15 @@ public class IchicsrMessage implements Serializable {
     }
 
     public SafetyReports addISafetyreport(SafetyReports ISafetyreport) {
-		getISafetyreports().add(ISafetyreport);
-		ISafetyreport.setIIchicsrmessage(this);
+		getSafetyReports().add(ISafetyreport);
+		ISafetyreport.setIchicsrMessage(this);
 
 		return ISafetyreport;
 	}
 
 	public SafetyReports removeISafetyreport(SafetyReports ISafetyreport) {
-		getISafetyreports().remove(ISafetyreport);
-		ISafetyreport.setIIchicsrmessage(null);
+		getSafetyReports().remove(ISafetyreport);
+		ISafetyreport.setIchicsrMessage(null);
 
 		return ISafetyreport;
 	}

@@ -1,6 +1,12 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlIDREF;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,24 +18,30 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="I_SAFETYREPORTS")
 @NamedQuery(name="SafetyReports.findAll", query="SELECT s FROM SafetyReports s")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class SafetyReports implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
+    private static final long serialVersionUID = 2389207372789581954L;
+
+    @EmbeddedId
+    @XmlTransient
 	private SafetyReportsPK id;
 
 	@Column(precision=22)
+    @XmlTransient
 	private BigDecimal commitrollback;
 
 	//bi-directional many-to-one association to IchicsrMessage
 	@ManyToOne
 	@JoinColumn(name="FK_ICHICSRMESSAGE", nullable=false, insertable=false, updatable=false)
-	private IchicsrMessage IIchicsrmessage;
+    @XmlInverseReference(mappedBy = "safetyReports")
+	private IchicsrMessage ichicsrMessage;
 
 	//bi-directional many-to-one association to SafetyReport
 	@ManyToOne
 	@JoinColumn(name="FK_SAFETYREPORT", nullable=false, insertable=false, updatable=false)
-	private SafetyReport ISafetyreport;
+    @XmlIDREF
+	private SafetyReport safetyReport;
 
 	public SafetyReports() {
 	}
@@ -50,20 +62,20 @@ public class SafetyReports implements Serializable {
 		this.commitrollback = commitrollback;
 	}
 
-	public IchicsrMessage getIIchicsrmessage() {
-		return this.IIchicsrmessage;
+	public IchicsrMessage getIchicsrMessage() {
+		return this.ichicsrMessage;
 	}
 
-	public void setIIchicsrmessage(IchicsrMessage IIchicsrmessage) {
-		this.IIchicsrmessage = IIchicsrmessage;
+	public void setIchicsrMessage(IchicsrMessage IIchicsrmessage) {
+		this.ichicsrMessage = IIchicsrmessage;
 	}
 
-	public SafetyReport getISafetyreport() {
-		return this.ISafetyreport;
+	public SafetyReport getSafetyReport() {
+		return this.safetyReport;
 	}
 
-	public void setISafetyreport(SafetyReport ISafetyreport) {
-		this.ISafetyreport = ISafetyreport;
+	public void setSafetyReport(SafetyReport ISafetyreport) {
+		this.safetyReport = ISafetyreport;
 	}
 
 }

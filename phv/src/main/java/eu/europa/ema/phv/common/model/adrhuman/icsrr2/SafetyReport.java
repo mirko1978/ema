@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -14,160 +17,223 @@ import java.util.List;
 @Entity
 @Table(name="I_SAFETYREPORT")
 @NamedQuery(name="SafetyReport.findAll", query="SELECT s FROM SafetyReport s")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "safetyreport")
 public class SafetyReport implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = -6618317353731978764L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkSafetyreport;
 
 	@Column(precision=1)
+    @XmlElement(name = "additionaldocument")
 	private BigDecimal additionaldocument;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal blinded;
 
 	@Column(name="BLINDED_SUGGESTED", precision=1)
+    @XmlTransient
 	private BigDecimal blindedSuggested;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal blindedmrec;
 
 	@Column(precision=1)
+    @XmlElement(name = "casenullification")
 	private BigDecimal casenullification;
 
 	@Column(length=100)
+    @XmlTransient
 	private String casenumber;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal casetype;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal dataquality;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal dataqualitymrec;
 
 	@Column(length=100)
+    @XmlElement(name = "documentlist")
 	private String documentlist;
 
 	@Column(precision=1)
+    @XmlElement(name ="duplicate")
 	private BigDecimal duplicate;
 
 	@Column(precision=1)
+    @XmlElement(name = "fulfillexpeditecriteria")
 	private BigDecimal fulfillexpeditecriteria;
 
 	@Column(precision=22)
+    @XmlTransient
 	private BigDecimal isblindedchanged;
 
 	@Column(precision=1)
+    @XmlElement(name = "medicallyconfirm")
 	private BigDecimal medicallyconfirm;
 
 	@Column(precision=2)
+    @XmlTransient
 	private BigDecimal messagetype;
 
 	@Column(length=200)
+    @XmlElement(name = "nullificationreason")
 	private String nullificationreason;
 
 	@Column(length=2)
+    @XmlElement(name="occurcountry")
 	private String occurcountry;
 
 	@Temporal(TemporalType.DATE)
+    @XmlTransient
 	private Date officialreceivedate;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal officialreceivedatemrec;
 
 	@Column(length=2)
+    @XmlElement(name = "primarysourcecountry")
 	private String primarysourcecountry;
 
 	@Column(length=14)
+    @XmlElement(name = "receiptdate")
 	private String receiptdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "receiptdateformat")
 	private BigDecimal receiptdateformat;
 
 	@Column(length=14)
+    @XmlElement(name = "receivedate")
 	private String receivedate;
 
 	@Column(precision=3)
+    @XmlElement(name = "receivedateformat")
 	private BigDecimal receivedateformat;
 
 	@Column(precision=1)
+    @XmlElement(name="reporttype")
 	private BigDecimal reporttype;
 
 	@Column(length=100)
+    @XmlElement(name="safetyreportid",required = true)
 	private String safetyreportid;
 
 	@Column(length=2)
+    @XmlElement(name = "safetyreportversion")
 	private String safetyreportversion;
 
 	@Column(precision=1)
+    @XmlElement(name = "serious")
 	private BigDecimal serious;
 
 	@Column(precision=1)
+    @XmlElement(name = "seriousnesscongenitalanomali")
 	private BigDecimal seriousnesscongenitalanomali;
 
 	@Column(precision=1)
+    @XmlElement(name = "seriousnessdeath")
 	private BigDecimal seriousnessdeath;
 
 	@Column(precision=1)
+    @XmlElement(name = "seriousnessdisabling")
 	private BigDecimal seriousnessdisabling;
 
 	@Column(precision=1)
+    @XmlElement(name = "seriousnesshospitalization")
 	private BigDecimal seriousnesshospitalization;
 
 	@Column(precision=1)
+    @XmlElement(name = "seriousnesslifethreatening")
 	private BigDecimal seriousnesslifethreatening;
 
 	@Column(precision=1)
+    @XmlElement(name = "seriousnessother")
 	private BigDecimal seriousnessother;
 
 	@Column(length=14)
+    @XmlElement(name="transmissiondate")
 	private String transmissiondate;
 
 	@Column(precision=3)
+    @XmlElement(name="transmissiondateformat")
 	private BigDecimal transmissiondateformat;
+
+    @Transient
+    @XmlElement(name = "authoritynumb")
+    private String authoritynumb;
+
+    @Transient
+    @XmlElement(name = "companynumb")
+    private String companynumb;
+
+    @Transient
+    @XmlElement(name = "clusterduplicate")
+    private String clusterduplicate;
+
 
 	//bi-directional one-to-one association to Cluster
 	@OneToOne(mappedBy="ISafetyreport")
+    @XmlTransient
 	private Cluster ICluster;
 
 	//bi-directional many-to-one association to FlagStatus
 	@OneToMany(mappedBy="ISafetyreport")
+    @XmlTransient
 	private List<FlagStatus> IFlagstatuses;
 
 	//bi-directional many-to-one association to LinkedReport
 	@OneToMany(mappedBy="ISafetyreport")
+    @XmlElement(name = "linkedreport")
 	private List<LinkedReport> ILinkedreports;
 
 	//bi-directional one-to-one association to Patient
 	@OneToOne(mappedBy="ISafetyreport")
+    @XmlElement(required = true, name = "patient")
 	private Patient IPatient;
 
 	//bi-directional many-to-one association to PrimarySource
 	@OneToMany(mappedBy="ISafetyreport")
+    @XmlElement(required = true, name = "primarysource")
 	private List<PrimarySource> IPrimarysources;
 
 	//bi-directional one-to-one association to Receiver
 	@OneToOne(mappedBy="ISafetyreport")
+    @XmlElement(required = true, name = "receiver")
 	private Receiver IReceiver;
 
 	//bi-directional one-to-one association to ReportAck
 	@OneToOne(mappedBy="ISafetyreport")
+    @XmlTransient
 	private ReportAck IReportack;
 
 	//bi-directional many-to-one association to ReportDuplicate
 	@OneToMany(mappedBy="ISafetyreport")
+    @XmlElement(name = "reportduplicate")
 	private List<ReportDuplicate> IReportduplicates;
 
 	//bi-directional many-to-one association to SafetyReports
-	@OneToMany(mappedBy="ISafetyreport")
+	@OneToMany(mappedBy= "safetyReport")
+    @XmlInverseReference(mappedBy = "safetyReport")
 	private List<SafetyReports> ISafetyreports;
 
 	//bi-directional one-to-one association to Sender
 	@OneToOne(mappedBy="ISafetyreport")
+    @XmlElement(required = true, name = "sender")
 	private Sender ISender;
 
 	public SafetyReport() {
@@ -599,14 +665,14 @@ public class SafetyReport implements Serializable {
 
 	public SafetyReports addISafetyreport(SafetyReports ISafetyreport) {
 		getISafetyreports().add(ISafetyreport);
-		ISafetyreport.setISafetyreport(this);
+		ISafetyreport.setSafetyReport(this);
 
 		return ISafetyreport;
 	}
 
 	public SafetyReports removeISafetyreport(SafetyReports ISafetyreport) {
 		getISafetyreports().remove(ISafetyreport);
-		ISafetyreport.setISafetyreport(null);
+		ISafetyreport.setSafetyReport(null);
 
 		return ISafetyreport;
 	}

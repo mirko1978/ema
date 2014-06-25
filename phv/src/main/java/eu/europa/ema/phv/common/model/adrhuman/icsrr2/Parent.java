@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,62 +15,80 @@ import java.util.List;
  */
 @Entity
 @Table(name="I_PARENT")
-@NamedQuery(name="IParent.findAll", query="SELECT i FROM IParent i")
-public class IParent implements Serializable {
-	private static final long serialVersionUID = 1L;
+@NamedQuery(name="IParent.findAll", query="SELECT i FROM Parent i")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "parent")
+public class Parent implements Serializable {
 
-	@Id
+    private static final long serialVersionUID = -9132283888860989378L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkSafetyreport;
 
 	@Column(precision=22)
+    @XmlElement(name = "parentage")
 	private BigDecimal parentage;
 
 	@Column(precision=3)
+    @XmlElement(name = "parentageunit")
 	private BigDecimal parentageunit;
 
 	@Column(length=56)
+    @XmlElement(name = "parentbirthdate")
 	private String parentbirthdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "parentbirthdateformat")
 	private BigDecimal parentbirthdateformat;
 
 	@Column(precision=22)
+    @XmlElement(name = "parentheight")
 	private BigDecimal parentheight;
 
 	@Column(length=40)
+    @XmlElement(name = "parentidentification")
 	private String parentidentification;
 
 	@Column(length=56)
+    @XmlElement(name = "parentlastmenstrualdate")
 	private String parentlastmenstrualdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "parentlastmenstrualdateformat")
 	private BigDecimal parentlastmenstrualdateformat;
 
 	@Lob
+    @XmlElement(name = "parentmedicalrelevanttext")
 	private String parentmedicalrelevanttext;
 
 	@Column(precision=1)
+    @XmlElement(name = "parentsex")
 	private BigDecimal parentsex;
 
 	@Column(precision=22)
+    @XmlElement(name = "parentweight")
 	private BigDecimal parentweight;
 
 	//bi-directional one-to-one association to Patient
 	@OneToOne
 	@JoinColumn(name="PK_SAFETYREPORT", nullable=false, insertable=false, updatable=false)
+    @XmlInverseReference(mappedBy = "parent")
 	private Patient IPatient;
 
 	//bi-directional many-to-one association to ParentMedicalHistory
 	@OneToMany(mappedBy="IParent")
+    @XmlElement(name = "parentmedicalhistoryepisode")
 	private List<ParentMedicalHistory> IParentmedicalhistories;
 
 	//bi-directional many-to-one association to ParentPastDrugTherapy
 	@OneToMany(mappedBy="IParent")
+    @XmlElement(name = "parentpastdrugtherapy")
 	private List<ParentPastDrugTherapy> IParentpastdrugtherapies;
 
-	public IParent() {
+	public Parent() {
 	}
 
 	public long getPkSafetyreport() {
@@ -184,14 +205,14 @@ public class IParent implements Serializable {
 
 	public ParentMedicalHistory addIParentmedicalhistory(ParentMedicalHistory IParentmedicalhistory) {
 		getIParentmedicalhistories().add(IParentmedicalhistory);
-		IParentmedicalhistory.setIParent(this);
+		IParentmedicalhistory.setParent(this);
 
 		return IParentmedicalhistory;
 	}
 
 	public ParentMedicalHistory removeIParentmedicalhistory(ParentMedicalHistory IParentmedicalhistory) {
 		getIParentmedicalhistories().remove(IParentmedicalhistory);
-		IParentmedicalhistory.setIParent(null);
+		IParentmedicalhistory.setParent(null);
 
 		return IParentmedicalhistory;
 	}
@@ -206,14 +227,14 @@ public class IParent implements Serializable {
 
 	public ParentPastDrugTherapy addIParentpastdrugtherapy(ParentPastDrugTherapy IParentpastdrugtherapy) {
 		getIParentpastdrugtherapies().add(IParentpastdrugtherapy);
-		IParentpastdrugtherapy.setIParent(this);
+		IParentpastdrugtherapy.setParent(this);
 
 		return IParentpastdrugtherapy;
 	}
 
 	public ParentPastDrugTherapy removeIParentpastdrugtherapy(ParentPastDrugTherapy IParentpastdrugtherapy) {
 		getIParentpastdrugtherapies().remove(IParentpastdrugtherapy);
-		IParentpastdrugtherapy.setIParent(null);
+		IParentpastdrugtherapy.setParent(null);
 
 		return IParentpastdrugtherapy;
 	}

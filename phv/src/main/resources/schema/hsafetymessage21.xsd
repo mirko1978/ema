@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 (http://www.altova.com) by ema user (European Medicines Agency) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://eudravigilance.ema.europa.eu/schema/1.0/hsafetymessage21" xmlns:hsmt="http://eudravigilance.ema.europa.eu/schema/1.0/hsafetymessagetype21" targetNamespace="http://eudravigilance.ema.europa.eu/schema/1.0/hsafetymessage21" elementFormDefault="qualified">
+	<xs:import namespace="http://eudravigilance.ema.europa.eu/schema/1.0/hsafetymessagetype21" schemaLocation="hsafetymessagetype21.xsd"/>
+	<xs:element name="ichicsr">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:ichicsrType">
+					<xs:sequence>
+						<xs:element ref="ichicsrmessageheader" minOccurs="0"/>
+						<xs:element ref="safetyreport" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ichicsrmessageheader">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:ichicsrmessageheaderType">
+					<xs:sequence>
+						<xs:element name="messagetype" type="hsmt:messagetypeType" minOccurs="0"/>
+						<xs:element name="messageformatversion" type="hsmt:messageformatversionType" minOccurs="0"/>
+						<xs:element name="messageformatrelease" type="hsmt:messageformatreleaseType" minOccurs="0"/>
+						<xs:element name="messagenumb" type="hsmt:messagenumbType" minOccurs="0"/>
+						<xs:element name="messagesenderidentifier" type="hsmt:messagesenderidentifierType" minOccurs="0"/>
+						<xs:element name="messagereceiveridentifier" type="hsmt:messagereceiveridentifierType" minOccurs="0"/>
+						<xs:element name="messagedateformat" type="hsmt:messagedateformatType" minOccurs="0"/>
+						<xs:element name="messagedate" type="hsmt:messagedateType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="safetyreport">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:safetyreportType">
+					<xs:sequence>
+						<xs:element name="safetyreportversion" type="hsmt:safetyreportversionType" minOccurs="0"/>
+						<xs:element name="safetyreportid" type="hsmt:safetyreportidType" minOccurs="0"/>
+						<xs:element name="primarysourcecountry" type="hsmt:primarysourcecountryType" minOccurs="0"/>
+						<xs:element name="occurcountry" type="hsmt:occurcountryType" minOccurs="0"/>
+						<xs:element name="transmissiondateformat" type="hsmt:transmissiondateformatType" minOccurs="0"/>
+						<xs:element name="transmissiondate" type="hsmt:transmissiondateType" minOccurs="0"/>
+						<xs:element name="reporttype" type="hsmt:reporttypeType" minOccurs="0"/>
+						<xs:element name="serious" type="hsmt:seriousType" minOccurs="0"/>
+						<xs:element name="seriousnessdeath" type="hsmt:seriousnessdeathType" minOccurs="0"/>
+						<xs:element name="seriousnesslifethreatening" type="hsmt:seriousnesslifethreateningType" minOccurs="0"/>
+						<xs:element name="seriousnesshospitalization" type="hsmt:seriousnesshospitalizationType" minOccurs="0"/>
+						<xs:element name="seriousnessdisabling" type="hsmt:seriousnessdisablingType" minOccurs="0"/>
+						<xs:element name="seriousnesscongenitalanomali" type="hsmt:seriousnesscongenitalanomaliType" minOccurs="0"/>
+						<xs:element name="seriousnessother" type="hsmt:seriousnessotherType" minOccurs="0"/>
+						<xs:element name="receivedateformat" type="hsmt:receivedateformatType" minOccurs="0"/>
+						<xs:element name="receivedate" type="hsmt:receivedateType" minOccurs="0"/>
+						<xs:element name="receiptdateformat" type="hsmt:receiptdateformatType" minOccurs="0"/>
+						<xs:element name="receiptdate" type="hsmt:receiptdateType" minOccurs="0"/>
+						<xs:element name="additionaldocument" type="hsmt:additionaldocumentType" minOccurs="0"/>
+						<xs:element name="documentlist" type="hsmt:documentlistType" minOccurs="0"/>
+						<xs:element name="fulfillexpeditecriteria" type="hsmt:fulfillexpeditecriteriaType" minOccurs="0"/>
+						<xs:element name="authoritynumb" type="hsmt:authoritynumbType" minOccurs="0"/>
+						<xs:element name="companynumb" type="hsmt:companynumbType" minOccurs="0"/>
+						<xs:element name="duplicate" type="hsmt:duplicateType" minOccurs="0"/>
+						<xs:element name="casenullification" type="hsmt:casenullificationType" minOccurs="0"/>
+						<xs:element name="nullificationreason" type="hsmt:nullificationreasonType" minOccurs="0"/>
+						<xs:element name="medicallyconfirm" type="hsmt:medicallyconfirmType" minOccurs="0"/>
+						<xs:sequence>
+							<xs:element ref="reportduplicate" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="linkedreport" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="primarysource" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="sender" minOccurs="0"/>
+							<xs:element ref="receiver" minOccurs="0"/>
+							<xs:element ref="patient" minOccurs="0"/>
+						</xs:sequence>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reportduplicate">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:reportduplicateType">
+					<xs:sequence>
+						<xs:element name="duplicatesource" type="hsmt:duplicatesourceType" minOccurs="0"/>
+						<xs:element name="duplicatenumb" type="hsmt:duplicatenumbType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="linkedreport">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:linkedreportType">
+					<xs:sequence>
+						<xs:element name="linkreportnumb" type="hsmt:linkreportnumbType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="primarysource">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:primarysourceType">
+					<xs:sequence>
+						<xs:element name="reportertitle" type="hsmt:reportertitleType" minOccurs="0"/>
+						<xs:element name="reportergivename" type="hsmt:reportergivenameType" minOccurs="0"/>
+						<xs:element name="reportermiddlename" type="hsmt:reportermiddlenameType" minOccurs="0"/>
+						<xs:element name="reporterfamilyname" type="hsmt:reporterfamilynameType" minOccurs="0"/>
+						<xs:element name="reporterorganization" type="hsmt:reporterorganizationType" minOccurs="0"/>
+						<xs:element name="reporterdepartment" type="hsmt:reporterdepartmentType" minOccurs="0"/>
+						<xs:element name="reporterstreet" type="hsmt:reporterstreetType" minOccurs="0"/>
+						<xs:element name="reportercity" type="hsmt:reportercityType" minOccurs="0"/>
+						<xs:element name="reporterstate" type="hsmt:reporterstateType" minOccurs="0"/>
+						<xs:element name="reporterpostcode" type="hsmt:reporterpostcodeType" minOccurs="0"/>
+						<xs:element name="reportercountry" type="hsmt:reportercountryType" minOccurs="0"/>
+						<xs:element name="qualification" type="hsmt:qualificationType" minOccurs="0"/>
+						<xs:element name="literaturereference" type="hsmt:literaturereferenceType" minOccurs="0"/>
+						<xs:element name="studyname" type="hsmt:studynameType" minOccurs="0"/>
+						<xs:element name="sponsorstudynumb" type="hsmt:sponsorstudynumbType" minOccurs="0"/>
+						<xs:element name="observestudytype" type="hsmt:observestudytypeType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sender">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:senderType">
+					<xs:sequence>
+						<xs:element name="sendertype" type="hsmt:sendertypeType" minOccurs="0"/>
+						<xs:element name="senderorganization" type="hsmt:senderorganizationType" minOccurs="0"/>
+						<xs:element name="senderdepartment" type="hsmt:senderdepartmentType" minOccurs="0"/>
+						<xs:element name="sendertitle" type="hsmt:sendertitleType" minOccurs="0"/>
+						<xs:element name="sendergivename" type="hsmt:sendergivenameType" minOccurs="0"/>
+						<xs:element name="sendermiddlename" type="hsmt:sendermiddlenameType" minOccurs="0"/>
+						<xs:element name="senderfamilyname" type="hsmt:senderfamilynameType" minOccurs="0"/>
+						<xs:element name="senderstreetaddress" type="hsmt:senderstreetaddressType" minOccurs="0"/>
+						<xs:element name="sendercity" type="hsmt:sendercityType" minOccurs="0"/>
+						<xs:element name="senderstate" type="hsmt:senderstateType" minOccurs="0"/>
+						<xs:element name="senderpostcode" type="hsmt:senderpostcodeType" minOccurs="0"/>
+						<xs:element name="sendercountrycode" type="hsmt:sendercountrycodeType" minOccurs="0"/>
+						<xs:element name="sendertel" type="hsmt:sendertelType" minOccurs="0"/>
+						<xs:element name="sendertelextension" type="hsmt:sendertelextensionType" minOccurs="0"/>
+						<xs:element name="sendertelcountrycode" type="hsmt:sendertelcountrycodeType" minOccurs="0"/>
+						<xs:element name="senderfax" type="hsmt:senderfaxType" minOccurs="0"/>
+						<xs:element name="senderfaxextension" type="hsmt:senderfaxextensionType" minOccurs="0"/>
+						<xs:element name="senderfaxcountrycode" type="hsmt:senderfaxcountrycodeType" minOccurs="0"/>
+						<xs:element name="senderemailaddress" type="hsmt:senderemailaddressType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="receiver">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:receiverType">
+					<xs:sequence>
+						<xs:element name="receivertype" type="hsmt:receivertypeType" minOccurs="0"/>
+						<xs:element name="receiverorganization" type="hsmt:receiverorganizationType" minOccurs="0"/>
+						<xs:element name="receiverdepartment" type="hsmt:receiverdepartmentType" minOccurs="0"/>
+						<xs:element name="receivertitle" type="hsmt:receivertitleType" minOccurs="0"/>
+						<xs:element name="receivergivename" type="hsmt:receivergivenameType" minOccurs="0"/>
+						<xs:element name="receivermiddlename" type="hsmt:receivermiddlenameType" minOccurs="0"/>
+						<xs:element name="receiverfamilyname" type="hsmt:receiverfamilynameType" minOccurs="0"/>
+						<xs:element name="receiverstreetaddress" type="hsmt:receiverstreetaddressType" minOccurs="0"/>
+						<xs:element name="receivercity" type="hsmt:receivercityType" minOccurs="0"/>
+						<xs:element name="receiverstate" type="hsmt:receiverstateType" minOccurs="0"/>
+						<xs:element name="receiverpostcode" type="hsmt:receiverpostcodeType" minOccurs="0"/>
+						<xs:element name="receivercountrycode" type="hsmt:receivercountrycodeType" minOccurs="0"/>
+						<xs:element name="receivertel" type="hsmt:receivertelType" minOccurs="0"/>
+						<xs:element name="receivertelextension" type="hsmt:receivertelextensionType" minOccurs="0"/>
+						<xs:element name="receivertelcountrycode" type="hsmt:receivertelcountrycodeType" minOccurs="0"/>
+						<xs:element name="receiverfax" type="hsmt:receiverfaxType" minOccurs="0"/>
+						<xs:element name="receiverfaxextension" type="hsmt:receiverfaxextensionType" minOccurs="0"/>
+						<xs:element name="receiverfaxcountrycode" type="hsmt:receiverfaxcountrycodeType" minOccurs="0"/>
+						<xs:element name="receiveremailaddress" type="hsmt:receiveremailaddressType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="patient">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:patientType">
+					<xs:sequence>
+						<xs:element name="patientinitial" type="hsmt:patientinitialType" minOccurs="0"/>
+						<xs:element name="patientgpmedicalrecordnumb" type="hsmt:patientgpmedicalrecordnumbType" minOccurs="0"/>
+						<xs:element name="patientspecialistrecordnumb" type="hsmt:patientspecialistrecordnumbType" minOccurs="0"/>
+						<xs:element name="patienthospitalrecordnumb" type="hsmt:patienthospitalrecordnumbType" minOccurs="0"/>
+						<xs:element name="patientinvestigationnumb" type="hsmt:patientinvestigationnumbType" minOccurs="0"/>
+						<xs:element name="patientbirthdateformat" type="hsmt:patientbirthdateformatType" minOccurs="0"/>
+						<xs:element name="patientbirthdate" type="hsmt:patientbirthdateType" minOccurs="0"/>
+						<xs:element name="patientonsetage" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:ageType">
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="patientonsetageunit" type="hsmt:patientonsetageunitType" minOccurs="0"/>
+						<xs:element name="gestationperiod" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:gestationperiodType">
+										<xs:fractionDigits value="2"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="gestationperiodunit" type="hsmt:gestationperiodunitType" minOccurs="0"/>
+						<xs:element name="patientagegroup" type="hsmt:patientagegroupType" minOccurs="0"/>
+						<xs:element name="patientweight" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:patientweightType">
+										<xs:minExclusive value="0"/>
+										<xs:totalDigits value="6"/>
+										<xs:fractionDigits value="5"/>
+									</xs:restriction>
+									<!--
+										<xs:maxInclusive value="650"/>
+-->
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="patientheight" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:patientheightType">
+										<xs:maxInclusive value="250"/>
+										<xs:minExclusive value="0"/>
+										<xs:totalDigits value="3"/>
+										<xs:fractionDigits value="2"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="patientsex" type="hsmt:patientsexType" nillable="true" minOccurs="0"/>
+						<xs:element name="lastmenstrualdateformat" type="hsmt:lastmenstrualdateformatType" minOccurs="0"/>
+						<xs:element name="patientlastmenstrualdate" type="hsmt:patientlastmenstrualdateType" minOccurs="0"/>
+						<xs:element name="patientmedicalhistorytext" type="hsmt:patientmedicalhistorytextType" minOccurs="0"/>
+						<xs:element name="resultstestsprocedures" type="hsmt:resultstestsproceduresType" minOccurs="0"/>
+						<xs:sequence>
+							<xs:element ref="medicalhistoryepisode" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="patientpastdrugtherapy" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="patientdeath" minOccurs="0"/>
+							<xs:element ref="parent" minOccurs="0"/>
+							<xs:element ref="reaction" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="test" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="drug" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="summary" minOccurs="0"/>
+						</xs:sequence>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="medicalhistoryepisode">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:medicalhistoryepisodeType">
+					<xs:sequence>
+						<xs:element name="patientepisodenamemeddraversion" type="hsmt:patientepisodenamemeddraversionType" minOccurs="0"/>
+						<xs:element name="patientepisodename" type="hsmt:patientepisodenameType" minOccurs="0"/>
+						<xs:element name="patientmedicalstartdateformat" type="hsmt:patientmedicalstartdateformatType" minOccurs="0"/>
+						<xs:element name="patientmedicalstartdate" type="hsmt:patientmedicalstartdateType" minOccurs="0"/>
+						<xs:element name="patientmedicalcontinue" type="hsmt:patientmedicalcontinueType" minOccurs="0"/>
+						<xs:element name="patientmedicalenddateformat" type="hsmt:patientmedicalenddateformatType" minOccurs="0"/>
+						<xs:element name="patientmedicalenddate" type="hsmt:patientmedicalenddateType" minOccurs="0"/>
+						<xs:element name="patientmedicalcomment" type="hsmt:patientmedicalcommentType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="patientpastdrugtherapy">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:patientpastdrugtherapyType">
+					<xs:sequence>
+						<xs:element name="patientdrugname" type="hsmt:patientdrugnameType" minOccurs="0"/>
+						<xs:element name="patientdrugstartdateformat" type="hsmt:patientdrugstartdateformatType" minOccurs="0"/>
+						<xs:element name="patientdrugstartdate" type="hsmt:patientdrugstartdateType" minOccurs="0"/>
+						<xs:element name="patientdrugenddateformat" type="hsmt:patientdrugenddateformatType" minOccurs="0"/>
+						<xs:element name="patientdrugenddate" type="hsmt:patientdrugenddateType" minOccurs="0"/>
+						<xs:element name="patientindicationmeddraversion" type="hsmt:patientindicationmeddraversionType" minOccurs="0"/>
+						<xs:element name="patientdrugindication" type="hsmt:patientdrugindicationType" minOccurs="0"/>
+						<xs:element name="patientdrgreactionmeddraversion" type="hsmt:patientdrgreactionmeddraversionType" minOccurs="0"/>
+						<xs:element name="patientdrugreaction" type="hsmt:patientdrugreactionType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="patientdeath">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:patientdeathType">
+					<xs:sequence>
+						<xs:element name="patientdeathdateformat" type="hsmt:patientdeathdateformatType" minOccurs="0"/>
+						<xs:element name="patientdeathdate" type="hsmt:patientdeathdateType" minOccurs="0"/>
+						<xs:element name="patientautopsyyesno" type="hsmt:patientautopsyyesnoType" minOccurs="0"/>
+						<xs:sequence>
+							<xs:element ref="patientdeathcause" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="patientautopsy" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="patientdeathcause">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:patientdeathcauseType">
+					<xs:sequence>
+						<xs:element name="patientdeathreportmeddraversion" type="hsmt:patientdeathreportmeddraversionType" minOccurs="0"/>
+						<xs:element name="patientdeathreport" type="hsmt:patientdeathreportType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="patientautopsy">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:patientautopsyType">
+					<xs:sequence>
+						<xs:element name="patientdetermautopsmeddraversion" type="hsmt:patientdetermautopsmeddraversionType" minOccurs="0"/>
+						<xs:element name="patientdetermineautopsy" type="hsmt:patientdetermineautopsyType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="parent">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:parentType">
+					<xs:sequence>
+						<xs:element name="parentidentification" type="hsmt:parentidentificationType" minOccurs="0"/>
+						<xs:element name="parentbirthdateformat" type="hsmt:parentbirthdateformatType" minOccurs="0"/>
+						<xs:element name="parentbirthdate" type="hsmt:parentbirthdateType" minOccurs="0"/>
+						<xs:element name="parentage" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:ageType">
+										<xs:totalDigits value="2"/>
+										<xs:fractionDigits value="1"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="parentageunit" type="hsmt:parentageunitType" minOccurs="0"/>
+						<xs:element name="parentlastmenstrualdateformat" type="hsmt:parentlastmenstrualdateformatType" minOccurs="0"/>
+						<xs:element name="parentlastmenstrualdate" type="hsmt:parentlastmenstrualdateType" minOccurs="0"/>
+						<xs:element name="parentweight" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:parentweightType">
+										<xs:minExclusive value="0"/>
+										<xs:totalDigits value="6"/>
+										<xs:fractionDigits value="5"/>
+									</xs:restriction>
+									<!--
+										<xs:maxInclusive value="650"/>
+-->
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="parentheight" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:parentheightType">
+										<xs:maxInclusive value="250"/>
+										<xs:minExclusive value="0"/>
+										<xs:totalDigits value="3"/>
+										<xs:fractionDigits value="2"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="parentsex" type="hsmt:parentsexType" nillable="true" minOccurs="0"/>
+						<xs:element name="parentmedicalrelevanttext" type="hsmt:parentmedicalrelevanttextType" minOccurs="0"/>
+						<xs:sequence>
+							<xs:element ref="parentmedicalhistoryepisode" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="parentpastdrugtherapy" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="parentmedicalhistoryepisode">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:parentmedicalhistoryepisodeType">
+					<xs:sequence>
+						<xs:element name="parentmdepisodemeddraversion" type="hsmt:parentmdepisodemeddraversionType" minOccurs="0"/>
+						<xs:element name="parentmedicalepisodename" type="hsmt:parentmedicalepisodenameType" minOccurs="0"/>
+						<xs:element name="parentmedicalstartdateformat" type="hsmt:parentmedicalstartdateformatType" minOccurs="0"/>
+						<xs:element name="parentmedicalstartdate" type="hsmt:parentmedicalstartdateType" minOccurs="0"/>
+						<xs:element name="parentmedicalcontinue" type="hsmt:parentmedicalcontinueType" minOccurs="0"/>
+						<xs:element name="parentmedicalenddateformat" type="hsmt:parentmedicalenddateformatType" minOccurs="0"/>
+						<xs:element name="parentmedicalenddate" type="hsmt:parentmedicalenddateType" minOccurs="0"/>
+						<xs:element name="parentmedicalcomment" type="hsmt:parentmedicalcommentType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="parentpastdrugtherapy">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:parentpastdrugtherapyType">
+					<xs:sequence>
+						<xs:element name="parentdrugname" type="hsmt:parentdrugnameType" minOccurs="0"/>
+						<xs:element name="parentdrugstartdateformat" type="hsmt:parentdrugstartdateformatType" minOccurs="0"/>
+						<xs:element name="parentdrugstartdate" type="hsmt:parentdrugstartdateType" minOccurs="0"/>
+						<xs:element name="parentdrugenddateformat" type="hsmt:parentdrugenddateformatType" minOccurs="0"/>
+						<xs:element name="parentdrugenddate" type="hsmt:parentdrugenddateType" minOccurs="0"/>
+						<xs:element name="parentdrgindicationmeddraversion" type="hsmt:parentdrgindicationmeddraversionType" minOccurs="0"/>
+						<xs:element name="parentdrugindication" type="hsmt:parentdrugindicationType" minOccurs="0"/>
+						<xs:element name="parentdrgreactionmeddraversion" type="hsmt:parentdrgreactionmeddraversionType" minOccurs="0"/>
+						<xs:element name="parentdrugreaction" type="hsmt:parentdrugreactionType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="reaction">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:reactionType">
+					<xs:sequence>
+						<xs:element name="primarysourcereaction" type="hsmt:primarysourcereactionType" minOccurs="0"/>
+						<xs:element name="reactionmeddraversionllt" type="hsmt:reactionmeddraversionlltType" minOccurs="0"/>
+						<xs:element name="reactionmeddrallt" type="hsmt:reactionmeddralltType" minOccurs="0"/>
+						<xs:element name="reactionmeddraversionpt" type="hsmt:reactionmeddraversionptType" minOccurs="0"/>
+						<xs:element name="reactionmeddrapt" type="hsmt:reactionmeddraptType" minOccurs="0"/>
+						<xs:element name="termhighlighted" type="hsmt:termhighlightedType" minOccurs="0"/>
+						<xs:element name="reactionstartdateformat" type="hsmt:reactionstartdateformatType" minOccurs="0"/>
+						<xs:element name="reactionstartdate" type="hsmt:reactionstartdateType" minOccurs="0"/>
+						<xs:element name="reactionenddateformat" type="hsmt:reactionenddateformatType" minOccurs="0"/>
+						<xs:element name="reactionenddate" type="hsmt:reactionenddateType" minOccurs="0"/>
+						<xs:element name="reactionduration" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:reactiondurationType">
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="reactiondurationunit" type="hsmt:reactiondurationunitType" minOccurs="0"/>
+						<xs:element name="reactionfirsttime" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:reactionfirsttimeType">
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="reactionfirsttimeunit" type="hsmt:reactionfirsttimeunitType" minOccurs="0"/>
+						<xs:element name="reactionlasttime" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:reactionlasttimeType">
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="reactionlasttimeunit" type="hsmt:reactionlasttimeunitType" minOccurs="0"/>
+						<xs:element name="reactionoutcome" type="hsmt:reactionoutcomeType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="test">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:testType">
+					<xs:sequence>
+						<xs:element name="testdateformat" type="hsmt:testdateformatType" minOccurs="0"/>
+						<xs:element name="testdate" type="hsmt:testdateType" minOccurs="0"/>
+						<xs:element name="testname" type="hsmt:testnameType" minOccurs="0"/>
+						<xs:element name="testresult" type="hsmt:testresultType" minOccurs="0"/>
+						<xs:element name="testunit" type="hsmt:testunitType" minOccurs="0"/>
+						<xs:element name="lowtestrange" type="hsmt:lowtestrangeType" minOccurs="0"/>
+						<xs:element name="hightestrange" type="hsmt:hightestrangeType" minOccurs="0"/>
+						<xs:element name="moreinformation" type="hsmt:moreinformationType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="drug">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:drugType">
+					<xs:sequence>
+						<xs:element name="drugcharacterization" type="hsmt:drugcharacterizationType" minOccurs="0"/>
+						<xs:element name="medicinalproduct" type="hsmt:medicinalproductType" minOccurs="0"/>
+						<xs:element name="obtaindrugcountry" type="hsmt:obtaindrugcountryType" minOccurs="0"/>
+						<xs:element name="drugbatchnumb" type="hsmt:drugbatchnumbType" minOccurs="0"/>
+						<xs:element name="drugauthorizationnumb" type="hsmt:drugauthorizationnumbType" minOccurs="0"/>
+						<xs:element name="drugauthorizationcountry" type="hsmt:drugauthorizationcountryType" minOccurs="0"/>
+						<xs:element name="drugauthorizationholder" type="hsmt:drugauthorizationholderType" minOccurs="0"/>
+						<xs:element name="drugstructuredosagenumb" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:drugstructuredosagenumbType">
+										<xs:fractionDigits value="7"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="drugstructuredosageunit" type="hsmt:drugstructuredosageunitType" minOccurs="0"/>
+						<xs:element name="drugseparatedosagenumb" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:drugseparatedosagenumbType">
+										<xs:fractionDigits value="2"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="drugintervaldosageunitnumb" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:drugintervaldosageunitnumbType">
+										<xs:fractionDigits value="2"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="drugintervaldosagedefinition" type="hsmt:drugintervaldosagedefinitionType" minOccurs="0"/>
+						<xs:element name="drugcumulativedosagenumb" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:drugcumulativedosagenumbType">
+										<xs:fractionDigits value="9"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="drugcumulativedosageunit" type="hsmt:drugcumulativedosageunitType" minOccurs="0"/>
+						<xs:element name="drugdosagetext" type="hsmt:drugdosagetextType" minOccurs="0"/>
+						<xs:element name="drugdosageform" type="hsmt:drugdosageformType" minOccurs="0"/>
+						<xs:element name="drugadministrationroute" type="hsmt:drugadministrationrouteType" minOccurs="0"/>
+						<xs:element name="drugparadministration" type="hsmt:drugparadministrationType" minOccurs="0"/>
+						<xs:element name="reactiongestationperiod" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:reactiongestationperiodType">
+										<xs:fractionDigits value="2"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="reactiongestationperiodunit" type="hsmt:reactiongestationperiodunitType" minOccurs="0"/>
+						<xs:element name="drugindicationmeddraversion" type="hsmt:drugindicationmeddraversionType" minOccurs="0"/>
+						<xs:element name="drugindication" type="hsmt:drugindicationType" minOccurs="0"/>
+						<xs:element name="drugstartdateformat" type="hsmt:drugstartdateformatType" minOccurs="0"/>
+						<xs:element name="drugstartdate" type="hsmt:drugstartdateType" minOccurs="0"/>
+						<xs:element name="drugstartperiod" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:drugstartperiodType">
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="drugstartperiodunit" type="hsmt:drugstartperiodunitType" minOccurs="0"/>
+						<xs:element name="druglastperiod" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:druglastperiodType">
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="druglastperiodunit" type="hsmt:druglastperiodunitType" minOccurs="0"/>
+						<xs:element name="drugenddateformat" type="hsmt:drugenddateformatType" minOccurs="0"/>
+						<xs:element name="drugenddate" type="hsmt:drugenddateType" minOccurs="0"/>
+						<xs:element name="drugtreatmentduration" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="hsmt:drugtreatmentdurationType">
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="drugtreatmentdurationunit" type="hsmt:drugtreatmentdurationunitType" minOccurs="0"/>
+						<xs:element name="actiondrug" type="hsmt:actiondrugType" minOccurs="0"/>
+						<xs:element name="drugrecurreadministration" type="hsmt:drugrecurreadministrationType" minOccurs="0"/>
+						<xs:element name="drugadditional" type="hsmt:drugadditionalType" minOccurs="0"/>
+						<xs:sequence>
+							<xs:element ref="activesubstance" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="drugrecurrence" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element ref="drugreactionrelatedness" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="activesubstance">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:activesubstanceType">
+					<xs:sequence>
+						<xs:element name="activesubstancename" type="hsmt:activesubstancenameType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="drugrecurrence">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:drugrecurrenceType">
+					<xs:sequence>
+						<xs:element name="drugrecuractionmeddraversion" type="hsmt:drugrecuractionmeddraversionType" minOccurs="0"/>
+						<xs:element name="drugrecuraction" type="hsmt:drugrecuractionType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="drugreactionrelatedness">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:drugreactionrelatednessType">
+					<xs:sequence>
+						<xs:element name="drugreactionassesmeddraversion" type="hsmt:drugreactionassesmeddraversionType" minOccurs="0"/>
+						<xs:element name="drugreactionasses" type="hsmt:drugreactionassesType" minOccurs="0"/>
+						<xs:element name="drugassessmentsource" type="hsmt:drugassessmentsourceType" minOccurs="0"/>
+						<xs:element name="drugassessmentmethod" type="hsmt:drugassessmentmethodType" minOccurs="0"/>
+						<xs:element name="drugresult" type="hsmt:drugresultType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="summary">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="hsmt:summaryType">
+					<xs:sequence>
+						<xs:element name="narrativeincludeclinical" type="hsmt:narrativeincludeclinicalType" minOccurs="0"/>
+						<xs:element name="reportercomment" type="hsmt:reportercommentType" minOccurs="0"/>
+						<xs:element name="senderdiagnosismeddraversion" type="hsmt:senderdiagnosismeddraversionType" minOccurs="0"/>
+						<xs:element name="senderdiagnosis" type="hsmt:senderdiagnosisType" minOccurs="0"/>
+						<xs:element name="sendercomment" type="hsmt:sendercommentType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

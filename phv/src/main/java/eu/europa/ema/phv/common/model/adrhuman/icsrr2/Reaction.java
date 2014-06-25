@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,65 +15,94 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="I_REACTION")
 @NamedQuery(name="Reaction.findAll", query="SELECT r FROM Reaction r")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "reaction")
 public class Reaction implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = -1167480858653158715L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_REACTION", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkReaction;
 
 	@Column(length=200)
+    @XmlElement(name = "primarysourcereaction")
 	private String primarysourcereaction;
 
 	@Column(precision=22)
+    @XmlElement(name = "reactionduration")
 	private BigDecimal reactionduration;
 
 	@Column(precision=3)
+    @XmlElement(name = "reactiondurationunit")
 	private BigDecimal reactiondurationunit;
 
 	@Column(length=14)
+    @XmlElement(name = "reactionenddate")
 	private String reactionenddate;
 
 	@Column(precision=3)
+    @XmlElement(name = "reactionenddateformat")
 	private BigDecimal reactionenddateformat;
 
 	@Column(precision=22)
+    @XmlElement(name = "reactionfirsttime")
 	private BigDecimal reactionfirsttime;
 
 	@Column(precision=3)
+    @XmlElement(name = "reactionfirsttimeunit")
 	private BigDecimal reactionfirsttimeunit;
 
 	@Column(precision=22)
+    @XmlElement(name = "reactionlasttime")
 	private BigDecimal reactionlasttime;
 
 	@Column(precision=3)
+    @XmlElement(name = "reactionlasttimeunit")
 	private BigDecimal reactionlasttimeunit;
 
 	@Column(precision=10)
+    @XmlElement(name = "reactionmeddrallt")
 	private BigDecimal reactionmeddrallt;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal reactionmeddralltct;
 
 	@Column(precision=22)
+    @XmlElement(name = "reactionmeddraversionllt")
 	private BigDecimal reactionmeddraversionllt;
 
 	@Column(precision=1)
+    @XmlElement(name = "reactionoutcome")
 	private BigDecimal reactionoutcome;
 
 	@Column(length=14)
+    @XmlElement(name = "reactionstartdate")
 	private String reactionstartdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "reactionstartdateformat")
 	private BigDecimal reactionstartdateformat;
 
 	@Column(precision=1)
+    @XmlElement(name = "termhighlighted")
 	private BigDecimal termhighlighted;
+
+    @Transient
+    @XmlElement(name = "reactionmeddraversionpt")
+    private String reactionmeddraversionpt;
+
+    @Transient
+    @XmlElement(name = "reactionmeddrapt")
+    private String reactionmeddrapt;
 
 	//bi-directional many-to-one association to Patient
 	@ManyToOne
 	@JoinColumn(name="FK_SAFETYREPORT", nullable=false)
+    @XmlInverseReference(mappedBy = "IReactions")
 	private Patient IPatient;
 
 	public Reaction() {

@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,35 +15,46 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="I_SUMMARY")
 @NamedQuery(name="Summary.findAll", query="SELECT s FROM Summary s")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "summary")
 public class Summary implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = -2036493781447018899L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkSafetyreport;
 
 	@Lob
+    @XmlElement(name = "narrativeincludeclinical")
 	private String narrativeincludeclinical;
 
 	@Column(length=2000)
+    @XmlElement(name = "reportercomment")
 	private String reportercomment;
 
 	@Column(length=2000)
+    @XmlElement(name = "sendercomment")
 	private String sendercomment;
 
 	@Column(precision=10)
+    @XmlElement(name = "senderdiagnosis")
 	private BigDecimal senderdiagnosis;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal senderdiagnosisct;
 
 	@Column(precision=22)
+    @XmlElement(name = "senderdiagnosismeddraversion")
 	private BigDecimal senderdiagnosismv;
 
 	//bi-directional one-to-one association to Patient
 	@OneToOne
 	@JoinColumn(name="PK_SAFETYREPORT", nullable=false, insertable=false, updatable=false)
+    @XmlInverseReference(mappedBy = "ISummary")
 	private Patient IPatient;
 
 	public Summary() {

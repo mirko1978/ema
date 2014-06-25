@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -14,180 +17,240 @@ import java.util.List;
 @Entity
 @Table(name="I_DRUG")
 @NamedQuery(name="Drug.findAll", query="SELECT d FROM Drug d")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "drug")
 public class Drug implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = 908646845918748709L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_DRUG", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkDrug;
 
 	@Column(precision=1)
+    @XmlElement(name = "actiondrug")
 	private BigDecimal actiondrug;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal blinded;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal blindedmrec;
 
 	@Column(length=100)
+    @XmlElement(name = "drugadditional")
 	private String drugadditional;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugadministrationroute")
 	private BigDecimal drugadministrationroute;
 
 	@Column(length=2)
+    @XmlElement(name = "drugauthorizationcountry")
 	private String drugauthorizationcountry;
 
 	@Column(length=60)
+    @XmlElement(name = "drugauthorizationholder")
 	private String drugauthorizationholder;
 
 	@Column(length=35)
+    @XmlElement(name = "drugauthorizationnumb")
 	private String drugauthorizationnumb;
 
 	@Column(length=35)
+    @XmlElement(name = "drugbatchnumb")
 	private String drugbatchnumb;
 
 	@Column(precision=1)
+    @XmlElement(name = "drugcharacterization")
 	private BigDecimal drugcharacterization;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugcumulativedosagenumb")
 	private BigDecimal drugcumulativedosagenumb;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugcumulativedosageunit")
 	private BigDecimal drugcumulativedosageunit;
 
 	@Column(length=100)
+    @XmlTransient
 	private String drugdosageform;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugdosageform")
 	private BigDecimal drugdosageformcode;
 
 	@Column(length=100)
+    @XmlElement(name = "drugdosagetext")
 	private String drugdosagetext;
 
 	@Column(length=14)
+    @XmlElement(name = "drugenddate")
 	private String drugenddate;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugenddateformat")
 	private BigDecimal drugenddateformat;
 
 	@Column(precision=10)
+    @XmlElement(name = "drugindication")
 	private BigDecimal drugindication;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal drugindicationct;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal drugindicationmrec;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugindicationmeddraversion")
 	private BigDecimal drugindicationmv;
 
 	@Column(length=250)
+    @XmlTransient
 	private String drugindicationrecoded;
 
 	@Column(length=250)
+    @XmlTransient
 	private String drugindicationtext;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugintervaldosagedefinition")
 	private BigDecimal drugintervaldosagedefinition;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugintervaldosageunitnumb")
 	private BigDecimal drugintervaldosageunitnumb;
 
 	@Column(precision=22)
+    @XmlElement(name = "druglastperiod")
 	private BigDecimal druglastperiod;
 
 	@Column(precision=3)
+    @XmlElement(name = "druglastperiodunit")
 	private BigDecimal druglastperiodunit;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugparadministration")
 	private BigDecimal drugparadministration;
 
 	@Column(precision=1)
+    @XmlElement(name = "drugrecurreadministration")
 	private BigDecimal drugrecurreadministration;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugseparatedosagenumb")
 	private BigDecimal drugseparatedosagenumb;
 
 	@Column(length=14)
+    @XmlElement(name = "drugstartdate")
 	private String drugstartdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugstartdateformat")
 	private BigDecimal drugstartdateformat;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugstartperiod")
 	private BigDecimal drugstartperiod;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugstartperiodunit")
 	private BigDecimal drugstartperiodunit;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugstructuredosagenumb")
 	private BigDecimal drugstructuredosagenumb;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugstructuredosageunit")
 	private BigDecimal drugstructuredosageunit;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugtreatmentduration")
 	private BigDecimal drugtreatmentduration;
 
 	@Column(precision=3)
+    @XmlElement(name = "drugtreatmentdurationunit")
 	private BigDecimal drugtreatmentdurationunit;
 
 	@Column(name="FK_MODELDRUG", precision=10)
+    @XmlTransient
 	private BigDecimal fkModeldrug;
 
 	@Column(name="FK_QIDRUGINDICATION", precision=10)
+    @XmlTransient
 	private BigDecimal fkQidrugindication;
 
 	@Column(name="FK_QIMEDICINALPRODUCT", precision=10)
+    @XmlTransient
 	private BigDecimal fkQimedicinalproduct;
 
 	@Column(precision=22)
+    @XmlTransient
 	private BigDecimal isblindedchanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal isdrugindicationchanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal isdrugindicationrecoded;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ismedicinalproductchanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ismedicinalproductrecoded;
 
 	@Column(length=200)
+    @XmlElement(name = "medicinalproduct")
 	private String medicinalproduct;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal medicinalproductmrec;
 
 	@Column(length=200)
+    @XmlTransient
 	private String medicinalproductrecoded;
 
 	@Column(length=2)
+    @XmlElement(name = "obtaindrugcountry")
 	private String obtaindrugcountry;
 
 	@Column(name="PRODUCT_EVCODE", length=60)
+    @XmlTransient
 	private String productEvcode;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal productindexcode;
 
 	@Column(precision=22)
+    @XmlElement(name = "reactiongestationperiod")
 	private BigDecimal reactiongestationperiod;
 
 	@Column(precision=3)
+    @XmlElement(name = "reactiongestationperiodunit")
 	private BigDecimal reactiongestationperiodunit;
 
 	@Column(name="REC_CHANGED", precision=1)
+    @XmlTransient
 	private BigDecimal recChanged;
 
 	@Column(name="RECODING_STAGE", precision=22)
+    @XmlTransient
 	private BigDecimal recodingStage;
 
 	@Temporal(TemporalType.DATE)
@@ -196,24 +259,29 @@ public class Drug implements Serializable {
 
 	//bi-directional many-to-one association to ActiveSubstance
 	@OneToMany(mappedBy="IDrug")
+    @XmlElement(name = "activesubstance")
 	private List<ActiveSubstance> IActivesubstances;
 
 	//bi-directional many-to-one association to Patient
 	@ManyToOne
 	@JoinColumn(name="FK_SAFETYREPORT", nullable=false)
+    @XmlInverseReference(mappedBy = "IDrugs")
 	private Patient IPatient;
 
 	//bi-directional many-to-one association to DrugInterpreted
 	@OneToMany(mappedBy="IDrug")
+    @XmlTransient
 	private List<DrugInterpreted> IDruginterpreteds;
 
 	//bi-directional many-to-one association to DrugreActionRelated
 	@OneToMany(mappedBy="IDrug")
-	private List<DrugreActionRelated> IDrugreactionrelateds;
+    @XmlElement(name = "drugreactionrelatedness")
+	private List<DrugReactionRelated> IDrugreactionrelateds;
 
 	//bi-directional many-to-one association to DrugreCurrence
 	@OneToMany(mappedBy="IDrug")
-	private List<DrugreCurrence> IDrugrecurrences;
+    @XmlElement(name = "drugrecurrence")
+	private List<DrugRecurrence> IDrugrecurrences;
 
 	public Drug() {
 	}
@@ -734,44 +802,44 @@ public class Drug implements Serializable {
 		return IDruginterpreted;
 	}
 
-	public List<DrugreActionRelated> getIDrugreactionrelateds() {
+	public List<DrugReactionRelated> getIDrugreactionrelateds() {
 		return this.IDrugreactionrelateds;
 	}
 
-	public void setIDrugreactionrelateds(List<DrugreActionRelated> IDrugreactionrelateds) {
+	public void setIDrugreactionrelateds(List<DrugReactionRelated> IDrugreactionrelateds) {
 		this.IDrugreactionrelateds = IDrugreactionrelateds;
 	}
 
-	public DrugreActionRelated addIDrugreactionrelated(DrugreActionRelated IDrugreactionrelated) {
+	public DrugReactionRelated addIDrugreactionrelated(DrugReactionRelated IDrugreactionrelated) {
 		getIDrugreactionrelateds().add(IDrugreactionrelated);
 		IDrugreactionrelated.setIDrug(this);
 
 		return IDrugreactionrelated;
 	}
 
-	public DrugreActionRelated removeIDrugreactionrelated(DrugreActionRelated IDrugreactionrelated) {
+	public DrugReactionRelated removeIDrugreactionrelated(DrugReactionRelated IDrugreactionrelated) {
 		getIDrugreactionrelateds().remove(IDrugreactionrelated);
 		IDrugreactionrelated.setIDrug(null);
 
 		return IDrugreactionrelated;
 	}
 
-	public List<DrugreCurrence> getIDrugrecurrences() {
+	public List<DrugRecurrence> getIDrugrecurrences() {
 		return this.IDrugrecurrences;
 	}
 
-	public void setIDrugrecurrences(List<DrugreCurrence> IDrugrecurrences) {
+	public void setIDrugrecurrences(List<DrugRecurrence> IDrugrecurrences) {
 		this.IDrugrecurrences = IDrugrecurrences;
 	}
 
-	public DrugreCurrence addIDrugrecurrence(DrugreCurrence IDrugrecurrence) {
+	public DrugRecurrence addIDrugrecurrence(DrugRecurrence IDrugrecurrence) {
 		getIDrugrecurrences().add(IDrugrecurrence);
 		IDrugrecurrence.setIDrug(this);
 
 		return IDrugrecurrence;
 	}
 
-	public DrugreCurrence removeIDrugrecurrence(DrugreCurrence IDrugrecurrence) {
+	public DrugRecurrence removeIDrugrecurrence(DrugRecurrence IDrugrecurrence) {
 		getIDrugrecurrences().remove(IDrugrecurrence);
 		IDrugrecurrence.setIDrug(null);
 

@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,110 +16,143 @@ import java.util.List;
 @Entity
 @Table(name="I_PATIENT")
 @NamedQuery(name="Patient.findAll", query="SELECT p FROM Patient p")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "patient")
 public class Patient implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = -1176720928733662387L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkSafetyreport;
 
 	@Column(precision=22)
+    @XmlElement(name = "gestationperiod")
 	private BigDecimal gestationperiod;
 
 	@Column(precision=3)
+    @XmlElement(name = "gestationperiodunit")
 	private BigDecimal gestationperiodunit;
 
 	@Column(precision=3)
+    @XmlElement(name = "lastmenstrualdateformat")
 	private BigDecimal lastmenstrualdateformat;
 
 	@Column(precision=1)
+    @XmlElement(name = "patientagegroup")
 	private BigDecimal patientagegroup;
 
 	@Column(length=56)
+    @XmlElement(name = "patientbirthdate")
 	private String patientbirthdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "patientbirthdateformat")
 	private BigDecimal patientbirthdateformat;
 
 	@Column(length=80)
+    @XmlElement(name = "patientgpmedicalrecordnumb")
 	private String patientgpmedicalrecordnumb;
 
 	@Column(precision=22)
+    @XmlElement(name = "patientheight")
 	private BigDecimal patientheight;
 
 	@Column(length=80)
+    @XmlElement(name = "patienthospitalrecordnumb")
 	private String patienthospitalrecordnumb;
 
 	@Column(length=40)
+    @XmlElement(name = "patientinitial")
 	private String patientinitial;
 
 	@Column(length=80)
+    @XmlElement(name = "patientinvestigationnumb")
 	private String patientinvestigationnumb;
 
 	@Column(length=56)
+    @XmlElement(name = "patientlastmenstrualdate")
 	private String patientlastmenstrualdate;
 
 	@Lob
+    @XmlElement(name = "patientmedicalhistorytext")
 	private String patientmedicalhistorytext;
 
 	@Column(precision=22)
+    @XmlElement(name = "patientonsetage")
 	private BigDecimal patientonsetage;
 
 	@Column(precision=3)
+    @XmlElement(name = "patientonsetageunit")
 	private BigDecimal patientonsetageunit;
 
 	@Column(precision=1)
+    @XmlElement(name = "patientsex")
 	private BigDecimal patientsex;
 
 	@Column(length=80)
+    @XmlElement(name = "patientspecialistrecordnumb")
 	private String patientspecialistrecordnumb;
 
 	@Column(precision=22)
+    @XmlElement(name = "patientweight")
 	private BigDecimal patientweight;
 
 	@Column(length=4000)
+    @XmlElement(name = "resultstestsprocedures")
 	private String resultstestsprocedures;
 
 	//bi-directional many-to-one association to Drug
 	@OneToMany(mappedBy="IPatient")
+    @XmlElement(required = true, name = "drug")
 	private List<Drug> IDrugs;
 
 	//bi-directional many-to-one association to DrugInterpreted
 	@OneToMany(mappedBy="IPatient")
+    @XmlTransient
 	private List<DrugInterpreted> IDruginterpreteds;
 
 	//bi-directional one-to-one association to IParent
 	@OneToOne(mappedBy="IPatient")
-	private IParent IParent;
+    @XmlElement(name = "parent")
+	private Parent parent;
 
 	//bi-directional one-to-one association to SafetyReport
 	@OneToOne
 	@JoinColumn(name="PK_SAFETYREPORT", nullable=false, insertable=false, updatable=false)
+    @XmlInverseReference(mappedBy = "IPatient")
 	private SafetyReport ISafetyreport;
 
 	//bi-directional one-to-one association to PatientDeath
 	@OneToOne(mappedBy="IPatient")
+    @XmlElement(name = "patientdeath")
 	private PatientDeath IPatientdeath;
 
 	//bi-directional many-to-one association to PatientMedicalHistory
 	@OneToMany(mappedBy="IPatient")
+    @XmlElement(name = "medicalhistoryepisode")
 	private List<PatientMedicalHistory> IPatientmedicalhistories;
 
 	//bi-directional many-to-one association to PatientPastDrugTherapy
 	@OneToMany(mappedBy="IPatient")
+    @XmlElement(name = "patientpastdrugtherapy")
 	private List<PatientPastDrugTherapy> IPatientpastdrugtherapies;
 
 	//bi-directional many-to-one association to Reaction
 	@OneToMany(mappedBy="IPatient")
+    @XmlElement(required = true, name = "reaction")
 	private List<Reaction> IReactions;
 
 	//bi-directional one-to-one association to Summary
 	@OneToOne(mappedBy="IPatient")
+    @XmlElement(name = "summary")
 	private Summary ISummary;
 
 	//bi-directional many-to-one association to Test
 	@OneToMany(mappedBy="IPatient")
+    @XmlElement(name = "test")
 	private List<Test> ITests;
 
 	public Patient() {
@@ -326,12 +362,12 @@ public class Patient implements Serializable {
 		return IDruginterpreted;
 	}
 
-	public IParent getIParent() {
-		return this.IParent;
+	public Parent getParent() {
+		return this.parent;
 	}
 
-	public void setIParent(IParent IParent) {
-		this.IParent = IParent;
+	public void setParent(Parent parent) {
+		this.parent = parent;
 	}
 
 	public SafetyReport getISafetyreport() {

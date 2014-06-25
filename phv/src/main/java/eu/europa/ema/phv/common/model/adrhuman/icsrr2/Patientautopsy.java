@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,26 +15,34 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="I_PATIENTAUTOPSY")
 @NamedQuery(name="PatientAutopsy.findAll", query="SELECT p FROM PatientAutopsy p")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "patientautopsy")
 public class PatientAutopsy implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = 366638283225756012L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_PATIENTAUTOPSY", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkPatientautopsy;
 
 	@Column(precision=22)
+    @XmlElement(name = "patientdetermautopsmeddraversion")
 	private BigDecimal patientdetermautopsmv;
 
 	@Column(precision=10)
+    @XmlElement(name = "patientdetermineautopsy")
 	private BigDecimal patientdetermineautopsy;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal patientdetermineautopsyct;
 
 	//bi-directional many-to-one association to PatientDeath
 	@ManyToOne
 	@JoinColumn(name="FK_SAFETYREPORT", nullable=false)
+    @XmlInverseReference(mappedBy = "IPatientautopsies")
 	private PatientDeath IPatientdeath;
 
 	public PatientAutopsy() {

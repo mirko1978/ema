@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.3 U (http://www.xmlspy.com) by Luca Falsiroli (BASSILICHI) -->
+<xs:schema xmlns:hstl="http://eudravigilance.ema.europa.eu/schema/1.0/hsimpletypelibrary" xmlns:hctl="http://eudravigilance.ema.europa.eu/schema/1.0/hcomplextypelibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://eudravigilance.ema.europa.eu/schema/1.0/hcomplextypelibrary" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://eudravigilance.ema.europa.eu/schema/1.0/hsimpletypelibrary" schemaLocation="hsimpletypelibrary.xsd"/>
+	<!-- Designed by Luca Falsiroli  - BASSILICHI ver 0.92-->
+	<xs:complexType name="actiondrugTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:actiondrugTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="administrationrouteTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:administrationrouteTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="countryTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:countryTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="dataformatTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:dataformatTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="decimalTypeC">
+		<xs:simpleContent>
+			<xs:extension base="xs:decimal">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="drugcharacterizationTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:drugcharacterizationTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="drugcumulativedosageunitTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:drugcumulativedosageunitTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="drugintervaldosagedefinitionTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:drugintervaldosagedefinitionTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="drugstructuredosageunitTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:drugstructuredosageunitTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="meddraversionTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:meddraversionTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="messageformatreleaseTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:messageformatreleaseTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="messageformatversionTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:messageformatversionTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="messagetypeTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:messagetypeTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="observestudyTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:observestudyTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="outcomeTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:outcomeTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="ageTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:ageTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="heightTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:heightTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="weightTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:weightTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="patientagegroupTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:patientagegroupTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="qualificationTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:qualificationTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="reportTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:reportTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="senderrecivertypeTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:senderrecivertypeTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="sexTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:sexTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="stringaTypeC">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="termhighlightedTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:termhighlightedTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="timeunitTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:timeunitTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="yesnoTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:yesnoTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="yesnounknownTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:yesnounknownTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="yesTypeC">
+		<xs:simpleContent>
+			<xs:extension base="hstl:yesTypeS">
+				<xs:attribute name="lang" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

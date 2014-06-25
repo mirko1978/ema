@@ -27,7 +27,7 @@ import static org.junit.Assert.assertEquals;
 public class XmlMarshalTest {
 
     @Test
-    public void marshallTest() throws JAXBException {
+    public void marshallHeaderTest() throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(IchicsrMessage.class);
 
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();

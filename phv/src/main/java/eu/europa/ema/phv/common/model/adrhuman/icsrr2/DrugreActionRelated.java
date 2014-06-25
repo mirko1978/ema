@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -11,57 +14,74 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="I_DRUGREACTIONRELATED")
-@NamedQuery(name="DrugreActionRelated.findAll", query="SELECT d FROM DrugreActionRelated d")
-public class DrugreActionRelated implements Serializable {
-	private static final long serialVersionUID = 1L;
+@NamedQuery(name="DrugReactionRelated.findAll", query="SELECT d FROM DrugReactionRelated d")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "drugreactionrelatedness")
+public class DrugReactionRelated implements Serializable {
 
-	@Id
+    private static final long serialVersionUID = -1293432034449347082L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_DRUGREACTIONRELATED", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkDrugreactionrelated;
 
 	@Column(length=35)
+    @XmlElement(name = "drugassessmentmethod")
 	private String drugassessmentmethod;
 
 	@Column(length=60)
+    @XmlElement(name = "drugassessmentsource")
 	private String drugassessmentsource;
 
 	@Column(precision=10)
+    @XmlElement(name = "drugreactionasses")
 	private BigDecimal drugreactionasses;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal drugreactionassesct;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal drugreactionassesmrec;
 
 	@Column(precision=22)
+    @XmlElement(name = "drugreactionassesmeddraversion")
 	private BigDecimal drugreactionassesmv;
 
 	@Column(length=250)
+    @XmlTransient
 	private String drugreactionassesrecoded;
 
 	@Column(length=250)
+    @XmlTransient
 	private String drugreactionassestext;
 
 	@Column(length=35)
+    @XmlElement(name = "drugresult")
 	private String drugresult;
 
 	@Column(name="FK_QIDRUGREACTIONASSES", precision=10)
+    @XmlTransient
 	private BigDecimal fkQidrugreactionasses;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal isdrugreactionasseschanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal isdrugreactionassesrecoded;
 
 	//bi-directional many-to-one association to Drug
 	@ManyToOne
 	@JoinColumn(name="FK_DRUG", nullable=false)
+    @XmlInverseReference(mappedBy = "IDrugreactionrelateds")
 	private Drug IDrug;
 
-	public DrugreActionRelated() {
+	public DrugReactionRelated() {
 	}
 
 	public long getPkDrugreactionrelated() {

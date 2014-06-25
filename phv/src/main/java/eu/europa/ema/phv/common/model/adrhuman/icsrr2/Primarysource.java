@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,63 +15,84 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="I_PRIMARYSOURCE")
 @NamedQuery(name="PrimarySource.findAll", query="SELECT p FROM PrimarySource p")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "primarysource")
 public class PrimarySource implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = -163305822979064045L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_PRIMARYSOURCE", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkPrimarysource;
 
 	@Column(name="CLEANED_LITERATUREREFERENCE", length=500)
+    @XmlTransient
 	private String cleanedLiteraturereference;
 
 	@Column(length=500)
+    @XmlElement(name = "literaturereference")
 	private String literaturereference;
 
 	@Column(precision=1)
+    @XmlElement(name = "observestudytype")
 	private BigDecimal observestudytype;
 
 	@Column(name="\"QUALIFICATION\"", precision=1)
+    @XmlElement(name = "qualification")
 	private BigDecimal qualification;
 
 	@Column(length=35)
+    @XmlElement(name = "reportercity")
 	private String reportercity;
 
 	@Column(length=2)
+    @XmlElement(name = "reportercountry")
 	private String reportercountry;
 
 	@Column(length=60)
+    @XmlElement(name = "reporterdepartment")
 	private String reporterdepartment;
 
 	@Column(length=100)
+    @XmlElement(name = "reporterfamilyname")
 	private String reporterfamilyname;
 
 	@Column(length=35)
+    @XmlElement(name = "reportergivename")
 	private String reportergivename;
 
 	@Column(length=15)
+    @XmlElement(name = "reportermiddlename")
 	private String reportermiddlename;
 
 	@Column(length=60)
+    @XmlElement(name = "reporterorganization")
 	private String reporterorganization;
 
 	@Column(length=15)
+    @XmlElement(name = "reporterpostcode")
 	private String reporterpostcode;
 
 	@Column(length=40)
+    @XmlElement(name = "reporterstate")
 	private String reporterstate;
 
 	@Column(length=100)
+    @XmlElement(name = "reporterstreet")
 	private String reporterstreet;
 
 	@Column(length=50)
+    @XmlElement(name = "reportertitle")
 	private String reportertitle;
 
 	@Column(length=35)
+    @XmlElement(name = "sponsorstudynumb")
 	private String sponsorstudynumb;
 
 	@Column(length=100)
+    @XmlElement(name = "studyname")
 	private String studyname;
 
 	@Column(length=500)
@@ -77,6 +101,7 @@ public class PrimarySource implements Serializable {
 	//bi-directional many-to-one association to SafetyReport
 	@ManyToOne
 	@JoinColumn(name="FK_SAFETYREPORT", nullable=false)
+    @XmlInverseReference(mappedBy = "IPrimarysources")
 	private SafetyReport ISafetyreport;
 
 	public PrimarySource() {

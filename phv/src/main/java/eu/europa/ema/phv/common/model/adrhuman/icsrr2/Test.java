@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,65 +15,86 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="I_TEST")
 @NamedQuery(name="Test.findAll", query="SELECT t FROM Test t")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "test")
 public class Test implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = 1991155154911306660L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_TEST", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkTest;
 
 	@Column(name="FK_QITESTNAME", precision=10)
+    @XmlTransient
 	private BigDecimal fkQitestname;
 
 	@Column(length=50)
+    @XmlElement(name = "hightestrange")
 	private String hightestrange;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal istestnamechanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal istestnamerecoded;
 
 	@Column(length=50)
+    @XmlElement(name = "lowtestrange")
 	private String lowtestrange;
 
 	@Column(precision=1)
+    @XmlElement(name = "moreinformation")
 	private BigDecimal moreinformation;
 
 	@Column(length=14)
+    @XmlElement(name = "testdate")
 	private String testdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "testdateformat")
 	private BigDecimal testdateformat;
 
 	@Column(length=100)
+    @XmlElement(name = "testname")
 	private String testname;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal testnamellt;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal testnamelltct;
 
 	@Column(length=100)
+    @XmlTransient
 	private String testnamemrec;
 
 	@Column(precision=22)
+    @XmlTransient
 	private BigDecimal testnamemv;
 
 	@Column(length=100)
+    @XmlTransient
 	private String testnamerecoded;
 
 	@Column(length=50)
+    @XmlElement(name = "testresult")
 	private String testresult;
 
 	@Column(length=35)
+    @XmlElement(name = "testunit")
 	private String testunit;
 
 	//bi-directional many-to-one association to Patient
 	@ManyToOne
 	@JoinColumn(name="FK_SAFETYREPORT", nullable=false)
+    @XmlInverseReference(mappedBy = "ITests")
 	private Patient IPatient;
 
 	public Test() {

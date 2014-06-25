@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,123 +16,163 @@ import java.util.Date;
 @Entity
 @Table(name="I_PATIENTPASTDRUGTHERAPY")
 @NamedQuery(name="PatientPastDrugTherapy.findAll", query="SELECT p FROM PatientPastDrugTherapy p")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "patientpastdrugtherapy")
 public class PatientPastDrugTherapy implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = -2262568773482052434L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_PATIENTPASTDRUGTHERAPY", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkPatientpastdrugtherapy;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal blinded;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal blindedmrec;
 
 	@Column(name="FK_QIPATIENTDRUGINDICATION", precision=10)
+    @XmlTransient
 	private BigDecimal fkQipatientdrugindication;
 
 	@Column(name="FK_QIPATIENTDRUGNAME", precision=10)
+    @XmlTransient
 	private BigDecimal fkQipatientdrugname;
 
 	@Column(name="FK_QIPATIENTDRUGREACTION", precision=10)
+    @XmlTransient
 	private BigDecimal fkQipatientdrugreaction;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal isblindedchanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ispatientdrugindicationchanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ispatientdrugindicationrecoded;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ispatientdrugnamechanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ispatientdrugnamerecoded;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ispatientdrugreactionchanged;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal ispatientdrugreactionrecoded;
 
 	@Column(precision=22)
+    @XmlElement(name = "patientdrgreactionmeddraversion")
 	private BigDecimal patientdrgreactionmv;
 
 	@Column(length=14)
+    @XmlElement(name = "patientdrugenddate")
 	private String patientdrugenddate;
 
 	@Column(precision=3)
+    @XmlElement(name = "patientdrugenddateformat")
 	private BigDecimal patientdrugenddateformat;
 
 	@Column(precision=10)
+    @XmlElement(name = "patientdrugindication")
 	private BigDecimal patientdrugindication;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal patientdrugindicationct;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal patientdrugindicationmrec;
 
 	@Column(length=250)
+    @XmlTransient
 	private String patientdrugindicationrecoded;
 
 	@Column(length=250)
+    @XmlTransient
 	private String patientdrugindicationtext;
 
 	@Column(length=200)
+    @XmlElement(name = "patientdrugname")
 	private String patientdrugname;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal patientdrugnamemrec;
 
 	@Column(length=200)
+    @XmlTransient
 	private String patientdrugnamerecoded;
 
 	@Column(precision=10)
+    @XmlElement(name = "patientdrugreaction")
 	private BigDecimal patientdrugreaction;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal patientdrugreactionct;
 
 	@Column(precision=1)
+    @XmlTransient
 	private BigDecimal patientdrugreactionmrec;
 
 	@Column(length=250)
+    @XmlTransient
 	private String patientdrugreactionrecoded;
 
 	@Column(length=250)
+    @XmlTransient
 	private String patientdrugreactiontext;
 
 	@Column(length=14)
+    @XmlElement(name = "patientdrugstartdate")
 	private String patientdrugstartdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "patientdrugstartdateformat")
 	private BigDecimal patientdrugstartdateformat;
 
 	@Column(precision=22)
+    @XmlElement(name = "patientindicationmeddraversion")
 	private BigDecimal patientindicationmv;
 
 	@Column(name="PRODUCT_EVCODE", length=60)
+    @XmlTransient
 	private String productEvcode;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal productindexcode;
 
 	@Column(name="RECODING_STAGE", precision=22)
+    @XmlTransient
 	private BigDecimal recodingStage;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="RECODING_STAMP")
+    @XmlTransient
 	private Date recodingStamp;
 
 	//bi-directional many-to-one association to Patient
 	@ManyToOne
 	@JoinColumn(name="FK_SAFETYREPORT", nullable=false)
+    @XmlInverseReference(mappedBy = "IPatientpastdrugtherapies")
 	private Patient IPatient;
 
 	public PatientPastDrugTherapy() {

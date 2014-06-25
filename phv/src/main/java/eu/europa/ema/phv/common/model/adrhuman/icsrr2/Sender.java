@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -12,77 +15,102 @@ import java.math.BigDecimal;
 @Entity
 @Table(name="I_SENDER")
 @NamedQuery(name="Sender.findAll", query="SELECT s FROM Sender s")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "sender")
 public class Sender implements Serializable {
-	private static final long serialVersionUID = 1L;
 
-	@Id
+    private static final long serialVersionUID = -7621291418384815070L;
+
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkSafetyreport;
 
 	@Column(length=35)
+    @XmlElement(name = "sendercity")
 	private String sendercity;
 
 	@Column(length=2)
+    @XmlElement(name = "sendercountrycode")
 	private String sendercountrycode;
 
 	@Column(length=60)
+    @XmlElement(name = "senderdepartment")
 	private String senderdepartment;
 
 	@Column(length=100)
+    @XmlElement(name = "senderemailaddress")
 	private String senderemailaddress;
 
 	@Column(length=35)
+    @XmlElement(name = "senderfamilyname")
 	private String senderfamilyname;
 
 	@Column(length=10)
+    @XmlElement(name = "senderfax")
 	private String senderfax;
 
 	@Column(length=3)
+    @XmlElement(name = "senderfaxcountrycode")
 	private String senderfaxcountrycode;
 
 	@Column(length=10)
+    @XmlElement(name = "senderfaxextension")
 	private String senderfaxextension;
 
 	@Column(length=35)
+    @XmlElement(name = "sendergivename")
 	private String sendergivename;
 
 	@Column(length=15)
+    @XmlElement(name = "sendermiddlename")
 	private String sendermiddlename;
 
 	@Column(length=60)
+    @XmlElement(name = "senderorganization")
 	private String senderorganization;
 
 	@Column(precision=10)
+    @XmlTransient
 	private BigDecimal senderorganizationcode;
 
 	@Column(length=15)
+    @XmlElement(name = "senderpostcode")
 	private String senderpostcode;
 
 	@Column(length=40)
+    @XmlElement(name = "senderstate")
 	private String senderstate;
 
 	@Column(length=100)
+    @XmlElement(name = "senderstreetaddress")
 	private String senderstreetaddress;
 
 	@Column(length=10)
+    @XmlElement(name = "sendertel")
 	private String sendertel;
 
 	@Column(length=3)
+    @XmlElement(name = "sendertelcountrycode")
 	private String sendertelcountrycode;
 
 	@Column(length=10)
+    @XmlElement(name = "sendertelextension")
 	private String sendertelextension;
 
 	@Column(length=10)
+    @XmlElement(name = "sendertitle")
 	private String sendertitle;
 
 	@Column(precision=1)
+    @XmlElement(name = "sendertype")
 	private BigDecimal sendertype;
 
 	//bi-directional one-to-one association to SafetyReport
 	@OneToOne
 	@JoinColumn(name="PK_SAFETYREPORT", nullable=false, insertable=false, updatable=false)
+    @XmlInverseReference(mappedBy = "ISender")
 	private SafetyReport ISafetyreport;
 
 	public Sender() {

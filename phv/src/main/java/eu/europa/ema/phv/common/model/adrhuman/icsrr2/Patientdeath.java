@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,34 +16,43 @@ import java.util.List;
 @Entity
 @Table(name="I_PATIENTDEATH")
 @NamedQuery(name="PatientDeath.findAll", query="SELECT p FROM PatientDeath p")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "patientdeath")
 public class PatientDeath implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 973264161185359482L;
 
-	@Id
+    @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @XmlTransient
 	private long pkSafetyreport;
 
 	@Column(precision=1)
+    @XmlElement(name = "patientautopsyyesno")
 	private BigDecimal patientautopsyyesno;
 
 	@Column(length=14)
+    @XmlElement(name = "patientdeathdate")
 	private String patientdeathdate;
 
 	@Column(precision=3)
+    @XmlElement(name = "patientdeathdateformat")
 	private BigDecimal patientdeathdateformat;
 
 	//bi-directional many-to-one association to PatientAutopsy
 	@OneToMany(mappedBy="IPatientdeath")
+    @XmlElement(name = "patientautopsy")
 	private List<PatientAutopsy> IPatientautopsies;
 
 	//bi-directional one-to-one association to Patient
 	@OneToOne
 	@JoinColumn(name="PK_SAFETYREPORT", nullable=false, insertable=false, updatable=false)
+    @XmlInverseReference(mappedBy = "IPatientdeath")
 	private Patient IPatient;
 
 	//bi-directional many-to-one association to PatientDeathCause
 	@OneToMany(mappedBy="IPatientdeath")
+    @XmlElement(name = "patientdeathcause")
 	private List<PatientDeathCause> IPatientdeathcauses;
 
 	public PatientDeath() {
