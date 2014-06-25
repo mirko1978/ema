@@ -21,18 +21,13 @@ import java.util.Map;
  * @since 24 Jun 2014 (creation date)
  */
 public class EvDateAdapter extends XmlAdapter<String, Date> {
-    private static final String DATE_204_FORMATTER = "yyyyMMddHHmmss";
-    private static final String DATE_203_FORMATTER = "yyyyMMddHHmm";
-    private static final String DATE_102_FORMATTER = "yyyyMMdd";
-    private static final String DATE_610_FORMATTER = "yyyyMM";
-    private static final String DATE_602_FORMATTER = "yyyy";
 
     public static final Map<String, SimpleDateFormat> FORMATTER = ImmutableMap.of(
-            "204", new SimpleDateFormat(DATE_204_FORMATTER),
-            "203", new SimpleDateFormat(DATE_203_FORMATTER),
-            "102", new SimpleDateFormat(DATE_102_FORMATTER),
-            "610", new SimpleDateFormat(DATE_610_FORMATTER),
-            "602", new SimpleDateFormat(DATE_602_FORMATTER));
+            "204", new SimpleDateFormat("yyyyMMddHHmmss"),
+            "203", new SimpleDateFormat("yyyyMMddHHmm"),
+            "102", new SimpleDateFormat("yyyyMMdd"),
+            "610", new SimpleDateFormat("yyyyMM"),
+            "602", new SimpleDateFormat("yyyy"));
 
     @Override
     public String marshal(Date v) throws Exception {
