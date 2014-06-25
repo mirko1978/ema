@@ -28,5 +28,6 @@
 
 	<import resource="classpath:/spring/util-context.xml" />
 	<import resource="classpath:/spring/adr-parser-human-context.xml" />
+	<import resource="classpath:/spring/message-handler-context.xml"/>
 
 </beans>
