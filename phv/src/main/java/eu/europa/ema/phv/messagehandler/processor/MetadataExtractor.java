@@ -94,7 +94,7 @@ public class MetadataExtractor implements Processor {
         Ichicsrmessageheader icsrHeader = new Ichicsrmessageheader();
         //messageMetadata.setFileName((String)exchange.getOut().getHeader("fileName"));
         //messageMetadata.setReceived(new Date((String)exchange.getOut().getHeader("receivedDate")));
-        //icsrHeader.setLang(payload);
+        //icsrHeader.setLang(payload.);
         //icsrHeader.setMessageformatrelease(value);
         //icsrHeader.setMessageformatversion(value);
        
@@ -145,6 +145,7 @@ public class MetadataExtractor implements Processor {
 		}
         icsr.setIchicsrmessageheader(icsrHeader);
         log.debug("ICSR obj :" + icsr.toString());
+        exchange.getIn().setHeader("icsr", icsr);
 
     }
     

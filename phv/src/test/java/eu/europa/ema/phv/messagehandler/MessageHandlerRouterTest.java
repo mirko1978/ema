@@ -71,7 +71,7 @@ public class MessageHandlerRouterTest  extends AbstractJUnit4SpringContextTests 
 	}
 
 	private void readSingleMessage() throws Exception{
-		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-single.xml&delete=false");
+		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-single.xml&delete=true");
 		camelUrl.setOutboundMessage("mock:outbound");
 		camelUrl.setAdrParserHuman("mock:adrParser");
 		context.addRoutes(router);

@@ -11,6 +11,7 @@ import org.apache.camel.spring.SpringRouteBuilder;
 import org.xml.sax.SAXParseException;
 
 import eu.europa.ema.phv.common.exception.UnexpectedResultException;
+import eu.europa.ema.phv.common.persistence.MessageToEntityMapper;
 import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher;
 
@@ -39,7 +40,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     	//jaxb.setSchema("classpath:/schema/icsr21xml.dtd");
     	//jaxb.setEncoding("UTF-8");
     	//@formatter:off
-    	onException(Exception.class).handled(true).to(INVALID_EP);
+    	onException(SAXParseException.class).handled(true).to(INVALID_EP);
         from(camelUrl.getGatewayHumanAdr())
             .transacted()
             .unmarshal(jaxb).to(VALID_EP);
@@ -80,7 +81,9 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //@formatter:off        
         from(MESSAGE_STORE_EP)
             .transacted()
-            .beanRef("StoreEnricher");
+            .beanRef("StoreEnricher")
+            .bean(MessageToEntityMapper.class, "mapMessageToEntity")
+         .to("jpa://eu.europa.ema.phv.common.persistence.InboundMessageEntity?persistenceUnit=messageJTA");
         // @formatter:on
         // TODO: Call the persistence layer here
         

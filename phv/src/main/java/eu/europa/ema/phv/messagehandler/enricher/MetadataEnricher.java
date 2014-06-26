@@ -29,6 +29,9 @@ public class MetadataEnricher {
 
     public Ichicsr enrich(Ichicsr ichicsr) {
     	log.info("Message Number : " + ichicsr.getIchicsrmessageheader().getMessagenumb().getvalue() );
+    	//populate the original file name
+    	//populate the official received date
+    	//if gateway is sending authenticated org Id, check in the report and/or populate
         return ichicsr;
     }       
 
