@@ -7,14 +7,13 @@ import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-
 /**
  * The persistent class for the I_DRUGREACTIONRELATED database table.
  * 
  */
 @Entity
-@Table(name="I_DRUGREACTIONRELATED")
-@NamedQuery(name="DrugReactionRelated.findAll", query="SELECT d FROM DrugReactionRelated d")
+@Table(name = "I_DRUGREACTIONRELATED")
+@NamedQuery(name = "DrugReactionRelated.findAll", query = "SELECT d FROM DrugReactionRelated d")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "drugreactionrelatedness")
 public class DrugReactionRelated implements Serializable {
@@ -22,178 +21,178 @@ public class DrugReactionRelated implements Serializable {
     private static final long serialVersionUID = -1293432034449347082L;
 
     @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="PK_DRUGREACTIONRELATED", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PK_DRUGREACTIONRELATED", unique = true, nullable = false, precision = 10)
     @XmlTransient
-	private long pkDrugreactionrelated;
+    private long pkDrugreactionrelated;
 
-	@Column(length=35)
+    @Column(length = 35)
     @XmlElement(name = "drugassessmentmethod")
-	private String drugassessmentmethod;
+    private String drugassessmentmethod;
 
-	@Column(length=60)
+    @Column(length = 60)
     @XmlElement(name = "drugassessmentsource")
-	private String drugassessmentsource;
+    private String drugassessmentsource;
 
-	@Column(precision=10)
+    @Column(precision = 10)
     @XmlElement(name = "drugreactionasses")
-	private BigDecimal drugreactionasses;
+    private BigDecimal drugreactionasses;
 
-	@Column(precision=10)
+    @Column(precision = 10)
     @XmlTransient
-	private BigDecimal drugreactionassesct;
+    private BigDecimal drugreactionassesct;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal drugreactionassesmrec;
+    private BigDecimal drugreactionassesmrec;
 
-	@Column(precision=22)
+    @Column(precision = 22)
     @XmlElement(name = "drugreactionassesmeddraversion")
-	private BigDecimal drugreactionassesmv;
+    private BigDecimal drugreactionassesmv;
 
-	@Column(length=250)
+    @Column(length = 250)
     @XmlTransient
-	private String drugreactionassesrecoded;
+    private String drugreactionassesrecoded;
 
-	@Column(length=250)
+    @Column(length = 250)
     @XmlTransient
-	private String drugreactionassestext;
+    private String drugreactionassestext;
 
-	@Column(length=35)
+    @Column(length = 35)
     @XmlElement(name = "drugresult")
-	private String drugresult;
+    private String drugresult;
 
-	@Column(name="FK_QIDRUGREACTIONASSES", precision=10)
+    @Column(name = "FK_QIDRUGREACTIONASSES", precision = 10)
     @XmlTransient
-	private BigDecimal fkQidrugreactionasses;
+    private BigDecimal fkQidrugreactionasses;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal isdrugreactionasseschanged;
+    private BigDecimal isdrugreactionasseschanged;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal isdrugreactionassesrecoded;
+    private BigDecimal isdrugreactionassesrecoded;
 
-	//bi-directional many-to-one association to Drug
-	@ManyToOne
-	@JoinColumn(name="FK_DRUG", nullable=false)
+    // bi-directional many-to-one association to Drug
+    @ManyToOne
+    @JoinColumn(name = "FK_DRUG", nullable = false)
     @XmlInverseReference(mappedBy = "IDrugreactionrelateds")
-	private Drug IDrug;
+    private Drug IDrug;
 
-	public DrugReactionRelated() {
-	}
+    public DrugReactionRelated() {
+    }
 
-	public long getPkDrugreactionrelated() {
-		return this.pkDrugreactionrelated;
-	}
+    public long getPkDrugreactionrelated() {
+        return this.pkDrugreactionrelated;
+    }
 
-	public void setPkDrugreactionrelated(long pkDrugreactionrelated) {
-		this.pkDrugreactionrelated = pkDrugreactionrelated;
-	}
+    public void setPkDrugreactionrelated(long pkDrugreactionrelated) {
+        this.pkDrugreactionrelated = pkDrugreactionrelated;
+    }
 
-	public String getDrugassessmentmethod() {
-		return this.drugassessmentmethod;
-	}
+    public String getDrugassessmentmethod() {
+        return this.drugassessmentmethod;
+    }
 
-	public void setDrugassessmentmethod(String drugassessmentmethod) {
-		this.drugassessmentmethod = drugassessmentmethod;
-	}
+    public void setDrugassessmentmethod(String drugassessmentmethod) {
+        this.drugassessmentmethod = drugassessmentmethod;
+    }
 
-	public String getDrugassessmentsource() {
-		return this.drugassessmentsource;
-	}
+    public String getDrugassessmentsource() {
+        return this.drugassessmentsource;
+    }
 
-	public void setDrugassessmentsource(String drugassessmentsource) {
-		this.drugassessmentsource = drugassessmentsource;
-	}
+    public void setDrugassessmentsource(String drugassessmentsource) {
+        this.drugassessmentsource = drugassessmentsource;
+    }
 
-	public BigDecimal getDrugreactionasses() {
-		return this.drugreactionasses;
-	}
+    public BigDecimal getDrugreactionasses() {
+        return this.drugreactionasses;
+    }
 
-	public void setDrugreactionasses(BigDecimal drugreactionasses) {
-		this.drugreactionasses = drugreactionasses;
-	}
+    public void setDrugreactionasses(BigDecimal drugreactionasses) {
+        this.drugreactionasses = drugreactionasses;
+    }
 
-	public BigDecimal getDrugreactionassesct() {
-		return this.drugreactionassesct;
-	}
+    public BigDecimal getDrugreactionassesct() {
+        return this.drugreactionassesct;
+    }
 
-	public void setDrugreactionassesct(BigDecimal drugreactionassesct) {
-		this.drugreactionassesct = drugreactionassesct;
-	}
+    public void setDrugreactionassesct(BigDecimal drugreactionassesct) {
+        this.drugreactionassesct = drugreactionassesct;
+    }
 
-	public BigDecimal getDrugreactionassesmrec() {
-		return this.drugreactionassesmrec;
-	}
+    public BigDecimal getDrugreactionassesmrec() {
+        return this.drugreactionassesmrec;
+    }
 
-	public void setDrugreactionassesmrec(BigDecimal drugreactionassesmrec) {
-		this.drugreactionassesmrec = drugreactionassesmrec;
-	}
+    public void setDrugreactionassesmrec(BigDecimal drugreactionassesmrec) {
+        this.drugreactionassesmrec = drugreactionassesmrec;
+    }
 
-	public BigDecimal getDrugreactionassesmv() {
-		return this.drugreactionassesmv;
-	}
+    public BigDecimal getDrugreactionassesmv() {
+        return this.drugreactionassesmv;
+    }
 
-	public void setDrugreactionassesmv(BigDecimal drugreactionassesmv) {
-		this.drugreactionassesmv = drugreactionassesmv;
-	}
+    public void setDrugreactionassesmv(BigDecimal drugreactionassesmv) {
+        this.drugreactionassesmv = drugreactionassesmv;
+    }
 
-	public String getDrugreactionassesrecoded() {
-		return this.drugreactionassesrecoded;
-	}
+    public String getDrugreactionassesrecoded() {
+        return this.drugreactionassesrecoded;
+    }
 
-	public void setDrugreactionassesrecoded(String drugreactionassesrecoded) {
-		this.drugreactionassesrecoded = drugreactionassesrecoded;
-	}
+    public void setDrugreactionassesrecoded(String drugreactionassesrecoded) {
+        this.drugreactionassesrecoded = drugreactionassesrecoded;
+    }
 
-	public String getDrugreactionassestext() {
-		return this.drugreactionassestext;
-	}
+    public String getDrugreactionassestext() {
+        return this.drugreactionassestext;
+    }
 
-	public void setDrugreactionassestext(String drugreactionassestext) {
-		this.drugreactionassestext = drugreactionassestext;
-	}
+    public void setDrugreactionassestext(String drugreactionassestext) {
+        this.drugreactionassestext = drugreactionassestext;
+    }
 
-	public String getDrugresult() {
-		return this.drugresult;
-	}
+    public String getDrugresult() {
+        return this.drugresult;
+    }
 
-	public void setDrugresult(String drugresult) {
-		this.drugresult = drugresult;
-	}
+    public void setDrugresult(String drugresult) {
+        this.drugresult = drugresult;
+    }
 
-	public BigDecimal getFkQidrugreactionasses() {
-		return this.fkQidrugreactionasses;
-	}
+    public BigDecimal getFkQidrugreactionasses() {
+        return this.fkQidrugreactionasses;
+    }
 
-	public void setFkQidrugreactionasses(BigDecimal fkQidrugreactionasses) {
-		this.fkQidrugreactionasses = fkQidrugreactionasses;
-	}
+    public void setFkQidrugreactionasses(BigDecimal fkQidrugreactionasses) {
+        this.fkQidrugreactionasses = fkQidrugreactionasses;
+    }
 
-	public BigDecimal getIsdrugreactionasseschanged() {
-		return this.isdrugreactionasseschanged;
-	}
+    public BigDecimal getIsdrugreactionasseschanged() {
+        return this.isdrugreactionasseschanged;
+    }
 
-	public void setIsdrugreactionasseschanged(BigDecimal isdrugreactionasseschanged) {
-		this.isdrugreactionasseschanged = isdrugreactionasseschanged;
-	}
+    public void setIsdrugreactionasseschanged(BigDecimal isdrugreactionasseschanged) {
+        this.isdrugreactionasseschanged = isdrugreactionasseschanged;
+    }
 
-	public BigDecimal getIsdrugreactionassesrecoded() {
-		return this.isdrugreactionassesrecoded;
-	}
+    public BigDecimal getIsdrugreactionassesrecoded() {
+        return this.isdrugreactionassesrecoded;
+    }
 
-	public void setIsdrugreactionassesrecoded(BigDecimal isdrugreactionassesrecoded) {
-		this.isdrugreactionassesrecoded = isdrugreactionassesrecoded;
-	}
+    public void setIsdrugreactionassesrecoded(BigDecimal isdrugreactionassesrecoded) {
+        this.isdrugreactionassesrecoded = isdrugreactionassesrecoded;
+    }
 
-	public Drug getIDrug() {
-		return this.IDrug;
-	}
+    public Drug getIDrug() {
+        return this.IDrug;
+    }
 
-	public void setIDrug(Drug IDrug) {
-		this.IDrug = IDrug;
-	}
+    public void setIDrug(Drug IDrug) {
+        this.IDrug = IDrug;
+    }
 
 }

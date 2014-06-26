@@ -7,14 +7,13 @@ import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-
 /**
  * The persistent class for the I_PRIMARYSOURCE database table.
  * 
  */
 @Entity
-@Table(name="I_PRIMARYSOURCE")
-@NamedQuery(name="PrimarySource.findAll", query="SELECT p FROM PrimarySource p")
+@Table(name = "I_PRIMARYSOURCE")
+@NamedQuery(name = "PrimarySource.findAll", query = "SELECT p FROM PrimarySource p")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "primarysource")
 public class PrimarySource implements Serializable {
@@ -22,249 +21,249 @@ public class PrimarySource implements Serializable {
     private static final long serialVersionUID = -163305822979064045L;
 
     @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="PK_PRIMARYSOURCE", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PK_PRIMARYSOURCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
-	private long pkPrimarysource;
+    private long pkPrimarysource;
 
-	@Column(name="CLEANED_LITERATUREREFERENCE", length=500)
+    @Column(name = "CLEANED_LITERATUREREFERENCE", length = 500)
     @XmlTransient
-	private String cleanedLiteraturereference;
+    private String cleanedLiteraturereference;
 
-	@Column(length=500)
+    @Column(length = 500)
     @XmlElement(name = "literaturereference")
-	private String literaturereference;
+    private String literaturereference;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "observestudytype")
-	private BigDecimal observestudytype;
+    private BigDecimal observestudytype;
 
-	@Column(name="\"QUALIFICATION\"", precision=1)
+    @Column(name = "\"QUALIFICATION\"", precision = 1)
     @XmlElement(name = "qualification")
-	private BigDecimal qualification;
+    private BigDecimal qualification;
 
-	@Column(length=35)
+    @Column(length = 35)
     @XmlElement(name = "reportercity")
-	private String reportercity;
+    private String reportercity;
 
-	@Column(length=2)
+    @Column(length = 2)
     @XmlElement(name = "reportercountry")
-	private String reportercountry;
+    private String reportercountry;
 
-	@Column(length=60)
+    @Column(length = 60)
     @XmlElement(name = "reporterdepartment")
-	private String reporterdepartment;
+    private String reporterdepartment;
 
-	@Column(length=100)
+    @Column(length = 100)
     @XmlElement(name = "reporterfamilyname")
-	private String reporterfamilyname;
+    private String reporterfamilyname;
 
-	@Column(length=35)
+    @Column(length = 35)
     @XmlElement(name = "reportergivename")
-	private String reportergivename;
+    private String reportergivename;
 
-	@Column(length=15)
+    @Column(length = 15)
     @XmlElement(name = "reportermiddlename")
-	private String reportermiddlename;
+    private String reportermiddlename;
 
-	@Column(length=60)
+    @Column(length = 60)
     @XmlElement(name = "reporterorganization")
-	private String reporterorganization;
+    private String reporterorganization;
 
-	@Column(length=15)
+    @Column(length = 15)
     @XmlElement(name = "reporterpostcode")
-	private String reporterpostcode;
+    private String reporterpostcode;
 
-	@Column(length=40)
+    @Column(length = 40)
     @XmlElement(name = "reporterstate")
-	private String reporterstate;
+    private String reporterstate;
 
-	@Column(length=100)
+    @Column(length = 100)
     @XmlElement(name = "reporterstreet")
-	private String reporterstreet;
+    private String reporterstreet;
 
-	@Column(length=50)
+    @Column(length = 50)
     @XmlElement(name = "reportertitle")
-	private String reportertitle;
+    private String reportertitle;
 
-	@Column(length=35)
+    @Column(length = 35)
     @XmlElement(name = "sponsorstudynumb")
-	private String sponsorstudynumb;
+    private String sponsorstudynumb;
 
-	@Column(length=100)
+    @Column(length = 100)
     @XmlElement(name = "studyname")
-	private String studyname;
+    private String studyname;
 
-	@Column(length=500)
-	private String title;
+    @Column(length = 500)
+    private String title;
 
-	//bi-directional many-to-one association to SafetyReport
-	@ManyToOne
-	@JoinColumn(name="FK_SAFETYREPORT", nullable=false)
+    // bi-directional many-to-one association to SafetyReport
+    @ManyToOne
+    @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IPrimarysources")
-	private SafetyReport ISafetyreport;
+    private SafetyReport ISafetyreport;
 
-	public PrimarySource() {
-	}
+    public PrimarySource() {
+    }
 
-	public long getPkPrimarysource() {
-		return this.pkPrimarysource;
-	}
+    public long getPkPrimarysource() {
+        return this.pkPrimarysource;
+    }
 
-	public void setPkPrimarysource(long pkPrimarysource) {
-		this.pkPrimarysource = pkPrimarysource;
-	}
+    public void setPkPrimarysource(long pkPrimarysource) {
+        this.pkPrimarysource = pkPrimarysource;
+    }
 
-	public String getCleanedLiteraturereference() {
-		return this.cleanedLiteraturereference;
-	}
+    public String getCleanedLiteraturereference() {
+        return this.cleanedLiteraturereference;
+    }
 
-	public void setCleanedLiteraturereference(String cleanedLiteraturereference) {
-		this.cleanedLiteraturereference = cleanedLiteraturereference;
-	}
+    public void setCleanedLiteraturereference(String cleanedLiteraturereference) {
+        this.cleanedLiteraturereference = cleanedLiteraturereference;
+    }
 
-	public String getLiteraturereference() {
-		return this.literaturereference;
-	}
+    public String getLiteraturereference() {
+        return this.literaturereference;
+    }
 
-	public void setLiteraturereference(String literaturereference) {
-		this.literaturereference = literaturereference;
-	}
+    public void setLiteraturereference(String literaturereference) {
+        this.literaturereference = literaturereference;
+    }
 
-	public BigDecimal getObservestudytype() {
-		return this.observestudytype;
-	}
+    public BigDecimal getObservestudytype() {
+        return this.observestudytype;
+    }
 
-	public void setObservestudytype(BigDecimal observestudytype) {
-		this.observestudytype = observestudytype;
-	}
+    public void setObservestudytype(BigDecimal observestudytype) {
+        this.observestudytype = observestudytype;
+    }
 
-	public BigDecimal getQualification() {
-		return this.qualification;
-	}
+    public BigDecimal getQualification() {
+        return this.qualification;
+    }
 
-	public void setQualification(BigDecimal qualification) {
-		this.qualification = qualification;
-	}
+    public void setQualification(BigDecimal qualification) {
+        this.qualification = qualification;
+    }
 
-	public String getReportercity() {
-		return this.reportercity;
-	}
+    public String getReportercity() {
+        return this.reportercity;
+    }
 
-	public void setReportercity(String reportercity) {
-		this.reportercity = reportercity;
-	}
+    public void setReportercity(String reportercity) {
+        this.reportercity = reportercity;
+    }
 
-	public String getReportercountry() {
-		return this.reportercountry;
-	}
+    public String getReportercountry() {
+        return this.reportercountry;
+    }
 
-	public void setReportercountry(String reportercountry) {
-		this.reportercountry = reportercountry;
-	}
+    public void setReportercountry(String reportercountry) {
+        this.reportercountry = reportercountry;
+    }
 
-	public String getReporterdepartment() {
-		return this.reporterdepartment;
-	}
+    public String getReporterdepartment() {
+        return this.reporterdepartment;
+    }
 
-	public void setReporterdepartment(String reporterdepartment) {
-		this.reporterdepartment = reporterdepartment;
-	}
+    public void setReporterdepartment(String reporterdepartment) {
+        this.reporterdepartment = reporterdepartment;
+    }
 
-	public String getReporterfamilyname() {
-		return this.reporterfamilyname;
-	}
+    public String getReporterfamilyname() {
+        return this.reporterfamilyname;
+    }
 
-	public void setReporterfamilyname(String reporterfamilyname) {
-		this.reporterfamilyname = reporterfamilyname;
-	}
+    public void setReporterfamilyname(String reporterfamilyname) {
+        this.reporterfamilyname = reporterfamilyname;
+    }
 
-	public String getReportergivename() {
-		return this.reportergivename;
-	}
+    public String getReportergivename() {
+        return this.reportergivename;
+    }
 
-	public void setReportergivename(String reportergivename) {
-		this.reportergivename = reportergivename;
-	}
+    public void setReportergivename(String reportergivename) {
+        this.reportergivename = reportergivename;
+    }
 
-	public String getReportermiddlename() {
-		return this.reportermiddlename;
-	}
+    public String getReportermiddlename() {
+        return this.reportermiddlename;
+    }
 
-	public void setReportermiddlename(String reportermiddlename) {
-		this.reportermiddlename = reportermiddlename;
-	}
+    public void setReportermiddlename(String reportermiddlename) {
+        this.reportermiddlename = reportermiddlename;
+    }
 
-	public String getReporterorganization() {
-		return this.reporterorganization;
-	}
+    public String getReporterorganization() {
+        return this.reporterorganization;
+    }
 
-	public void setReporterorganization(String reporterorganization) {
-		this.reporterorganization = reporterorganization;
-	}
+    public void setReporterorganization(String reporterorganization) {
+        this.reporterorganization = reporterorganization;
+    }
 
-	public String getReporterpostcode() {
-		return this.reporterpostcode;
-	}
+    public String getReporterpostcode() {
+        return this.reporterpostcode;
+    }
 
-	public void setReporterpostcode(String reporterpostcode) {
-		this.reporterpostcode = reporterpostcode;
-	}
+    public void setReporterpostcode(String reporterpostcode) {
+        this.reporterpostcode = reporterpostcode;
+    }
 
-	public String getReporterstate() {
-		return this.reporterstate;
-	}
+    public String getReporterstate() {
+        return this.reporterstate;
+    }
 
-	public void setReporterstate(String reporterstate) {
-		this.reporterstate = reporterstate;
-	}
+    public void setReporterstate(String reporterstate) {
+        this.reporterstate = reporterstate;
+    }
 
-	public String getReporterstreet() {
-		return this.reporterstreet;
-	}
+    public String getReporterstreet() {
+        return this.reporterstreet;
+    }
 
-	public void setReporterstreet(String reporterstreet) {
-		this.reporterstreet = reporterstreet;
-	}
+    public void setReporterstreet(String reporterstreet) {
+        this.reporterstreet = reporterstreet;
+    }
 
-	public String getReportertitle() {
-		return this.reportertitle;
-	}
+    public String getReportertitle() {
+        return this.reportertitle;
+    }
 
-	public void setReportertitle(String reportertitle) {
-		this.reportertitle = reportertitle;
-	}
+    public void setReportertitle(String reportertitle) {
+        this.reportertitle = reportertitle;
+    }
 
-	public String getSponsorstudynumb() {
-		return this.sponsorstudynumb;
-	}
+    public String getSponsorstudynumb() {
+        return this.sponsorstudynumb;
+    }
 
-	public void setSponsorstudynumb(String sponsorstudynumb) {
-		this.sponsorstudynumb = sponsorstudynumb;
-	}
+    public void setSponsorstudynumb(String sponsorstudynumb) {
+        this.sponsorstudynumb = sponsorstudynumb;
+    }
 
-	public String getStudyname() {
-		return this.studyname;
-	}
+    public String getStudyname() {
+        return this.studyname;
+    }
 
-	public void setStudyname(String studyname) {
-		this.studyname = studyname;
-	}
+    public void setStudyname(String studyname) {
+        this.studyname = studyname;
+    }
 
-	public String getTitle() {
-		return this.title;
-	}
+    public String getTitle() {
+        return this.title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public SafetyReport getISafetyreport() {
-		return this.ISafetyreport;
-	}
+    public SafetyReport getISafetyreport() {
+        return this.ISafetyreport;
+    }
 
-	public void setISafetyreport(SafetyReport ISafetyreport) {
-		this.ISafetyreport = ISafetyreport;
-	}
+    public void setISafetyreport(SafetyReport ISafetyreport) {
+        this.ISafetyreport = ISafetyreport;
+    }
 
 }

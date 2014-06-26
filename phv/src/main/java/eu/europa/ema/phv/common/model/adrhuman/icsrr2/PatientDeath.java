@@ -8,138 +8,137 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
-
 /**
  * The persistent class for the I_PATIENTDEATH database table.
  * 
  */
 @Entity
-@Table(name="I_PATIENTDEATH")
-@NamedQuery(name="PatientDeath.findAll", query="SELECT p FROM PatientDeath p")
+@Table(name = "I_PATIENTDEATH")
+@NamedQuery(name = "PatientDeath.findAll", query = "SELECT p FROM PatientDeath p")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "patientdeath")
 public class PatientDeath implements Serializable {
     private static final long serialVersionUID = 973264161185359482L;
 
     @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
-	private long pkSafetyreport;
+    private long pkSafetyreport;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "patientautopsyyesno")
-	private BigDecimal patientautopsyyesno;
+    private BigDecimal patientautopsyyesno;
 
-	@Column(length=14)
+    @Column(length = 14)
     @XmlElement(name = "patientdeathdate")
-	private String patientdeathdate;
+    private String patientdeathdate;
 
-	@Column(precision=3)
+    @Column(precision = 3)
     @XmlElement(name = "patientdeathdateformat")
-	private BigDecimal patientdeathdateformat;
+    private BigDecimal patientdeathdateformat;
 
-	//bi-directional many-to-one association to PatientAutopsy
-	@OneToMany(mappedBy="IPatientdeath")
+    // bi-directional many-to-one association to PatientAutopsy
+    @OneToMany(mappedBy = "IPatientdeath")
     @XmlElement(name = "patientautopsy")
-	private List<PatientAutopsy> IPatientautopsies;
+    private List<PatientAutopsy> IPatientautopsies;
 
-	//bi-directional one-to-one association to Patient
-	@OneToOne
-	@JoinColumn(name="PK_SAFETYREPORT", nullable=false, insertable=false, updatable=false)
+    // bi-directional one-to-one association to Patient
+    @OneToOne
+    @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     @XmlInverseReference(mappedBy = "IPatientdeath")
-	private Patient IPatient;
+    private Patient IPatient;
 
-	//bi-directional many-to-one association to PatientDeathCause
-	@OneToMany(mappedBy="IPatientdeath")
+    // bi-directional many-to-one association to PatientDeathCause
+    @OneToMany(mappedBy = "IPatientdeath")
     @XmlElement(name = "patientdeathcause")
-	private List<PatientDeathCause> IPatientdeathcauses;
+    private List<PatientDeathCause> IPatientdeathcauses;
 
-	public PatientDeath() {
-	}
+    public PatientDeath() {
+    }
 
-	public long getPkSafetyreport() {
-		return this.pkSafetyreport;
-	}
+    public long getPkSafetyreport() {
+        return this.pkSafetyreport;
+    }
 
-	public void setPkSafetyreport(long pkSafetyreport) {
-		this.pkSafetyreport = pkSafetyreport;
-	}
+    public void setPkSafetyreport(long pkSafetyreport) {
+        this.pkSafetyreport = pkSafetyreport;
+    }
 
-	public BigDecimal getPatientautopsyyesno() {
-		return this.patientautopsyyesno;
-	}
+    public BigDecimal getPatientautopsyyesno() {
+        return this.patientautopsyyesno;
+    }
 
-	public void setPatientautopsyyesno(BigDecimal patientautopsyyesno) {
-		this.patientautopsyyesno = patientautopsyyesno;
-	}
+    public void setPatientautopsyyesno(BigDecimal patientautopsyyesno) {
+        this.patientautopsyyesno = patientautopsyyesno;
+    }
 
-	public String getPatientdeathdate() {
-		return this.patientdeathdate;
-	}
+    public String getPatientdeathdate() {
+        return this.patientdeathdate;
+    }
 
-	public void setPatientdeathdate(String patientdeathdate) {
-		this.patientdeathdate = patientdeathdate;
-	}
+    public void setPatientdeathdate(String patientdeathdate) {
+        this.patientdeathdate = patientdeathdate;
+    }
 
-	public BigDecimal getPatientdeathdateformat() {
-		return this.patientdeathdateformat;
-	}
+    public BigDecimal getPatientdeathdateformat() {
+        return this.patientdeathdateformat;
+    }
 
-	public void setPatientdeathdateformat(BigDecimal patientdeathdateformat) {
-		this.patientdeathdateformat = patientdeathdateformat;
-	}
+    public void setPatientdeathdateformat(BigDecimal patientdeathdateformat) {
+        this.patientdeathdateformat = patientdeathdateformat;
+    }
 
-	public List<PatientAutopsy> getIPatientautopsies() {
-		return this.IPatientautopsies;
-	}
+    public List<PatientAutopsy> getIPatientautopsies() {
+        return this.IPatientautopsies;
+    }
 
-	public void setIPatientautopsies(List<PatientAutopsy> IPatientautopsies) {
-		this.IPatientautopsies = IPatientautopsies;
-	}
+    public void setIPatientautopsies(List<PatientAutopsy> IPatientautopsies) {
+        this.IPatientautopsies = IPatientautopsies;
+    }
 
-	public PatientAutopsy addIPatientautopsy(PatientAutopsy IPatientautopsy) {
-		getIPatientautopsies().add(IPatientautopsy);
-		IPatientautopsy.setIPatientdeath(this);
+    public PatientAutopsy addIPatientautopsy(PatientAutopsy IPatientautopsy) {
+        getIPatientautopsies().add(IPatientautopsy);
+        IPatientautopsy.setIPatientdeath(this);
 
-		return IPatientautopsy;
-	}
+        return IPatientautopsy;
+    }
 
-	public PatientAutopsy removeIPatientautopsy(PatientAutopsy IPatientautopsy) {
-		getIPatientautopsies().remove(IPatientautopsy);
-		IPatientautopsy.setIPatientdeath(null);
+    public PatientAutopsy removeIPatientautopsy(PatientAutopsy IPatientautopsy) {
+        getIPatientautopsies().remove(IPatientautopsy);
+        IPatientautopsy.setIPatientdeath(null);
 
-		return IPatientautopsy;
-	}
+        return IPatientautopsy;
+    }
 
-	public Patient getIPatient() {
-		return this.IPatient;
-	}
+    public Patient getIPatient() {
+        return this.IPatient;
+    }
 
-	public void setIPatient(Patient IPatient) {
-		this.IPatient = IPatient;
-	}
+    public void setIPatient(Patient IPatient) {
+        this.IPatient = IPatient;
+    }
 
-	public List<PatientDeathCause> getIPatientdeathcauses() {
-		return this.IPatientdeathcauses;
-	}
+    public List<PatientDeathCause> getIPatientdeathcauses() {
+        return this.IPatientdeathcauses;
+    }
 
-	public void setIPatientdeathcauses(List<PatientDeathCause> IPatientdeathcauses) {
-		this.IPatientdeathcauses = IPatientdeathcauses;
-	}
+    public void setIPatientdeathcauses(List<PatientDeathCause> IPatientdeathcauses) {
+        this.IPatientdeathcauses = IPatientdeathcauses;
+    }
 
-	public PatientDeathCause addIPatientdeathcaus(PatientDeathCause IPatientdeathcaus) {
-		getIPatientdeathcauses().add(IPatientdeathcaus);
-		IPatientdeathcaus.setIPatientdeath(this);
+    public PatientDeathCause addIPatientdeathcaus(PatientDeathCause IPatientdeathcaus) {
+        getIPatientdeathcauses().add(IPatientdeathcaus);
+        IPatientdeathcaus.setIPatientdeath(this);
 
-		return IPatientdeathcaus;
-	}
+        return IPatientdeathcaus;
+    }
 
-	public PatientDeathCause removeIPatientdeathcaus(PatientDeathCause IPatientdeathcaus) {
-		getIPatientdeathcauses().remove(IPatientdeathcaus);
-		IPatientdeathcaus.setIPatientdeath(null);
+    public PatientDeathCause removeIPatientdeathcaus(PatientDeathCause IPatientdeathcaus) {
+        getIPatientdeathcauses().remove(IPatientdeathcaus);
+        IPatientdeathcaus.setIPatientdeath(null);
 
-		return IPatientdeathcaus;
-	}
+        return IPatientdeathcaus;
+    }
 
 }

@@ -9,169 +9,169 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the I_SAFETYREPORT database table.
  * 
  */
 @Entity
-@Table(name="I_SAFETYREPORT")
-@NamedQuery(name="SafetyReport.findAll", query="SELECT s FROM SafetyReport s")
+@Table(name = "I_SAFETYREPORT")
+@NamedQuery(name = "SafetyReport.findAll", query = "SELECT s FROM SafetyReport s")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "safetyreport")
+//@XmlRootElement(name = "safetyreport")
+@XmlType
 public class SafetyReport implements Serializable {
 
     private static final long serialVersionUID = -6618317353731978764L;
 
     @Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="PK_SAFETYREPORT", unique=true, nullable=false, precision=10)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
-	private long pkSafetyreport;
+    private long pkSafetyreport;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "additionaldocument")
-	private BigDecimal additionaldocument;
+    private BigDecimal additionaldocument;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal blinded;
+    private BigDecimal blinded;
 
-	@Column(name="BLINDED_SUGGESTED", precision=1)
+    @Column(name = "BLINDED_SUGGESTED", precision = 1)
     @XmlTransient
-	private BigDecimal blindedSuggested;
+    private BigDecimal blindedSuggested;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal blindedmrec;
+    private BigDecimal blindedmrec;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "casenullification")
-	private BigDecimal casenullification;
+    private BigDecimal casenullification;
 
-	@Column(length=100)
+    @Column(length = 100)
     @XmlTransient
-	private String casenumber;
+    private String casenumber;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal casetype;
+    private BigDecimal casetype;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal dataquality;
+    private BigDecimal dataquality;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal dataqualitymrec;
+    private BigDecimal dataqualitymrec;
 
-	@Column(length=100)
+    @Column(length = 100)
     @XmlElement(name = "documentlist")
-	private String documentlist;
+    private String documentlist;
 
-	@Column(precision=1)
-    @XmlElement(name ="duplicate")
-	private BigDecimal duplicate;
+    @Column(precision = 1)
+    @XmlElement(name = "duplicate")
+    private BigDecimal duplicate;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "fulfillexpeditecriteria")
-	private BigDecimal fulfillexpeditecriteria;
+    private BigDecimal fulfillexpeditecriteria;
 
-	@Column(precision=22)
+    @Column(precision = 22)
     @XmlTransient
-	private BigDecimal isblindedchanged;
+    private BigDecimal isblindedchanged;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "medicallyconfirm")
-	private BigDecimal medicallyconfirm;
+    private BigDecimal medicallyconfirm;
 
-	@Column(precision=2)
+    @Column(precision = 2)
     @XmlTransient
-	private BigDecimal messagetype;
+    private BigDecimal messagetype;
 
-	@Column(length=200)
+    @Column(length = 200)
     @XmlElement(name = "nullificationreason")
-	private String nullificationreason;
+    private String nullificationreason;
 
-	@Column(length=2)
-    @XmlElement(name="occurcountry")
-	private String occurcountry;
+    @Column(length = 2)
+    @XmlElement(name = "occurcountry")
+    private String occurcountry;
 
-	@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @XmlTransient
-	private Date officialreceivedate;
+    private Date officialreceivedate;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlTransient
-	private BigDecimal officialreceivedatemrec;
+    private BigDecimal officialreceivedatemrec;
 
-	@Column(length=2)
+    @Column(length = 2)
     @XmlElement(name = "primarysourcecountry")
-	private String primarysourcecountry;
+    private String primarysourcecountry;
 
-	@Column(length=14)
+    @Column(length = 14)
     @XmlElement(name = "receiptdate")
-	private String receiptdate;
+    private String receiptdate;
 
-	@Column(precision=3)
+    @Column(precision = 3)
     @XmlElement(name = "receiptdateformat")
-	private BigDecimal receiptdateformat;
+    private BigDecimal receiptdateformat;
 
-	@Column(length=14)
+    @Column(length = 14)
     @XmlElement(name = "receivedate")
-	private String receivedate;
+    private String receivedate;
 
-	@Column(precision=3)
+    @Column(precision = 3)
     @XmlElement(name = "receivedateformat")
-	private BigDecimal receivedateformat;
+    private BigDecimal receivedateformat;
 
-	@Column(precision=1)
-    @XmlElement(name="reporttype")
-	private BigDecimal reporttype;
+    @Column(precision = 1)
+    @XmlElement(name = "reporttype")
+    private BigDecimal reporttype;
 
-	@Column(length=100)
-    @XmlElement(name="safetyreportid",required = true)
-	private String safetyreportid;
+    @Column(length = 100)
+    @XmlElement(name = "safetyreportid", required = true)
+    private String safetyreportid;
 
-	@Column(length=2)
+    @Column(length = 2)
     @XmlElement(name = "safetyreportversion")
-	private String safetyreportversion;
+    private String safetyreportversion;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "serious")
-	private BigDecimal serious;
+    private BigDecimal serious;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "seriousnesscongenitalanomali")
-	private BigDecimal seriousnesscongenitalanomali;
+    private BigDecimal seriousnesscongenitalanomali;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "seriousnessdeath")
-	private BigDecimal seriousnessdeath;
+    private BigDecimal seriousnessdeath;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "seriousnessdisabling")
-	private BigDecimal seriousnessdisabling;
+    private BigDecimal seriousnessdisabling;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "seriousnesshospitalization")
-	private BigDecimal seriousnesshospitalization;
+    private BigDecimal seriousnesshospitalization;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "seriousnesslifethreatening")
-	private BigDecimal seriousnesslifethreatening;
+    private BigDecimal seriousnesslifethreatening;
 
-	@Column(precision=1)
+    @Column(precision = 1)
     @XmlElement(name = "seriousnessother")
-	private BigDecimal seriousnessother;
+    private BigDecimal seriousnessother;
 
-	@Column(length=14)
-    @XmlElement(name="transmissiondate")
-	private String transmissiondate;
+    @Column(length = 14)
+    @XmlElement(name = "transmissiondate")
+    private String transmissiondate;
 
-	@Column(precision=3)
-    @XmlElement(name="transmissiondateformat")
-	private BigDecimal transmissiondateformat;
+    @Column(precision = 3)
+    @XmlElement(name = "transmissiondateformat")
+    private BigDecimal transmissiondateformat;
 
     @Transient
     @XmlElement(name = "authoritynumb")
@@ -185,504 +185,515 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "clusterduplicate")
     private String clusterduplicate;
 
-
-	//bi-directional one-to-one association to Cluster
-	@OneToOne(mappedBy="ISafetyreport")
+    // bi-directional one-to-one association to Cluster
+    @OneToOne(mappedBy = "ISafetyreport")
     @XmlTransient
-	private Cluster ICluster;
+    private Cluster ICluster;
 
-	//bi-directional many-to-one association to FlagStatus
-	@OneToMany(mappedBy="ISafetyreport")
+    // bi-directional many-to-one association to FlagStatus
+    @OneToMany(mappedBy = "ISafetyreport")
     @XmlTransient
-	private List<FlagStatus> IFlagstatuses;
+    private List<FlagStatus> IFlagstatuses;
 
-	//bi-directional many-to-one association to LinkedReport
-	@OneToMany(mappedBy="ISafetyreport")
+    // bi-directional many-to-one association to LinkedReport
+    @OneToMany(mappedBy = "ISafetyreport")
     @XmlElement(name = "linkedreport")
-	private List<LinkedReport> ILinkedreports;
+    private List<LinkedReport> ILinkedreports;
 
-	//bi-directional one-to-one association to Patient
-	@OneToOne(mappedBy="ISafetyreport")
+    // bi-directional one-to-one association to Patient
+    @OneToOne(mappedBy = "ISafetyreport")
     @XmlElement(required = true, name = "patient")
-	private Patient IPatient;
+    private Patient IPatient;
 
-	//bi-directional many-to-one association to PrimarySource
-	@OneToMany(mappedBy="ISafetyreport")
+    // bi-directional many-to-one association to PrimarySource
+    @OneToMany(mappedBy = "ISafetyreport")
     @XmlElement(required = true, name = "primarysource")
-	private List<PrimarySource> IPrimarysources;
+    private List<PrimarySource> IPrimarysources;
 
-	//bi-directional one-to-one association to Receiver
-	@OneToOne(mappedBy="ISafetyreport")
+    // bi-directional one-to-one association to Receiver
+    @OneToOne(mappedBy = "ISafetyreport")
     @XmlElement(required = true, name = "receiver")
-	private Receiver IReceiver;
+    private Receiver IReceiver;
 
-	//bi-directional one-to-one association to ReportAck
-	@OneToOne(mappedBy="ISafetyreport")
+    // bi-directional one-to-one association to ReportAck
+    @OneToOne(mappedBy = "ISafetyreport")
     @XmlTransient
-	private ReportAck IReportack;
+    private ReportAck IReportack;
 
-	//bi-directional many-to-one association to ReportDuplicate
-	@OneToMany(mappedBy="ISafetyreport")
+    // bi-directional many-to-one association to ReportDuplicate
+    @OneToMany(mappedBy = "ISafetyreport")
     @XmlElement(name = "reportduplicate")
-	private List<ReportDuplicate> IReportduplicates;
+    private List<ReportDuplicate> IReportduplicates;
 
-	//bi-directional many-to-one association to SafetyReports
-	@OneToMany(mappedBy= "safetyReport")
+    // bi-directional many-to-one association to SafetyReports
+    @OneToMany(mappedBy = "safetyReport")
     @XmlInverseReference(mappedBy = "safetyReport")
-	private List<SafetyReports> ISafetyreports;
+    private List<SafetyReports> ISafetyreports;
 
-	//bi-directional one-to-one association to Sender
-	@OneToOne(mappedBy="ISafetyreport")
+    // bi-directional one-to-one association to Sender
+    @OneToOne(mappedBy = "ISafetyreport")
     @XmlElement(required = true, name = "sender")
-	private Sender ISender;
+    private Sender ISender;
 
-	public SafetyReport() {
-	}
+    @Transient
+    @XmlInverseReference(mappedBy = "safetyReports")
+    private IchicsrMessage ichicsrMessage;
 
-	public long getPkSafetyreport() {
-		return this.pkSafetyreport;
-	}
+    public void setIchicsrMessage(IchicsrMessage ichicsrMessage) {
+        this.ichicsrMessage = ichicsrMessage;
+    }
 
-	public void setPkSafetyreport(long pkSafetyreport) {
-		this.pkSafetyreport = pkSafetyreport;
-	}
+    public IchicsrMessage getIchicsrMessage() {
+        return ichicsrMessage;
+    }
 
-	public BigDecimal getAdditionaldocument() {
-		return this.additionaldocument;
-	}
+    public SafetyReport() {
+    }
 
-	public void setAdditionaldocument(BigDecimal additionaldocument) {
-		this.additionaldocument = additionaldocument;
-	}
+    public long getPkSafetyreport() {
+        return this.pkSafetyreport;
+    }
 
-	public BigDecimal getBlinded() {
-		return this.blinded;
-	}
+    public void setPkSafetyreport(long pkSafetyreport) {
+        this.pkSafetyreport = pkSafetyreport;
+    }
 
-	public void setBlinded(BigDecimal blinded) {
-		this.blinded = blinded;
-	}
+    public BigDecimal getAdditionaldocument() {
+        return this.additionaldocument;
+    }
 
-	public BigDecimal getBlindedSuggested() {
-		return this.blindedSuggested;
-	}
+    public void setAdditionaldocument(BigDecimal additionaldocument) {
+        this.additionaldocument = additionaldocument;
+    }
 
-	public void setBlindedSuggested(BigDecimal blindedSuggested) {
-		this.blindedSuggested = blindedSuggested;
-	}
+    public BigDecimal getBlinded() {
+        return this.blinded;
+    }
 
-	public BigDecimal getBlindedmrec() {
-		return this.blindedmrec;
-	}
+    public void setBlinded(BigDecimal blinded) {
+        this.blinded = blinded;
+    }
 
-	public void setBlindedmrec(BigDecimal blindedmrec) {
-		this.blindedmrec = blindedmrec;
-	}
+    public BigDecimal getBlindedSuggested() {
+        return this.blindedSuggested;
+    }
 
-	public BigDecimal getCasenullification() {
-		return this.casenullification;
-	}
+    public void setBlindedSuggested(BigDecimal blindedSuggested) {
+        this.blindedSuggested = blindedSuggested;
+    }
 
-	public void setCasenullification(BigDecimal casenullification) {
-		this.casenullification = casenullification;
-	}
+    public BigDecimal getBlindedmrec() {
+        return this.blindedmrec;
+    }
 
-	public String getCasenumber() {
-		return this.casenumber;
-	}
+    public void setBlindedmrec(BigDecimal blindedmrec) {
+        this.blindedmrec = blindedmrec;
+    }
 
-	public void setCasenumber(String casenumber) {
-		this.casenumber = casenumber;
-	}
+    public BigDecimal getCasenullification() {
+        return this.casenullification;
+    }
 
-	public BigDecimal getCasetype() {
-		return this.casetype;
-	}
+    public void setCasenullification(BigDecimal casenullification) {
+        this.casenullification = casenullification;
+    }
 
-	public void setCasetype(BigDecimal casetype) {
-		this.casetype = casetype;
-	}
+    public String getCasenumber() {
+        return this.casenumber;
+    }
 
-	public BigDecimal getDataquality() {
-		return this.dataquality;
-	}
+    public void setCasenumber(String casenumber) {
+        this.casenumber = casenumber;
+    }
 
-	public void setDataquality(BigDecimal dataquality) {
-		this.dataquality = dataquality;
-	}
+    public BigDecimal getCasetype() {
+        return this.casetype;
+    }
 
-	public BigDecimal getDataqualitymrec() {
-		return this.dataqualitymrec;
-	}
+    public void setCasetype(BigDecimal casetype) {
+        this.casetype = casetype;
+    }
 
-	public void setDataqualitymrec(BigDecimal dataqualitymrec) {
-		this.dataqualitymrec = dataqualitymrec;
-	}
+    public BigDecimal getDataquality() {
+        return this.dataquality;
+    }
 
-	public String getDocumentlist() {
-		return this.documentlist;
-	}
+    public void setDataquality(BigDecimal dataquality) {
+        this.dataquality = dataquality;
+    }
 
-	public void setDocumentlist(String documentlist) {
-		this.documentlist = documentlist;
-	}
+    public BigDecimal getDataqualitymrec() {
+        return this.dataqualitymrec;
+    }
 
-	public BigDecimal getDuplicate() {
-		return this.duplicate;
-	}
+    public void setDataqualitymrec(BigDecimal dataqualitymrec) {
+        this.dataqualitymrec = dataqualitymrec;
+    }
 
-	public void setDuplicate(BigDecimal duplicate) {
-		this.duplicate = duplicate;
-	}
+    public String getDocumentlist() {
+        return this.documentlist;
+    }
 
-	public BigDecimal getFulfillexpeditecriteria() {
-		return this.fulfillexpeditecriteria;
-	}
+    public void setDocumentlist(String documentlist) {
+        this.documentlist = documentlist;
+    }
 
-	public void setFulfillexpeditecriteria(BigDecimal fulfillexpeditecriteria) {
-		this.fulfillexpeditecriteria = fulfillexpeditecriteria;
-	}
+    public BigDecimal getDuplicate() {
+        return this.duplicate;
+    }
 
-	public BigDecimal getIsblindedchanged() {
-		return this.isblindedchanged;
-	}
+    public void setDuplicate(BigDecimal duplicate) {
+        this.duplicate = duplicate;
+    }
 
-	public void setIsblindedchanged(BigDecimal isblindedchanged) {
-		this.isblindedchanged = isblindedchanged;
-	}
+    public BigDecimal getFulfillexpeditecriteria() {
+        return this.fulfillexpeditecriteria;
+    }
 
-	public BigDecimal getMedicallyconfirm() {
-		return this.medicallyconfirm;
-	}
+    public void setFulfillexpeditecriteria(BigDecimal fulfillexpeditecriteria) {
+        this.fulfillexpeditecriteria = fulfillexpeditecriteria;
+    }
 
-	public void setMedicallyconfirm(BigDecimal medicallyconfirm) {
-		this.medicallyconfirm = medicallyconfirm;
-	}
+    public BigDecimal getIsblindedchanged() {
+        return this.isblindedchanged;
+    }
 
-	public BigDecimal getMessagetype() {
-		return this.messagetype;
-	}
+    public void setIsblindedchanged(BigDecimal isblindedchanged) {
+        this.isblindedchanged = isblindedchanged;
+    }
 
-	public void setMessagetype(BigDecimal messagetype) {
-		this.messagetype = messagetype;
-	}
+    public BigDecimal getMedicallyconfirm() {
+        return this.medicallyconfirm;
+    }
 
-	public String getNullificationreason() {
-		return this.nullificationreason;
-	}
+    public void setMedicallyconfirm(BigDecimal medicallyconfirm) {
+        this.medicallyconfirm = medicallyconfirm;
+    }
 
-	public void setNullificationreason(String nullificationreason) {
-		this.nullificationreason = nullificationreason;
-	}
+    public BigDecimal getMessagetype() {
+        return this.messagetype;
+    }
 
-	public String getOccurcountry() {
-		return this.occurcountry;
-	}
+    public void setMessagetype(BigDecimal messagetype) {
+        this.messagetype = messagetype;
+    }
 
-	public void setOccurcountry(String occurcountry) {
-		this.occurcountry = occurcountry;
-	}
+    public String getNullificationreason() {
+        return this.nullificationreason;
+    }
 
-	public Date getOfficialreceivedate() {
-		return this.officialreceivedate;
-	}
+    public void setNullificationreason(String nullificationreason) {
+        this.nullificationreason = nullificationreason;
+    }
 
-	public void setOfficialreceivedate(Date officialreceivedate) {
-		this.officialreceivedate = officialreceivedate;
-	}
+    public String getOccurcountry() {
+        return this.occurcountry;
+    }
 
-	public BigDecimal getOfficialreceivedatemrec() {
-		return this.officialreceivedatemrec;
-	}
+    public void setOccurcountry(String occurcountry) {
+        this.occurcountry = occurcountry;
+    }
 
-	public void setOfficialreceivedatemrec(BigDecimal officialreceivedatemrec) {
-		this.officialreceivedatemrec = officialreceivedatemrec;
-	}
+    public Date getOfficialreceivedate() {
+        return this.officialreceivedate;
+    }
 
-	public String getPrimarysourcecountry() {
-		return this.primarysourcecountry;
-	}
+    public void setOfficialreceivedate(Date officialreceivedate) {
+        this.officialreceivedate = officialreceivedate;
+    }
 
-	public void setPrimarysourcecountry(String primarysourcecountry) {
-		this.primarysourcecountry = primarysourcecountry;
-	}
+    public BigDecimal getOfficialreceivedatemrec() {
+        return this.officialreceivedatemrec;
+    }
 
-	public String getReceiptdate() {
-		return this.receiptdate;
-	}
+    public void setOfficialreceivedatemrec(BigDecimal officialreceivedatemrec) {
+        this.officialreceivedatemrec = officialreceivedatemrec;
+    }
 
-	public void setReceiptdate(String receiptdate) {
-		this.receiptdate = receiptdate;
-	}
+    public String getPrimarysourcecountry() {
+        return this.primarysourcecountry;
+    }
 
-	public BigDecimal getReceiptdateformat() {
-		return this.receiptdateformat;
-	}
+    public void setPrimarysourcecountry(String primarysourcecountry) {
+        this.primarysourcecountry = primarysourcecountry;
+    }
 
-	public void setReceiptdateformat(BigDecimal receiptdateformat) {
-		this.receiptdateformat = receiptdateformat;
-	}
+    public String getReceiptdate() {
+        return this.receiptdate;
+    }
 
-	public String getReceivedate() {
-		return this.receivedate;
-	}
+    public void setReceiptdate(String receiptdate) {
+        this.receiptdate = receiptdate;
+    }
 
-	public void setReceivedate(String receivedate) {
-		this.receivedate = receivedate;
-	}
+    public BigDecimal getReceiptdateformat() {
+        return this.receiptdateformat;
+    }
 
-	public BigDecimal getReceivedateformat() {
-		return this.receivedateformat;
-	}
+    public void setReceiptdateformat(BigDecimal receiptdateformat) {
+        this.receiptdateformat = receiptdateformat;
+    }
 
-	public void setReceivedateformat(BigDecimal receivedateformat) {
-		this.receivedateformat = receivedateformat;
-	}
+    public String getReceivedate() {
+        return this.receivedate;
+    }
 
-	public BigDecimal getReporttype() {
-		return this.reporttype;
-	}
+    public void setReceivedate(String receivedate) {
+        this.receivedate = receivedate;
+    }
 
-	public void setReporttype(BigDecimal reporttype) {
-		this.reporttype = reporttype;
-	}
+    public BigDecimal getReceivedateformat() {
+        return this.receivedateformat;
+    }
 
-	public String getSafetyreportid() {
-		return this.safetyreportid;
-	}
+    public void setReceivedateformat(BigDecimal receivedateformat) {
+        this.receivedateformat = receivedateformat;
+    }
 
-	public void setSafetyreportid(String safetyreportid) {
-		this.safetyreportid = safetyreportid;
-	}
+    public BigDecimal getReporttype() {
+        return this.reporttype;
+    }
 
-	public String getSafetyreportversion() {
-		return this.safetyreportversion;
-	}
+    public void setReporttype(BigDecimal reporttype) {
+        this.reporttype = reporttype;
+    }
 
-	public void setSafetyreportversion(String safetyreportversion) {
-		this.safetyreportversion = safetyreportversion;
-	}
+    public String getSafetyreportid() {
+        return this.safetyreportid;
+    }
 
-	public BigDecimal getSerious() {
-		return this.serious;
-	}
+    public void setSafetyreportid(String safetyreportid) {
+        this.safetyreportid = safetyreportid;
+    }
 
-	public void setSerious(BigDecimal serious) {
-		this.serious = serious;
-	}
+    public String getSafetyreportversion() {
+        return this.safetyreportversion;
+    }
 
-	public BigDecimal getSeriousnesscongenitalanomali() {
-		return this.seriousnesscongenitalanomali;
-	}
+    public void setSafetyreportversion(String safetyreportversion) {
+        this.safetyreportversion = safetyreportversion;
+    }
 
-	public void setSeriousnesscongenitalanomali(BigDecimal seriousnesscongenitalanomali) {
-		this.seriousnesscongenitalanomali = seriousnesscongenitalanomali;
-	}
+    public BigDecimal getSerious() {
+        return this.serious;
+    }
 
-	public BigDecimal getSeriousnessdeath() {
-		return this.seriousnessdeath;
-	}
+    public void setSerious(BigDecimal serious) {
+        this.serious = serious;
+    }
 
-	public void setSeriousnessdeath(BigDecimal seriousnessdeath) {
-		this.seriousnessdeath = seriousnessdeath;
-	}
+    public BigDecimal getSeriousnesscongenitalanomali() {
+        return this.seriousnesscongenitalanomali;
+    }
 
-	public BigDecimal getSeriousnessdisabling() {
-		return this.seriousnessdisabling;
-	}
+    public void setSeriousnesscongenitalanomali(BigDecimal seriousnesscongenitalanomali) {
+        this.seriousnesscongenitalanomali = seriousnesscongenitalanomali;
+    }
 
-	public void setSeriousnessdisabling(BigDecimal seriousnessdisabling) {
-		this.seriousnessdisabling = seriousnessdisabling;
-	}
+    public BigDecimal getSeriousnessdeath() {
+        return this.seriousnessdeath;
+    }
 
-	public BigDecimal getSeriousnesshospitalization() {
-		return this.seriousnesshospitalization;
-	}
+    public void setSeriousnessdeath(BigDecimal seriousnessdeath) {
+        this.seriousnessdeath = seriousnessdeath;
+    }
 
-	public void setSeriousnesshospitalization(BigDecimal seriousnesshospitalization) {
-		this.seriousnesshospitalization = seriousnesshospitalization;
-	}
+    public BigDecimal getSeriousnessdisabling() {
+        return this.seriousnessdisabling;
+    }
 
-	public BigDecimal getSeriousnesslifethreatening() {
-		return this.seriousnesslifethreatening;
-	}
+    public void setSeriousnessdisabling(BigDecimal seriousnessdisabling) {
+        this.seriousnessdisabling = seriousnessdisabling;
+    }
 
-	public void setSeriousnesslifethreatening(BigDecimal seriousnesslifethreatening) {
-		this.seriousnesslifethreatening = seriousnesslifethreatening;
-	}
+    public BigDecimal getSeriousnesshospitalization() {
+        return this.seriousnesshospitalization;
+    }
 
-	public BigDecimal getSeriousnessother() {
-		return this.seriousnessother;
-	}
+    public void setSeriousnesshospitalization(BigDecimal seriousnesshospitalization) {
+        this.seriousnesshospitalization = seriousnesshospitalization;
+    }
 
-	public void setSeriousnessother(BigDecimal seriousnessother) {
-		this.seriousnessother = seriousnessother;
-	}
+    public BigDecimal getSeriousnesslifethreatening() {
+        return this.seriousnesslifethreatening;
+    }
 
-	public String getTransmissiondate() {
-		return this.transmissiondate;
-	}
+    public void setSeriousnesslifethreatening(BigDecimal seriousnesslifethreatening) {
+        this.seriousnesslifethreatening = seriousnesslifethreatening;
+    }
 
-	public void setTransmissiondate(String transmissiondate) {
-		this.transmissiondate = transmissiondate;
-	}
+    public BigDecimal getSeriousnessother() {
+        return this.seriousnessother;
+    }
 
-	public BigDecimal getTransmissiondateformat() {
-		return this.transmissiondateformat;
-	}
+    public void setSeriousnessother(BigDecimal seriousnessother) {
+        this.seriousnessother = seriousnessother;
+    }
 
-	public void setTransmissiondateformat(BigDecimal transmissiondateformat) {
-		this.transmissiondateformat = transmissiondateformat;
-	}
+    public String getTransmissiondate() {
+        return this.transmissiondate;
+    }
 
-	public Cluster getICluster() {
-		return this.ICluster;
-	}
+    public void setTransmissiondate(String transmissiondate) {
+        this.transmissiondate = transmissiondate;
+    }
 
-	public void setICluster(Cluster ICluster) {
-		this.ICluster = ICluster;
-	}
+    public BigDecimal getTransmissiondateformat() {
+        return this.transmissiondateformat;
+    }
 
-	public List<FlagStatus> getIFlagstatuses() {
-		return this.IFlagstatuses;
-	}
+    public void setTransmissiondateformat(BigDecimal transmissiondateformat) {
+        this.transmissiondateformat = transmissiondateformat;
+    }
 
-	public void setIFlagstatuses(List<FlagStatus> IFlagstatuses) {
-		this.IFlagstatuses = IFlagstatuses;
-	}
+    public Cluster getICluster() {
+        return this.ICluster;
+    }
 
-	public FlagStatus addIFlagstatus(FlagStatus IFlagstatus) {
-		getIFlagstatuses().add(IFlagstatus);
-		IFlagstatus.setISafetyreport(this);
+    public void setICluster(Cluster ICluster) {
+        this.ICluster = ICluster;
+    }
 
-		return IFlagstatus;
-	}
+    public List<FlagStatus> getIFlagstatuses() {
+        return this.IFlagstatuses;
+    }
 
-	public FlagStatus removeIFlagstatus(FlagStatus IFlagstatus) {
-		getIFlagstatuses().remove(IFlagstatus);
-		IFlagstatus.setISafetyreport(null);
+    public void setIFlagstatuses(List<FlagStatus> IFlagstatuses) {
+        this.IFlagstatuses = IFlagstatuses;
+    }
 
-		return IFlagstatus;
-	}
+    public FlagStatus addIFlagstatus(FlagStatus IFlagstatus) {
+        getIFlagstatuses().add(IFlagstatus);
+        IFlagstatus.setISafetyreport(this);
 
-	public List<LinkedReport> getILinkedreports() {
-		return this.ILinkedreports;
-	}
+        return IFlagstatus;
+    }
 
-	public void setILinkedreports(List<LinkedReport> ILinkedreports) {
-		this.ILinkedreports = ILinkedreports;
-	}
+    public FlagStatus removeIFlagstatus(FlagStatus IFlagstatus) {
+        getIFlagstatuses().remove(IFlagstatus);
+        IFlagstatus.setISafetyreport(null);
 
-	public LinkedReport addILinkedreport(LinkedReport ILinkedreport) {
-		getILinkedreports().add(ILinkedreport);
-		ILinkedreport.setISafetyreport(this);
+        return IFlagstatus;
+    }
 
-		return ILinkedreport;
-	}
+    public List<LinkedReport> getILinkedreports() {
+        return this.ILinkedreports;
+    }
 
-	public LinkedReport removeILinkedreport(LinkedReport ILinkedreport) {
-		getILinkedreports().remove(ILinkedreport);
-		ILinkedreport.setISafetyreport(null);
+    public void setILinkedreports(List<LinkedReport> ILinkedreports) {
+        this.ILinkedreports = ILinkedreports;
+    }
 
-		return ILinkedreport;
-	}
+    public LinkedReport addILinkedreport(LinkedReport ILinkedreport) {
+        getILinkedreports().add(ILinkedreport);
+        ILinkedreport.setISafetyreport(this);
 
-	public Patient getIPatient() {
-		return this.IPatient;
-	}
+        return ILinkedreport;
+    }
 
-	public void setIPatient(Patient IPatient) {
-		this.IPatient = IPatient;
-	}
+    public LinkedReport removeILinkedreport(LinkedReport ILinkedreport) {
+        getILinkedreports().remove(ILinkedreport);
+        ILinkedreport.setISafetyreport(null);
 
-	public List<PrimarySource> getIPrimarysources() {
-		return this.IPrimarysources;
-	}
+        return ILinkedreport;
+    }
 
-	public void setIPrimarysources(List<PrimarySource> IPrimarysources) {
-		this.IPrimarysources = IPrimarysources;
-	}
+    public Patient getIPatient() {
+        return this.IPatient;
+    }
 
-	public PrimarySource addIPrimarysource(PrimarySource IPrimarysource) {
-		getIPrimarysources().add(IPrimarysource);
-		IPrimarysource.setISafetyreport(this);
+    public void setIPatient(Patient IPatient) {
+        this.IPatient = IPatient;
+    }
 
-		return IPrimarysource;
-	}
+    public List<PrimarySource> getIPrimarysources() {
+        return this.IPrimarysources;
+    }
 
-	public PrimarySource removeIPrimarysource(PrimarySource IPrimarysource) {
-		getIPrimarysources().remove(IPrimarysource);
-		IPrimarysource.setISafetyreport(null);
+    public void setIPrimarysources(List<PrimarySource> IPrimarysources) {
+        this.IPrimarysources = IPrimarysources;
+    }
 
-		return IPrimarysource;
-	}
+    public PrimarySource addIPrimarysource(PrimarySource IPrimarysource) {
+        getIPrimarysources().add(IPrimarysource);
+        IPrimarysource.setISafetyreport(this);
 
-	public Receiver getIReceiver() {
-		return this.IReceiver;
-	}
+        return IPrimarysource;
+    }
 
-	public void setIReceiver(Receiver IReceiver) {
-		this.IReceiver = IReceiver;
-	}
+    public PrimarySource removeIPrimarysource(PrimarySource IPrimarysource) {
+        getIPrimarysources().remove(IPrimarysource);
+        IPrimarysource.setISafetyreport(null);
 
-	public ReportAck getIReportack() {
-		return this.IReportack;
-	}
+        return IPrimarysource;
+    }
 
-	public void setIReportack(ReportAck IReportack) {
-		this.IReportack = IReportack;
-	}
+    public Receiver getIReceiver() {
+        return this.IReceiver;
+    }
 
-	public List<ReportDuplicate> getIReportduplicates() {
-		return this.IReportduplicates;
-	}
+    public void setIReceiver(Receiver IReceiver) {
+        this.IReceiver = IReceiver;
+    }
 
-	public void setIReportduplicates(List<ReportDuplicate> IReportduplicates) {
-		this.IReportduplicates = IReportduplicates;
-	}
+    public ReportAck getIReportack() {
+        return this.IReportack;
+    }
 
-	public ReportDuplicate addIReportduplicate(ReportDuplicate IReportduplicate) {
-		getIReportduplicates().add(IReportduplicate);
-		IReportduplicate.setISafetyreport(this);
+    public void setIReportack(ReportAck IReportack) {
+        this.IReportack = IReportack;
+    }
 
-		return IReportduplicate;
-	}
+    public List<ReportDuplicate> getIReportduplicates() {
+        return this.IReportduplicates;
+    }
 
-	public ReportDuplicate removeIReportduplicate(ReportDuplicate IReportduplicate) {
-		getIReportduplicates().remove(IReportduplicate);
-		IReportduplicate.setISafetyreport(null);
+    public void setIReportduplicates(List<ReportDuplicate> IReportduplicates) {
+        this.IReportduplicates = IReportduplicates;
+    }
 
-		return IReportduplicate;
-	}
+    public ReportDuplicate addIReportduplicate(ReportDuplicate IReportduplicate) {
+        getIReportduplicates().add(IReportduplicate);
+        IReportduplicate.setISafetyreport(this);
 
-	public List<SafetyReports> getISafetyreports() {
-		return this.ISafetyreports;
-	}
+        return IReportduplicate;
+    }
 
-	public void setISafetyreports(List<SafetyReports> ISafetyreports) {
-		this.ISafetyreports = ISafetyreports;
-	}
+    public ReportDuplicate removeIReportduplicate(ReportDuplicate IReportduplicate) {
+        getIReportduplicates().remove(IReportduplicate);
+        IReportduplicate.setISafetyreport(null);
 
-	public SafetyReports addISafetyreport(SafetyReports ISafetyreport) {
-		getISafetyreports().add(ISafetyreport);
-		ISafetyreport.setSafetyReport(this);
+        return IReportduplicate;
+    }
 
-		return ISafetyreport;
-	}
+    public List<SafetyReports> getISafetyreports() {
+        return this.ISafetyreports;
+    }
 
-	public SafetyReports removeISafetyreport(SafetyReports ISafetyreport) {
-		getISafetyreports().remove(ISafetyreport);
-		ISafetyreport.setSafetyReport(null);
+    public void setISafetyreports(List<SafetyReports> ISafetyreports) {
+        this.ISafetyreports = ISafetyreports;
+    }
 
-		return ISafetyreport;
-	}
+    public SafetyReports addISafetyreport(SafetyReports ISafetyreport) {
+        getISafetyreports().add(ISafetyreport);
+        ISafetyreport.setSafetyReport(this);
 
-	public Sender getISender() {
-		return this.ISender;
-	}
+        return ISafetyreport;
+    }
 
-	public void setISender(Sender ISender) {
-		this.ISender = ISender;
-	}
+    public SafetyReports removeISafetyreport(SafetyReports ISafetyreport) {
+        getISafetyreports().remove(ISafetyreport);
+        ISafetyreport.setSafetyReport(null);
+
+        return ISafetyreport;
+    }
+
+    public Sender getISender() {
+        return this.ISender;
+    }
+
+    public void setISender(Sender ISender) {
+        this.ISender = ISender;
+    }
 
 }
