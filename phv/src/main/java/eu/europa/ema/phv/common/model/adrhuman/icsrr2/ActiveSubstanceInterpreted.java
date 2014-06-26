@@ -15,6 +15,7 @@ import java.util.Date;
 public class ActiveSubstanceInterpreted implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /** Primary key */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_ACTIVESUBSTANCE_INTERPRETED", unique = true, nullable = false, precision = 10)
@@ -29,21 +30,37 @@ public class ActiveSubstanceInterpreted implements Serializable {
     @Column(length = 200)
     private String activesubstancename;
 
+    /** activesubstancename set from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     private BigDecimal activesubstancenamemrec;
 
+    /** Populate by automatic recoding. If active substance name has been recoded the value is 1 (true)*/
     @Column(length = 200)
     private String activesubstancenamerecoded;
 
+    /** Automatic recoding reprocess the report. If there are changes on activesubstance this is set to 1 (true)*/
+    @Column(precision = 1)
+    private BigDecimal isactivesubstancechanged;
+
+    /** Populate by automatic recoding. If active substance name has been recoded the value is 1 (true)*/
+    @Column(precision = 1)
+    private BigDecimal isactivesubstancenamerecoded;
+
+    /** Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
+     * k_IS_BLINDED_TRUE             CONSTANT NUMBER := 1; <br/>
+     * k_IS_BLINDED_FALSE            CONSTANT NUMBER := 2;
+     * */
     @Column(precision = 1)
     private BigDecimal blinded;
 
+    /** Blinded flag setted from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     private BigDecimal blindedmrec;
 
     @Column(name = "FK_INTERPRETATION_SUBSTANCE", precision = 10)
     private BigDecimal fkInterpretationSubstance;
 
+    /** Foreign key for ICHICSR.QI_ACTIVESUBSTANCE  */
     @Column(name = "FK_QIACTIVESUBSTANCE", precision = 10)
     private BigDecimal fkQiactivesubstance;
 
@@ -51,18 +68,15 @@ public class ActiveSubstanceInterpreted implements Serializable {
     @Column(name = "INTERPRETED_DATE")
     private Date interpretedDate;
 
-    @Column(precision = 1)
-    private BigDecimal isactivesubstancechanged;
-
-    @Column(precision = 1)
-    private BigDecimal isactivesubstancenamerecoded;
-
+    /** Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)*/
     @Column(precision = 1)
     private BigDecimal isblindedchanged;
 
+    /** Populated by recoding. It is the stage when the recoding found the match */
     @Column(name = "RECODING_STAGE", precision = 22)
     private BigDecimal recodingStage;
 
+    /** Populated by recoding. It is the timestamp when the recoding populate */
     @Temporal(TemporalType.DATE)
     @Column(name = "RECODING_STAMP")
     private Date recodingStamp;

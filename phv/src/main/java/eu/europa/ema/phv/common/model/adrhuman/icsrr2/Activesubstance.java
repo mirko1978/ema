@@ -35,22 +35,20 @@ public class ActiveSubstance implements Serializable {
     @XmlTransient
     private BigDecimal activesubstancecode;
 
-    @Column(length = 200)
-    @XmlElement(required = true, name = "activesubstancename")
-    private String activesubstancename;
-
+    /** Populate by automatic recoding. When the result of recoding of active substance has changed the value is 1 (true).*/
     @Column(precision = 1)
     @XmlTransient
-    private BigDecimal activesubstancenamemrec;
+    private BigDecimal isactivesubstancechanged;
 
-    @Column(length = 200)
-    @XmlTransient
-    private String activesubstancenamerecoded;
-
+    /** Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
+     * k_IS_BLINDED_TRUE             CONSTANT NUMBER := 1; <br/>
+     * k_IS_BLINDED_FALSE            CONSTANT NUMBER := 2;
+     * */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blinded;
 
+    /** Blinded flag setted from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blindedmrec;
@@ -59,26 +57,41 @@ public class ActiveSubstance implements Serializable {
     @XmlTransient
     private BigDecimal fkModelsubstance;
 
+    /** Foreign key for ICHICSR.QI_ACTIVESUBSTANCE  */
     @Column(name = "FK_QIACTIVESUBSTANCE", precision = 10)
     @XmlTransient
     private BigDecimal fkQiactivesubstance;
 
+    @Column(length = 200)
+    @XmlElement(required = true, name = "activesubstancename")
+    private String activesubstancename;
+
+    /** Recoded version of activesubstancename */
+    @Column(length = 200)
+    @XmlTransient
+    private String activesubstancenamerecoded;
+
+    /** activesubstancename set from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     @XmlTransient
-    private BigDecimal isactivesubstancechanged;
+    private BigDecimal activesubstancenamemrec;
 
+    /** Populate by automatic recoding. If active substance name has been recoded the value is 1 (true)*/
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isactivesubstancenamerecoded;
 
+    /** Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)*/
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isblindedchanged;
 
+    /** Populated by recoding. It is the stage when the recoding found the match */
     @Column(name = "RECODING_STAGE", precision = 22)
     @XmlTransient
     private BigDecimal recodingStage;
 
+    /** Populated by recoding. It is the timestamp when the recoding populate */
     @Temporal(TemporalType.DATE)
     @Column(name = "RECODING_STAMP")
     @XmlTransient

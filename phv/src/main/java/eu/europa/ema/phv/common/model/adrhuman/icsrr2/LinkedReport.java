@@ -19,6 +19,7 @@ public class LinkedReport implements Serializable {
 
     private static final long serialVersionUID = -4164417160556322504L;
 
+    /** Primary key */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_LINKEDREPORT", unique = true, nullable = false, precision = 10)

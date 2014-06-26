@@ -20,6 +20,7 @@ public class DrugReactionRelated implements Serializable {
 
     private static final long serialVersionUID = -1293432034449347082L;
 
+    /** Primary Key */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_DRUGREACTIONRELATED", unique = true, nullable = false, precision = 10)
@@ -42,6 +43,7 @@ public class DrugReactionRelated implements Serializable {
     @XmlTransient
     private BigDecimal drugreactionassesct;
 
+    /** drugreactionasses set from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal drugreactionassesmrec;
@@ -50,6 +52,7 @@ public class DrugReactionRelated implements Serializable {
     @XmlElement(name = "drugreactionassesmeddraversion")
     private BigDecimal drugreactionassesmv;
 
+    /** Populate by automatic recoding. If drugreactionasses has been recoded the value is 1 (true)*/
     @Column(length = 250)
     @XmlTransient
     private String drugreactionassesrecoded;
@@ -66,10 +69,12 @@ public class DrugReactionRelated implements Serializable {
     @XmlTransient
     private BigDecimal fkQidrugreactionasses;
 
+    /** Automatic recoding reprocess the report. If there are changes on drugreactionasses this is set to 1 (true)*/
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isdrugreactionasseschanged;
 
+    /** Recoded version of drugreactionasses */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isdrugreactionassesrecoded;

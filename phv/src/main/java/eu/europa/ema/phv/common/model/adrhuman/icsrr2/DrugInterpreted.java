@@ -24,9 +24,14 @@ public class DrugInterpreted implements Serializable {
     @Column(precision = 1)
     private BigDecimal actiondrug;
 
+    /** Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
+     * k_IS_BLINDED_TRUE             CONSTANT NUMBER := 1; <br/>
+     * k_IS_BLINDED_FALSE            CONSTANT NUMBER := 2;
+     * */
     @Column(precision = 1)
     private BigDecimal blinded;
 
+    /** Blinded flag setted from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     private BigDecimal blindedmrec;
 
@@ -151,6 +156,7 @@ public class DrugInterpreted implements Serializable {
     @Column(name = "INTERPRETED_DATE")
     private Date interpretedDate;
 
+    /** Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)*/
     @Column(precision = 1)
     private BigDecimal isblindedchanged;
 
@@ -193,9 +199,11 @@ public class DrugInterpreted implements Serializable {
     @Column(name = "REC_CHANGED", precision = 1)
     private BigDecimal recChanged;
 
+    /** Populated by recoding. It is the stage when the recoding found the match */
     @Column(name = "RECODING_STAGE", precision = 22)
     private BigDecimal recodingStage;
 
+    /** Populated by recoding. It is the timestamp when the recoding populate */
     @Temporal(TemporalType.DATE)
     @Column(name = "RECODING_STAMP")
     private Date recodingStamp;

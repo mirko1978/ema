@@ -22,6 +22,7 @@ public class Drug implements Serializable {
 
     private static final long serialVersionUID = 908646845918748709L;
 
+    /** Primary key */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_DRUG", unique = true, nullable = false, precision = 10)
@@ -32,10 +33,15 @@ public class Drug implements Serializable {
     @XmlElement(name = "actiondrug")
     private BigDecimal actiondrug;
 
+    /** Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
+     * k_IS_BLINDED_TRUE             CONSTANT NUMBER := 1; <br/>
+     * k_IS_BLINDED_FALSE            CONSTANT NUMBER := 2;
+     * */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blinded;
 
+    /** Blinded flag setted from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blindedmrec;
@@ -76,6 +82,7 @@ public class Drug implements Serializable {
     @XmlElement(name = "drugcumulativedosageunit")
     private BigDecimal drugcumulativedosageunit;
 
+    /** TODO: Andrea */
     @Column(length = 100)
     @XmlTransient
     private String drugdosageform;
@@ -100,10 +107,12 @@ public class Drug implements Serializable {
     @XmlElement(name = "drugindication")
     private BigDecimal drugindication;
 
+    /** TODO: Andrea */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal drugindicationct;
 
+    /** TODO: Andrea */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal drugindicationmrec;
@@ -112,10 +121,14 @@ public class Drug implements Serializable {
     @XmlElement(name = "drugindicationmeddraversion")
     private BigDecimal drugindicationmv;
 
+    /** Used by recoding but no longer required */
+    @Deprecated
     @Column(length = 250)
     @XmlTransient
     private String drugindicationrecoded;
 
+    /** Used by recoding but no longer required */
+    @Deprecated
     @Column(length = 250)
     @XmlTransient
     private String drugindicationtext;
@@ -180,58 +193,76 @@ public class Drug implements Serializable {
     @XmlElement(name = "drugtreatmentdurationunit")
     private BigDecimal drugtreatmentdurationunit;
 
+    /** Interpretation populate it. Links ICHICSR.S_MODELDRUG*/
     @Column(name = "FK_MODELDRUG", precision = 10)
     @XmlTransient
     private BigDecimal fkModeldrug;
 
+    /** Drug indication are no longer provided as text. The code is mandatory */
+    @Deprecated
     @Column(name = "FK_QIDRUGINDICATION", precision = 10)
     @XmlTransient
     private BigDecimal fkQidrugindication;
 
+    /** It is populated by recoding. It points to ICHICSR.QI_PRODUCT */
     @Column(name = "FK_QIMEDICINALPRODUCT", precision = 10)
     @XmlTransient
     private BigDecimal fkQimedicinalproduct;
 
+    /** Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)*/
     @Column(precision = 22)
     @XmlTransient
     private BigDecimal isblindedchanged;
 
+    /** No longer used */
+    @Deprecated
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isdrugindicationchanged;
 
+    /** No longer used */
+    @Deprecated
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isdrugindicationrecoded;
-
-    @Column(precision = 1)
-    @XmlTransient
-    private BigDecimal ismedicinalproductchanged;
-
-    @Column(precision = 1)
-    @XmlTransient
-    private BigDecimal ismedicinalproductrecoded;
 
     @Column(length = 200)
     @XmlElement(name = "medicinalproduct")
     private String medicinalproduct;
 
-    @Column(precision = 1)
-    @XmlTransient
-    private BigDecimal medicinalproductmrec;
-
+    /** Recoded version of medicinalproduct */
     @Column(length = 200)
     @XmlTransient
     private String medicinalproductrecoded;
+
+    /** Populate by automatic recoding. When the result of recoding of medicinal product has changed the value is 1 (true).*/
+    @Column(precision = 1)
+    @XmlTransient
+    private BigDecimal ismedicinalproductchanged;
+
+    /** Populate by automatic recoding. If medicinal product has been recoded the value is 1 (true)*/
+    @Column(precision = 1)
+    @XmlTransient
+    private BigDecimal ismedicinalproductrecoded;
+
+    /** Drop down list managed by EV WEB */
+    /** TODO: Andrea */
+    @Column(precision = 1)
+    @XmlTransient
+    private BigDecimal medicinalproductmrec;
 
     @Column(length = 2)
     @XmlElement(name = "obtaindrugcountry")
     private String obtaindrugcountry;
 
+    /** Result of recoding of the product index (EV code) from PRODUCTS3.P_PRODUCTINDEX<br/>
+     * This field is redundant because productindexcode, however is populated by recoding.
+     */
     @Column(name = "PRODUCT_EVCODE", length = 60)
     @XmlTransient
     private String productEvcode;
 
+    /** Primary key populated by recoding from the product index PRODUCTS3.P_PRODUCTINDEX */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal productindexcode;
@@ -244,16 +275,20 @@ public class Drug implements Serializable {
     @XmlElement(name = "reactiongestationperiodunit")
     private BigDecimal reactiongestationperiodunit;
 
+    /** TODO: David check */
     @Column(name = "REC_CHANGED", precision = 1)
     @XmlTransient
     private BigDecimal recChanged;
 
+    /** Populated by recoding. It is the stage when the recoding found the match */
     @Column(name = "RECODING_STAGE", precision = 22)
     @XmlTransient
     private BigDecimal recodingStage;
 
+    /** Populated by recoding. It is the timestamp when the recoding populate */
     @Temporal(TemporalType.DATE)
     @Column(name = "RECODING_STAMP")
+    @XmlTransient
     private Date recodingStamp;
 
     // bi-directional many-to-one association to ActiveSubstance

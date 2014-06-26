@@ -17,12 +17,12 @@ import java.util.List;
 @Table(name = "I_SAFETYREPORT")
 @NamedQuery(name = "SafetyReport.findAll", query = "SELECT s FROM SafetyReport s")
 @XmlAccessorType(XmlAccessType.FIELD)
-//@XmlRootElement(name = "safetyreport")
 @XmlType
 public class SafetyReport implements Serializable {
 
     private static final long serialVersionUID = -6618317353731978764L;
 
+    /** Primary key */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
@@ -33,14 +33,21 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "additionaldocument")
     private BigDecimal additionaldocument;
 
+    /** Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
+     * k_IS_BLINDED_TRUE             CONSTANT NUMBER := 1; <br/>
+     * k_IS_BLINDED_FALSE            CONSTANT NUMBER := 2;
+     * */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blinded;
 
+    /** TODO: Andrea */
     @Column(name = "BLINDED_SUGGESTED", precision = 1)
     @XmlTransient
     private BigDecimal blindedSuggested;
 
+
+    /** Blinded flag setted from the user manually (UI - EV WEB) via manual recoding */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blindedmrec;
@@ -49,18 +56,22 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "casenullification")
     private BigDecimal casenullification;
 
+    /** TODO: Andrea */
     @Column(length = 100)
     @XmlTransient
     private String casenumber;
 
+    /** TODO: Andrea */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal casetype;
 
+    /** TODO: Andrea */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal dataquality;
 
+    /** TODO: Andrea */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal dataqualitymrec;
@@ -77,6 +88,7 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "fulfillexpeditecriteria")
     private BigDecimal fulfillexpeditecriteria;
 
+    /** Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)*/
     @Column(precision = 22)
     @XmlTransient
     private BigDecimal isblindedchanged;
@@ -85,6 +97,7 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "medicallyconfirm")
     private BigDecimal medicallyconfirm;
 
+    /** TODO: Andrea */
     @Column(precision = 2)
     @XmlTransient
     private BigDecimal messagetype;
@@ -97,10 +110,12 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "occurcountry")
     private String occurcountry;
 
+    /** TODO: Andrea */
     @Temporal(TemporalType.DATE)
     @XmlTransient
     private Date officialreceivedate;
 
+    /** TODO: Andrea */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal officialreceivedatemrec;
@@ -185,17 +200,22 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "clusterduplicate")
     private String clusterduplicate;
 
-    // bi-directional one-to-one association to Cluster
+    /** Update by the duplicate detection system.<br/>
+     * bi-directional one-to-one association to Cluster.
+     */
+    /** TODO: Sujata */
     @OneToOne(mappedBy = "ISafetyreport")
     @XmlTransient
     private Cluster ICluster;
 
+    /** Collection of control attributes for each safaty report */
     // bi-directional many-to-one association to FlagStatus
     @OneToMany(mappedBy = "ISafetyreport")
     @XmlTransient
     private List<FlagStatus> IFlagstatuses;
 
-    // bi-directional many-to-one association to LinkedReport
+
+    /** bi-directional many-to-one association to LinkedReport */
     @OneToMany(mappedBy = "ISafetyreport")
     @XmlElement(name = "linkedreport")
     private List<LinkedReport> ILinkedreports;

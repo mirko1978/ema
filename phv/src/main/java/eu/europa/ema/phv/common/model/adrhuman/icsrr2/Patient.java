@@ -21,6 +21,7 @@ public class Patient implements Serializable {
 
     private static final long serialVersionUID = -1176720928733662387L;
 
+    /** Primary key that is the SafetyReport key*/
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)

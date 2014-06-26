@@ -15,15 +15,29 @@ import java.util.Date;
 public class FlagStatus implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /** Primary key */
     @EmbeddedId
     private FlagStatusPK id;
 
+    /** Foregein key from METABASE.LK_FLAGVALUE */
     @Column(nullable = false, precision = 3)
     private BigDecimal flagvalue;
 
+    /** System that wrote the record.<br/>
+     * ETL = ETL from DWH <br/>
+     * NQI = ??
+     * CCL = Duplicate Detection Client <br/>
+     * MAN = Manual ?? <br/>
+     * ETD = ?? <br/>
+     * REC = Automatic recoding <br/>
+     * CLA = Classification <br/>
+     * INT = Interpretation
+     *
+     */
+    /** TODO: Andrea */
     @Column(length = 3)
     private String origin;
-
+    /** Date when the record was created */
     @Temporal(TemporalType.DATE)
     @Column(name = "\"WHEN\"")
     private Date when;

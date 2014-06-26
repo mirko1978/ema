@@ -16,24 +16,22 @@ public class SafetyReports implements Serializable {
 
     private static final long serialVersionUID = 2389207372789581954L;
 
+    /** Primary key */
     @EmbeddedId
-//    @XmlTransient
     private SafetyReportsPK id;
 
+    /** TODO: Andrea */
     @Column(precision = 22)
-//    @XmlTransient
     private BigDecimal commitrollback;
 
     // bi-directional many-to-one association to IchicsrMessage
     @ManyToOne
     @JoinColumn(name = "FK_ICHICSRMESSAGE", nullable = false, insertable = false, updatable = false)
-//    @XmlInverseReference(mappedBy = "safetyReports")
     private IchicsrMessage ichicsrMessage;
 
-    // bi-directional many-to-one association to SafetyReport
+    /** bi-directional many-to-one association to SafetyReport */
     @ManyToOne
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
-//    @XmlElement(name = "safetyreport")
     private SafetyReport safetyReport;
 
     public SafetyReports() {

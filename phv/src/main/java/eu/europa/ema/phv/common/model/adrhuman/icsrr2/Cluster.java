@@ -15,6 +15,7 @@ import java.util.Date;
 public class Cluster implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /** TODO: Sujata */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "FK_SAFETYREPORT", unique = true, nullable = false, precision = 22)
