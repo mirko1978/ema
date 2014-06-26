@@ -9,12 +9,14 @@ URL: http://maven.apache.org/download.cgi
 The dependency conflict are visible to the weblogic CAT application.   
 One instance of CAT for server is running for example: [CAT main server](http://localhost:7001/wls-cat/) or [CAT for Server-0](http://localhost:7002/wls-cat/)  
 
-## 1.1 External libraries added manually
+## 1.1 External libraries to be add manually
 
 ### 1.1.1 Pitchfork
 
+Download the file `pitchfork-1.0-m11.jar`
 URL: [https://oss.oracle.com/projects/pitchfork/](https://oss.oracle.com/projects/pitchfork/)    
-Manually download the file `pitchfork-1.0-m11.jar`
+
+and from the download folder run:
 
 	mvn install:install-file -Dfile=pitchfork-1.0-m11.jar -DgroupId=com.oracle -DartifactId=pitchfork -Dversion=1.0-m11 -Dpackaging=jar
 
@@ -22,6 +24,7 @@ Manually download the file `pitchfork-1.0-m11.jar`
 
 Local path: `C:\devtools\weblogic\12.1.2\wlserver\server\lib\wlthint3client.jar`  
 
+run the following:
 	mvn install:install-file -Dfile=C:\devtools\weblogic\12.1.2\wlserver\server\lib\wlthint3client.jar -DgroupId=com.oracle -DartifactId=wlthint3client -Dversion=12.1.2 -Dpackaging=jar
 
 ### 1.1.3 Eclipse link
