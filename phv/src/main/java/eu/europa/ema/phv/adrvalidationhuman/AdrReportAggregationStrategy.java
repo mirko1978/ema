@@ -4,8 +4,6 @@
 package eu.europa.ema.phv.adrvalidationhuman;
 
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Ichicsrack;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Reportacknowledgment;
 import eu.europa.ema.phv.common.util.IcsrR2AckUtility;
 import org.apache.camel.Exchange;
 import org.apache.camel.processor.aggregate.AggregationStrategy;

@@ -5,10 +5,9 @@ package eu.europa.ema.phv.common.util;
 
 import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode;
 import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Acknowledgment;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Ichicsrack;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Messageacknowledgment;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.*;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.Acknowledgment;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.Ichicsrack;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.Messageacknowledgment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

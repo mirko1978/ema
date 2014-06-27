@@ -5,7 +5,7 @@ package eu.europa.ema.phv.adrparserhuman;
 
 import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Ichicsr;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import org.apache.camel.CamelContext;
 import org.apache.camel.EndpointInject;
@@ -46,6 +46,7 @@ public class AdrParserHumanRouterTest extends AbstractJUnit4SpringContextTests {
     @Inject
     private AdrParserHumanRouter router;
 
+    @SuppressWarnings("SpringJavaAutowiringInspection")
     @Inject
     private CamelContext context;
 
@@ -73,10 +74,10 @@ public class AdrParserHumanRouterTest extends AbstractJUnit4SpringContextTests {
     }
 
     private ValidIcsrR2Message createMessage(String path) throws JAXBException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(Ichicsr.class);
+        JAXBContext jaxbContext = JAXBContext.newInstance(IchicsrMessage.class);
 
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        Ichicsr icsr = (Ichicsr) jaxbUnmarshaller.unmarshal(getClass().getResourceAsStream(path));
+        IchicsrMessage icsr = (IchicsrMessage) jaxbUnmarshaller.unmarshal(getClass().getResourceAsStream(path));
         ValidIcsrR2Message message = new ValidIcsrR2Message();
         MessageMetadata metadata = new MessageMetadata();
         metadata.setFileName(path);

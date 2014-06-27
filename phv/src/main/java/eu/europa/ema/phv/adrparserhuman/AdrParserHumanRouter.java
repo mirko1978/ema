@@ -27,7 +27,7 @@ public class AdrParserHumanRouter extends SpringRouteBuilder {
         //@formatter:off
         from(camelUrl.getAdrParserHuman())
             .transacted()           
-            .log("Message received: ${body.icsr.ichicsrmessageheader.messagenumb.getvalue()}")            
+            .log("Message received: ${body.icsr.messagenumber}")
             .split()                                
                 .method("ReportSplitter")                
                 .parallelProcessing()

@@ -3,7 +3,7 @@
  */
 package eu.europa.ema.phv.common.model.adrhuman;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Ichicsr;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 
 import java.io.Serializable;
 
@@ -19,7 +19,7 @@ public class ValidIcsrR2Message implements Serializable {
 
     private static final long serialVersionUID = -8815339976705776959L;
 
-    private Ichicsr icsr;
+    private IchicsrMessage icsr;
 
     private MessageMetadata metadata;
 
@@ -40,14 +40,14 @@ public class ValidIcsrR2Message implements Serializable {
     /**
      * @return the icsr can be null if the message is a master
      */
-    public Ichicsr getIcsr() {
+    public IchicsrMessage getIcsr() {
         return icsr;
     }
 
     /**
      * @param icsr the icsr to set
      */
-    public void setIcsr(Ichicsr icsr) {
+    public void setIcsr(IchicsrMessage icsr) {
         this.icsr = icsr;
     }
 

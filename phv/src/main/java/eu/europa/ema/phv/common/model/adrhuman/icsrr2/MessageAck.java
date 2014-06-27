@@ -15,26 +15,33 @@ import java.util.List;
 public class MessageAck implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /** Primary key from ICHICSR.I_ICHICSRMESSAGE.PK_ICHICSRMESSAGE */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_ICHICSRMESSAGE", unique = true, nullable = false, precision = 10)
     private long pkIchicsrmessage;
 
+    /** Icsr message date */
     @Column(length = 56)
     private String icsrmessagedate;
 
+    /** Icsr date format */
     @Column(precision = 3)
     private BigDecimal icsrmessagedateformat;
 
+    /** Icsr number */
     @Column(length = 400)
     private String icsrmessagenumb;
 
+    /** Ack sender ID. It is always EVHUMAN */
     @Column(length = 240)
     private String icsrmessagereceiveridentifier;
 
+    /** Ack receiver ID */
     @Column(length = 240)
     private String icsrmessagesenderidentifier;
 
+    /** */
     @Column(length = 400)
     private String localmessagenumb;
 

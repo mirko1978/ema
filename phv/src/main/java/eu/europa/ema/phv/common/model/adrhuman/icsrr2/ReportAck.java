@@ -15,6 +15,7 @@ import java.util.List;
 public class ReportAck implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /** Primary key from ICHICSR.I_SAFETYREPORT */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)

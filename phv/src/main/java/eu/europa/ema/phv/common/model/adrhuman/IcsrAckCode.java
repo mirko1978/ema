@@ -3,7 +3,7 @@
  */
 package eu.europa.ema.phv.common.model.adrhuman;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack.Transmissionacknowledgmentcode;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.Transmissionacknowledgmentcode;
 
 /**
  * Define the ACK codes
