@@ -3,8 +3,6 @@
  */
 package eu.europa.ema.phv.common.model.adrhuman;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.Transmissionacknowledgmentcode;
-
 /**
  * Define the ACK codes
  * 
@@ -27,17 +25,16 @@ public enum IcsrAckCode {
      */
     ICSR_ERROR("03");
 
-    private final Transmissionacknowledgmentcode code;
+    private final String code;
 
     private IcsrAckCode(String code) {
-        this.code = new Transmissionacknowledgmentcode();
-        this.code.setvalue(code);
+        this.code = code;
     }
 
     /**
      * @return the transmission code
      */
-    public Transmissionacknowledgmentcode getCode() {
+    public String getCode() {
         return code;
     }
 

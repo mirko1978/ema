@@ -1,6 +1,6 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
-import eu.europa.ema.phv.common.xmladapter.EvDateAdapter;
+import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 import eu.europa.ema.phv.common.xmladapter.EvMessageTypeAdapter;
 import eu.europa.ema.phv.common.xmladapter.SafetyReportsAdapter;
 import org.eclipse.persistence.oxm.annotations.XmlPath;
@@ -79,7 +79,7 @@ public class IchicsrMessage implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @XmlPath("ichicsrmessageheader/messagedate/text()")
-    @XmlJavaTypeAdapter(EvDateAdapter.class)
+    @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
     private Date messagedate;
 
     @Column(length = 3)

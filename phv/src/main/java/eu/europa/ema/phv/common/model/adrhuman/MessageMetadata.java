@@ -19,6 +19,9 @@ public class MessageMetadata implements Serializable {
 
     private Date received;
 
+    /** Unique identifier for the received message. It is set by Message Handler component */
+    private String messageId;
+
     /**
      * @return the fileName
      */
@@ -47,4 +50,19 @@ public class MessageMetadata implements Serializable {
         this.received = received;
     }
 
+    /**
+     *
+     * @return {@link #messageId}
+     */
+    public String getMessageId() {
+        return messageId;
+    }
+
+    /**
+     *
+     * @param messageId {@link #messageId}
+     */
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
+    }
 }

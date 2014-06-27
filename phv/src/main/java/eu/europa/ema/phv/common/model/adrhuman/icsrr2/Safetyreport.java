@@ -716,4 +716,31 @@ public class SafetyReport implements Serializable {
         this.ISender = ISender;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getAuthoritynumb() {
+        return authoritynumb;
+    }
+
+    public void setAuthoritynumb(String authoritynumb) {
+        this.authoritynumb = authoritynumb;
+    }
+
+    public String getCompanynumb() {
+        return companynumb;
+    }
+
+    public void setCompanynumb(String companynumb) {
+        this.companynumb = companynumb;
+    }
+
+    public String getClusterduplicate() {
+        return clusterduplicate;
+    }
+
+    public void setClusterduplicate(String clusterduplicate) {
+        this.clusterduplicate = clusterduplicate;
+    }
 }

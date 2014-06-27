@@ -15,7 +15,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -23,7 +22,6 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "messageacknowledgment", "reportacknowledgment" })
 @XmlRootElement(name = "acknowledgment")
 public class Acknowledgment implements Serializable {
 
@@ -36,7 +34,7 @@ public class Acknowledgment implements Serializable {
     @XmlElement(required = true)
     protected Messageacknowledgment messageacknowledgment;
 
-    protected List<Reportacknowledgment> reportacknowledgment;
+    protected List<ReportAcknowledgment> reportAcknowledgment;
 
     /**
      * Gets the value of the lang property.
@@ -79,33 +77,33 @@ public class Acknowledgment implements Serializable {
     }
 
     /**
-     * Gets the value of the reportacknowledgment property.
+     * Gets the value of the reportAcknowledgment property.
      * 
      * <p>
      * This accessor method returns a reference to the live list, not a
      * snapshot. Therefore any modification you make to the returned list will
      * be present inside the JAXB object. This is why there is not a
-     * <CODE>set</CODE> method for the reportacknowledgment property.
+     * <CODE>set</CODE> method for the reportAcknowledgment property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * 
      * <pre>
-     * getReportacknowledgment().add(newItem);
+     * getReportAcknowledgment().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Reportacknowledgment }
+     * {@link ReportAcknowledgment }
      * 
      * 
      */
-    public List<Reportacknowledgment> getReportacknowledgment() {
-        if (reportacknowledgment == null) {
-            reportacknowledgment = new ArrayList<Reportacknowledgment>();
+    public List<ReportAcknowledgment> getReportAcknowledgment() {
+        if (reportAcknowledgment == null) {
+            reportAcknowledgment = new ArrayList<ReportAcknowledgment>();
         }
-        return this.reportacknowledgment;
+        return this.reportAcknowledgment;
     }
 
 }

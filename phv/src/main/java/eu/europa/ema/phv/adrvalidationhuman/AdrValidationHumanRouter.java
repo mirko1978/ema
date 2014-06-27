@@ -1,23 +1,22 @@
 /**
- * 
+ *
  */
 package eu.europa.ema.phv.adrvalidationhuman;
 
-import javax.inject.Inject;
-
+import eu.europa.ema.phv.common.util.CamelProperties;
+import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
 import org.apache.camel.spring.SpringRouteBuilder;
 
-import eu.europa.ema.phv.common.util.CamelProperties;
-import eu.europa.ema.phv.common.util.JmsCamelUrl;
+import javax.inject.Inject;
 
 /**
  * Route definition for the ADR Validation Human
- * 
+ *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @since 13 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 13 Jun 2014 $
+ * @since 13 Jun 2014 (creation date)
  */
 public class AdrValidationHumanRouter extends SpringRouteBuilder {
 
@@ -36,13 +35,12 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
         from(camelUrl.getAdrValidationHuman())
             .transacted()
             .beanRef("AdrHumanBRValidation")
-            //TODO: Call persince layer
+            // TODO: JPA endpoint for storing the message
             .beanRef("AdrHumanExternalProcedure", "runClassification")
             .beanRef("AdrHumanExternalProcedure", "runRecoding")
-            .aggregate(adrAggregationStrategy)
-                .exchange()
+            .aggregate(simple("${body.message.messageId}"), adrAggregationStrategy)
                 .completionTimeout(camelProperties.getAggregationTimeout())
-                .completionSize(simple("${body.total}"))
+                .completionSize(simple("${body.message.total}"))
         .to(camelUrl.getGatewayOutbox());
         //@formatter:on
 

@@ -30,6 +30,12 @@ public class IcsrR2ReportMessage implements Serializable {
     private ValidIcsrR2Message header;
 
     /**
+     * Unique identifier from {@link ValidIcsrR2Message#metadata#messageId}. <br/>
+     * This is a duplicate for each report because only the first has the {@link #header} filled.
+     */
+    private String messageId;
+
+    /**
      * Safety report position
      */
     private Integer index;
@@ -47,11 +53,13 @@ public class IcsrR2ReportMessage implements Serializable {
      * @param index  {@link #index}
      * @param total  {@link #total}
      */
-    public IcsrR2ReportMessage(SafetyReport report, ValidIcsrR2Message header, Integer index, Integer total) {
+    public IcsrR2ReportMessage(SafetyReport report, ValidIcsrR2Message header, Integer index, Integer total,
+            String messageId) {
         this.report = report;
         this.header = header;
         this.index = index;
         this.total = total;
+        this.messageId = messageId;
     }
 
     /**
@@ -114,5 +122,19 @@ public class IcsrR2ReportMessage implements Serializable {
      */
     public void setTotal(Integer total) {
         this.total = total;
+    }
+
+    /**
+     * @return {@link #messageId}
+     */
+    public String getMessageId() {
+        return messageId;
+    }
+
+    /**
+     * @param messageId {@link #messageId}
+     */
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
     }
 }

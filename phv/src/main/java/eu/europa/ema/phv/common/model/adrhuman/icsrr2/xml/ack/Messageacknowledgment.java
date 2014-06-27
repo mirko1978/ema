@@ -7,23 +7,19 @@
 
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.MessageIdentifier;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Messagedate;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Messagedateformat;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.Messagenumb;
+import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
+import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "icsrmessagenumb", "localmessagenumb", "icsrmessagesenderidentifier",
-        "icsrmessagereceiveridentifier", "icsrmessagedateformat", "icsrmessagedate", "transmissionacknowledgmentcode",
-        "parsingerrormessage" })
 @XmlRootElement(name = "messageacknowledgment")
 public class Messageacknowledgment implements Serializable {
 
@@ -34,27 +30,35 @@ public class Messageacknowledgment implements Serializable {
     protected String lang;
 
     @XmlElement(required = true, name = "icsrmessagenumb")
-    protected Messagenumb icsrmessagenumb;
+    @XmlPath("messageacknowledgment/icsrmessagenumb/text()")
+    protected String icsrmessagenumb;
 
-    @XmlElement(name = "localmessagenumb")
-    protected Messagenumb localmessagenumb;
+    @XmlPath("messageacknowledgment/localmessagenumb/text()")
+    protected String localmessagenumb;
 
     @XmlElement(required = true, name = "icsrmessagesenderidentifier")
-    protected MessageIdentifier icsrmessagesenderidentifier;
+    @XmlPath("messageacknowledgment/icsrmessagesenderidentifier/text()")
+    protected String icsrmessagesenderidentifier;
 
     @XmlElement(required = true, name = "icsrmessagereceiveridentifier")
-    protected MessageIdentifier icsrmessagereceiveridentifier;
+    @XmlPath("messageacknowledgment/icsrmessagereceiveridentifier/text()")
+    protected String icsrmessagereceiveridentifier;
 
     @XmlElement(required = true, name = "icsrmessagedateformat")
-    protected Messagedateformat icsrmessagedateformat;
+    @XmlPath("messageacknowledgment/icsrmessagedateformat/text()")
+    protected String icsrmessagedateformat;
 
     @XmlElement(required = true, name = "icsrmessagedate")
-    protected Messagedate icsrmessagedate;
+    @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
+    @XmlPath("messageacknowledgment/icsrmessagedate/text()")
+    protected Date icsrmessagedate;
 
     @XmlElement(required = true)
-    protected Transmissionacknowledgmentcode transmissionacknowledgmentcode;
+    @XmlPath("messageacknowledgment/transmissionacknowledgmentcode/text()")
+    protected String transmissionacknowledgmentcode;
 
-    protected Parsingerrormessage parsingerrormessage;
+    @XmlPath("messageacknowledgment/parsingerrormessage/text()")
+    protected String parsingerrormessage;
 
     /**
      * Gets the value of the lang property.
@@ -79,160 +83,160 @@ public class Messageacknowledgment implements Serializable {
     /**
      * Gets the value of the icsrmessagenumb property.
      * 
-     * @return possible object is {@link Messagenumb }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public Messagenumb getIcsrmessagenumb() {
+    public String getIcsrmessagenumb() {
         return icsrmessagenumb;
     }
 
     /**
      * Sets the value of the icsrmessagenumb property.
-     * 
-     * @param value allowed object is {@link Messagenumb }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setIcsrmessagenumb(Messagenumb value) {
+    public void setIcsrmessagenumb(String value) {
         this.icsrmessagenumb = value;
     }
 
     /**
      * Gets the value of the localmessagenumb property.
      * 
-     * @return possible object is {@link Messagenumb }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public Messagenumb getLocalmessagenumb() {
+    public String getLocalmessagenumb() {
         return localmessagenumb;
     }
 
     /**
      * Sets the value of the localmessagenumb property.
-     * 
-     * @param value allowed object is {@link Messagenumb }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setLocalmessagenumb(Messagenumb value) {
+    public void setLocalmessagenumb(String value) {
         this.localmessagenumb = value;
     }
 
     /**
      * Gets the value of the icsrmessagesenderidentifier property.
      * 
-     * @return possible object is {@link MessageIdentifier }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public MessageIdentifier getIcsrmessagesenderidentifier() {
+    public String getIcsrmessagesenderidentifier() {
         return icsrmessagesenderidentifier;
     }
 
     /**
      * Sets the value of the icsrmessagesenderidentifier property.
-     * 
-     * @param value allowed object is {@link MessageIdentifier }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setIcsrmessagesenderidentifier(MessageIdentifier value) {
+    public void setIcsrmessagesenderidentifier(String value) {
         this.icsrmessagesenderidentifier = value;
     }
 
     /**
      * Gets the value of the icsrmessagereceiveridentifier property.
      * 
-     * @return possible object is {@link MessageIdentifier }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public MessageIdentifier getIcsrmessagereceiveridentifier() {
+    public String getIcsrmessagereceiveridentifier() {
         return icsrmessagereceiveridentifier;
     }
 
     /**
      * Sets the value of the icsrmessagereceiveridentifier property.
-     * 
-     * @param value allowed object is {@link MessageIdentifier }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setIcsrmessagereceiveridentifier(MessageIdentifier value) {
+    public void setIcsrmessagereceiveridentifier(String value) {
         this.icsrmessagereceiveridentifier = value;
     }
 
     /**
      * Gets the value of the icsrmessagedateformat property.
      * 
-     * @return possible object is {@link Messagedateformat }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public Messagedateformat getIcsrmessagedateformat() {
+    public String getIcsrmessagedateformat() {
         return icsrmessagedateformat;
     }
 
     /**
      * Sets the value of the icsrmessagedateformat property.
-     * 
-     * @param value allowed object is {@link Messagedateformat }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setIcsrmessagedateformat(Messagedateformat value) {
+    public void setIcsrmessagedateformat(String value) {
         this.icsrmessagedateformat = value;
     }
 
     /**
      * Gets the value of the icsrmessagedate property.
      * 
-     * @return possible object is {@link Messagedate }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public Messagedate getIcsrmessagedate() {
+    public Date getIcsrmessagedate() {
         return icsrmessagedate;
     }
 
     /**
      * Sets the value of the icsrmessagedate property.
-     * 
-     * @param value allowed object is {@link Messagedate }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setIcsrmessagedate(Messagedate value) {
+    public void setIcsrmessagedate(Date value) {
         this.icsrmessagedate = value;
     }
 
     /**
      * Gets the value of the transmissionacknowledgmentcode property.
      * 
-     * @return possible object is {@link Transmissionacknowledgmentcode }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public Transmissionacknowledgmentcode getTransmissionacknowledgmentcode() {
+    public String getTransmissionacknowledgmentcode() {
         return transmissionacknowledgmentcode;
     }
 
     /**
      * Sets the value of the transmissionacknowledgmentcode property.
-     * 
-     * @param value allowed object is {@link Transmissionacknowledgmentcode }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setTransmissionacknowledgmentcode(Transmissionacknowledgmentcode value) {
+    public void setTransmissionacknowledgmentcode(String value) {
         this.transmissionacknowledgmentcode = value;
     }
 
     /**
      * Gets the value of the parsingerrormessage property.
      * 
-     * @return possible object is {@link eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.Parsingerrormessage }
+     * @return possible object is {@link java.lang.String }
      * 
      */
-    public Parsingerrormessage getParsingerrormessage() {
+    public String getParsingerrormessage() {
         return parsingerrormessage;
     }
 
     /**
      * Sets the value of the parsingerrormessage property.
-     * 
-     * @param value allowed object is {@link eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.Parsingerrormessage }
+     *
+     * @param value allowed object is {@link java.lang.String }
      * 
      */
-    public void setParsingerrormessage(Parsingerrormessage value) {
+    public void setParsingerrormessage(String value) {
         this.parsingerrormessage = value;
     }
 
