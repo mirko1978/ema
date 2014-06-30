@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+<!-- Spring JDBC template -->
+    <jee:jndi-lookup id="wlsJdbcDS" jndi-name="${jdbc.wls}" />
+
+    <bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"/>
+
+    <bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>
+
+    <bean id="wlsAggregationRepository" class="org.apache.camel.processor.aggregate.jdbc.JdbcAggregationRepository">
+        <property name="dataSource" ref="wlsJdbcDS" />
+        <property name="transactionManager" ref="transactionManager"/>
+        <!-- TODO: finish http://camel.apache.org/sql-component.html -->
+    </bean>
+</beans>
