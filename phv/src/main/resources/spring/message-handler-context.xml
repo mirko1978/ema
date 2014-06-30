@@ -31,5 +31,8 @@
 		class="eu.europa.ema.phv.messagehandler.translator.AckTranslator" />
 	<bean id="RoutingTranslator"
 		class="eu.europa.ema.phv.messagehandler.translator.RoutingTranslator" />
-
+	<!--  >bean id="icsrDataFormat" class="org.apache.camel.model.dataformat.JaxbDataFormat">
+	<property name="contextPath">eu.europa.ema.phv.common.model.adrhuman.icsrr2</property>
+	<>property name="schema"></property>
+	</bean -->
 </beans>

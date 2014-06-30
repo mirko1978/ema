@@ -21,7 +21,18 @@
 		<spring.version>3.2.8.RELEASE</spring.version>
 		<drools.version>6.0.1.Final</drools.version>
 	</properties>
-
+	<repositories>
+		<repository>
+			<id>oracle</id>
+			<url>http://mvnrepository.com/artifact</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -165,12 +176,23 @@
 			<scope>provided</scope>
 		</dependency>
 
+
 		<!-- Please note that eclipse link 2.5.1 has a better management for the 
 			errors. In order to use it properly it is necessary to add the follow line 
 			to weblogic.xml file <wls:prefer-application-packages> <wls:package-name>org.eclipse.persistence.*</wls:package-name> 
 			</wls:prefer-application-packages> -->
-		<!-- <dependency> <groupId>org.eclipse.persistence</groupId> <artifactId>eclipselink</artifactId> 
-			<version>2.5.1</version> </dependency> -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.5.0</version>
+			<scope></scope>
+		</dependency>
+
 
 		<!-- logging -->
 		<dependency>
@@ -269,7 +291,7 @@
 					<schemaDirectory>${project.basedir}/src/main/resources/schema</schemaDirectory>
 					<clearOutputDir>false</clearOutputDir>
 					<!-- NOT USED: <schemaFiles>icsr21xml.dtd</schemaFiles> -->
-					<!--  <schemaFiles>ichicsrack11xml.dtd</schemaFiles>-->
+					<!-- <schemaFiles>ichicsrack11xml.dtd</schemaFiles> -->
 					<schemaFiles>masterreport21xml.dtd</schemaFiles>
 					<extension>true</extension>
 					<verbose>true</verbose>

@@ -5,10 +5,15 @@ package eu.europa.ema.phv.messagehandler;
 
 import javax.inject.Inject;
 
+import org.apache.camel.Expression;
+import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spring.SpringRouteBuilder;
+import org.xml.sax.SAXParseException;
 
 import eu.europa.ema.phv.common.exception.UnexpectedResultException;
+import eu.europa.ema.phv.common.persistence.MessageToEntityMapper;
 import eu.europa.ema.phv.common.util.JmsCamelUrl;
+import eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher;
 
 /**
  * Route definition for the Message Handler component
@@ -31,17 +36,22 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        //@formatter:off
+    	JaxbDataFormat jaxb =  new JaxbDataFormat("eu.europa.ema.phv.common.model.adrhuman.icsrr2");
+    	//jaxb.setSchema("classpath:/schema/icsr21xml.dtd");
+    	//jaxb.setEncoding("UTF-8");
+    	//@formatter:off
+    	onException(SAXParseException.class).handled(true).to(INVALID_EP);
         from(camelUrl.getGatewayHumanAdr())
             .transacted()
-            .processRef("XmlValidator")
+            .unmarshal(jaxb).to(VALID_EP);
+            /**
             .choice()
-                .when(header("ValidationResult").isEqualTo("valid"))
+                .when(header("ValidationResult").isEqualTo("valid")).log("Validation Suceeded")
                     .to(VALID_EP)
-                 .when(header("ValidationResult").isEqualTo("invalid"))
+                 .when(header("ValidationResult").isEqualTo("invalid")).log("Validation Failed")
                      .to(INVALID_EP)
                  .otherwise()
-                     .throwException(new UnexpectedResultException("Validation didn't set the right header"));
+                     .throwException(new UnexpectedResultException("Validation didn't set the right header")); */ 
         //@formatter:on
         invalidXmlBranch();
         validXmlBranch();
@@ -61,7 +71,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     private void validXmlBranch() {
         //@formatter:off        
         from(VALID_EP)
-            .transacted()
+            .transacted().log("Message is valid")
             .beanRef("MetadataEnricher")            
             .multicast()
                 .to(MESSAGE_STORE_EP)
@@ -71,7 +81,9 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //@formatter:off        
         from(MESSAGE_STORE_EP)
             .transacted()
-            .beanRef("StoreEnricher");
+            .beanRef("StoreEnricher")
+            .bean(MessageToEntityMapper.class, "mapMessageToEntity")
+         .to("jpa://eu.europa.ema.phv.common.persistence.InboundMessageEntity?persistenceUnit=messageJTA");
         // @formatter:on
         // TODO: Call the persistence layer here
         
@@ -85,7 +97,9 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
                     .beanRef("RoutingTranslator")
                     .to(camelUrl.getOutboundMessage())
                 .otherwise()
-                    .throwException(new UnexpectedResultException("Message not recognized by the router"));
+                	.log("Exception")
+                    .throwException(new UnexpectedResultException("Message not recognized by the router"))
+                .endChoice();
         // @formatter:on
     }
     
