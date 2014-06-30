@@ -6,7 +6,8 @@ import java.io.Serializable;
 
 /**
  * The primary key class for the I_FLAGSTATUS database table.
- * 
+ * Look at the stored procedure ICHICSR.EV_ICHICSR_STATUS
+ *
  */
 @Embeddable
 public class FlagStatusPK implements Serializable {

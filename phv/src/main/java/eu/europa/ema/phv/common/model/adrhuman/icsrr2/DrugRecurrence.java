@@ -31,6 +31,7 @@ public class DrugRecurrence implements Serializable {
     @XmlElement(required = true, name = "drugrecuraction")
     private BigDecimal drugrecuraction;
 
+    /** Meddra code for {@link #drugrecuraction} */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal drugrecuractionct;

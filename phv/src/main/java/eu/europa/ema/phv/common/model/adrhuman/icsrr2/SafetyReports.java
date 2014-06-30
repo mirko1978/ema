@@ -20,7 +20,7 @@ public class SafetyReports implements Serializable {
     @EmbeddedId
     private SafetyReportsPK id;
 
-    /** TODO: Andrea */
+    /** TODO: Reverse engigneering from database */
     @Column(precision = 22)
     private BigDecimal commitrollback;
 

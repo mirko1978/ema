@@ -6,9 +6,11 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * The persistent class for the I_ALERTS database table.
+ * The persistent class for the I_ALERTS database table.<br/>
+ * No data are present in the database, consider to refactor.
  * 
  */
+@Deprecated
 @Entity
 @Table(name = "I_ALERTS")
 @NamedQuery(name = "Alert.findAll", query = "SELECT a FROM Alert a")

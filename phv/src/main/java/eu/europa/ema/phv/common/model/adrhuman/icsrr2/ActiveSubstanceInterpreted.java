@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * The persistent class for the I_ACTIVESUBSTANCEINTERPRETED database table.
+ * The persistent class for the I_ACTIVESUBSTANCEINTERPRETED database table.<br/>
+ * All these fields are set by the interpretation job automatically. They are not from the XML.
  * 
  */
 @Entity
@@ -21,12 +22,15 @@ public class ActiveSubstanceInterpreted implements Serializable {
     @Column(name = "PK_ACTIVESUBSTANCE_INTERPRETED", unique = true, nullable = false, precision = 10)
     private long pkActivesubstanceInterpreted;
 
+    /** TODO: David */
     @Column(name = "ACTIVESUBSTANCE_EVCODE", length = 240)
     private String activesubstanceEvcode;
 
+    /** TODO: David */
     @Column(precision = 10)
     private BigDecimal activesubstancecode;
 
+    /** TODO: David */
     @Column(length = 200)
     private String activesubstancename;
 
@@ -57,6 +61,7 @@ public class ActiveSubstanceInterpreted implements Serializable {
     @Column(precision = 1)
     private BigDecimal blindedmrec;
 
+    /** TODO: David */
     @Column(name = "FK_INTERPRETATION_SUBSTANCE", precision = 10)
     private BigDecimal fkInterpretationSubstance;
 
@@ -64,6 +69,7 @@ public class ActiveSubstanceInterpreted implements Serializable {
     @Column(name = "FK_QIACTIVESUBSTANCE", precision = 10)
     private BigDecimal fkQiactivesubstance;
 
+    /** TODO: David */
     @Temporal(TemporalType.DATE)
     @Column(name = "INTERPRETED_DATE")
     private Date interpretedDate;
@@ -81,6 +87,7 @@ public class ActiveSubstanceInterpreted implements Serializable {
     @Column(name = "RECODING_STAMP")
     private Date recodingStamp;
 
+    /** TODO: David */
     @Temporal(TemporalType.DATE)
     private Date stampnullif;
 

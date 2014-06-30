@@ -82,13 +82,13 @@ public class Drug implements Serializable {
     @XmlElement(name = "drugcumulativedosageunit")
     private BigDecimal drugcumulativedosageunit;
 
-    /** TODO: Andrea */
     @Column(length = 100)
-    @XmlTransient
+    @XmlElement(name = "drugdosageform")
     private String drugdosageform;
 
+    /** TODO: look on VB6 / PlSql */
     @Column(precision = 3)
-    @XmlElement(name = "drugdosageform")
+    @XmlTransient
     private BigDecimal drugdosageformcode;
 
     @Column(length = 100)
@@ -103,16 +103,20 @@ public class Drug implements Serializable {
     @XmlElement(name = "drugenddateformat")
     private BigDecimal drugenddateformat;
 
+    /** Can be a text.
+     * TODO: VB6/PlSql
+     */
     @Column(precision = 10)
     @XmlElement(name = "drugindication")
     private BigDecimal drugindication;
 
-    /** TODO: Andrea */
+    /** Can be obsolete from ICSR R2.0 when Meddra can be specified only by text. Was from manual recoding
+     * TODO: VB6/PlSql */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal drugindicationct;
 
-    /** TODO: Andrea */
+    /** Manual recoding of {@link #drugindication} */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal drugindicationmrec;
@@ -245,7 +249,7 @@ public class Drug implements Serializable {
     @XmlTransient
     private BigDecimal ismedicinalproductrecoded;
 
-    /** Drop down list managed by EV WEB */
+    /** Manual recoding value of {@link #medicinalproduct} */
     /** TODO: Andrea */
     @Column(precision = 1)
     @XmlTransient

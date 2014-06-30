@@ -122,7 +122,7 @@ public class IchicsrMessage implements Serializable {
     @XmlTransient
     private Date officialreceivedate;
 
-    /** Why has been changed. Lookup table is in. TODO: Andrea for getting the lookup */
+    /** Manual recoding value of {@link #officialreceivedate} */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal officialreceivedatemrec;
@@ -137,14 +137,17 @@ public class IchicsrMessage implements Serializable {
     @XmlTransient
     private BigDecimal originalmessageref;
 
+    /** TODO: See on VB6 code */
     @Column(nullable = false, length = 60)
     @XmlPath("ichicsrmessageheader/messagesenderidentifier/text()")
     private String senderid;
 
+    /** TODO: See on VB6 code */
     @Transient
     @XmlPath("ichicsrmessageheader/messagereceiveridentifier/text()")
     private String receiverid;
 
+    /** Message date format is 204 mandatory. It is not saved. */
     @Transient
     @XmlPath("ichicsrmessageheader/messagedateformat/text()")
     private String messageDateFormat;

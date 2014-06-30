@@ -41,7 +41,7 @@ public class SafetyReport implements Serializable {
     @XmlTransient
     private BigDecimal blinded;
 
-    /** TODO: Andrea */
+    /** Automatically set by the stored procedure during the parsering (classification or recoding). The user can change the vaule from the UI  */
     @Column(name = "BLINDED_SUGGESTED", precision = 1)
     @XmlTransient
     private BigDecimal blindedSuggested;
@@ -56,22 +56,26 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "casenullification")
     private BigDecimal casenullification;
 
-    /** TODO: Andrea */
+    /** Logical OR of company number and authority number (only one can be setup). <br>
+     * XML tags: Companynumber or authority number .*/
     @Column(length = 100)
     @XmlTransient
     private String casenumber;
 
-    /** TODO: Andrea */
+    /** Case type can be:<br/>
+     * 1 = ??? <br/>
+     * 2 = ??? <br/>
+     * TODO: Search on VB6 code or plsql*/
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal casetype;
 
-    /** TODO: Andrea */
+    /** Data quality issue find by the recoding. Not used at all. */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal dataquality;
 
-    /** TODO: Andrea */
+    /** Manual recoding override of {@link #dataquality}. Not used at all */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal dataqualitymrec;
@@ -110,12 +114,12 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "occurcountry")
     private String occurcountry;
 
-    /** TODO: Andrea */
+    /** Copy of message receive date from the parser. */
     @Temporal(TemporalType.DATE)
     @XmlTransient
     private Date officialreceivedate;
 
-    /** TODO: Andrea */
+    /** Manual recoding changed value of {@link #officialreceivedate} */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal officialreceivedatemrec;
@@ -188,14 +192,18 @@ public class SafetyReport implements Serializable {
     @XmlElement(name = "transmissiondateformat")
     private BigDecimal transmissiondateformat;
 
+    /** See {@link #casenumber} */
     @Transient
     @XmlElement(name = "authoritynumb")
     private String authoritynumb;
 
+    /** See {@link #casenumber} */
     @Transient
     @XmlElement(name = "companynumb")
     private String companynumb;
 
+    /** From ICSR Master <br/>
+     * TODO: see who is managing that in VB6 */
     @Transient
     @XmlElement(name = "clusterduplicate")
     private String clusterduplicate;
@@ -254,18 +262,6 @@ public class SafetyReport implements Serializable {
     @OneToOne(mappedBy = "ISafetyreport")
     @XmlElement(required = true, name = "sender")
     private Sender ISender;
-
-    @Transient
-    @XmlInverseReference(mappedBy = "safetyReports")
-    private IchicsrMessage ichicsrMessage;
-
-    public void setIchicsrMessage(IchicsrMessage ichicsrMessage) {
-        this.ichicsrMessage = ichicsrMessage;
-    }
-
-    public IchicsrMessage getIchicsrMessage() {
-        return ichicsrMessage;
-    }
 
     public SafetyReport() {
     }

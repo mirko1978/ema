@@ -6,7 +6,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * The persistent class for the I_FLAGSTATUS database table.
+ * The persistent class for the I_FLAGSTATUS database table. <br/>
+ * Look at the stored procedure ICHICSR.EV_ICHICSR_STATUS. <br/>
  * 
  */
 @Entity
@@ -37,6 +38,7 @@ public class FlagStatus implements Serializable {
     /** TODO: Andrea */
     @Column(length = 3)
     private String origin;
+
     /** Date when the record was created */
     @Temporal(TemporalType.DATE)
     @Column(name = "\"WHEN\"")

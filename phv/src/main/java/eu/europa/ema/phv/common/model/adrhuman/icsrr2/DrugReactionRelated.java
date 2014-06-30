@@ -39,6 +39,7 @@ public class DrugReactionRelated implements Serializable {
     @XmlElement(name = "drugreactionasses")
     private BigDecimal drugreactionasses;
 
+    /** Medra code filled by manual recoding. */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal drugreactionassesct;
@@ -57,6 +58,7 @@ public class DrugReactionRelated implements Serializable {
     @XmlTransient
     private String drugreactionassesrecoded;
 
+    /** Medra description of {@link #drugreactionasses} */
     @Column(length = 250)
     @XmlTransient
     private String drugreactionassestext;
@@ -65,6 +67,8 @@ public class DrugReactionRelated implements Serializable {
     @XmlElement(name = "drugresult")
     private String drugresult;
 
+    /** It is always null in the databas */
+    @Deprecated
     @Column(name = "FK_QIDRUGREACTIONASSES", precision = 10)
     @XmlTransient
     private BigDecimal fkQidrugreactionasses;

@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_REACTION database table.
- * 
  */
 @Entity
 @Table(name = "I_REACTION")
@@ -90,10 +89,18 @@ public class Reaction implements Serializable {
     @XmlElement(name = "termhighlighted")
     private BigDecimal termhighlighted;
 
+    /**
+     * Seems not used at all (redundant)<br/>
+     * TODO: Check on VB6/Plsql
+     */
     @Transient
     @XmlElement(name = "reactionmeddraversionpt")
     private String reactionmeddraversionpt;
 
+    /**
+     * Seems not used at all (redundant)<br/>
+     * TODO: Check on VB6/Plsql
+     */
     @Transient
     @XmlElement(name = "reactionmeddrapt")
     private String reactionmeddrapt;
