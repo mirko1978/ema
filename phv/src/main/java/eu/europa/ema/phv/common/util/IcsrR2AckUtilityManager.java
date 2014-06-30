@@ -10,6 +10,7 @@ import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.*;
+import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +29,7 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
 
     private static final Logger LOG = LoggerFactory.getLogger(IcsrR2AckUtility.class);
 
-    public final String ACK_TYPE = "ichicsrack";
+    private static final IcsrR2DateAdapter DATE_ADAPTER = new IcsrR2DateAdapter();
 
     /**
      * Build a new Message header for ACK
@@ -36,15 +37,14 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
      * @param message
      * @return
      */
-    @Override
-    public IchIcsrMessageHeader messageHeader(ValidIcsrR2Message message) {
+    private IchIcsrMessageHeader messageHeader(ValidIcsrR2Message message) {
         IchIcsrMessageHeader header = new IchIcsrMessageHeader();
 
         header.setMessageDateFormat(IcsrR2DateFormat._204.getCode());
-        header.setMessageFormatRelease(ACK_RELEASE);
-        header.setMessageFormatVersion(ACK_VERSION);
-        header.setMessageType(ACK_TYPE);
-        header.setMessagesenderidentifier(EVHUMAN);
+        header.setMessageFormatRelease(IcsrR2XmlConstants.ACK_RELEASE);
+        header.setMessageFormatVersion(IcsrR2XmlConstants.ACK_VERSION);
+        header.setMessageType(IcsrR2XmlConstants.ACK_TYPE);
+        header.setMessagesenderidentifier(IcsrR2XmlConstants.EVHUMAN);
 
         header.setMessageNumb(header.getMessageNumb() + "-ACK");
 
@@ -54,19 +54,6 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
         return header;
     }
 
-    /**
-     * Build a new ack message. Doesn't set the transmission code. Please refer
-     * to {@link IcsrAckCode}.<br/>
-     * The follow element are not set:
-     * <ul>
-     * <li>transmissionacknowledgmentcode</li>
-     * <li>reportAcknowledgment</li>
-     * <li>icsrmessagedate can be wrong... to check</li
-     * </ul>
-     *
-     * @param message the received message from the queue
-     * @return
-     */
     @Override
     public IchIcsrAck buildIcsrAck(ValidIcsrR2Message message) {
         IchIcsrAck icsrAck = new IchIcsrAck();
@@ -84,19 +71,12 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
         // TODO: ACK Date maybe is not correct
         msgAck.setIcsrmessagedate(new Date());
         msgAck.setIcsrmessagenumb(icsr.getMessagenumber());
-        msgAck.setIcsrmessagereceiveridentifier(EVHUMAN);
+        msgAck.setIcsrmessagereceiveridentifier(IcsrR2XmlConstants.EVHUMAN);
         msgAck.setIcsrmessagesenderidentifier(icsr.getSenderid());
 
         return icsrAck;
     }
 
-    /**
-     * Build a new report Ack from the results and the safety report
-     *
-     * @param result result from the validation
-     * @return the new report ack
-     * @throws Exception in case {@link eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter} cannot create the date
-     */
     @Override
     public ReportAcknowledgment buildReportAck(IcsrR2ReportValidationResult result)
             throws Exception {

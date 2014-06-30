@@ -22,4 +22,5 @@
 	
 	<bean id="CamelProperties" class="eu.europa.ema.phv.common.util.CamelProperties" />
 
+    <bean id="IcsrR2DAO" class="eu.europa.ema.phv.common.persistence.JpaIcsrR2Dao" />
 </beans>

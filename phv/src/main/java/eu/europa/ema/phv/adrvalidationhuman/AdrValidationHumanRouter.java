@@ -34,11 +34,13 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
         //@formatter:off
         from(camelUrl.getAdrValidationHuman())
             .transacted()
+            // Call the validation process
             .beanRef("AdrHumanBRValidation")
-            // TODO: JPA endpoint for storing the message
-            .beanRef("AdrHumanExternalProcedure", "runClassification")
-            .beanRef("AdrHumanExternalProcedure", "runRecoding")
+            .log("Report ${body.message.report.safetyreportid")
+            // Aggregation is done by the same message ID
             .aggregate(simple("${body.message.messageId}"), adrAggregationStrategy)
+                // Persist the report for the current message
+                .beanRef("AdrHumanPersistence")
                 .completionTimeout(camelProperties.getAggregationTimeout())
                 .completionSize(simple("${body.message.total}"))
         .to(camelUrl.getGatewayOutbox());
@@ -47,5 +49,4 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
         // TODO: define the wsdl for the service and add the route WS -> Jms
         // queue
     }
-
 }

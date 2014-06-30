@@ -83,9 +83,6 @@
 		</property>
 	</bean>
 
-	<!-- Spring JDBC template -->
-	<jee:jndi-lookup id="jdbcDataSource" jndi-name="${jdbc.icsr}" />
-
 	<!-- Camel JPA (ref. to JPA section above) -->
 	<bean id="camelJPA" class="org.apache.camel.component.jpa.JpaComponent">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -105,6 +102,9 @@
 	<!-- -->
 	<!-- Includes -->
 	<!-- -->
+    <!--
+    <import resource="classpath:/spring/jdbc-context.xml"/>
+    -->
 
 	<import resource="classpath:/spring/util-context.xml" />
 	<import resource="classpath:/spring/adr-parser-human-context.xml" />

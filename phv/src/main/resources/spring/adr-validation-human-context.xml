@@ -18,6 +18,7 @@
 	
 	<!-- Processor -->
 	<bean id="AdrHumanBRValidation" class="eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanBRValidation" />
-	<bean id="AdrHumanExternalProcedure" class="eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanExternalProcedure" />
+
+    <bean id="IcsrR2AckUtility" class="eu.europa.ema.phv.common.util.IcsrR2AckUtilityManager" />
 
 </beans>

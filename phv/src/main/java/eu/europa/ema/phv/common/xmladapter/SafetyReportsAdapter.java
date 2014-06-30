@@ -20,14 +20,11 @@ public class SafetyReportsAdapter extends XmlAdapter<SafetyReport, SafetyReports
     public SafetyReports unmarshal(SafetyReport safetyReport) throws Exception {
         SafetyReports entityReport = new SafetyReports();
         entityReport.setSafetyReport(safetyReport);
-        entityReport.setIchicsrMessage(safetyReport.getIchicsrMessage());
         return entityReport;
     }
 
     @Override
     public SafetyReport marshal(SafetyReports entityReport) throws Exception {
-        SafetyReport safetyReport = entityReport.getSafetyReport();
-        safetyReport.setIchicsrMessage(entityReport.getIchicsrMessage());
         return entityReport.getSafetyReport();
     }
 }

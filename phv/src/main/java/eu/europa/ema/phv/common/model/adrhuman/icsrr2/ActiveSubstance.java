@@ -21,16 +21,19 @@ public class ActiveSubstance implements Serializable {
 
     private static final long serialVersionUID = -347331926340033853L;
 
+    /** Primary key */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_ACTIVESUBSTANCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkActivesubstance;
 
+    /** Filled by automatic recoding TODO: David */
     @Column(name = "ACTIVESUBSTANCE_EVCODE", length = 240)
     @XmlTransient
     private String activesubstanceEvcode;
 
+    /** Filled by automatic recoding TODO: David */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal activesubstancecode;
@@ -53,6 +56,7 @@ public class ActiveSubstance implements Serializable {
     @XmlTransient
     private BigDecimal blindedmrec;
 
+    /** Interpretation job. TODO: David */
     @Column(name = "FK_MODELSUBSTANCE", precision = 10)
     @XmlTransient
     private BigDecimal fkModelsubstance;
