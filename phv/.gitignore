@@ -1,9 +1,22 @@
-/target
-/workspaces
-/.settings
-/.classpath
-/.project
-/bin
-/.idea
-/phv.iml
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+.externalToolBuilders/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Others
+workspaces/
 
