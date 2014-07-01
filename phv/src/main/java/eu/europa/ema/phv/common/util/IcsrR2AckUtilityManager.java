@@ -3,7 +3,6 @@
  */
 package eu.europa.ema.phv.common.util;
 
-import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
 import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
@@ -15,6 +14,7 @@ import eu.europa.ema.phv.common.xmladapter.IcsrR2DateFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.util.Date;
 
 /**
@@ -29,7 +29,8 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
 
     private static final Logger LOG = LoggerFactory.getLogger(IcsrR2AckUtility.class);
 
-    private static final IcsrR2DateAdapter DATE_ADAPTER = new IcsrR2DateAdapter();
+    @Inject
+    private IcsrR2DateAdapter dateAdapter;
 
     /**
      * Build a new Message header for ACK
@@ -84,7 +85,7 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
         SafetyReport report = reportMessage.getReport();
         ReportAcknowledgment reportAck = new ReportAcknowledgment();
         try {
-            reportAck.setReceiptdate(DATE_ADAPTER.unmarshal(report.getReceiptdate()));
+            reportAck.setReceiptdate(dateAdapter.unmarshal(report.getReceiptdate()));
             reportAck.setReceiptdateformat(IcsrR2DateFormat._204.getCode());
             reportAck.setSafetyreportversion(report.getSafetyreportversion());
             reportAck.setSafetyreportid(report.getSafetyreportid());

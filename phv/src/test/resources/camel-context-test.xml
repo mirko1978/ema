@@ -2,44 +2,149 @@
 <!-- Configures the Camel Context -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jee="http://www.springframework.org/schema/jee"
-    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-       http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+
+
        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
-	
-	<!-- -->
-	<!-- CAMEL -->
-	<!-- -->
 
-	<camelContext xmlns="http://camel.apache.org/schema/spring"/>
-	
-	<bean id="transactionManager"
-		class="eu.europa.ema.phv.DummyTransactionManager"/>
+    <!-- -->
+    <!-- CAMEL -->
+    <!-- -->
 
-	<!-- -->
-	<!-- Includes -->
-	<!-- -->
+    <camelContext xmlns="http://camel.apache.org/schema/spring"/>
 
-	<import resource="classpath:/spring/util-context.xml" />
-	<import resource="classpath:/spring/adr-parser-human-context.xml" />
+
+    <!-- JPA -->
+
+    <bean id="jtaTransactionManager"
+          class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
+        <property name="forceShutdown" value="true"/>
+    </bean>
+
+    <bean id="jtaUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+        <property name="transactionTimeout" value="300"/>
+    </bean>
+
+
+    <bean id="transactionManager"
+          class="org.springframework.transaction.jta.JtaTransactionManager"
+          depends-on="jtaTransactionManager,jtaUserTransaction">
+        <property name="transactionManager" ref="jtaTransactionManager"/>
+        <property name="userTransaction" ref="jtaUserTransaction"/>
+        <property name="transactionSynchronizationName" value="SYNCHRONIZATION_ON_ACTUAL_TRANSACTION"/>
+        <property name="allowCustomIsolationLevels" value="true"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="emfMessage"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="messageJTA"/>
+        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence-test.xml"/>
+        <property name="dataSource" ref="dsMessage"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="databasePlatform" value="org.eclipse.persistence.platform.database.H2Platform"/>
+            </bean>
+        </property>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
+        </property>
+        <property name="jpaPropertyMap">
+            <props>
+                <prop key="eclipselink.weaving">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="emfIcsr"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="icsrJta"/>
+        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence-test.xml"/>
+        <property name="dataSource" ref="dsIcsr"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+                <property name="showSql" value="true"/>
+                <property name="databasePlatform" value="org.eclipse.persistence.platform.database.H2Platform"/>
+            </bean>
+        </property>
+        <property name="jpaDialect">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
+        </property>
+        <property name="jpaPropertyMap">
+            <props>
+                <prop key="eclipselink.weaving">false</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!-- local datasource -->
+
+    <bean id="dbMessage" class="org.h2.jdbcx.JdbcDataSource">
+        <property name="url" value="jdbc:h2:mem:message"/>
+        <property name="user" value="sa"/>
+        <property name="password" value="sa"/>
+    </bean>
+
+    <bean id="dsMessage" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
+        <property name="uniqueResourceName" value="dsMessage"/>
+        <property name="xaDataSource" ref="dbMessage"/>
+        <property name="poolSize" value="3"/>
+    </bean>
+
+    <bean id="dbIcsr" class="org.h2.jdbcx.JdbcDataSource">
+        <property name="url" value="jdbc:h2:mem:icsr"/>
+        <property name="user" value="sa"/>
+        <property name="password" value="sa"/>
+    </bean>
+
+    <bean id="dsIcsr" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">
+        <property name="uniqueResourceName" value="dsIcsr"/>
+        <property name="xaDataSource" ref="dbIcsr"/>
+        <property name="poolSize" value="3"/>
+    </bean>
+
+
+    <!-- Camel JPA (ref. to JPA section above) -->
+    <bean id="camelJPA" class="org.apache.camel.component.jpa.JpaComponent">
+        <property name="entityManagerFactory" ref="emfMessage"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+    </bean>
+
+    <bean id="PROPAGATION_REQUIRES_NEW" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>
+    </bean>
+
+    <!-- -->
+    <!-- Includes -->
+    <!-- -->
+
+    <import resource="classpath:/spring/util-context.xml"/>
+    <import resource="classpath:/spring/adr-parser-human-context.xml"/>
+    <import resource="classpath:/spring/message-handler-context.xml"/>
 
 
     <!-- -->
     <!-- Embedded DB -->
     <!-- -->
 
-    <jdbc:embedded-database id="dataSource" type="H2">
+    <!--<jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:db-schema.sql"/>
         <jdbc:script location="classpath:db-test-data.sql"/>
-    </jdbc:embedded-database>
+    </jdbc:embedded-database>-->
 
 
 </beans>

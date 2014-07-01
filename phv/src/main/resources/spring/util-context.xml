@@ -23,4 +23,6 @@
 	<bean id="CamelProperties" class="eu.europa.ema.phv.common.util.CamelProperties" />
 
     <bean id="IcsrR2DAO" class="eu.europa.ema.phv.common.persistence.JpaIcsrR2Dao" />
+
+    <bean id="IcsrR2DateAdapter" class="eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter"/>
 </beans>

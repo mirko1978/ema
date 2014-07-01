@@ -22,7 +22,7 @@ import javax.persistence.PersistenceContext;
 public class JpaIcsrR2Dao implements IcsrR2DAO {
     private static final Logger LOG = LoggerFactory.getLogger(JpaIcsrR2Dao.class);
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "icsrJta")
     private EntityManager manager;
 
     @Override
