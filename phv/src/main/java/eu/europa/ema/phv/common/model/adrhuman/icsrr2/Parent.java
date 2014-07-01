@@ -78,12 +78,12 @@ public class Parent implements Serializable {
     private Patient IPatient;
 
     // bi-directional many-to-one association to ParentMedicalHistory
-    @OneToMany(mappedBy = "IParent")
+    @OneToMany(mappedBy = "Parent")
     @XmlElement(name = "parentmedicalhistoryepisode")
     private List<ParentMedicalHistory> IParentmedicalhistories;
 
     // bi-directional many-to-one association to ParentPastDrugTherapy
-    @OneToMany(mappedBy = "IParent")
+    @OneToMany(mappedBy = "Parent")
     @XmlElement(name = "parentpastdrugtherapy")
     private List<ParentPastDrugTherapy> IParentpastdrugtherapies;
 
