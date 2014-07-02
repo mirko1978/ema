@@ -48,7 +48,7 @@ public class ReportSplitter {
         for (SafetyReports entityReport : icsr.getSafetyReports()) {
             SafetyReport report = entityReport.getSafetyReport();
             header = index == 0 ? icsrMessage : null;
-            IcsrR2ReportMessage reportMessage = new IcsrR2ReportMessage(report, header, index, size, icsrMessage.getIcsr().getMessageid());
+            IcsrR2ReportMessage reportMessage = new IcsrR2ReportMessage(report, header, index, size, icsrMessage.getMetadata().getUniqueId());
             reportMessages.add(reportMessage);
             LOG.debug("\tReport '{}' added", report.getSafetyreportid());
             index++;

@@ -13,12 +13,17 @@ import java.util.Date;
 @Entity
 @Table(name = "I_FLAGSTATUS")
 @NamedQuery(name = "FlagStatus.findAll", query = "SELECT f FROM FlagStatus f")
+@IdClass(FlagStatusPK.class)
 public class FlagStatus implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /** Primary key */
-    @EmbeddedId
-    private FlagStatusPK id;
+    @Id
+    @Column(name = "FK_SAFETYREPORT", precision = 10)
+    private long fkSafetyreport;
+
+    @Id
+    @Column(unique = true, nullable = false, precision = 3)
+    private long flagcode;
 
     /** Foregein key from METABASE.LK_FLAGVALUE */
     @Column(nullable = false, precision = 3)
@@ -50,14 +55,6 @@ public class FlagStatus implements Serializable {
     private SafetyReport ISafetyreport;
 
     public FlagStatus() {
-    }
-
-    public FlagStatusPK getId() {
-        return this.id;
-    }
-
-    public void setId(FlagStatusPK id) {
-        this.id = id;
     }
 
     public BigDecimal getFlagvalue() {
@@ -92,4 +89,19 @@ public class FlagStatus implements Serializable {
         this.ISafetyreport = ISafetyreport;
     }
 
+    public long getFkSafetyreport() {
+        return fkSafetyreport;
+    }
+
+    public void setFkSafetyreport(long fkSafetyreport) {
+        this.fkSafetyreport = fkSafetyreport;
+    }
+
+    public long getFlagcode() {
+        return flagcode;
+    }
+
+    public void setFlagcode(long flagcode) {
+        this.flagcode = flagcode;
+    }
 }

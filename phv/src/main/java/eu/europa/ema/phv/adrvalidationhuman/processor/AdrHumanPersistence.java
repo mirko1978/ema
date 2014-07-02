@@ -1,13 +1,13 @@
 package eu.europa.ema.phv.adrvalidationhuman.processor;
 
 import eu.europa.ema.phv.adrvalidationhuman.AdrValidationHumanCommon;
-import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
-import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.persistence.IcsrR2DAO;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.util.Map;
@@ -21,6 +21,7 @@ import java.util.Map;
  * @since 30/06/2014 (creation date)
  */
 public class AdrHumanPersistence implements Processor {
+    private static final Logger LOG = LoggerFactory.getLogger(AdrHumanPersistence.class);
 
     @Inject
     private IcsrR2DAO dao;
@@ -29,23 +30,24 @@ public class AdrHumanPersistence implements Processor {
     public void process(Exchange exchange) throws Exception {
         IcsrR2ReportValidationResult validationResult = exchange.getIn().getBody(IcsrR2ReportValidationResult.class);
         Map<String, Object> headers = exchange.getIn().getHeaders();
-        ValidIcsrR2Message icsrR2Message;
+        IcsrR2ReportValidationResult firstMessage = (IcsrR2ReportValidationResult) headers
+                .get(AdrValidationHumanCommon.FIRST_MESSAGE);
         IchicsrMessage saved;
 
-        if(headers.containsKey(AdrValidationHumanCommon.MSG_HEADER)) {
-            // It's not the first call... the message is saved in the header
-            icsrR2Message = (ValidIcsrR2Message) headers.get(AdrValidationHumanCommon.MSG_HEADER);
-            // retrieve the saved icsr
-            saved = (IchicsrMessage) headers.get(AdrValidationHumanCommon.SAVED_MSG_HEADER);
-        } else {
-            // First call... retrieve the message
-            icsrR2Message = validationResult.getMessage().getHeader();
-            headers.put(AdrValidationHumanCommon.MSG_HEADER, icsrR2Message);
-            // persist it
+        if (headers.containsKey(AdrValidationHumanCommon.SAVED_ICSR)) {
+            // retrieve from the header the icsr
+            saved = (IchicsrMessage) headers.get(AdrValidationHumanCommon.SAVED_ICSR);
+        }
+        else {
+            LOG.debug("Saving the ICSR headers for {}", validationResult.getMessage().getUniqueId());
+            // persist the message core without reports
             saved = dao.saveOnlyIcsr(validationResult.getMessage().getHeader().getIcsr());
+            // store in the header the saved message
+            headers.put(AdrValidationHumanCommon.SAVED_ICSR, saved);
         }
         // Persist the report
+        LOG.debug("Saving report {} ",validationResult.getMessage().getReport());
         dao.saveReport(saved, validationResult.getMessage().getReport());
-        dao.updateIcsr(saved, icsrR2Message.getIcsr());
+        dao.updateIcsr(saved, firstMessage.getMessage().getHeader().getIcsr());
     }
 }

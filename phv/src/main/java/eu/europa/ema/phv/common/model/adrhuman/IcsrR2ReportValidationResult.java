@@ -1,6 +1,9 @@
 package eu.europa.ema.phv.common.model.adrhuman;
 
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.IchIcsrAck;
+
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * After validation message exchange.
@@ -27,6 +30,11 @@ public class IcsrR2ReportValidationResult implements Serializable{
      */
     private IcsrAckCode ackCode;
 
+    /**
+     * ICSR Acknwoledge structure. It is populated during the aggregation process with the result from the validaiton
+     */
+    private IchIcsrAck icsrAcks;
+
     public IcsrR2ReportMessage getMessage() {
         return message;
     }
@@ -49,5 +57,21 @@ public class IcsrR2ReportValidationResult implements Serializable{
 
     public void setAckCode(IcsrAckCode ackCode) {
         this.ackCode = ackCode;
+    }
+
+    /**
+     *
+     * @return {@link #icsrAcks}
+     */
+    public IchIcsrAck getIcsrAcks() {
+        return icsrAcks;
+    }
+
+    /**
+     *
+     * @param icsrAcks {@link #icsrAcks}
+     */
+    public void setIcsrAcks(IchIcsrAck icsrAcks) {
+        this.icsrAcks = icsrAcks;
     }
 }

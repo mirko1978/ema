@@ -35,12 +35,11 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
         from(camelUrl.getAdrValidationHuman())
             .transacted()
             // Call the validation process
-            .beanRef("AdrHumanBRValidation")
-            .log("Report ${body.message.report.safetyreportid")
+            .beanRef("adrHumanBRValidation")
+            // Now the mesage is IcsrR2ReportValidationResult
+            .log("Report: ${body.message.report.safetyreportid}")
             // Aggregation is done by the same message ID
-            .aggregate(simple("${body.message.messageId}"), adrAggregationStrategy)
-                // Persist the report for the current message
-                .beanRef("AdrHumanPersistence")
+            .aggregate(simple("${body.message.uniqueId}"), adrAggregationStrategy)
                 .completionTimeout(camelProperties.getAggregationTimeout())
                 .completionSize(simple("${body.message.total}"))
         .to(camelUrl.getGatewayOutbox());

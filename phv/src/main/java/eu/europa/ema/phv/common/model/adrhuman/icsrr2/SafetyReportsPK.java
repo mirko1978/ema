@@ -8,17 +8,14 @@ import java.io.Serializable;
  * The primary key class for the I_SAFETYREPORTS database table.
  * 
  */
-@Embeddable
 public class SafetyReportsPK implements Serializable {
     // default serial version id, required for serializable classes.
     private static final long serialVersionUID = 1L;
 
     /** Foreign key from SafetyReport */
-    @Column(name = "FK_SAFETYREPORT", insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
     private long fkSafetyreport;
 
     /** Foreign key from IchicsrMessage */
-    @Column(name = "FK_ICHICSRMESSAGE", insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
     private long fkIchicsrmessage;
 
     public SafetyReportsPK() {

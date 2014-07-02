@@ -6,9 +6,12 @@ import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReports;
 import org.eclipse.persistence.annotations.ReturnInsert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Persiste the ICSR R2 using JPA. <br/>
@@ -30,9 +33,28 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
     public IchicsrMessage saveOnlyIcsr(IchicsrMessage icsr) {
         IchicsrMessage saved = new IchicsrMessage();
         updateIcsr(icsr, saved);
+        saved.setSafetyReports(null);
         manager.persist(saved);
         LOG.debug("ICSR core message saved for {}", saved.getMessageid());
         return saved;
+    }
+
+    @Override
+    @ReturnInsert
+    public void saveReport(IchicsrMessage icsr, SafetyReport report) {
+        SafetyReports safetyReports = new SafetyReports();
+        safetyReports.setIchicsrMessage(icsr);
+        safetyReports.setSafetyReport(report);
+        if(report.getISafetyreports() == null) {
+            report.setISafetyreports(new LinkedList<SafetyReports>());
+        }
+        report.getISafetyreports().add(safetyReports);
+        if(icsr.getSafetyReports() == null) {
+            icsr.setSafetyReports(new LinkedList<SafetyReports>());
+        }
+        icsr.getSafetyReports().add(safetyReports);
+        manager.persist(safetyReports);
+        LOG.debug("ICSR report saved for {}", report.getSafetyreportid());
     }
 
     @Override
@@ -62,17 +84,9 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
         destination.setReceiverid(source.getReceiverid());
         destination.setMessageDateFormat(source.getMessageDateFormat());
         destination.setIMessageack(source.getIMessageack());
-    }
-
-    @Override
-    @ReturnInsert
-    public void saveReport(IchicsrMessage icsr, SafetyReport report) {
-        SafetyReports safetyReports = new SafetyReports();
-        safetyReports.setIchicsrMessage(icsr);
-        safetyReports.setSafetyReport(report);
-        report.getISafetyreports().add(safetyReports);
-        icsr.getSafetyReports().add(safetyReports);
-        manager.persist(safetyReports);
+        if(source.getSafetyReports() != destination.getSafetyReports()) {
+            destination.setSafetyReports(source.getSafetyReports());
+        }
     }
 
 }

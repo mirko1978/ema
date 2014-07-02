@@ -2,6 +2,7 @@ package eu.europa.ema.phv.common.model.adrhuman;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Describe the Message metadata like file name, arrival date etc.
@@ -15,12 +16,12 @@ public class MessageMetadata implements Serializable {
 
     private static final long serialVersionUID = -4085873752167382721L;
 
+    /** Unique identifier for the received message. It is set by Message Handler component */
+    private UUID uniqueId;
+
     private String fileName;
 
     private Date received;
-
-    /** Unique identifier for the received message. It is set by Message Handler component */
-    private String messageId;
 
     /**
      * @return the fileName
@@ -52,17 +53,18 @@ public class MessageMetadata implements Serializable {
 
     /**
      *
-     * @return {@link #messageId}
+     * @return {@link #uniqueId}
      */
-    public String getMessageId() {
-        return messageId;
+    public UUID getUniqueId() {
+        return uniqueId;
     }
 
     /**
      *
-     * @param messageId {@link #messageId}
+     * @param uniqueId {@link #uniqueId}
      */
-    public void setMessageId(String messageId) {
-        this.messageId = messageId;
+    public void setUniqueId(UUID uniqueId) {
+        this.uniqueId = uniqueId;
     }
+
 }

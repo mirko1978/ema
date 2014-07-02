@@ -10,9 +10,9 @@ package eu.europa.ema.phv.adrvalidationhuman;
  */
 public interface AdrValidationHumanCommon {
     /** Header key for retriving the ICSR R2 original message */
-    String MSG_HEADER = "IcsrR2Message";
+    String FIRST_MESSAGE = "IcsrR2Message";
 
     /** Message saved in the database */
-    String SAVED_MSG_HEADER = "SavedIcsrR2Message";
+    String SAVED_ICSR = "SavedIcsrR2Message";
 
 }

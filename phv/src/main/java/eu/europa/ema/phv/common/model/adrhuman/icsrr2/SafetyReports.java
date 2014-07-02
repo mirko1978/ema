@@ -11,14 +11,20 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "I_SAFETYREPORTS")
 @NamedQuery(name = "SafetyReports.findAll", query = "SELECT s FROM SafetyReports s")
-//@XmlAccessorType(XmlAccessType.FIELD)
+@IdClass(SafetyReportsPK.class)
 public class SafetyReports implements Serializable {
 
     private static final long serialVersionUID = 2389207372789581954L;
 
-    /** Primary key */
-    @EmbeddedId
-    private SafetyReportsPK id;
+    /** Foreign key from SafetyReport */
+    @Id
+    @Column(name = "FK_SAFETYREPORT")//, insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
+    private long fkSafetyreport;
+
+    /** Foreign key from IchicsrMessage */
+    @Id
+    @Column(name = "FK_ICHICSRMESSAGE")//, insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
+    private long fkIchicsrmessage;
 
     /** TODO: Reverse engigneering from database */
     @Column(precision = 22)
@@ -35,14 +41,6 @@ public class SafetyReports implements Serializable {
     private SafetyReport safetyReport;
 
     public SafetyReports() {
-    }
-
-    public SafetyReportsPK getId() {
-        return this.id;
-    }
-
-    public void setId(SafetyReportsPK id) {
-        this.id = id;
     }
 
     public BigDecimal getCommitrollback() {
@@ -68,5 +66,22 @@ public class SafetyReports implements Serializable {
     public void setSafetyReport(SafetyReport ISafetyreport) {
         this.safetyReport = ISafetyreport;
     }
+
+    public long getFkSafetyreport() {
+        return fkSafetyreport;
+    }
+
+    public void setFkSafetyreport(long fkSafetyreport) {
+        this.fkSafetyreport = fkSafetyreport;
+    }
+
+    public long getFkIchicsrmessage() {
+        return fkIchicsrmessage;
+    }
+
+    public void setFkIchicsrmessage(long fkIchicsrmessage) {
+        this.fkIchicsrmessage = fkIchicsrmessage;
+    }
+
 
 }

@@ -6,6 +6,7 @@ package eu.europa.ema.phv.common.model.adrhuman;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Describe the single report message with the related metadata
@@ -30,10 +31,10 @@ public class IcsrR2ReportMessage implements Serializable {
     private ValidIcsrR2Message header;
 
     /**
-     * Unique identifier from {@link ValidIcsrR2Message#metadata#messageId}. <br/>
+     * Unique identifier from {@link ValidIcsrR2Message#metadata#uniqueId}. <br/>
      * This is a duplicate for each report because only the first has the {@link #header} filled.
      */
-    private String messageId;
+    private UUID uniqueId;
 
     /**
      * Safety report position
@@ -54,12 +55,12 @@ public class IcsrR2ReportMessage implements Serializable {
      * @param total  {@link #total}
      */
     public IcsrR2ReportMessage(SafetyReport report, ValidIcsrR2Message header, Integer index, Integer total,
-            String messageId) {
+            UUID uniqueId) {
         this.report = report;
         this.header = header;
         this.index = index;
         this.total = total;
-        this.messageId = messageId;
+        this.uniqueId = uniqueId;
     }
 
     /**
@@ -125,16 +126,18 @@ public class IcsrR2ReportMessage implements Serializable {
     }
 
     /**
-     * @return {@link #messageId}
+     *
+     * @return {@link #uniqueId}
      */
-    public String getMessageId() {
-        return messageId;
+    public UUID getUniqueId() {
+        return uniqueId;
     }
 
     /**
-     * @param messageId {@link #messageId}
+     *
+     * @param uniqueId {@link #uniqueId}
      */
-    public void setMessageId(String messageId) {
-        this.messageId = messageId;
+    public void setUniqueId(UUID uniqueId) {
+        this.uniqueId = uniqueId;
     }
 }

@@ -98,7 +98,7 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
         }
         catch (Exception e) {
             LOG.error("Error creating the report ack for Message: {} Report {} with index {} ",
-                    reportMessage.getMessageId(), report.getPkSafetyreport(),
+                    reportMessage.getUniqueId(), report.getPkSafetyreport(),
                     reportMessage.getIndex());
             throw e;
         }

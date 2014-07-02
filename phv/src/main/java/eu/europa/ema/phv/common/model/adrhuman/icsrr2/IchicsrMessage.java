@@ -389,14 +389,12 @@ public class IchicsrMessage implements Serializable {
     public SafetyReports addISafetyreport(SafetyReports ISafetyreport) {
         getSafetyReports().add(ISafetyreport);
         ISafetyreport.setIchicsrMessage(this);
-
         return ISafetyreport;
     }
 
     public SafetyReports removeISafetyreport(SafetyReports ISafetyreport) {
         getSafetyReports().remove(ISafetyreport);
         ISafetyreport.setIchicsrMessage(null);
-
         return ISafetyreport;
     }
 

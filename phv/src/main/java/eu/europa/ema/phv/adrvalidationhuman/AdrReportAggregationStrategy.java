@@ -3,6 +3,7 @@
  */
 package eu.europa.ema.phv.adrvalidationhuman;
 
+import eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanPersistence;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
@@ -31,35 +32,51 @@ public class AdrReportAggregationStrategy implements AggregationStrategy {
     @Inject
     private IcsrR2AckUtility ackUtility;
 
+    @Inject
+    private AdrHumanPersistence persistence;
+
     @Override
     public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
         IchIcsrAck icsrAck;
-        IcsrR2ReportValidationResult validationResult = newExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
-        IcsrR2ReportMessage report = validationResult.getMessage();
+        IcsrR2ReportValidationResult firstMessage;
+        IcsrR2ReportValidationResult currentMessage;
+        Integer totalArrived = 0;
+
         if (oldExchange == null) {
+            firstMessage = newExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
+            currentMessage = firstMessage;
             // First element to aggregate: validation result contains the original message.
-            icsrAck = ackUtility.buildIcsrAck(report.getHeader());
-            newExchange.getIn().setHeader(AdrValidationHumanCommon.MSG_HEADER, validationResult.getMessage().getHeader());
-            newExchange.getIn().setBody(icsrAck);
+            icsrAck = ackUtility.buildIcsrAck(currentMessage.getMessage().getHeader());
+            // Save the results in the first message
+            firstMessage.setIcsrAcks(icsrAck);
         }
         else {
             // Nth element in the aggragation: Retrieve from the exchange the aggregate ACK
-            // Retrieve from message header the original message
-            icsrAck = oldExchange.getIn().getBody(IchIcsrAck.class);
-            validationResult.getMessage().setHeader((ValidIcsrR2Message) newExchange.getIn().getHeader(AdrValidationHumanCommon.MSG_HEADER));
+            // OldExchange is always the first message received
+            currentMessage = newExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
+            firstMessage = oldExchange.getIn().getHeader(AdrValidationHumanCommon.FIRST_MESSAGE,IcsrR2ReportValidationResult.class);
+            icsrAck = firstMessage.getIcsrAcks();
+            firstMessage.getMessage().setHeader(firstMessage.getMessage().getHeader());
+            totalArrived = oldExchange.getIn().getHeader(Exchange.AGGREGATED_SIZE, Integer.class);
+            // TODO: Trick for persistence to fix
+            newExchange.getIn().setHeader(AdrValidationHumanCommon.SAVED_ICSR, oldExchange.getIn().getHeader(AdrValidationHumanCommon.SAVED_ICSR));
         }
-
-        final Integer totalArrived = oldExchange.getIn().getHeader(Exchange.AGGREGATED_SIZE, Integer.class);
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Aggregating results for safety report {}/{} total processed {}",
-                    report.getIndex(), report.getTotal(), totalArrived);
+            LOG.debug("Aggregation [{}] called for report {} arrived {}", currentMessage.getMessage().getUniqueId(),
+                    currentMessage.getMessage().getReport().getSafetyreportid(), totalArrived);
         }
+        totalArrived++;
+        // Store the first arrived message in the header for persistence
+        newExchange.getIn().setHeader(AdrValidationHumanCommon.FIRST_MESSAGE, firstMessage);
+        newExchange.getIn().setHeader(Exchange.AGGREGATED_SIZE, totalArrived);
+
+
 
         try {
-            ReportAcknowledgment reportAck = ackUtility.buildReportAck(validationResult);
+            ReportAcknowledgment reportAck = ackUtility.buildReportAck(currentMessage);
             icsrAck.getAcknowledgment().getReportAcknowledgment().add(reportAck);
 
-            if (totalArrived.intValue() == report.getTotal().intValue()) {
+            if (totalArrived.intValue() == currentMessage.getMessage().getTotal().intValue()) {
                 // Last element
                 if (icsrAck.getAcknowledgment().getReportAcknowledgment().isEmpty()) {
                     // No error found
@@ -82,10 +99,11 @@ public class AdrReportAggregationStrategy implements AggregationStrategy {
                             .setTransmissionacknowledgmentcode(code.getCode());
                 }
             }
+            persistence.process(newExchange);
             return newExchange;
         }
         catch (Exception e) {
-            LOG.error("FATAL: cannot create ACK");
+            LOG.error("FATAL: cannot create ACK ",e);
         }
         return null;
     }

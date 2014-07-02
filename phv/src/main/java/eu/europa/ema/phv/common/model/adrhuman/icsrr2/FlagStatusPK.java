@@ -9,15 +9,12 @@ import java.io.Serializable;
  * Look at the stored procedure ICHICSR.EV_ICHICSR_STATUS
  *
  */
-@Embeddable
 public class FlagStatusPK implements Serializable {
     // default serial version id, required for serializable classes.
     private static final long serialVersionUID = 1L;
 
-    @Column(name = "FK_SAFETYREPORT", insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
     private long fkSafetyreport;
 
-    @Column(unique = true, nullable = false, precision = 3)
     private long flagcode;
 
     public FlagStatusPK() {
