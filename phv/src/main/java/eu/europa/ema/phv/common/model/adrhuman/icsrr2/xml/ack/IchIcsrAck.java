@@ -25,10 +25,10 @@ public class IchIcsrAck implements Serializable {
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
 
-    @XmlElement(required = true)
+    @XmlElement(name="ichicsrmessageheader", required = true)
     protected IchIcsrMessageHeader ichIcsrMessageHeader;
 
-    @XmlElement(required = true)
+    @XmlElement(name="acknowledgment", required = true)
     protected Acknowledgment acknowledgment;
 
     /**

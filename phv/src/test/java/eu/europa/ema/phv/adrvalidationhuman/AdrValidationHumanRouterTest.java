@@ -30,7 +30,7 @@ public class AdrValidationHumanRouterTest extends AbstractPhvTest {
     @Override
     public void setUp() throws Exception {
         camelUrl.setAdrValidationHuman(START_EP);
-        camelUrl.setGatewayOutbox(END_EP);
+        camelUrl.setOutboundMessage(END_EP);
         context.addRoutes(router);
     }
 

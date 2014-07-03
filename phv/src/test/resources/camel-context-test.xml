@@ -146,5 +146,6 @@
     <import resource="classpath:/spring/adr-parser-human-context.xml"/>
     <import resource="classpath:/spring/message-handler-context.xml"/>
     <import resource="classpath:/spring/adr-validation-human-context.xml"/>
+    <import resource="classpath:/spring/outbound-message-management-context.xml"/>
 
 </beans>

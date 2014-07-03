@@ -29,36 +29,28 @@ public class IchIcsrMessageHeader implements Serializable {
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
 
-    @XmlElement(required = true)
-    @XmlPath("ichicsrmessageheader/messageType/text()")
+    @XmlElement(name="messagetype", required = true)
     protected String messageType;
 
-    @XmlElement(required = true)
-    @XmlPath("ichicsrmessageheader/messageFormatVersion/text()")
+    @XmlElement(name="messageformatversion", required = true)
     protected String messageFormatVersion;
 
-    @XmlElement(required = true)
-    @XmlPath("ichicsrmessageheader/messageFormatRelease/text()")
+    @XmlElement(name="messageformatrelease", required = true)
     protected String messageFormatRelease;
 
-    @XmlElement(required = true)
-    @XmlPath("ichicsrmessageheader/messageNumb/text()")
+    @XmlElement(name="messagenumb", required = true)
     protected String messageNumb;
 
-    @XmlElement(required = true)
-    @XmlPath("ichicsrmessageheader/messagesenderidentifier/text()")
+    @XmlElement(name="messagesenderidentifier", required = true)
     protected String messagesenderidentifier;
 
     @XmlElement(required = true, name="messagereceiveridentifier")
-    @XmlPath("ichicsrmessageheader/messagereceiveridentifier/text()")
     protected String messagereceiveridentifier;
 
-    @XmlElement(required = true)
-    @XmlPath("ichicsrmessageheader/messagereceiveridentifier/text()")
+    @XmlElement(name="messagedateformat", required = true)
     protected String messageDateFormat;
 
-    @XmlElement(required = true)
-    @XmlPath("ichicsrmessageheader/messageDate/text()")
+    @XmlElement(name="messagedate", required = true)
     @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
     protected Date messageDate;
 

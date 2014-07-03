@@ -31,9 +31,10 @@ public class Acknowledgment implements Serializable {
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
 
-    @XmlElement(required = true)
+    @XmlElement(name="messageacknowledgment", required = true)
     protected Messageacknowledgment messageacknowledgment;
 
+    @XmlElement(name="reportacknowledgment", required = true)
     protected List<ReportAcknowledgment> reportAcknowledgment;
 
     /**

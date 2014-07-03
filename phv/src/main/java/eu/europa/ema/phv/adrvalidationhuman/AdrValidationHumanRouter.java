@@ -42,7 +42,7 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
             .aggregate(simple("${body.message.uniqueId}"), adrAggregationStrategy)
                 .completionTimeout(camelProperties.getAggregationTimeout())
                 .completionSize(simple("${body.message.total}"))
-        .to(camelUrl.getGatewayOutbox());
+        .to(camelUrl.getOutboundMessage());
         //@formatter:on
 
         // TODO: define the wsdl for the service and add the route WS -> Jms

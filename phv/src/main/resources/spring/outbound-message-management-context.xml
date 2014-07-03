@@ -13,13 +13,7 @@
 
 	<context:annotation-config />
 
-	<bean id="OuboundMessageManagementRouter"
-		class="eu.europa.ema.phv.outboundmessagemanagement.OuboundMessageManagementRouter" />
-
-	<!-- Translator -->
-	<bean id="AckXmlTranslator"
-		class="eu.europa.ema.phv.outboundmessagemanagement.translator.AckXmlTranslator" />
-	<bean id="OuboundMessageManagementRouter"
-		class="eu.europa.ema.phv.outboundmessagemanagement.translator.IcsrXmlTranslator" />
+	<bean id="OutboundMessageManagementRouter"
+		class="eu.europa.ema.phv.outboundmessagemanagement.OutboundMessageManagementRouter" />
 
 </beans>

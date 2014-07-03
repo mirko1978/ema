@@ -10,10 +10,7 @@ package eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 import org.eclipse.persistence.oxm.annotations.XmlPath;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
@@ -32,32 +29,32 @@ public class ReportAcknowledgment implements Serializable {
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
 
-    @XmlPath("reportacknowledgment/safetyreportversion/text()")
+    @XmlElement(name = "safetyreportversion")
     private String safetyreportversion;
 
-    @XmlPath("reportacknowledgment/safetyreportid/text()")
+    @XmlElement(name="safetyreportid")
     private String safetyreportid;
 
-    @XmlPath("reportacknowledgment/localreportnumb/text()")
+    @XmlElement(name="localreportnumb")
     private String localreportnumb;
 
-    @XmlPath("reportacknowledgment/authoritynumb/text()")
+    @XmlElement(name="authoritynumb")
     private String authoritynumb;
 
-    @XmlPath("reportacknowledgment/companynumb/text()")
+    @XmlElement(name="companynumb")
     private String companynumb;
 
-    @XmlPath("reportacknowledgment/receiptdateformat/text()")
+    @XmlElement(name="receiptdateformat")
     private String receiptdateformat;
 
-    @XmlPath("reportacknowledgment/receiptdate/text()")
+    @XmlElement(name="receiptdate")
     @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
     private Date receiptdate;
 
-    @XmlPath("reportacknowledgment/reportacknowledgmentcode/text()")
+    @XmlElement(name="reportacknowledgmentcode")
     private String reportacknowledgmentcode;
 
-    @XmlPath("reportacknowledgment/errormessagecomment/text()")
+    @XmlElement(name="errormessagecomment")
     private String errormessagecomment;
 
     /**

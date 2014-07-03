@@ -30,34 +30,27 @@ public class Messageacknowledgment implements Serializable {
     protected String lang;
 
     @XmlElement(required = true, name = "icsrmessagenumb")
-    @XmlPath("messageacknowledgment/icsrmessagenumb/text()")
     protected String icsrmessagenumb;
 
-    @XmlPath("messageacknowledgment/localmessagenumb/text()")
+    @XmlElement(name="localmessagenumb")
     protected String localmessagenumb;
 
     @XmlElement(required = true, name = "icsrmessagesenderidentifier")
-    @XmlPath("messageacknowledgment/icsrmessagesenderidentifier/text()")
     protected String icsrmessagesenderidentifier;
 
     @XmlElement(required = true, name = "icsrmessagereceiveridentifier")
-    @XmlPath("messageacknowledgment/icsrmessagereceiveridentifier/text()")
     protected String icsrmessagereceiveridentifier;
 
     @XmlElement(required = true, name = "icsrmessagedateformat")
-    @XmlPath("messageacknowledgment/icsrmessagedateformat/text()")
     protected String icsrmessagedateformat;
 
     @XmlElement(required = true, name = "icsrmessagedate")
     @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
-    @XmlPath("messageacknowledgment/icsrmessagedate/text()")
     protected Date icsrmessagedate;
 
     @XmlElement(required = true)
-    @XmlPath("messageacknowledgment/transmissionacknowledgmentcode/text()")
     protected String transmissionacknowledgmentcode;
-
-    @XmlPath("messageacknowledgment/parsingerrormessage/text()")
+    @XmlElement(name="parsingerrormessage")
     protected String parsingerrormessage;
 
     /**
