@@ -225,7 +225,7 @@ Please note that JMS Cluster option is discarded (see section 6.2.1), however co
 *	**Configuration** -> **Migration** on *Migration Basis* select `JDBC`
 *	**Configuration** -> **Migration** on *Datasource for Automatic Migration* click on *New*
 	*	Create a new datasoruce (see section *Creating a Data Source* below)
-	*	The datasource has to be **without XA** transaction
+	*	The datasource has to be **without XA** transaction. The flag `Supports Global Transactions` has to be unchecked.
 	*	Set a name like `Phv_JDBC_datastore`
 	*	Create inside the database a table as defined in the DDL `C:\devtools\weblogic\12.1.2\wlserver\server\db\oracle\920\leasing.ddl`	
 *	**Configuration** -> **Migration** on *Auto Migration Table Name* put the value `ACTIVE`. Is the name of the table just created
@@ -263,6 +263,8 @@ The cons are:
 		Target: Cluster-0
 		Datasource: Phv_JDBC_datastore (non XA datasource)
 		Prefix Name: PHV_WS_
+
+Remember that the associate datasource has to have the flag `Supports Global Transactions` unchecked.
 
 #### 6.2.1.2 JMS Server
 
@@ -329,6 +331,7 @@ This procedure has to be called every time a node crash and is restored.
 
 
 *	In the left box **Domain Structure** expand **Services** click on **Persistence Store**
+*   Remember that the associate datasource has to have the flag `Supports Global Transactions` unchecked.
 *	Click on *New* then on *Create JDBC Store*
 
 		Name: Phv_Store_s0
