@@ -26,8 +26,8 @@ public class SafetyReport implements Serializable {
      * Primary key
      */
     @Id
-    @GeneratedValue(generator="SafetyReport")
-    @SequenceGenerator(name="SafetyReport",sequenceName="SEQ_SAFETYREPORT", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SafetyReport")
+    @SequenceGenerator(name="SafetyReport",sequenceName="SEQ_SAFETYREPORT", allocationSize=1)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkSafetyreport;
@@ -244,7 +244,7 @@ public class SafetyReport implements Serializable {
     /**
      * TODO: Sujata
      */
-    @OneToOne(mappedBy = "ISafetyreport")
+    @OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlTransient
     private Cluster ICluster;
 
@@ -252,49 +252,49 @@ public class SafetyReport implements Serializable {
      * Collection of control attributes for each safaty report
      */
     // bi-directional many-to-one association to FlagStatus
-    @OneToMany(mappedBy = "ISafetyreport")
+    @OneToMany(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlTransient
     private List<FlagStatus> IFlagstatuses;
 
     /**
      * bi-directional many-to-one association to LinkedReport
      */
-    @OneToMany(mappedBy = "ISafetyreport")
+    @OneToMany(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlElement(name = "linkedreport")
     private List<LinkedReport> ILinkedreports;
 
     // bi-directional one-to-one association to Patient
-    @OneToOne(mappedBy = "ISafetyreport")
+    @OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlElement(required = true, name = "patient")
     private Patient IPatient;
 
     // bi-directional many-to-one association to PrimarySource
-    @OneToMany(mappedBy = "ISafetyreport")
+    @OneToMany(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlElement(required = true, name = "primarysource")
     private List<PrimarySource> IPrimarysources;
 
     // bi-directional one-to-one association to Receiver
-    @OneToOne(mappedBy = "ISafetyreport")
+    @OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlElement(required = true, name = "receiver")
     private Receiver IReceiver;
 
     // bi-directional one-to-one association to ReportAck
-    @OneToOne(mappedBy = "ISafetyreport")
+    @OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlTransient
     private ReportAck IReportack;
 
     // bi-directional many-to-one association to ReportDuplicate
-    @OneToMany(mappedBy = "ISafetyreport")
+    @OneToMany(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlElement(name = "reportduplicate")
     private List<ReportDuplicate> IReportduplicates;
 
     // bi-directional many-to-one association to SafetyReports
-    @OneToMany(mappedBy = "safetyReport")
+    @OneToMany(mappedBy = "safetyReport", cascade = CascadeType.ALL)
     @XmlInverseReference(mappedBy = "safetyReport")
     private List<SafetyReports> ISafetyreports;
 
     // bi-directional one-to-one association to Sender
-    @OneToOne(mappedBy = "ISafetyreport")
+    @OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @XmlElement(required = true, name = "sender")
     private Sender ISender;
 

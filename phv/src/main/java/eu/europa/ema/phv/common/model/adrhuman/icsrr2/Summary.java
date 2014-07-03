@@ -50,7 +50,7 @@ public class Summary implements Serializable {
     private BigDecimal senderdiagnosismv;
 
     // bi-directional one-to-one association to Patient
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     @XmlInverseReference(mappedBy = "ISummary")
     private Patient IPatient;

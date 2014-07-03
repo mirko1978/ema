@@ -16,8 +16,8 @@ public class ReportComment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator="ReportComment")
-    @SequenceGenerator(name="ReportComment",sequenceName="SEQ_REPORTCOMMENT", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReportComment")
+    @SequenceGenerator(name="ReportComment",sequenceName="SEQ_REPORTCOMMENT", allocationSize=1)
     @Column(name = "PK_REPORTCOMMENT", unique = true, nullable = false, precision = 10)
     private long pkReportcomment;
 
@@ -49,7 +49,7 @@ public class ReportComment implements Serializable {
     private BigDecimal userid;
 
     // bi-directional many-to-one association to ReportAck
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     private ReportAck IReportack;
 

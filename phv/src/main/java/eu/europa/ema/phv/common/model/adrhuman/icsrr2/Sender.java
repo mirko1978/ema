@@ -106,7 +106,7 @@ public class Sender implements Serializable {
     private BigDecimal sendertype;
 
     // bi-directional one-to-one association to SafetyReport
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     @XmlInverseReference(mappedBy = "ISender")
     private SafetyReport ISafetyreport;

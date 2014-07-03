@@ -18,8 +18,8 @@ public class DrugInterpreted implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator="DrugInterpreted")
-    @SequenceGenerator(name="DrugInterpreted",sequenceName="SEQ_DRG_INTPRETED", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DrugInterpreted")
+    @SequenceGenerator(name="DrugInterpreted",sequenceName="SEQ_DRG_INTPRETED", allocationSize=1)
     @Column(name = "PK_DRUG_INTERPRETED", unique = true, nullable = false, precision = 10)
     private long pkDrugInterpreted;
 
@@ -214,16 +214,16 @@ public class DrugInterpreted implements Serializable {
     private Date stampnullif;
 
     // bi-directional many-to-one association to ActiveSubstanceInterpreted
-    @OneToMany(mappedBy = "IDruginterpreted")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDruginterpreted")
     private List<ActiveSubstanceInterpreted> IActivesubstanceinterpreteds;
 
     // bi-directional many-to-one association to Drug
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_DRUG")
     private Drug IDrug;
 
     // bi-directional many-to-one association to Patient
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     private Patient IPatient;
 

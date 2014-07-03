@@ -22,8 +22,8 @@ public class DrugReactionRelated implements Serializable {
 
     /** Primary Key */
     @Id
-    @GeneratedValue(generator="DrugReactionRelated")
-    @SequenceGenerator(name="DrugReactionRelated",sequenceName="SEQ_DRUGREACTIONRELATED", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DrugReactionRelated")
+    @SequenceGenerator(name="DrugReactionRelated",sequenceName="SEQ_DRUGREACTIONRELATED", allocationSize=1)
     @Column(name = "PK_DRUGREACTIONRELATED", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkDrugreactionrelated;
@@ -85,7 +85,7 @@ public class DrugReactionRelated implements Serializable {
     private BigDecimal isdrugreactionassesrecoded;
 
     // bi-directional many-to-one association to Drug
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_DRUG", nullable = false)
     @XmlInverseReference(mappedBy = "IDrugreactionrelateds")
     private Drug IDrug;

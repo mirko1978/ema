@@ -21,8 +21,8 @@ public class LinkedReport implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(generator="LinkedReport")
-    @SequenceGenerator(name="LinkedReport",sequenceName="SEQ_LINKEDREPORT", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LinkedReport")
+    @SequenceGenerator(name="LinkedReport",sequenceName="SEQ_LINKEDREPORT", allocationSize=1)
     @Column(name = "PK_LINKEDREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkLinkedreport;
@@ -32,7 +32,7 @@ public class LinkedReport implements Serializable {
     private String linkreportnumb;
 
     // bi-directional many-to-one association to SafetyReport
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "ILinkedreports")
     private SafetyReport ISafetyreport;

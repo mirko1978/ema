@@ -57,17 +57,17 @@ public class ReportAck implements Serializable {
     private String safetyreportversion;
 
     // bi-directional many-to-many association to MessageAck
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "I_SAFETYREPORTACKS", joinColumns = { @JoinColumn(name = "FK_SAFETYREPORT", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "FK_ICHICSRMESSAGE", nullable = false) })
     private List<MessageAck> IMessageacks;
 
     // bi-directional one-to-one association to SafetyReport
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     private SafetyReport ISafetyreport;
 
     // bi-directional many-to-one association to ReportComment
-    @OneToMany(mappedBy = "IReportack")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IReportack")
     private List<ReportComment> IReportcomments;
 
     public ReportAck() {

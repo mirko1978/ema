@@ -23,7 +23,7 @@ public class ActiveSubstance implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(generator="ActiveSubstance")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ActiveSubstance")
     @SequenceGenerator(name="ActiveSubstance",sequenceName="SEQ_ACTIVESUBSTANCE", allocationSize=100)
     @Column(name = "PK_ACTIVESUBSTANCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
@@ -103,7 +103,7 @@ public class ActiveSubstance implements Serializable {
     private Date recodingStamp;
 
     // bi-directional many-to-one association to Drug
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_DRUG", nullable = false)
     @XmlInverseReference(mappedBy = "IActivesubstances")
     private Drug IDrug;

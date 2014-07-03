@@ -16,8 +16,8 @@ public class ClusterLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator="ClusterLog")
-    @SequenceGenerator(name="ClusterLog",sequenceName="SEQ_CLUSTERLOG", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ClusterLog")
+    @SequenceGenerator(name="ClusterLog",sequenceName="SEQ_CLUSTERLOG", allocationSize=1)
     @Column(name = "PK_LOG", unique = true, nullable = false, precision = 10)
     private long pkLog;
 

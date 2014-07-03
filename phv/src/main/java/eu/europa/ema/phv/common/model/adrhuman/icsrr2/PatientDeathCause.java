@@ -20,8 +20,8 @@ public class PatientDeathCause implements Serializable {
     private static final long serialVersionUID = -7413186390803730426L;
 
     @Id
-    @GeneratedValue(generator="PatientDeathCause")
-    @SequenceGenerator(name="PatientDeathCause",sequenceName="SEQ_PATIENTDEATHCAUSE", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PatientDeathCause")
+    @SequenceGenerator(name="PatientDeathCause",sequenceName="SEQ_PATIENTDEATHCAUSE", allocationSize=1)
     @Column(name = "PK_PATIENTDEATHCAUSE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPatientdeathcause;
@@ -39,7 +39,7 @@ public class PatientDeathCause implements Serializable {
     private BigDecimal patientdeathreportmv;
 
     // bi-directional many-to-one association to PatientDeath
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IPatientdeathcauses")
     private PatientDeath IPatientdeath;

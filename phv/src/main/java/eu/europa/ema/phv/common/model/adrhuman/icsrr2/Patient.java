@@ -104,53 +104,53 @@ public class Patient implements Serializable {
     private String resultstestsprocedures;
 
     // bi-directional many-to-one association to Drug
-    @OneToMany(mappedBy = "IPatient")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(required = true, name = "drug")
     private List<Drug> IDrugs;
 
     // bi-directional many-to-one association to DrugInterpreted
-    @OneToMany(mappedBy = "IPatient")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlTransient
     private List<DrugInterpreted> IDruginterpreteds;
 
     // bi-directional one-to-one association to IParent
-    @OneToOne(mappedBy = "IPatient")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(name = "parent")
     private Parent parent;
 
     // bi-directional one-to-one association to SafetyReport
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     @XmlInverseReference(mappedBy = "IPatient")
     private SafetyReport ISafetyreport;
 
     // bi-directional one-to-one association to PatientDeath
-    @OneToOne(mappedBy = "IPatient")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(name = "patientdeath")
     private PatientDeath IPatientdeath;
 
     // bi-directional many-to-one association to PatientMedicalHistory
-    @OneToMany(mappedBy = "IPatient")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(name = "medicalhistoryepisode")
     private List<PatientMedicalHistory> IPatientmedicalhistories;
 
     // bi-directional many-to-one association to PatientPastDrugTherapy
-    @OneToMany(mappedBy = "IPatient")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(name = "patientpastdrugtherapy")
     private List<PatientPastDrugTherapy> IPatientpastdrugtherapies;
 
     // bi-directional many-to-one association to Reaction
-    @OneToMany(mappedBy = "IPatient")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(required = true, name = "reaction")
     private List<Reaction> IReactions;
 
     // bi-directional one-to-one association to Summary
-    @OneToOne(mappedBy = "IPatient")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(name = "summary")
     private Summary ISummary;
 
     // bi-directional many-to-one association to Test
-    @OneToMany(mappedBy = "IPatient")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatient")
     @XmlElement(name = "test")
     private List<Test> ITests;
 

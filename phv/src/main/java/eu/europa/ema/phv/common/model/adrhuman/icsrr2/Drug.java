@@ -24,8 +24,8 @@ public class Drug implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(generator="Drug")
-    @SequenceGenerator(name="Drug",sequenceName="SEQ_DRUG", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Drug")
+    @SequenceGenerator(name="Drug",sequenceName="SEQ_DRUG", allocationSize=1)
     @Column(name = "PK_DRUG", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkDrug;
@@ -297,28 +297,28 @@ public class Drug implements Serializable {
     private Date recodingStamp;
 
     // bi-directional many-to-one association to ActiveSubstance
-    @OneToMany(mappedBy = "IDrug")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDrug")
     @XmlElement(name = "activesubstance")
     private List<ActiveSubstance> IActivesubstances;
 
     // bi-directional many-to-one association to Patient
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IDrugs")
     private Patient IPatient;
 
     // bi-directional many-to-one association to DrugInterpreted
-    @OneToMany(mappedBy = "IDrug")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDrug")
     @XmlTransient
     private List<DrugInterpreted> IDruginterpreteds;
 
     // bi-directional many-to-one association to DrugreActionRelated
-    @OneToMany(mappedBy = "IDrug")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDrug")
     @XmlElement(name = "drugreactionrelatedness")
     private List<DrugReactionRelated> IDrugreactionrelateds;
 
     // bi-directional many-to-one association to DrugreCurrence
-    @OneToMany(mappedBy = "IDrug")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDrug")
     @XmlElement(name = "drugrecurrence")
     private List<DrugRecurrence> IDrugrecurrences;
 

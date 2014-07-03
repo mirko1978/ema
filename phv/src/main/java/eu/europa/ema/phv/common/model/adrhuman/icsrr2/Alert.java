@@ -18,8 +18,8 @@ public class Alert implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator="Alert")
-    @SequenceGenerator(name="Alert",sequenceName="SEQ_PK_I_ALERTS", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Alert")
+    @SequenceGenerator(name="Alert",sequenceName="SEQ_PK_I_ALERTS", allocationSize=1)
     @Column(name = "PK_ALERTS", unique = true, nullable = false, precision = 10)
     private long pkAlerts;
 

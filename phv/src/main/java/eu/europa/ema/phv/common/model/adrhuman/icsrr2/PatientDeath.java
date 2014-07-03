@@ -43,13 +43,13 @@ public class PatientDeath implements Serializable {
     private List<PatientAutopsy> IPatientautopsies;
 
     // bi-directional one-to-one association to Patient
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     @XmlInverseReference(mappedBy = "IPatientdeath")
     private Patient IPatient;
 
     // bi-directional many-to-one association to PatientDeathCause
-    @OneToMany(mappedBy = "IPatientdeath")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatientdeath")
     @XmlElement(name = "patientdeathcause")
     private List<PatientDeathCause> IPatientdeathcauses;
 

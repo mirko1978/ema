@@ -71,18 +71,18 @@ public class Parent implements Serializable {
     private BigDecimal parentweight;
 
     // bi-directional one-to-one association to Patient
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     @XmlInverseReference(mappedBy = "parent")
     private Patient IPatient;
 
     // bi-directional many-to-one association to ParentMedicalHistory
-    @OneToMany(mappedBy = "Parent")
+    @OneToMany(mappedBy = "Parent", cascade = CascadeType.ALL)
     @XmlElement(name = "parentmedicalhistoryepisode")
     private List<ParentMedicalHistory> IParentmedicalhistories;
 
     // bi-directional many-to-one association to ParentPastDrugTherapy
-    @OneToMany(mappedBy = "Parent")
+    @OneToMany(mappedBy = "Parent", cascade = CascadeType.ALL)
     @XmlElement(name = "parentpastdrugtherapy")
     private List<ParentPastDrugTherapy> IParentpastdrugtherapies;
 
