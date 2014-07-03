@@ -84,7 +84,7 @@
 	</bean>
 
 	<!-- Camel JPA (ref. to JPA section above) -->
-	<bean id="camelJPA" class="org.apache.camel.component.jpa.JpaComponent">
+	<bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 		<property name="transactionManager" ref="transactionManager" />
 	</bean>

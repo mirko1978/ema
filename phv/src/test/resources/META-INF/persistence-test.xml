@@ -5,9 +5,11 @@
 
     <persistence-unit name="messageJTA" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <!--<jta-data-source>jdbc/phv/ichicsr</jta-data-source> -->
+        <jta-data-source>dsMessage</jta-data-source>
+        <class>eu.europa.ema.phv.common.persistence.InboundMessageEntity</class>
+		<class>eu.europa.ema.phv.common.persistence.MessageBoxEntity</class>
         <properties>
-            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.weaving" value="false" />
             <property name="eclipselink.logging.level.sql" value="FINE" />
             <property name="eclipselink.target-database" value="HSQL"/>

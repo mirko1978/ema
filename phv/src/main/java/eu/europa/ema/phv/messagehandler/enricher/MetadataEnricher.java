@@ -6,6 +6,8 @@ package eu.europa.ema.phv.messagehandler.enricher;
 
 
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
+
+import org.apache.camel.Exchange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,12 +23,14 @@ public class MetadataEnricher {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MetadataEnricher.class);
 
-    public IchicsrMessage enrich(IchicsrMessage ichicsr) {
-    	LOG.info("Message Number : {}", ichicsr.getMessagenumber());
-    	//populate the original file name
-    	//populate the official received date
-    	//if gateway is sending authenticated org Id, check in the report and/or populate
-        return ichicsr;
-    }       
+	 public IchicsrMessage enrich(IchicsrMessage ichicsr, Exchange exchange) {
+	    	LOG.info("Message Number : " + ichicsr.getMessagenumber() );
+	    	//populate the original file name
+	    	//populate the official received date
+	    	//if gateway is sending authenticated org Id, check in the report and/or populate
+	    	exchange.getIn().setHeader("receiver", ichicsr.getReceiverid());
+	    	exchange.getIn().setHeader("validationResult", "valid");
+	        return ichicsr;
+	    }       
 
 }

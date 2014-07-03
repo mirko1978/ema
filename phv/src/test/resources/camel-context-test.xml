@@ -123,7 +123,7 @@
     </bean>
 
     <!-- Camel JPA (ref. to JPA section above) -->
-    <bean id="camelJPA" class="org.apache.camel.component.jpa.JpaComponent">
+    <bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
         <property name="entityManagerFactory" ref="emfMessage"/>
         <property name="transactionManager" ref="transactionManager"/>
     </bean>
@@ -146,6 +146,5 @@
     <import resource="classpath:/spring/adr-parser-human-context.xml"/>
     <import resource="classpath:/spring/message-handler-context.xml"/>
     <import resource="classpath:/spring/adr-validation-human-context.xml"/>
-    <import resource="classpath:/spring/outbound-message-management-context.xml"/>
 
 </beans>

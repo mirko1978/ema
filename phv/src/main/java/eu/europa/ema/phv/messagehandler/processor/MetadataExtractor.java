@@ -137,6 +137,8 @@ public class MetadataExtractor implements Processor {
         }
         LOG.debug("ICSR obj : {}", icsr.toString());
         exchange.getIn().setHeader("icsr", icsr);
+        exchange.getIn().setHeader("receiver", icsr.getReceiverid());
+        exchange.getIn().setHeader("validationResult", "invalid");
     }
 
 }

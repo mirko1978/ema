@@ -67,12 +67,12 @@ public class MessageHandlerRouterTest  extends AbstractJUnit4SpringContextTests 
 
 	@After
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+		Thread.sleep(100000);
 		context.stop();
 	}
 
 	private void readSingleMessage() throws Exception{
-		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-single.xml&delete=false");
+		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-single.xml&delete=false&consumer.delay=10000");
 		camelUrl.setOutboundMessage("mock:outbound");
 		camelUrl.setAdrParserHuman("mock:adrParser");
 		context.addRoutes(router);

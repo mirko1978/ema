@@ -1,7 +1,9 @@
 package eu.europa.ema.phv.common.persistence;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -13,10 +15,16 @@ import java.util.List;
  */
 @Entity
 @Table(name="X_MESSAGEBOX")
-@NamedQuery(name="MessageBoxEntity.findAll", query="SELECT m FROM MessageBoxEntity m")
+@NamedQueries({
+	@NamedQuery(name="MessageBoxEntity.findAll", query="SELECT m FROM MessageBoxEntity m"),
+	@NamedQuery(name="MessageBoxEntity.findByOwner", query="SELECT m FROM MessageBoxEntity m where m.owner = :owner")
+})
 public class MessageBoxEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@PersistenceContext(unitName="messageJTA") 
+	protected EntityManager em;
+	
 	@Id
 	@Column(name="PK_MESSAGEBOX", unique=true, nullable=false, precision=10)
 	private long pkMessagebox;
@@ -168,5 +176,14 @@ public class MessageBoxEntity implements Serializable {
 
 		return XInbound;
 	}
+
+	public MessageBoxEntity findByOwner(String receiverid) {
+		
+		TypedQuery<MessageBoxEntity> query =
+			      em.createNamedQuery("MessageBoxEntity.findByOwner", MessageBoxEntity.class).setParameter(0, receiverid);
+			  return query.getSingleResult();
+		
+	}
+	
 
 }

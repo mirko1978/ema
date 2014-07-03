@@ -30,6 +30,8 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     private static final String INVALID_EP ="direct:invalid";
     private static final String MESSAGE_STORE_EP="direct:messageStore";
     private static final String CONTINUE_ROUTING_EP="direct:continueRouting";
+    private static final String HEADER_REROUTING_RECEIVER = "receiver";
+    private static final String RECEIVER_EVHUMAN = "EVHUMAN";
     
     @Inject
     private JmsCamelUrl camelUrl;
@@ -43,7 +45,10 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     	onException(SAXParseException.class).handled(true).to(INVALID_EP);
         from(camelUrl.getGatewayHumanAdr())
             .transacted()
-            .unmarshal(jaxb).to(VALID_EP);
+            .processRef("HeaderProcessor")
+            .unmarshal(jaxb)
+            .log("Jaxb Validation and transformation complete ")
+            .to(VALID_EP);
             /**
             .choice()
                 .when(header("ValidationResult").isEqualTo("valid")).log("Validation Suceeded")
@@ -61,7 +66,9 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //@formatter:off        
         from(INVALID_EP)
             .transacted()
+            .log("Jaxb parsing failed.. extracting meta data from the payload")
             .processRef("MetadataExtractor")
+            .log("Meta data extracted from the invlaid message")
             .to(MESSAGE_STORE_EP)
             .beanRef("AckTranslator")
         .to(camelUrl.getOutboundMessage());
@@ -71,8 +78,9 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     private void validXmlBranch() {
         //@formatter:off        
         from(VALID_EP)
-            .transacted().log("Message is valid")
-            .beanRef("MetadataEnricher")            
+            .transacted().log("Message is valid.. enriching")
+            .beanRef("MetadataEnricher")
+            .log("Routing enriched message ...")
             .multicast()
                 .to(MESSAGE_STORE_EP)
                 .to(CONTINUE_ROUTING_EP);
@@ -81,25 +89,30 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //@formatter:off        
         from(MESSAGE_STORE_EP)
             .transacted()
-            .beanRef("StoreEnricher")
+            //.beanRef("StoreEnricher")
             .bean(MessageToEntityMapper.class, "mapMessageToEntity")
-         .to("jpa://eu.europa.ema.phv.common.persistence.InboundMessageEntity?persistenceUnit=messageJTA");
+            .log("Persisting the message meta data")
+         .to("jpa:eu.europa.ema.phv.common.persistence.InboundMessageEntity?persistenceUnit=messageJTA");
         // @formatter:on
         // TODO: Call the persistence layer here
         
         //@formatter:off        
         from(CONTINUE_ROUTING_EP)
-             .filter(header("foo").isEqualTo("bar")) // TODO: Filter by NOT Webtrader
+             .filter(header(HEADER_REROUTING_RECEIVER).isEqualTo(HEADER_REROUTING_RECEIVER)) // TODO: Filter by NOT Webtrader
              .choice()
-                .when(header("foo").isEqualTo("bar")) // TODO: is Icsr to EMA
-                    .to(camelUrl.getAdrParserHuman())
-                .when(header("foo").isEqualTo("cheese")) // TODO: is Rerouting
+                .when(header(HEADER_REROUTING_RECEIVER).isEqualTo(RECEIVER_EVHUMAN)) // TODO: is Icsr to EMA
+                    .beanRef("MessageEnricher")
+                	.log("Routing the valid enriched message to Human ADR Parser")
+                	.to(camelUrl.getAdrParserHuman())
+                .when(header(HEADER_REROUTING_RECEIVER).isNotEqualTo(RECEIVER_EVHUMAN)) // TODO: is Rerouting
                     .beanRef("RoutingTranslator")
+                    .log("Routing web trader messages to storage handler")
                     .to(camelUrl.getOutboundMessage())
                 .otherwise()
                 	.log("Exception")
                     .throwException(new UnexpectedResultException("Message not recognized by the router"))
-                .endChoice();
+                .endChoice()
+                .end();
         // @formatter:on
     }
     

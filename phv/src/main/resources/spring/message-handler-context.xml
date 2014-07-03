@@ -21,8 +21,12 @@
 		class="eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher" />
 	<bean id="StoreEnricher" class="eu.europa.ema.phv.messagehandler.enricher.StoreEnricher" />
 
+	<bean id="MessageEnricher"
+		class="eu.europa.ema.phv.messagehandler.enricher.MessageEnricher" />
 	<!-- Processor -->
-	<bean id="MetadataExtractor"
+	<bean id="HeaderProcessor"
+		class="eu.europa.ema.phv.messagehandler.processor.HeaderProcessor" />
+			<bean id="MetadataExtractor"
 		class="eu.europa.ema.phv.messagehandler.processor.MetadataExtractor" />
 	<bean id="XmlValidator" class="eu.europa.ema.phv.messagehandler.processor.XmlValidator" />
 
