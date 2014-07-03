@@ -67,16 +67,11 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
                 <property name="showSql" value="true"/>
-                <property name="databasePlatform" value="org.eclipse.persistence.platform.database.H2Platform"/>
+                <property name="databasePlatform" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
             </bean>
         </property>
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
-        </property>
-        <property name="jpaPropertyMap">
-            <props>
-                <prop key="eclipselink.weaving">false</prop>
-            </props>
         </property>
     </bean>
 
@@ -88,86 +83,44 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
                 <property name="showSql" value="true"/>
-                <!--<property name="databasePlatform" value="org.eclipse.persistence.platform.database.H2Platform"/>-->
                 <property name="databasePlatform" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
             </bean>
         </property>
         <property name="jpaDialect">
             <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect"/>
         </property>
-        <property name="jpaPropertyMap">
-            <props>
-                <prop key="eclipselink.weaving">false</prop>
-            </props>
-        </property>
-        <!--<property name="jpaProperties">-->
-            <!--<props>-->
-                <!--<prop key="eclipselink.session.customizer">eu.europa.ema.phv.TransactionSessionCustomizer</prop>-->
-                <!--<prop key="eclipselink.target-server">com.atomikos.eclipselink.platform.AtomikosPlatform</prop>-->
-                <!--<prop key="eclipselink.target-server">com.atomikos.eclipselink.platform.AtomikosPlatform</prop>-->
-                <!--<prop key="jdbc.exclusive-connection.mode">Transactional</prop>-->
-            <!--</props>-->
-        <!--</property>-->
     </bean>
 
 
     <!-- local datasource -->
 
-    <!--<bean id="dbMessage" class="org.h2.jdbcx.JdbcDataSource">-->
-        <!--<property name="url" value="jdbc:h2:mem:message"/>-->
-        <!--<property name="user" value="sa"/>-->
-        <!--<property name="password" value="sa"/>-->
-    <!--</bean>-->
-    <bean id="dbMessage"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName">
-            <value>org.hsqldb.jdbcDriver</value>
-        </property>
-        <property name="url">
-            <value>jdbc:hsqldb:mem:message</value>
-        </property>
-        <property name="username">
-            <value>sa</value>
-        </property>
-        <property name="password">
-            <value></value>
-        </property>
-    </bean>
-
-    <!--<bean id="dsMessage" class="com.atomikos.jdbc.AtomikosDataSourceBean" init-method="init" destroy-method="close">-->
-        <!--<property name="uniqueResourceName" value="dsMessage"/>-->
-        <!--<property name="xaDataSource" ref="dbMessage"/>-->
-        <!--<property name="poolSize" value="3"/>-->
-    <!--</bean>-->
-    <bean id="dsMessage" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" init-method="init" destroy-method="close">
-        <property name="uniqueResourceName" value="dsMessage"/>
-        <property name="poolSize" value="30"/>
-        <property name="maxPoolSize" value="1000"/>
-        <property name="borrowConnectionTimeout" value="0"/>
-        <property name="url" value="jdbc:hsqldb:mem:message" />
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="user" value="sa" />
-        <property name="password" value="" />
-    </bean>
-
-    <bean id="dsIcsr" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:file:./icsr"/>
+    <bean id="dsMessage" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value=" org.hsqldb.jdbcDriver"/>
+        <!--<property name="url" value="jdbc:hsqldb:mem:messagedb"/>-->
+        <property name="url" value="jdbc:hsqldb:file:./temp/messagedb"/>
         <property name="username" value="sa"/>
         <property name="password" value=""/>
     </bean>
 
-    <!--<bean id="dsIcsr" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" init-method="init" destroy-method="close">-->
-        <!--<property name="uniqueResourceName" value="dsIcsr"/>-->
-        <!--<property name="poolSize" value="1000"/>-->
-        <!--<property name="maxPoolSize" value="10000"/>-->
+    <!-- Atomikos data source - Doesn't work properly with eclipse link!!! -->
+    <!--<bean id="dsMessage" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" init-method="init" destroy-method="close">-->
+        <!--<property name="uniqueResourceName" value="dsMessage"/>-->
+        <!--<property name="poolSize" value="30"/>-->
+        <!--<property name="maxPoolSize" value="1000"/>-->
         <!--<property name="borrowConnectionTimeout" value="0"/>-->
-        <!--<property name="url" value="jdbc:hsqldb:mem:./icsr" />-->
+        <!--<property name="url" value="jdbc:hsqldb:mem:message" />-->
         <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>-->
         <!--<property name="user" value="sa" />-->
         <!--<property name="password" value="" />-->
     <!--</bean>-->
 
+    <bean id="dsIcsr" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--<property name="url" value="jdbc:hsqldb:mem:icsrdb"/>-->
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:file:./temp/icsrdb"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
 
     <!-- Camel JPA (ref. to JPA section above) -->
     <bean id="camelJPA" class="org.apache.camel.component.jpa.JpaComponent">
@@ -193,16 +146,5 @@
     <import resource="classpath:/spring/adr-parser-human-context.xml"/>
     <import resource="classpath:/spring/message-handler-context.xml"/>
     <import resource="classpath:/spring/adr-validation-human-context.xml"/>
-
-
-    <!-- -->
-    <!-- Embedded DB -->
-    <!-- -->
-
-    <!--<jdbc:embedded-database id="dataSource" type="H2">
-        <jdbc:script location="classpath:db-schema.sql"/>
-        <jdbc:script location="classpath:db-test-data.sql"/>
-    </jdbc:embedded-database>-->
-
 
 </beans>

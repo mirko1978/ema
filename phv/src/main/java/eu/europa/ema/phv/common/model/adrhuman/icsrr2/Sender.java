@@ -1,5 +1,6 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import com.google.common.base.Objects;
 import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 import javax.persistence.*;
@@ -9,7 +10,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_SENDER database table.
- * 
  */
 @Entity
 @Table(name = "I_SENDER")
@@ -291,4 +291,16 @@ public class Sender implements Serializable {
         this.ISafetyreport = ISafetyreport;
     }
 
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this)
+            .omitNullValues()
+            .add("Given Name", sendergivename)
+            .add("Family Name", senderfamilyname)
+            .add("Middle Name", sendermiddlename)
+            .add("Organization", senderorganization)
+            .add("Type", sendertype)
+            .add("State", senderstate)
+            .toString();
+    }
 }

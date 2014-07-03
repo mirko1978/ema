@@ -30,17 +30,21 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
 
     @Override
     @ReturnInsert
+    @Transactional
     public IchicsrMessage saveOnlyIcsr(IchicsrMessage icsr) {
         IchicsrMessage saved = new IchicsrMessage();
         updateIcsr(icsr, saved);
         saved.setSafetyReports(null);
         manager.persist(saved);
-        LOG.debug("ICSR core message saved for {}", saved.getMessageid());
+        if(LOG.isDebugEnabled()) {
+            LOG.debug("DAO: ICSR core message saved for {}", saved);
+        }
         return saved;
     }
 
     @Override
     @ReturnInsert
+    @Transactional
     public void saveReport(IchicsrMessage icsr, SafetyReport report) {
         SafetyReports safetyReports = new SafetyReports();
         safetyReports.setIchicsrMessage(icsr);
@@ -54,7 +58,9 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
         }
         icsr.getSafetyReports().add(safetyReports);
         manager.persist(safetyReports);
-        LOG.debug("ICSR report saved for {}", report.getSafetyreportid());
+        if(LOG.isDebugEnabled()) {
+            LOG.debug("DAO: Report saved for {}", report);
+        }
     }
 
     @Override

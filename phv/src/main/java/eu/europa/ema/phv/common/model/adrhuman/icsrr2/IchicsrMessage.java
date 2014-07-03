@@ -1,5 +1,6 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
+import com.google.common.base.Objects;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 import eu.europa.ema.phv.common.xmladapter.EvMessageTypeAdapter;
 import eu.europa.ema.phv.common.xmladapter.SafetyReportsAdapter;
@@ -190,10 +191,12 @@ public class IchicsrMessage implements Serializable {
         this.acksenddate = acksenddate;
     }
 
+    @Deprecated
     public BigDecimal getArchived() {
         return this.archived;
     }
 
+    @Deprecated
     public void setArchived(BigDecimal archived) {
         this.archived = archived;
     }
@@ -214,10 +217,12 @@ public class IchicsrMessage implements Serializable {
         this.documenttype = documenttype;
     }
 
+    @Deprecated
     public BigDecimal getFkQiofficialreceivedate() {
         return this.fkQiofficialreceivedate;
     }
 
+    @Deprecated
     public void setFkQiofficialreceivedate(BigDecimal fkQiofficialreceivedate) {
         this.fkQiofficialreceivedate = fkQiofficialreceivedate;
     }
@@ -230,10 +235,12 @@ public class IchicsrMessage implements Serializable {
         this.ismessagereceivedatechanged = ismessagereceivedatechanged;
     }
 
+    @Deprecated
     public Date getMdnackreceivedate() {
         return this.mdnackreceivedate;
     }
 
+    @Deprecated
     public void setMdnackreceivedate(Date mdnackreceivedate) {
         this.mdnackreceivedate = mdnackreceivedate;
     }
@@ -254,10 +261,12 @@ public class IchicsrMessage implements Serializable {
         this.messageformatversion = messageformatversion;
     }
 
+    @Deprecated
     public String getMessageid() {
         return this.messageid;
     }
 
+    @Deprecated
     public void setMessageid(String messageid) {
         this.messageid = messageid;
     }
@@ -294,10 +303,12 @@ public class IchicsrMessage implements Serializable {
         this.messagereleaseversion = messagereleaseversion;
     }
 
+    @Deprecated
     public BigDecimal getMessagetype() {
         return this.messagetype;
     }
 
+    @Deprecated
     public void setMessagetype(BigDecimal messagetype) {
         this.messagetype = messagetype;
     }
@@ -398,4 +409,16 @@ public class IchicsrMessage implements Serializable {
         return ISafetyreport;
     }
 
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this)
+            .omitNullValues()
+            .add("Message Number", messagenumber)
+            .add("Document Type", documenttype)
+            .add("Message Date",messagedate)
+            .add("Sender ID",senderid)
+            .add("Receiver ID", receiverid)
+            .add("Number of reports",safetyReports == null ? null : safetyReports.size())
+        .toString();
+    }
 }

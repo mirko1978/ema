@@ -39,15 +39,22 @@ public class AdrHumanPersistence implements Processor {
             saved = (IchicsrMessage) headers.get(AdrValidationHumanCommon.SAVED_ICSR);
         }
         else {
-            LOG.debug("Saving the ICSR headers for {}", validationResult.getMessage().getUniqueId());
+            if(LOG.isDebugEnabled()) {
+                LOG.debug("Saving the ICSR headers for {}", validationResult.getMessage().getUniqueId());
+            }
             // persist the message core without reports
             saved = dao.saveOnlyIcsr(validationResult.getMessage().getHeader().getIcsr());
             // store in the header the saved message
             headers.put(AdrValidationHumanCommon.SAVED_ICSR, saved);
+            if(LOG.isDebugEnabled()) {
+                LOG.debug("Saved ICSR {}", validationResult.getMessage().getHeader().getIcsr());
+            }
         }
         // Persist the report
-        LOG.debug("Saving report {} ",validationResult.getMessage().getReport());
         dao.saveReport(saved, validationResult.getMessage().getReport());
         dao.updateIcsr(saved, firstMessage.getMessage().getHeader().getIcsr());
+        if(LOG.isDebugEnabled()) {
+            LOG.debug("Saved report {} ",validationResult.getMessage().getReport());
+        }
     }
 }

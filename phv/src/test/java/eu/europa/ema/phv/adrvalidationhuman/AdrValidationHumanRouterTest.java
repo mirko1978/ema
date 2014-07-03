@@ -34,7 +34,7 @@ public class AdrValidationHumanRouterTest extends AbstractPhvTest {
         context.addRoutes(router);
     }
 
-    //@Test
+    @Test
     @DirtiesContext
     public void singleSRTest() throws JAXBException {
         ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/icsr-single.xml");

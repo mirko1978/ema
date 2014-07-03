@@ -8,6 +8,11 @@
         <!--<jta-data-source>jdbc/phv/ichicsr</jta-data-source> -->
         <properties>
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.weaving" value="false" />
+            <property name="eclipselink.logging.level.sql" value="FINE" />
+            <property name="eclipselink.target-database" value="HSQL"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
         </properties>
     </persistence-unit>
 
@@ -52,14 +57,17 @@
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Summary</class>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Test</class>
         <properties>
-            <property name="eclipselink.ddl-generation" value="create-tables"/>
-            <property name="eclipselink.weaving" value="static" />
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.weaving" value="false" />
             <property name="eclipselink.logging.level.sql" value="FINE" />
             <!--<property name="eclipselink.logging.level" value="FINEST" />-->
             <!--<property name="eclipselink.logging.level.cache" value="FINEST" />-->
             <!--<property name="eclipselink.jdbc.exclusive-connection.mode" value="Isolated"/>-->
             <!--<property name="eclipselink.jdbc.exclusive-connection.is-lazy" value="false"/>-->
             <!--<property name="eclipselink.cache.coordination.remove-connection-on-error" value="true"/>-->
+            <property name="eclipselink.target-database" value="HSQL"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+            <property name="eclipselink.logging.level" value="INFO"/>
         </properties>
     </persistence-unit>
 

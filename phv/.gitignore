@@ -19,5 +19,4 @@ target/
 
 # Others
 workspaces/
-atomikos/
-
+temp/
