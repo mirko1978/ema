@@ -14,10 +14,10 @@
 		</properties>
 	</persistence-unit>
 
-    <persistence-unit name="icsrR2Jta" transaction-type="JTA">
+    <persistence-unit name="icsrJta" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/phv/ichicsr</jta-data-source>
-        <!--<class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ActiveSubstance</class>
+        <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ActiveSubstance</class>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ActiveSubstanceInterpreted</class>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Alert</class>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Cluster</class>
@@ -55,9 +55,12 @@
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReportsPK</class>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Sender</class>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Summary</class>
-        <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Test</class>-->
+        <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Test</class>
         <properties>
             <property name="eclipselink.target-server" value="WebLogic"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.target-database" value="Oracle"/>
         </properties>
     </persistence-unit>
 	

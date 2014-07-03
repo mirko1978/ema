@@ -15,7 +15,6 @@ public class RLocking implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     private long pkSafetyreport;
 

@@ -21,7 +21,8 @@ public class PatientAutopsy implements Serializable {
     private static final long serialVersionUID = 366638283225756012L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="PatientAutopsy")
+    @SequenceGenerator(name="PatientAutopsy",sequenceName="SEQ_PATIENTAUTOPSY", allocationSize=0)
     @Column(name = "PK_PATIENTAUTOPSY", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPatientautopsy;

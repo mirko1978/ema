@@ -20,7 +20,8 @@ public class PatientDeathCause implements Serializable {
     private static final long serialVersionUID = -7413186390803730426L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="PatientDeathCause")
+    @SequenceGenerator(name="PatientDeathCause",sequenceName="SEQ_PATIENTDEATHCAUSE", allocationSize=0)
     @Column(name = "PK_PATIENTDEATHCAUSE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPatientdeathcause;

@@ -21,7 +21,6 @@ public class Sender implements Serializable {
     private static final long serialVersionUID = -7621291418384815070L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkSafetyreport;

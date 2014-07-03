@@ -17,7 +17,8 @@ public class Cluster implements Serializable {
 
     /** TODO: Sujata */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="Cluster")
+    @SequenceGenerator(name="Cluster",sequenceName="SEQ_CLUSTERID", allocationSize=100)
     @Column(name = "FK_SAFETYREPORT", unique = true, nullable = false, precision = 22)
     private long fkSafetyreport;
 

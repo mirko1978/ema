@@ -18,7 +18,8 @@ public class DrugInterpreted implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="DrugInterpreted")
+    @SequenceGenerator(name="DrugInterpreted",sequenceName="SEQ_DRG_INTPRETED", allocationSize=0)
     @Column(name = "PK_DRUG_INTERPRETED", unique = true, nullable = false, precision = 10)
     private long pkDrugInterpreted;
 

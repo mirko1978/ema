@@ -22,7 +22,8 @@ public class DrugReactionRelated implements Serializable {
 
     /** Primary Key */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="DrugReactionRelated")
+    @SequenceGenerator(name="DrugReactionRelated",sequenceName="SEQ_DRUGREACTIONRELATED", allocationSize=0)
     @Column(name = "PK_DRUGREACTIONRELATED", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkDrugreactionrelated;

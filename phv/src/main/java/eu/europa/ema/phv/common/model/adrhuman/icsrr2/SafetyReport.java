@@ -26,7 +26,8 @@ public class SafetyReport implements Serializable {
      * Primary key
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="SafetyReport")
+    @SequenceGenerator(name="SafetyReport",sequenceName="SEQ_SAFETYREPORT", allocationSize=0)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkSafetyreport;
@@ -777,12 +778,12 @@ public class SafetyReport implements Serializable {
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-            .omitNullValues()
-            .add("Case Number", casenumber)
-            .add("Case Type", casetype)
-            .add("Report ID", safetyreportid)
-            .add("Receive date", receivedate)
-            .add("Sender", ISender)
-            .toString();
+                .omitNullValues()
+                .add("Case Number", casenumber)
+                .add("Case Type", casetype)
+                .add("Report ID", safetyreportid)
+                .add("Receive date", receivedate)
+                .add("Sender", ISender)
+                .toString();
     }
 }

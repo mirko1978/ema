@@ -16,8 +16,9 @@ public class RLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique = true, nullable = false, precision = 10)
+    @GeneratedValue(generator="RLog")
+    @SequenceGenerator(name="RLog",sequenceName="SEQ_I_R_LOG", allocationSize=0)
+    @Column(name = "LOGID", unique = true, nullable = false, precision = 10)
     private long logid;
 
     @Column(name = "\"LOG\"", length = 100)

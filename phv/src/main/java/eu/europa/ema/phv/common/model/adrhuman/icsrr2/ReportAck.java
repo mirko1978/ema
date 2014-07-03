@@ -17,7 +17,6 @@ public class ReportAck implements Serializable {
 
     /** Primary key from ICHICSR.I_SAFETYREPORT */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     private long pkSafetyreport;
 

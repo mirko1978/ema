@@ -21,7 +21,6 @@ public class Summary implements Serializable {
     private static final long serialVersionUID = -2036493781447018899L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkSafetyreport;

@@ -23,7 +23,8 @@ public class ActiveSubstance implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="ActiveSubstance")
+    @SequenceGenerator(name="ActiveSubstance",sequenceName="SEQ_ACTIVESUBSTANCE", allocationSize=100)
     @Column(name = "PK_ACTIVESUBSTANCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkActivesubstance;

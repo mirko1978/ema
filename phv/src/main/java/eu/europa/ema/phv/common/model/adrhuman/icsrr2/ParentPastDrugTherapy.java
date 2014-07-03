@@ -22,7 +22,8 @@ public class ParentPastDrugTherapy implements Serializable {
     private static final long serialVersionUID = -3361137215621775330L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="ParentPastDrugTherapy")
+    @SequenceGenerator(name="ParentPastDrugTherapy",sequenceName="SEQ_PARENTPASTDRUGTHERAPY", allocationSize=0)
     @Column(name = "PK_PARENTPASTDRUGTHERAPY", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkParentpastdrugtherapy;

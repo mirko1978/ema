@@ -20,7 +20,8 @@ public class ReportDuplicate implements Serializable {
     private static final long serialVersionUID = 5172665305281397475L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="ReportDuplicate")
+    @SequenceGenerator(name="ReportDuplicate",sequenceName="SEQ_REPORTDUPLICATE", allocationSize=0)
     @Column(name = "PK_REPORTDUPLICATE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkReportduplicate;

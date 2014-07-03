@@ -21,7 +21,8 @@ public class PatientMedicalHistory implements Serializable {
     private static final long serialVersionUID = -8473035688170438458L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="PatientMedicalHistory")
+    @SequenceGenerator(name="PatientMedicalHistory",sequenceName="SEQ_PATIENTMEDICALHISTORY", allocationSize=0)
     @Column(name = "PK_PATIENTMEDICALHISTORYEPIS", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPatientmedicalhistoryepis;

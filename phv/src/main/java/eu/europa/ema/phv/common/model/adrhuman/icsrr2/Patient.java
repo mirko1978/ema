@@ -23,7 +23,6 @@ public class Patient implements Serializable {
 
     /** Primary key that is the SafetyReport key*/
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkSafetyreport;

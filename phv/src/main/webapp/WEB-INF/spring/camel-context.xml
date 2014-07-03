@@ -76,7 +76,7 @@
 	<!-- JPA -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="recordJTA" />
+		<property name="persistenceUnitName" value="icsrJta" />
 		<property name="loadTimeWeaver">
 			<bean
 				class="org.springframework.instrument.classloading.weblogic.WebLogicLoadTimeWeaver" />
@@ -102,11 +102,11 @@
 	<!-- -->
 	<!-- Includes -->
 	<!-- -->
-    <!--
-    <import resource="classpath:/spring/jdbc-context.xml"/>
-    -->
 
-	<import resource="classpath:/spring/util-context.xml" />
-	<import resource="classpath:/spring/adr-parser-human-context.xml" />
+    <import resource="classpath:/spring/util-context.xml"/>
+    <import resource="classpath:/spring/adr-parser-human-context.xml"/>
+    <import resource="classpath:/spring/message-handler-context.xml"/>
+    <import resource="classpath:/spring/adr-validation-human-context.xml"/>
+    <import resource="classpath:/spring/outbound-message-management-context.xml"/>
 
 </beans>

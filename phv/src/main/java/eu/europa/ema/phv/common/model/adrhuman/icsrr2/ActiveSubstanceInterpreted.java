@@ -18,7 +18,8 @@ public class ActiveSubstanceInterpreted implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="ActiveSubstanceInterpreted")
+    @SequenceGenerator(name="ActiveSubstanceInterpreted",sequenceName="SEQ_SUB_INTPRETED", allocationSize=0)
     @Column(name = "PK_ACTIVESUBSTANCE_INTERPRETED", unique = true, nullable = false, precision = 10)
     private long pkActivesubstanceInterpreted;
 

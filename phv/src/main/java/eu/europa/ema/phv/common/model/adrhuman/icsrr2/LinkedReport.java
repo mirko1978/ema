@@ -21,7 +21,8 @@ public class LinkedReport implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="LinkedReport")
+    @SequenceGenerator(name="LinkedReport",sequenceName="SEQ_LINKEDREPORT", allocationSize=0)
     @Column(name = "PK_LINKEDREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkLinkedreport;

@@ -17,7 +17,6 @@ public class MessageAck implements Serializable {
 
     /** Primary key from ICHICSR.I_ICHICSRMESSAGE.PK_ICHICSRMESSAGE */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_ICHICSRMESSAGE", unique = true, nullable = false, precision = 10)
     private long pkIchicsrmessage;
 

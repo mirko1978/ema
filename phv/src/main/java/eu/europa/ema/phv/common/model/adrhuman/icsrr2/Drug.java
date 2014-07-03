@@ -24,7 +24,8 @@ public class Drug implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="Drug")
+    @SequenceGenerator(name="Drug",sequenceName="SEQ_DRUG", allocationSize=0)
     @Column(name = "PK_DRUG", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkDrug;

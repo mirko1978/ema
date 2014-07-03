@@ -21,7 +21,8 @@ public class PrimarySource implements Serializable {
     private static final long serialVersionUID = -163305822979064045L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="PrimarySource")
+    @SequenceGenerator(name="PrimarySource",sequenceName="SEQ_PRIMARYSOURCE", allocationSize=0)
     @Column(name = "PK_PRIMARYSOURCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPrimarysource;

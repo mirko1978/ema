@@ -33,7 +33,7 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
     public void configure() throws Exception {
         //@formatter:off
         from(camelUrl.getAdrValidationHuman())
-            .transacted()
+            //.transacted()
             // Call the validation process
             .beanRef("adrHumanBRValidation")
             // Now the mesage is IcsrR2ReportValidationResult
