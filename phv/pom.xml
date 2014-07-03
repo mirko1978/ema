@@ -299,34 +299,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>1.5</version>
-				<executions>
-					<execution>
-						<id>xjc</id>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<!-- NOT USED: <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName> -->
-					<!-- <packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ack</packageName> -->
-					<packageName>eu.europa.ema.phv.common.model.adrhuman.icsrr2</packageName>
-					<dtd>true</dtd>
-					<xmlschema>false</xmlschema>
-					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-					<schemaDirectory>${project.basedir}/src/main/resources/schema</schemaDirectory>
-					<clearOutputDir>false</clearOutputDir>
-					<!-- NOT USED: <schemaFiles>icsr21xml.dtd</schemaFiles> -->
-					<!-- <schemaFiles>ichicsrack11xml.dtd</schemaFiles> -->
-					<schemaFiles>masterreport21xml.dtd</schemaFiles>
-					<extension>true</extension>
-					<verbose>true</verbose>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.2</version>
