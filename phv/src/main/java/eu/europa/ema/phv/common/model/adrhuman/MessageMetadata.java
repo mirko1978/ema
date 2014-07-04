@@ -19,9 +19,9 @@ public class MessageMetadata implements Serializable {
     /** Unique identifier for the received message. It is set by Message Handler component */
     private UUID uniqueId;
 
-    private String fileName;
+    private String fileName = "foo.xml";
 
-    private Date received;
+    private Date received = new Date();
 
     /**
      * @return the fileName

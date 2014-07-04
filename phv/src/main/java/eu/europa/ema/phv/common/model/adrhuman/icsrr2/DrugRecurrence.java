@@ -22,8 +22,8 @@ public class DrugRecurrence implements Serializable {
 
     /** Primary Key */
     @Id
-    @GeneratedValue(generator="DrugRecurrence")
-    @SequenceGenerator(name="DrugRecurrence",sequenceName="SEQ_DRUGRECURRENCE", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DrugRecurrence")
+    @SequenceGenerator(name="DrugRecurrence",sequenceName="SEQ_DRUGRECURRENCE", allocationSize=1)
     @Column(name = "PK_DRUGRECURRENCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkDrugrecurrence;
@@ -42,7 +42,7 @@ public class DrugRecurrence implements Serializable {
     private BigDecimal drugrecuractionmv;
 
     // bi-directional many-to-one association to Drug
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_DRUG", nullable = false)
     @XmlInverseReference(mappedBy = "IDrugrecurrences")
     private Drug IDrug;

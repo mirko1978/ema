@@ -44,6 +44,9 @@ public class ReportSplitter {
         int index = 0;        
         LOG.debug("Splitting message by {} reports",size);
 
+        // Adding the metadata to the icsr
+        icsr.setMessagereceivedate(metadata.getReceived());
+
         ValidIcsrR2Message header = null;
         for (SafetyReports entityReport : icsr.getSafetyReports()) {
             SafetyReport report = entityReport.getSafetyReport();

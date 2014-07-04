@@ -17,7 +17,7 @@ public class Cluster implements Serializable {
 
     /** TODO: Sujata */
     @Id
-    @GeneratedValue(generator="Cluster")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Cluster")
     @SequenceGenerator(name="Cluster",sequenceName="SEQ_CLUSTERID", allocationSize=100)
     @Column(name = "FK_SAFETYREPORT", unique = true, nullable = false, precision = 22)
     private long fkSafetyreport;
@@ -37,7 +37,7 @@ public class Cluster implements Serializable {
     private BigDecimal pkClusterid;
 
     // bi-directional one-to-one association to SafetyReport
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     private SafetyReport ISafetyreport;
 

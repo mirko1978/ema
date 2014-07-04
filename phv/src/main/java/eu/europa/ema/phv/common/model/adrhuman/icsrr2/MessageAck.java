@@ -51,12 +51,12 @@ public class MessageAck implements Serializable {
     private String transmissionacknowledgmentcode;
 
     // bi-directional one-to-one association to IchicsrMessage
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_ICHICSRMESSAGE", nullable = false, insertable = false, updatable = false)
     private IchicsrMessage IIchicsrmessage;
 
     // bi-directional many-to-many association to ReportAck
-    @ManyToMany(mappedBy = "IMessageacks")
+    @ManyToMany(mappedBy = "IMessageacks", cascade = CascadeType.ALL)
     private List<ReportAck> IReportacks;
 
     public MessageAck() {

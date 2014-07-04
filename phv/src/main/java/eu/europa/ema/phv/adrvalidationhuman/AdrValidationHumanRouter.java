@@ -3,6 +3,7 @@
  */
 package eu.europa.ema.phv.adrvalidationhuman;
 
+import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
 import eu.europa.ema.phv.common.util.CamelProperties;
 import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
@@ -42,6 +43,7 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
             .aggregate(simple("${body.message.uniqueId}"), adrAggregationStrategy)
                 .completionTimeout(camelProperties.getAggregationTimeout())
                 .completionSize(simple("${body.message.total}"))
+            .transform(simple("${body.icsrAcks}"))
         .to(camelUrl.getOutboundMessage());
         //@formatter:on
 

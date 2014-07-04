@@ -20,8 +20,8 @@ public class ReportDuplicate implements Serializable {
     private static final long serialVersionUID = 5172665305281397475L;
 
     @Id
-    @GeneratedValue(generator="ReportDuplicate")
-    @SequenceGenerator(name="ReportDuplicate",sequenceName="SEQ_REPORTDUPLICATE", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReportDuplicate")
+    @SequenceGenerator(name="ReportDuplicate",sequenceName="SEQ_REPORTDUPLICATE", allocationSize=1)
     @Column(name = "PK_REPORTDUPLICATE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkReportduplicate;
@@ -35,7 +35,7 @@ public class ReportDuplicate implements Serializable {
     private String duplicatesource;
 
     // bi-directional many-to-one association to SafetyReport
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IReportduplicates")
     private SafetyReport ISafetyreport;

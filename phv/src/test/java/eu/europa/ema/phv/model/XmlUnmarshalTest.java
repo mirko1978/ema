@@ -4,6 +4,7 @@
 package eu.europa.ema.phv.model;
 
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,12 +70,15 @@ public class XmlUnmarshalTest {
 
     @BeforeClass
     public static void init() throws JAXBException {
+        //JAXB_CONTEXT = JAXBContext.newInstance("eu.europa.ema.phv.common.model.adrhuman.icsrr2");
         JAXB_CONTEXT = JAXBContext.newInstance(IchicsrMessage.class);
     }
 
     @Test
     public void unmarshallTest() throws JAXBException, ParserConfigurationException, IOException, SAXException,
             TransformerException {
+        System.out.println(JAXB_CONTEXT.getClass());
+        Assert.assertEquals("org.eclipse.persistence.jaxb.JAXBContext",JAXB_CONTEXT.getClass().getCanonicalName());
         Unmarshaller jaxbUnmarshaller = JAXB_CONTEXT.createUnmarshaller();
         IchicsrMessage icsr = (IchicsrMessage) jaxbUnmarshaller.unmarshal(path.toFile());
         System.out.println("File: " + path);

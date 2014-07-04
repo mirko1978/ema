@@ -22,8 +22,8 @@ public class ParentPastDrugTherapy implements Serializable {
     private static final long serialVersionUID = -3361137215621775330L;
 
     @Id
-    @GeneratedValue(generator="ParentPastDrugTherapy")
-    @SequenceGenerator(name="ParentPastDrugTherapy",sequenceName="SEQ_PARENTPASTDRUGTHERAPY", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ParentPastDrugTherapy")
+    @SequenceGenerator(name="ParentPastDrugTherapy",sequenceName="SEQ_PARENTPASTDRUGTHERAPY", allocationSize=1)
     @Column(name = "PK_PARENTPASTDRUGTHERAPY", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkParentpastdrugtherapy;
@@ -189,7 +189,7 @@ public class ParentPastDrugTherapy implements Serializable {
     private Date recodingStamp;
 
     // bi-directional many-to-one association to IParent
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IParentpastdrugtherapies")
     private Parent Parent;

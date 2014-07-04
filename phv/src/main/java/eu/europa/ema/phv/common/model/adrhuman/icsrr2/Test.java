@@ -21,8 +21,8 @@ public class Test implements Serializable {
     private static final long serialVersionUID = 1991155154911306660L;
 
     @Id
-    @GeneratedValue(generator="Test")
-    @SequenceGenerator(name="Test",sequenceName="SEQ_TEST", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Test")
+    @SequenceGenerator(name="Test",sequenceName="SEQ_TEST", allocationSize=1)
     @Column(name = "PK_TEST", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkTest;
@@ -92,7 +92,7 @@ public class Test implements Serializable {
     private String testunit;
 
     // bi-directional many-to-one association to Patient
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "ITests")
     private Patient IPatient;

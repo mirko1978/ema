@@ -21,8 +21,8 @@ public class PrimarySource implements Serializable {
     private static final long serialVersionUID = -163305822979064045L;
 
     @Id
-    @GeneratedValue(generator="PrimarySource")
-    @SequenceGenerator(name="PrimarySource",sequenceName="SEQ_PRIMARYSOURCE", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PrimarySource")
+    @SequenceGenerator(name="PrimarySource",sequenceName="SEQ_PRIMARYSOURCE", allocationSize=1)
     @Column(name = "PK_PRIMARYSOURCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPrimarysource;
@@ -99,7 +99,7 @@ public class PrimarySource implements Serializable {
     private String title;
 
     // bi-directional many-to-one association to SafetyReport
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IPrimarysources")
     private SafetyReport ISafetyreport;

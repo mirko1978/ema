@@ -102,7 +102,7 @@ public class Receiver implements Serializable {
     private BigDecimal receivertype;
 
     // bi-directional one-to-one association to SafetyReport
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     @XmlInverseReference(mappedBy = "IReceiver")
     private SafetyReport ISafetyreport;

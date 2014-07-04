@@ -23,8 +23,8 @@ public class PatientPastDrugTherapy implements Serializable {
 
     /** Primary key */
     @Id
-    @GeneratedValue(generator="PatientPastDrugTherapy")
-    @SequenceGenerator(name="PatientPastDrugTherapy",sequenceName="SEQ_PATIENTPASTDRUGTHERAPY", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PatientPastDrugTherapy")
+    @SequenceGenerator(name="PatientPastDrugTherapy",sequenceName="SEQ_PATIENTPASTDRUGTHERAPY", allocationSize=1)
     @Column(name = "PK_PATIENTPASTDRUGTHERAPY", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPatientpastdrugtherapy;
@@ -190,7 +190,7 @@ public class PatientPastDrugTherapy implements Serializable {
     private Date recodingStamp;
 
     // bi-directional many-to-one association to Patient
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IPatientpastdrugtherapies")
     private Patient IPatient;

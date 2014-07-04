@@ -31,12 +31,12 @@ public class SafetyReports implements Serializable {
     private BigDecimal commitrollback;
 
     // bi-directional many-to-one association to IchicsrMessage
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_ICHICSRMESSAGE", nullable = false, insertable = false, updatable = false)
     private IchicsrMessage ichicsrMessage;
 
     /** bi-directional many-to-one association to SafetyReport */
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     private SafetyReport safetyReport;
 

@@ -21,8 +21,8 @@ public class ParentMedicalHistory implements Serializable {
     private static final long serialVersionUID = 2040155526676608919L;
 
     @Id
-    @GeneratedValue(generator="ParentMedicalHistory")
-    @SequenceGenerator(name="ParentMedicalHistory",sequenceName="SEQ_PARENTMEDICALHISTORY", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ParentMedicalHistory")
+    @SequenceGenerator(name="ParentMedicalHistory",sequenceName="SEQ_PARENTMEDICALHISTORY", allocationSize=1)
     @Column(name = "PK_PARENTMEDICALHISTORY", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkParentmedicalhistory;
@@ -64,7 +64,7 @@ public class ParentMedicalHistory implements Serializable {
     private BigDecimal parentmedicalstartdateformat;
 
     // bi-directional many-to-one association to IParent
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IParentmedicalhistories")
     private Parent Parent;

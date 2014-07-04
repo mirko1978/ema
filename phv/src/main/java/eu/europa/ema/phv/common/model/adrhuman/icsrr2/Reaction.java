@@ -20,8 +20,8 @@ public class Reaction implements Serializable {
     private static final long serialVersionUID = -1167480858653158715L;
 
     @Id
-    @GeneratedValue(generator="Reaction")
-    @SequenceGenerator(name="Reaction",sequenceName="SEQ_REACTION", allocationSize=0)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Reaction")
+    @SequenceGenerator(name="Reaction",sequenceName="SEQ_REACTION", allocationSize=1)
     @Column(name = "PK_REACTION", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkReaction;
@@ -107,7 +107,7 @@ public class Reaction implements Serializable {
     private String reactionmeddrapt;
 
     // bi-directional many-to-one association to Patient
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
     @XmlInverseReference(mappedBy = "IReactions")
     private Patient IPatient;
