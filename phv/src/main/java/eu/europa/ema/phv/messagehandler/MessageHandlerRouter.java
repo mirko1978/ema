@@ -40,7 +40,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     public void configure() throws Exception {
     	JaxbDataFormat jaxb =  new JaxbDataFormat("eu.europa.ema.phv.common.model.adrhuman.icsrr2");
     	//jaxb.setSchema("classpath:/schema/icsr21xml.dtd");
-    	//jaxb.setEncoding("UTF-8");
+    	//jaxb.setEncoding("UTF-16");
     	//@formatter:off
     	onException(SAXParseException.class).handled(true).to(INVALID_EP);
         from(camelUrl.getGatewayHumanAdr())

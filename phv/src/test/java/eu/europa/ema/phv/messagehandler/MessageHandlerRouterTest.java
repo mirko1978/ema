@@ -25,12 +25,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import eu.europa.ema.phv.AbstractPhvTest;
 import eu.europa.ema.phv.adrparserhuman.AdrParserHumanRouter;
 import eu.europa.ema.phv.common.util.JmsCamelUrl;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/camel-context-test.xml")
-public class MessageHandlerRouterTest  extends AbstractJUnit4SpringContextTests {
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "classpath:/camel-context-test.xml")
+public class MessageHandlerRouterTest  extends AbstractPhvTest {
 	
     @Inject
     private JmsCamelUrl camelUrl;
@@ -56,7 +57,7 @@ public class MessageHandlerRouterTest  extends AbstractJUnit4SpringContextTests 
     
     @BeforeClass
     public static void springProfile() {
-        System.setProperty("spring.profiles.active", "dev");
+        System.setProperty("spring.profiles.default", "dev");
     }
 
 
@@ -72,9 +73,9 @@ public class MessageHandlerRouterTest  extends AbstractJUnit4SpringContextTests 
 	}
 
 	private void readSingleMessage() throws Exception{
-		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-single.xml&delete=false&consumer.delay=10000");
+		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-single.xml&delete=false&initialDelay=5000&consumer.delay=2000");
 		camelUrl.setOutboundMessage("mock:outbound");
-		camelUrl.setAdrParserHuman("mock:adrParser");
+		//camelUrl.setAdrParserHuman("mock:adrParser");
 		context.addRoutes(router);
 		context.start();        
 	}
