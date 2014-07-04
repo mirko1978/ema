@@ -20,7 +20,7 @@ import eu.europa.ema.phv.common.util.JmsCamelUrl;
  */
 public class OutboundMessageManagementRouter extends SpringRouteBuilder {
 
-    private static final String BACKUP_EP = "file:/temp?fileName=ack-${date:now:yyyyMMdd}.xml";
+    private static final String BACKUP_EP = "file:/temp?fileName=ack-${date:now:yyyyMMddHHmmss}.xml";
 
     @Inject
     private JmsCamelUrl camelUrl;

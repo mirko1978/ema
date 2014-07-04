@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * The persistent class for the I_PATIENT database table.
- * 
  */
 @Entity
 @Table(name = "I_PATIENT")
@@ -21,7 +20,9 @@ public class Patient implements Serializable {
 
     private static final long serialVersionUID = -1176720928733662387L;
 
-    /** Primary key that is the SafetyReport key*/
+    /**
+     * Primary key that is the SafetyReport key
+     */
     @Id
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
@@ -105,6 +106,8 @@ public class Patient implements Serializable {
 
     // bi-directional many-to-one association to Drug
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "IPatient")
+    @JoinColumn(name = "FK_SAFETYREPORT", referencedColumnName = "PK_SAFETYREPORT", insertable = false,
+            updatable = false)
     @XmlElement(required = true, name = "drug")
     private List<Drug> IDrugs;
 
@@ -155,6 +158,18 @@ public class Patient implements Serializable {
     private List<Test> ITests;
 
     public Patient() {
+    }
+
+    @PrePersist
+    public void initializeForeigners() {
+        if (IDrugs != null) {
+            for (Drug drug : this.IDrugs) {
+                drug.setFkSafetyreport(pkSafetyreport);
+            }
+        }
+        if(ISummary != null) {
+            ISummary.setPkSafetyreport(pkSafetyreport);
+        }
     }
 
     public long getPkSafetyreport() {

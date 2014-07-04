@@ -301,9 +301,14 @@ public class Drug implements Serializable {
     @XmlElement(name = "activesubstance")
     private List<ActiveSubstance> IActivesubstances;
 
+    @Column(name = "FK_SAFETYREPORT", nullable = false, precision = 10)
+    @XmlTransient
+    private long fkSafetyreport;
+
     // bi-directional many-to-one association to Patient
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "FK_SAFETYREPORT", nullable = false)
+    @JoinColumn(name = "FK_SAFETYREPORT", referencedColumnName = "PK_SAFETYREPORT", insertable = false,
+            updatable = false)
     @XmlInverseReference(mappedBy = "IDrugs")
     private Patient IPatient;
 
@@ -323,6 +328,28 @@ public class Drug implements Serializable {
     private List<DrugRecurrence> IDrugrecurrences;
 
     public Drug() {
+    }
+
+    @PrePersist
+    public void initializeForeigners() {
+        if(IActivesubstances!=null) {
+            for (ActiveSubstance activeSubstance : IActivesubstances) {
+                activeSubstance.setFkDrug(pkDrug);
+            }
+        }
+        if(IDrugreactionrelateds != null) {
+            for(DrugReactionRelated related : IDrugreactionrelateds) {
+                related.setFkDrug(pkDrug);
+            }
+        }
+    }
+
+    public long getFkSafetyreport() {
+        return fkSafetyreport;
+    }
+
+    public void setFkSafetyreport(long fkSafetyreport) {
+        this.fkSafetyreport = fkSafetyreport;
     }
 
     public long getPkDrug() {

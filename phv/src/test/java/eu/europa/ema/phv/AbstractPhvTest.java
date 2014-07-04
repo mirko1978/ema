@@ -12,6 +12,7 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -33,6 +34,7 @@ import java.util.UUID;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:/camel-context-test.xml")
+@Profile("dev")
 public abstract class AbstractPhvTest extends AbstractJUnit4SpringContextTests {
 
     public static final String START_EP = "direct:start";
@@ -54,7 +56,7 @@ public abstract class AbstractPhvTest extends AbstractJUnit4SpringContextTests {
 
     @BeforeClass
     public static void springProfile() {
-        System.setProperty("spring.profiles.active", "dev");
+        System.setProperty("spring.profiles.default", "dev");
     }
 
     /*

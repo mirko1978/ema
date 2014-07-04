@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_DRUGREACTIONRELATED database table.
- * 
  */
 @Entity
 @Table(name = "I_DRUGREACTIONRELATED")
@@ -20,10 +19,12 @@ public class DrugReactionRelated implements Serializable {
 
     private static final long serialVersionUID = -1293432034449347082L;
 
-    /** Primary Key */
+    /**
+     * Primary Key
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DrugReactionRelated")
-    @SequenceGenerator(name="DrugReactionRelated",sequenceName="SEQ_DRUGREACTIONRELATED", allocationSize=1)
+    @SequenceGenerator(name = "DrugReactionRelated", sequenceName = "SEQ_DRUGREACTIONRELATED", allocationSize = 1)
     @Column(name = "PK_DRUGREACTIONRELATED", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkDrugreactionrelated;
@@ -40,12 +41,16 @@ public class DrugReactionRelated implements Serializable {
     @XmlElement(name = "drugreactionasses")
     private BigDecimal drugreactionasses;
 
-    /** Medra code filled by manual recoding. */
+    /**
+     * Medra code filled by manual recoding.
+     */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal drugreactionassesct;
 
-    /** drugreactionasses set from the user manually (UI - EV WEB) via manual recoding */
+    /**
+     * drugreactionasses set from the user manually (UI - EV WEB) via manual recoding
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal drugreactionassesmrec;
@@ -54,12 +59,16 @@ public class DrugReactionRelated implements Serializable {
     @XmlElement(name = "drugreactionassesmeddraversion")
     private BigDecimal drugreactionassesmv;
 
-    /** Populate by automatic recoding. If drugreactionasses has been recoded the value is 1 (true)*/
+    /**
+     * Populate by automatic recoding. If drugreactionasses has been recoded the value is 1 (true)
+     */
     @Column(length = 250)
     @XmlTransient
     private String drugreactionassesrecoded;
 
-    /** Medra description of {@link #drugreactionasses} */
+    /**
+     * Medra description of {@link #drugreactionasses}
+     */
     @Column(length = 250)
     @XmlTransient
     private String drugreactionassestext;
@@ -68,29 +77,48 @@ public class DrugReactionRelated implements Serializable {
     @XmlElement(name = "drugresult")
     private String drugresult;
 
-    /** It is always null in the databas */
+    /**
+     * It is always null in the databas
+     */
     @Deprecated
     @Column(name = "FK_QIDRUGREACTIONASSES", precision = 10)
     @XmlTransient
     private BigDecimal fkQidrugreactionasses;
 
-    /** Automatic recoding reprocess the report. If there are changes on drugreactionasses this is set to 1 (true)*/
+    /**
+     * Automatic recoding reprocess the report. If there are changes on drugreactionasses this is set to 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isdrugreactionasseschanged;
 
-    /** Recoded version of drugreactionasses */
+    /**
+     * Recoded version of drugreactionasses
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isdrugreactionassesrecoded;
 
     // bi-directional many-to-one association to Drug
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "FK_DRUG", nullable = false)
+    @JoinColumn(name = "FK_DRUG", referencedColumnName = "PK_DRUG", nullable = false, insertable = false,
+            updatable = false)
     @XmlInverseReference(mappedBy = "IDrugreactionrelateds")
     private Drug IDrug;
 
+    @Column(name = "FK_DRUG", nullable = false, precision = 10)
+    @XmlTransient
+    private long fkDrug;
+
     public DrugReactionRelated() {
+    }
+
+    public long getFkDrug() {
+        return fkDrug;
+    }
+
+    public void setFkDrug(long fkDrug) {
+        this.fkDrug = fkDrug;
     }
 
     public long getPkDrugreactionrelated() {

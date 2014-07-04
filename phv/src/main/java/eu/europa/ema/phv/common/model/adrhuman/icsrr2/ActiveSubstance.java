@@ -10,7 +10,6 @@ import java.util.Date;
 
 /**
  * The persistent class for the I_ACTIVESUBSTANCE database table.
- * 
  */
 @Entity
 @Table(name = "I_ACTIVESUBSTANCE")
@@ -21,48 +20,63 @@ public class ActiveSubstance implements Serializable {
 
     private static final long serialVersionUID = -347331926340033853L;
 
-    /** Primary key */
+    /**
+     * Primary key
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ActiveSubstance")
-    @SequenceGenerator(name="ActiveSubstance",sequenceName="SEQ_ACTIVESUBSTANCE", allocationSize=100)
+    @SequenceGenerator(name = "ActiveSubstance", sequenceName = "SEQ_ACTIVESUBSTANCE", allocationSize = 1)
     @Column(name = "PK_ACTIVESUBSTANCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkActivesubstance;
 
-    /** Filled by automatic recoding TODO: David */
+    /**
+     * Filled by automatic recoding TODO: David
+     */
     @Column(name = "ACTIVESUBSTANCE_EVCODE", length = 240)
     @XmlTransient
     private String activesubstanceEvcode;
 
-    /** Filled by automatic recoding TODO: David */
+    /**
+     * Filled by automatic recoding TODO: David
+     */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal activesubstancecode;
 
-    /** Populate by automatic recoding. When the result of recoding of active substance has changed the value is 1 (true).*/
+    /**
+     * Populate by automatic recoding. When the result of recoding of active substance has changed the value is 1 (true).
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isactivesubstancechanged;
 
-    /** Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
+    /**
+     * Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
      * k_IS_BLINDED_TRUE             CONSTANT NUMBER := 1; <br/>
      * k_IS_BLINDED_FALSE            CONSTANT NUMBER := 2;
-     * */
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blinded;
 
-    /** Blinded flag setted from the user manually (UI - EV WEB) via manual recoding */
+    /**
+     * Blinded flag setted from the user manually (UI - EV WEB) via manual recoding
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blindedmrec;
 
-    /** Interpretation job. TODO: David */
+    /**
+     * Interpretation job. TODO: David
+     */
     @Column(name = "FK_MODELSUBSTANCE", precision = 10)
     @XmlTransient
     private BigDecimal fkModelsubstance;
 
-    /** Foreign key for ICHICSR.QI_ACTIVESUBSTANCE  */
+    /**
+     * Foreign key for ICHICSR.QI_ACTIVESUBSTANCE
+     */
     @Column(name = "FK_QIACTIVESUBSTANCE", precision = 10)
     @XmlTransient
     private BigDecimal fkQiactivesubstance;
@@ -71,32 +85,44 @@ public class ActiveSubstance implements Serializable {
     @XmlElement(required = true, name = "activesubstancename")
     private String activesubstancename;
 
-    /** Recoded version of activesubstancename */
+    /**
+     * Recoded version of activesubstancename
+     */
     @Column(length = 200)
     @XmlTransient
     private String activesubstancenamerecoded;
 
-    /** activesubstancename set from the user manually (UI - EV WEB) via manual recoding */
+    /**
+     * activesubstancename set from the user manually (UI - EV WEB) via manual recoding
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal activesubstancenamemrec;
 
-    /** Populate by automatic recoding. If active substance name has been recoded the value is 1 (true)*/
+    /**
+     * Populate by automatic recoding. If active substance name has been recoded the value is 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isactivesubstancenamerecoded;
 
-    /** Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)*/
+    /**
+     * Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isblindedchanged;
 
-    /** Populated by recoding. It is the stage when the recoding found the match */
+    /**
+     * Populated by recoding. It is the stage when the recoding found the match
+     */
     @Column(name = "RECODING_STAGE", precision = 22)
     @XmlTransient
     private BigDecimal recodingStage;
 
-    /** Populated by recoding. It is the timestamp when the recoding populate */
+    /**
+     * Populated by recoding. It is the timestamp when the recoding populate
+     */
     @Temporal(TemporalType.DATE)
     @Column(name = "RECODING_STAMP")
     @XmlTransient
@@ -104,11 +130,24 @@ public class ActiveSubstance implements Serializable {
 
     // bi-directional many-to-one association to Drug
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "FK_DRUG", nullable = false)
+    @JoinColumn(name = "FK_DRUG", nullable = false, insertable = false,
+            updatable = false)
     @XmlInverseReference(mappedBy = "IActivesubstances")
     private Drug IDrug;
 
+    @Column(name = "FK_DRUG", nullable = false, precision = 10)
+    @XmlTransient
+    private long fkDrug;
+
     public ActiveSubstance() {
+    }
+
+    public long getFkDrug() {
+        return fkDrug;
+    }
+
+    public void setFkDrug(long fkDrug) {
+        this.fkDrug = fkDrug;
     }
 
     public long getPkActivesubstance() {

@@ -264,7 +264,9 @@ public class SafetyReport implements Serializable {
     private List<LinkedReport> ILinkedreports;
 
     // bi-directional one-to-one association to Patient
-    @OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
+    //@OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="PK_SAFETYREPORT", insertable=false, updatable=false)
     @XmlElement(required = true, name = "patient")
     private Patient IPatient;
 
@@ -299,6 +301,27 @@ public class SafetyReport implements Serializable {
     private Sender ISender;
 
     public SafetyReport() {
+    }
+
+    @PrePersist
+    public void initializeForeigners() {
+        if(IPatient != null) {
+            this.IPatient.setPkSafetyreport(pkSafetyreport);
+        }
+        if(IReceiver != null) {
+            this.IReceiver.setPkSafetyreport(pkSafetyreport);
+        }
+        if(ISafetyreports != null) {
+            for(SafetyReports sr : ISafetyreports) {
+                sr.setFkSafetyreport(pkSafetyreport);
+            }
+        }
+        if(ISender != null) {
+            this.ISender.setPkSafetyreport(pkSafetyreport);
+        }
+        if(IReceiver != null) {
+            this.IReceiver.setPkSafetyreport(pkSafetyreport);
+        }
     }
 
     public static long getSerialVersionUID() {
