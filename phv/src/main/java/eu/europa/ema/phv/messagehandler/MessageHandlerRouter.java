@@ -17,8 +17,15 @@ import eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher;
 
 /**
  * Route definition for the Message Handler component
- * 
- * @author Mirko Bernardoni bernardonim (created by)
+ * This Router 	reads the messages from source interface like JMS or file system
+ * 				a transaction is used or started
+ * 				messaged is parsed into JAXB objects, which are basically ICSR2 entity classes
+ * 				On parsing exception the messages is rerouted to invalid message handling which extracts meta data using reg exp and sends nack
+ * 				the valid message is enriched by adding required headers like receiverid, received date, validation status etc
+ * 				the enriched message is routed to two parallel routes 1. message persistence 2. ADR Parser destination 
+ * 				if routes cannot be determined an excpetion is thrown
+ * 				  
+ * @author Vinay Rao
  * @version $Revision: 1.1 $ (cvs revision)
  * @since 12 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 12 Jun 2014 $
@@ -38,30 +45,32 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
+    	//the JAXB object root creation
     	JaxbDataFormat jaxb =  new JaxbDataFormat("eu.europa.ema.phv.common.model.adrhuman.icsrr2");
-    	//jaxb.setSchema("classpath:/schema/icsr21xml.dtd");
-    	//jaxb.setEncoding("UTF-16");
-    	//@formatter:off
+    	//jaxb.setSchema("classpath:/schema/icsr21xml.dtd"); //point to the correct dtd instead of embedded dtd
+    	//jaxb.setEncoding("UTF-16"); //ICSR2 messages are utf-16 encoded
+    	
+    	//reroute on parser exception
     	onException(SAXParseException.class).handled(true).to(INVALID_EP);
-        from(camelUrl.getGatewayHumanAdr())
+
+    	//@formatter:off
+    	from(camelUrl.getGatewayHumanAdr())
             .transacted()
+            //add UUID that will be used by both valid and invalid path
             .processRef("HeaderProcessor")
             .unmarshal(jaxb)
             .log("Jaxb Validation and transformation complete ")
             .to(VALID_EP);
-            /**
-            .choice()
-                .when(header("ValidationResult").isEqualTo("valid")).log("Validation Suceeded")
-                    .to(VALID_EP)
-                 .when(header("ValidationResult").isEqualTo("invalid")).log("Validation Failed")
-                     .to(INVALID_EP)
-                 .otherwise()
-                     .throwException(new UnexpectedResultException("Validation didn't set the right header")); */ 
         //@formatter:on
+    	
+        //call these methods to configure alternative routes
         invalidXmlBranch();
         validXmlBranch();
     }
 
+    /**
+     * Configures the invalid message route
+     */
     private void invalidXmlBranch() {
         //@formatter:off        
         from(INVALID_EP)
@@ -75,18 +84,24 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //@formatter:on        
     }
 
+    /**
+     * Configures the valid message route
+     * enriches the message, persists it and delivers to the next configures stage
+     * 
+     */
     private void validXmlBranch() {
         //@formatter:off        
         from(VALID_EP)
             .transacted().log("Message is valid.. enriching")
-            .beanRef("MetadataEnricher")
+            .beanRef("MetadataEnricher") //add some headers for valid message rerouting 
             .log("Routing enriched message ...")
             .multicast()
                 .to(MESSAGE_STORE_EP)
                 .to(CONTINUE_ROUTING_EP);
         //@formatter:on
         
-        //@formatter:off        
+        //@formatter:off
+        //the message persistent route
         from(MESSAGE_STORE_EP)
             .transacted()
             //.beanRef("StoreEnricher")
@@ -94,17 +109,17 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
             .log("Persisting the message meta data")
          .to("jpa:eu.europa.ema.phv.common.persistence.InboundMessageEntity?persistenceUnit=messageJTA");
         // @formatter:on
-        // TODO: Call the persistence layer here
+ 
         
         //@formatter:off        
         from(CONTINUE_ROUTING_EP)
-             .filter(header(HEADER_REROUTING_RECEIVER).isEqualTo(HEADER_REROUTING_RECEIVER)) // TODO: Filter by NOT Webtrader
+             .filter(header(HEADER_REROUTING_RECEIVER).isEqualTo(HEADER_REROUTING_RECEIVER)) 
              .choice()
-                .when(header(HEADER_REROUTING_RECEIVER).isEqualTo(RECEIVER_EVHUMAN)) // TODO: is Icsr to EMA
+                .when(header(HEADER_REROUTING_RECEIVER).isEqualTo(RECEIVER_EVHUMAN)) //EMA
                     .beanRef("MessageEnricher")
                 	.log("Routing the valid enriched message to Human ADR Parser")
                 	.to(camelUrl.getAdrParserHuman())
-                .when(header(HEADER_REROUTING_RECEIVER).isNotEqualTo(RECEIVER_EVHUMAN)) // TODO: is Rerouting
+                .when(header(HEADER_REROUTING_RECEIVER).isNotEqualTo(RECEIVER_EVHUMAN)) // Web trader
                     .beanRef("RoutingTranslator")
                     .log("Routing web trader messages to storage handler")
                     .to(camelUrl.getOutboundMessage())
