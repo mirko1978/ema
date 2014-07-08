@@ -109,7 +109,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
             //.beanRef("StoreEnricher")
             .bean(MessageToEntityMapper.class, "mapMessageToEntity")
             .log("Persisting the message meta data")
-         .to("jpa:eu.europa.ema.phv.common.persistence.InboundMessageEntity?persistenceUnit=messageJTA");
+         .to("jpa:eu.europa.ema.phv.common.model.adrhuman.InboundMessageEntity?persistenceUnit=messageJTA");
         // @formatter:on
  
         
