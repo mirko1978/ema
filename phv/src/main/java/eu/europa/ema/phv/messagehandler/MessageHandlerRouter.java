@@ -50,7 +50,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     	//the JAXB object root creation
     	JaxbDataFormat jaxb =  new JaxbDataFormat("eu.europa.ema.phv.common.model.adrhuman.icsrr2");
     	//jaxb.setSchema("schema/icsr21xml.dtd"); //point to the correct dtd instead of embedded dtd
-    	jaxb.setEncoding("iso-10646-1"); //ICSR2 messages are utf-16 encoded
+//    	jaxb.setEncoding("iso-10646-1"); //ICSR2 messages are utf-16 encoded
     	
     	//reroute on parser exception
     	onException(SAXParseException.class).handled(true).to(INVALID_EP);

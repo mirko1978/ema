@@ -1,31 +1,40 @@
 package eu.europa.ema.phv.common.exception;
 
+/**
+ * 
+ * The custom exception class to indicate invalid header error
+ * examples are missing mandatory headers like senderId, received date etc
+ * 
+ * @author  Vinay Rao raov (created by)
+ * @version $Revision: 1.1 $ (cvs revision)
+ * @since 8 Jul 2014 (creation date)
+ * @revisionDate  $Date: 2003/12/19 10:51:34 8 Jul 2014 $
+ */
+
+
 public class InvalidMessageHeaderException extends Exception {
 
+   
+   
 	public InvalidMessageHeaderException() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();	
 	}
 
 	public InvalidMessageHeaderException(String message, Throwable cause,
 			boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidMessageHeaderException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidMessageHeaderException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 	public InvalidMessageHeaderException(Throwable cause) {
 		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 
 }
