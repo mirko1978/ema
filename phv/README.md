@@ -7,6 +7,7 @@ This stes of documents are tutorial related how to configure the development env
 *	[Weblogic installation and configuration](src/site/markdown/weblogic.md)
 *	[Eclipse](src/site/markdown/eclipse.md)
 *	[HA Testing](src/site/markdown/ha_testing.md)
+*	[Database and JPA](src/site/markdown/database.md)
 
 
 # Pharmacovigilance Introduction
