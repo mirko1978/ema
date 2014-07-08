@@ -1,7 +1,11 @@
 package eu.europa.ema.phv.common.persistence;
 
 import eu.europa.ema.phv.common.exception.InvalidMessageHeaderException;
+import eu.europa.ema.phv.common.model.DocumentTypeEnum;
+import eu.europa.ema.phv.common.model.adrhuman.InboundMessageEntity;
+import eu.europa.ema.phv.common.model.adrhuman.MessageBoxEntity;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
+import eu.europa.ema.phv.messagehandler.constants.MessageConstants;
 import eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher;
 
 import org.apache.camel.Exchange;
@@ -11,14 +15,37 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
+
+/**
+ * This is a transformer class that creates Inbound Message Entity from the incoming XML Safety Reports
+ * for persistence purpose. Most of the information is extracted from the ICSR object whereas the 
+ * validation result is looked from the exchange header
+ * The entity is mapped to the inboundmessage table in Repository db, the parent messagebox entity
+ * is looked up using the receiver id in the message
+ * 
+ * @author  Vinay Rao raov (created by)
+ * @version $Revision: 1.1 $ (cvs revision)
+ * @since 8 Jul 2014 (creation date)
+ * @revisionDate  $Date: 2003/12/19 10:51:34 8 Jul 2014 $
+ */
 public class MessageToEntityMapper {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MessageToEntityMapper.class);
 	
+	/**
+	 * Maps the incoming message {@link IchicsrMessage} to {@link InboundMessageEntity}.
+	 * The ICRSMessage object should be held in the exchange under {@link MessageConstants.MESSAGE_HEADER_ICSR} key
+	 * 
+	 * @param exchange
+	 * @param valid icsr object derived from the incoming xml message
+	 * @return the inbound message entity
+	 * @throws Exception
+	 */
 	public InboundMessageEntity mapMessageToEntity(Exchange exchange, IchicsrMessage icsr) throws Exception {
 		
 		if(icsr==null){
-			icsr = (IchicsrMessage) exchange.getIn().getHeader("icsr");
+			icsr = (IchicsrMessage) exchange.getIn().getHeader(MessageConstants.MESSAGE_HEADER_ICSR);
 		}
 		if(icsr==null) {
 			return null; //throw exception to rollback?
@@ -38,9 +65,8 @@ public class MessageToEntityMapper {
 		entity.setMessagenumb(icsr.getMessagenumber());
 		entity.setReceivedate(icsr.getMessagedate());
 		entity.setSenderid(icsr.getSenderid());
-		entity.setStatus(exchange.getIn().getHeader("validationResult").toString().equalsIgnoreCase("valid")? "Y":"N");
-		entity.setStatusStamp(new Date());//(Date)exchange.getIn().getHeader("ValidationDate"));
-		//entity.setXMessagebox(XMessagebox)
+		entity.setStatus(exchange.getIn().getHeader(MessageConstants.MESSAGE_HEADER_VALIDATIONRESULT).toString().equalsIgnoreCase(MessageConstants.MESSAGE_HEADER_VALID)? "Y":"N");
+		entity.setStatusStamp((Date)exchange.getIn().getHeader("ValidationDate"));
 		entity.setArchived(0);
 		entity.setDoctype(icsr.getDocumenttype().intValue());
 		
@@ -56,7 +82,7 @@ public class MessageToEntityMapper {
 		
 		if(msgBox ==null){ //should throw an exception as they should be present, temporary object for sprint1
 			msgBox = new MessageBoxEntity();
-			msgBox.setPkMessagebox(Double.valueOf(Math.random()).intValue());
+			msgBox.setPkMessagebox(Double.valueOf(Math.random()*10000).intValue());
 			msgBox.setCreationdate(new Date());
 			msgBox.setMessageboxname(icsr.getReceiverid());
 			BigDecimal num = new BigDecimal(100);

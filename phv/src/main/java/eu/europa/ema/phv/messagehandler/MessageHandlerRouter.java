@@ -4,10 +4,12 @@
 package eu.europa.ema.phv.messagehandler;
 
 import javax.inject.Inject;
+import javax.xml.bind.JAXB;
 
 import org.apache.camel.Expression;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spring.SpringRouteBuilder;
+import org.apache.cxf.jaxb.JAXBEncoderDecoder;
 import org.xml.sax.SAXParseException;
 
 import eu.europa.ema.phv.common.exception.UnexpectedResultException;
@@ -47,8 +49,8 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     public void configure() throws Exception {
     	//the JAXB object root creation
     	JaxbDataFormat jaxb =  new JaxbDataFormat("eu.europa.ema.phv.common.model.adrhuman.icsrr2");
-    	//jaxb.setSchema("classpath:/schema/icsr21xml.dtd"); //point to the correct dtd instead of embedded dtd
-    	//jaxb.setEncoding("UTF-16"); //ICSR2 messages are utf-16 encoded
+    	//jaxb.setSchema("schema/icsr21xml.dtd"); //point to the correct dtd instead of embedded dtd
+    	jaxb.setEncoding("iso-10646-1"); //ICSR2 messages are utf-16 encoded
     	
     	//reroute on parser exception
     	onException(SAXParseException.class).handled(true).to(INVALID_EP);

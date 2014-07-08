@@ -2,6 +2,16 @@ package eu.europa.ema.phv.common.util;
 
 import java.util.regex.Pattern;
 
+
+
+/**
+ * A utility class to extract value from the string using regular expression
+ * 
+ * @author  Vinay Rao raov (created by)
+ * @version $Revision: 1.1 $ (cvs revision)
+ * @since 8 Jul 2014 (creation date)
+ * @revisionDate  $Date: 2003/12/19 10:51:34 8 Jul 2014 $
+ */
 public class XMLRegEx {
     public static final int FRE_None = 0;
     public static final int FRE_NodeAny = 0x01;

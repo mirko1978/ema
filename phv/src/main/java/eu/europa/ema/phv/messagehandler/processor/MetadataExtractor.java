@@ -7,23 +7,30 @@ import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.util.XMLRegEx;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
+import eu.europa.ema.phv.messagehandler.constants.MessageConstants;
+
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Extract the metadata and add to the message
- *
- * @author Mirko Bernardoni bernardonim (created by)
+ * 
+ * A camel framework processor to extract message and safety report metadata using regular expression
+ * when XML parsing / JAXB unmarshalling fails.  The extracted metadata is used for persisting
+ * message information and sending any negative acknowldgement
+ * 
+ * @author  Vinay Rao raov (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @revisionDate $Date: 2003/12/19 10:51:34 12 Jun 2014 $
- * @since 12 Jun 2014 (creation date)
+ * @since 8 Jul 2014 (creation date)
+ * @revisionDate  $Date: 2003/12/19 10:51:34 8 Jul 2014 $
  */
 public class MetadataExtractor implements Processor {
 
@@ -89,11 +96,6 @@ public class MetadataExtractor implements Processor {
         LOG.debug(payload);
         MessageMetadata messageMetadata = new MessageMetadata();
         IchicsrMessage icsr = new IchicsrMessage();
-        //messageMetadata.setFileName((String)exchange.getOut().getHeader("fileName"));
-        //messageMetadata.setReceived(new Date((String)exchange.getOut().getHeader("receivedDate")));
-        //icsrHeader.setLang(payload.);
-        //icsrHeader.setMessageformatrelease(value);
-        //icsrHeader.setMessageformatversion(value);
 
         int pNG = 0;
         Matcher pMatcher = PPattern.matcher(payload);
@@ -135,10 +137,12 @@ public class MetadataExtractor implements Processor {
             }
 
         }
+        
         LOG.debug("ICSR obj : {}", icsr.toString());
-        exchange.getIn().setHeader("icsr", icsr);
-        exchange.getIn().setHeader("receiver", icsr.getReceiverid());
-        exchange.getIn().setHeader("validationResult", "invalid");
+        exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_ICSR, icsr);
+        exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_RECEIVER, icsr.getReceiverid());
+        exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_INVALID, MessageConstants.MESSAGE_HEADER_INVALID);
+        exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_VALIDATION_DATE, new Date());
     }
 
 }

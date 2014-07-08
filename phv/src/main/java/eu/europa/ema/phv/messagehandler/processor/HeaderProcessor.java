@@ -10,12 +10,20 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
 /**
- * @author raov
- *
+ * 
+ * This class populates the camel exchange headers with UniqueID (generated using UUID)
+ * filename and received date if the header does not contain one.
+ * This done before the message is validated as a common data generator
+ * 
+ * @author  Vinay Rao raov (created by)
+ * @version $Revision: 1.1 $ (cvs revision)
+ * @since 8 Jul 2014 (creation date)
+ * @revisionDate  $Date: 2003/12/19 10:51:34 8 Jul 2014 $
  */
 public class HeaderProcessor implements Processor {
 
-	/* (non-Javadoc)
+	/**
+	 * sets missing required headers 
 	 * @see org.apache.camel.Processor#process(org.apache.camel.Exchange)
 	 */
 	@Override

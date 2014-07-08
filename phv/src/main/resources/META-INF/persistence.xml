@@ -7,8 +7,8 @@
 	<persistence-unit name="messageJTA" transaction-type="JTA">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		 <jta-data-source>jdbc/phv/repository</jta-data-source>
-		<class>eu.europa.ema.phv.common.persistence.InboundMessageEntity</class>
-		<class>eu.europa.ema.phv.common.persistence.MessageBoxEntity</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.InboundMessageEntity</class>
+		<class>eu.europa.ema.phv.common.model.adrhuman.MessageBoxEntity</class>
 		<properties>
 			 <property name="eclipselink.target-server" value="WebLogic"/>		
 		</properties>
