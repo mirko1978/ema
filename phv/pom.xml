@@ -21,7 +21,12 @@
 		<spring.version>3.2.8.RELEASE</spring.version>
 		<drools.version>6.0.1.Final</drools.version>
 		<atomikos.version>3.9.3</atomikos.version>
+        <wls.target.names>phv-messaging</wls.target.names>
+        <wls.admin.url>t3://wlsadmin5-dev.emea.eu.int:1810/</wls.admin.url>
+        <wls.admin.user>user</wls.admin.user>
+        <wls.admin.password>password</wls.admin.password>
 	</properties>
+
 	<repositories>
 		<repository>
 			<id>oracle</id>
@@ -320,6 +325,33 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+            <plugin>
+                <groupId>com.oracle.weblogic</groupId>
+                <artifactId>weblogic-maven-plugin</artifactId>
+                <version>10.3.4</version>
+                <configuration>
+                    <adminurl>${wls.admin.url}</adminurl>
+                    <user>${wls.admin.user}</user>
+                    <password>${wls.admin.password}</password>
+                    <upload>true</upload>
+                    <action>deploy</action>
+                    <remote>true</remote>
+                    <verbose>true</verbose>
+                    <targets>${wls.target.names}</targets>
+                    <source>
+                        ${project.build.directory}/${project.build.finalName}.${project.packaging}
+                    </source>
+                    <name>${project.build.finalName}</name>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 		<resources>
 			<resource>
@@ -473,4 +505,23 @@
 			</plugin>
 		</plugins>
 	</reporting>
+
+    <distributionManagement>
+        <!--  Publish versioned releases here  -->
+        <repository>
+            <id>nexus</id>
+            <name>Releases</name>
+            <url>
+                http://repository.emea.eu.int/nexus/content/repositories/releases
+            </url>
+        </repository>
+        <!--  Publish snapshots here  -->
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>Snapshots</name>
+            <url>
+                http://repository.emea.eu.int/nexus/content/repositories/snapshots
+            </url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
