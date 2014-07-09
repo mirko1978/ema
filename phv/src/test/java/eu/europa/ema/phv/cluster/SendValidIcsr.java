@@ -3,6 +3,7 @@ package eu.europa.ema.phv.cluster;
 import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +31,7 @@ import java.util.UUID;
  * @since 03/07/2014 (creation date)
  */
 public class SendValidIcsr {
+    public final static String VALID_ICSR = "/data/human/icsr/unmarshal.00.xml";
     public final static String JNDI_FACTORY = "weblogic.jndi.WLInitialContextFactory";
 
     public final static String WLS_URL = "t3://localhost:7002";
@@ -86,10 +88,10 @@ public class SendValidIcsr {
 
     @Test
     public void sendMessages() throws Exception {
+        ValidIcsrR2Message icsrR2Message = createIcsrMessage(VALID_ICSR);
         QueueSender qsender = qsession.createSender(queue);
         ObjectMessage message = qsession.createObjectMessage();
         qcon.start();
-        ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/icsr-single.xml");
         System.out.print("[Msg_Sender] ");
         message.setObject(icsrR2Message);
         try {

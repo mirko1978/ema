@@ -115,9 +115,9 @@
     <!--</bean>-->
 
     <bean id="dsIcsr" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <!--<property name="url" value="jdbc:hsqldb:mem:icsrdb"/>-->
         <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:file:./temp/icsrdb"/>
+        <!--<property name="url" value="jdbc:hsqldb:file:./temp/icsrdb"/> -->
+        <property name="url" value="jdbc:hsqldb:mem:icsrdb"/>
         <property name="username" value="sa"/>
         <property name="password" value=""/>
     </bean>

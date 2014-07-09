@@ -22,3 +22,9 @@ Please note that this version enable the tags:
 *	`// @formatter:on` in order to enable again the format of the code
 
 This tags are really useful when you are handling the fluent interface and API on Java.
+
+## Data for testing
+
+ICSR are private and it is not possible to public on github.  
+The data used for unit test is on `G:\SharedAreas\IT\Applications\Pharmacovigilance`. 
+The contenct of `data` folder has to be copied into `src/test/resources/data`.
