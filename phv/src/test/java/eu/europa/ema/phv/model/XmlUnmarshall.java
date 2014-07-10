@@ -62,6 +62,7 @@ public class XmlUnmarshall {
         return list;
     }
 
+    @SuppressWarnings("unchecked")
     public<T> T unmarshall() throws JAXBException {
         System.out.println(JAXB_CONTEXT.getClass());
         Assert.assertEquals("org.eclipse.persistence.jaxb.JAXBContext", JAXB_CONTEXT.getClass().getCanonicalName());

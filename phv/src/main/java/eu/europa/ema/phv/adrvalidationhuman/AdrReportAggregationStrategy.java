@@ -3,11 +3,8 @@
  */
 package eu.europa.ema.phv.adrvalidationhuman;
 
-import eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanPersistence;
-import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode;
-import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
+import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCodeEnum;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
-import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.IchIcsrAck;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.ReportAcknowledgment;
 import eu.europa.ema.phv.common.util.IcsrR2AckUtility;
@@ -32,78 +29,70 @@ public class AdrReportAggregationStrategy implements AggregationStrategy {
     @Inject
     private IcsrR2AckUtility ackUtility;
 
-    @Inject
-    private AdrHumanPersistence persistence;
-
     @Override
     public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
         IchIcsrAck icsrAck;
-        IcsrR2ReportValidationResult firstMessage;
-        IcsrR2ReportValidationResult currentMessage;
+        IcsrR2ReportValidationResult newMessage;
+        IcsrR2ReportValidationResult oldMessage;
         Integer totalArrived = 0;
 
         if (oldExchange == null) {
-            firstMessage = newExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
-            currentMessage = firstMessage;
-            // First element to aggregate: validation result contains the original message.
-            icsrAck = ackUtility.buildIcsrAck(currentMessage.getMessage().getHeader());
-            // Save the results in the first message
-            firstMessage.setIcsrAcks(icsrAck);
+            newMessage = newExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
+            oldMessage = newMessage;
+            // First element to aggregate: creation of the ACK
+            icsrAck = ackUtility.buildIcsrAck(oldMessage.getMessage().getHeader());
         }
         else {
             // Nth element in the aggragation: Retrieve from the exchange the aggregate ACK
             // OldExchange is always the first message received
-            currentMessage = newExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
-            firstMessage = oldExchange.getIn().getHeader(AdrValidationHumanCommon.FIRST_MESSAGE,IcsrR2ReportValidationResult.class);
-            icsrAck = firstMessage.getIcsrAcks();
-            firstMessage.getMessage().setHeader(firstMessage.getMessage().getHeader());
+            newMessage = newExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
+            oldMessage = oldExchange.getIn().getBody(IcsrR2ReportValidationResult.class);
+            icsrAck = oldMessage.getIcsrAcks();
             totalArrived = oldExchange.getIn().getHeader(Exchange.AGGREGATED_SIZE, Integer.class);
-            // TODO: Trick for persistence to fix
-            newExchange.getIn().setHeader(AdrValidationHumanCommon.SAVED_ICSR, oldExchange.getIn().getHeader(AdrValidationHumanCommon.SAVED_ICSR));
         }
+        // Save the results in the new message
+        newMessage.setIcsrAcks(icsrAck);
+
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Aggregation [{}] called for report {} arrived {}", currentMessage.getMessage().getUniqueId(),
-                    currentMessage.getMessage().getReport().getSafetyreportid(), totalArrived);
+            LOG.debug("Aggregation [{}] called for report {} arrived {}",
+                    oldMessage.getMessage().getHeader().getIcsr().getPkIchicsrmessage(),
+                    oldMessage.getMessage().getReport().getSafetyreportid(), totalArrived);
         }
         totalArrived++;
-        // Store the first arrived message in the header for persistence
-        newExchange.getIn().setHeader(AdrValidationHumanCommon.FIRST_MESSAGE, firstMessage);
+        // Store the total number of arrived message
         newExchange.getIn().setHeader(Exchange.AGGREGATED_SIZE, totalArrived);
 
-
-
         try {
-            ReportAcknowledgment reportAck = ackUtility.buildReportAck(currentMessage);
+            ReportAcknowledgment reportAck = ackUtility.buildReportAck(newMessage);
             icsrAck.getAcknowledgment().getReportAcknowledgment().add(reportAck);
 
-            if (totalArrived.intValue() == currentMessage.getMessage().getTotal().intValue()) {
+            if (totalArrived.intValue() == newMessage.getMessage().getTotal().intValue()) {
                 // Last element
                 if (icsrAck.getAcknowledgment().getReportAcknowledgment().isEmpty()) {
                     // No error found
                     icsrAck.getAcknowledgment().getMessageacknowledgment()
-                            .setTransmissionacknowledgmentcode(IcsrAckCode.OK.getCode());
+                            .setTransmissionacknowledgmentcode(IcsrAckCodeEnum.OK.getCode());
                 }
                 else {
                     // Errors
-                    IcsrAckCode code = null;
+                    IcsrAckCodeEnum code = null;
                     // Check if there are ERRORS in the ack list
                     for (ReportAcknowledgment rack : icsrAck.getAcknowledgment().getReportAcknowledgment()) {
-                        if (IcsrAckCode.ICSR_ERROR.equals(rack.getReportacknowledgmentcode())) {
-                            code = IcsrAckCode.ICSR_ERROR;
+                        if (IcsrAckCodeEnum.ICSR_ERROR.equals(rack.getReportacknowledgmentcode())) {
+                            code = IcsrAckCodeEnum.ICSR_ERROR;
                             break;
                         }
                     }
                     // If nothing found... the message is a warning
-                    code = code == null ? code = IcsrAckCode.ICSR_WARNING : code;
+                    code = code == null ? IcsrAckCodeEnum.ICSR_WARNING : code;
                     icsrAck.getAcknowledgment().getMessageacknowledgment()
                             .setTransmissionacknowledgmentcode(code.getCode());
                 }
             }
-            persistence.process(newExchange);
             return newExchange;
         }
         catch (Exception e) {
-            LOG.error("FATAL: cannot create ACK ",e);
+            LOG.error("FATAL: cannot create ACK ", e);
         }
         return null;
     }

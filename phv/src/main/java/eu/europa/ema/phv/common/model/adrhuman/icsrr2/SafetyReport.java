@@ -27,7 +27,7 @@ public class SafetyReport implements Serializable {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SafetyReport")
-    @SequenceGenerator(name="SafetyReport",sequenceName="SEQ_SAFETYREPORT", allocationSize=1)
+    @SequenceGenerator(name = "SafetyReport", sequenceName = "SEQ_SAFETYREPORT", allocationSize = 1)
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkSafetyreport;
@@ -73,14 +73,14 @@ public class SafetyReport implements Serializable {
     private String casenumber;
 
     /**
-     * Case type can be:<br/>
-     * 1 = ??? <br/>
-     * 2 = ??? <br/>
-     * TODO: Search on VB6 code or plsql
+     * Case type is linked to {@link #casenumber}<br/>
+     * If companynumber != null CaseType = COMPANY <br/>
+     * If authoritynumber != null CaseType = AUTHORITY
      */
     @Column(precision = 1)
+    @Enumerated(EnumType.ORDINAL)
     @XmlTransient
-    private BigDecimal casetype;
+    private CaseTypeEnum casetype;
 
     /**
      * Data quality issue find by the recoding. Not used at all.
@@ -266,7 +266,7 @@ public class SafetyReport implements Serializable {
     // bi-directional one-to-one association to Patient
     //@OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="PK_SAFETYREPORT", insertable=false, updatable=false)
+    @JoinColumn(name = "PK_SAFETYREPORT", insertable = false, updatable = false)
     @XmlElement(required = true, name = "patient")
     private Patient IPatient;
 
@@ -291,9 +291,9 @@ public class SafetyReport implements Serializable {
     private List<ReportDuplicate> IReportduplicates;
 
     // bi-directional many-to-one association to SafetyReports
-    @OneToMany(mappedBy = "safetyReport", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "safetyReport", cascade = CascadeType.ALL)
     @XmlInverseReference(mappedBy = "safetyReport")
-    private List<SafetyReports> ISafetyreports;
+    private SafetyReports ISafetyreports;
 
     // bi-directional one-to-one association to Sender
     @OneToOne(mappedBy = "ISafetyreport", cascade = CascadeType.ALL)
@@ -303,29 +303,27 @@ public class SafetyReport implements Serializable {
     public SafetyReport() {
     }
 
-    @PrePersist
-    public void initializeForeigners() {
-        if(IPatient != null) {
-            this.IPatient.setPkSafetyreport(pkSafetyreport);
-        }
-        if(IReceiver != null) {
-            this.IReceiver.setPkSafetyreport(pkSafetyreport);
-        }
-        if(ISafetyreports != null) {
-            for(SafetyReports sr : ISafetyreports) {
-                sr.setFkSafetyreport(pkSafetyreport);
-            }
-        }
-        if(ISender != null) {
-            this.ISender.setPkSafetyreport(pkSafetyreport);
-        }
-        if(IReceiver != null) {
-            this.IReceiver.setPkSafetyreport(pkSafetyreport);
-        }
-    }
-
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    @PrePersist
+    public void initializeForeigners() {
+        if (IPatient != null) {
+            this.IPatient.setPkSafetyreport(pkSafetyreport);
+        }
+        if (IReceiver != null) {
+            this.IReceiver.setPkSafetyreport(pkSafetyreport);
+        }
+        if (ISafetyreports != null) {
+            ISafetyreports.setFkSafetyreport(pkSafetyreport);
+        }
+        if (ISender != null) {
+            this.ISender.setPkSafetyreport(pkSafetyreport);
+        }
+        if (IReceiver != null) {
+            this.IReceiver.setPkSafetyreport(pkSafetyreport);
+        }
     }
 
     public long getPkSafetyreport() {
@@ -384,11 +382,11 @@ public class SafetyReport implements Serializable {
         this.casenumber = casenumber;
     }
 
-    public BigDecimal getCasetype() {
+    public CaseTypeEnum getCasetype() {
         return this.casetype;
     }
 
-    public void setCasetype(BigDecimal casetype) {
+    public void setCasetype(CaseTypeEnum casetype) {
         this.casetype = casetype;
     }
 
@@ -744,26 +742,12 @@ public class SafetyReport implements Serializable {
         return IReportduplicate;
     }
 
-    public List<SafetyReports> getISafetyreports() {
+    public SafetyReports getISafetyreports() {
         return this.ISafetyreports;
     }
 
-    public void setISafetyreports(List<SafetyReports> ISafetyreports) {
+    public void setISafetyreports(SafetyReports ISafetyreports) {
         this.ISafetyreports = ISafetyreports;
-    }
-
-    public SafetyReports addISafetyreport(SafetyReports ISafetyreport) {
-        getISafetyreports().add(ISafetyreport);
-        ISafetyreport.setSafetyReport(this);
-
-        return ISafetyreport;
-    }
-
-    public SafetyReports removeISafetyreport(SafetyReports ISafetyreport) {
-        getISafetyreports().remove(ISafetyreport);
-        ISafetyreport.setSafetyReport(null);
-
-        return ISafetyreport;
     }
 
     public Sender getISender() {

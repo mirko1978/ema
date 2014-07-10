@@ -5,6 +5,10 @@ package eu.europa.ema.phv.common.model.adrhuman;
 
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -16,6 +20,8 @@ import java.util.UUID;
  * @revisionDate $Date: 2003/12/19 10:51:34 20 Jun 2014 $
  * @since 20 Jun 2014 (creation date)
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "IcsrR2ReportMessage")
 public class IcsrR2ReportMessage implements Serializable {
 
     private static final long serialVersionUID = -9012109384791397040L;
@@ -23,27 +29,25 @@ public class IcsrR2ReportMessage implements Serializable {
     /**
      * Safety report
      */
+    @XmlElement
     private SafetyReport report;
 
     /**
      * The original message is populated only for the first safety report sent
      */
+    @XmlElement
     private ValidIcsrR2Message header;
-
-    /**
-     * Unique identifier from {@link ValidIcsrR2Message#metadata#uniqueId}. <br/>
-     * This is a duplicate for each report because only the first has the {@link #header} filled.
-     */
-    private UUID uniqueId;
 
     /**
      * Safety report position
      */
+    @XmlElement
     private Integer index;
 
     /**
      * total number of safety report in the message
      */
+    @XmlElement
     private Integer total;
 
     /**
@@ -54,13 +58,11 @@ public class IcsrR2ReportMessage implements Serializable {
      * @param index  {@link #index}
      * @param total  {@link #total}
      */
-    public IcsrR2ReportMessage(SafetyReport report, ValidIcsrR2Message header, Integer index, Integer total,
-            UUID uniqueId) {
+    public IcsrR2ReportMessage(SafetyReport report, ValidIcsrR2Message header, Integer index, Integer total) {
         this.report = report;
         this.header = header;
         this.index = index;
         this.total = total;
-        this.uniqueId = uniqueId;
     }
 
     /**
@@ -123,21 +125,5 @@ public class IcsrR2ReportMessage implements Serializable {
      */
     public void setTotal(Integer total) {
         this.total = total;
-    }
-
-    /**
-     *
-     * @return {@link #uniqueId}
-     */
-    public UUID getUniqueId() {
-        return uniqueId;
-    }
-
-    /**
-     *
-     * @param uniqueId {@link #uniqueId}
-     */
-    public void setUniqueId(UUID uniqueId) {
-        this.uniqueId = uniqueId;
     }
 }

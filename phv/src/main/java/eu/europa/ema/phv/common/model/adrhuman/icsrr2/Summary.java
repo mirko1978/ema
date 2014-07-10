@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_SUMMARY database table.
- * 
  */
 @Entity
 @Table(name = "I_SUMMARY")
@@ -26,6 +25,7 @@ public class Summary implements Serializable {
     private long pkSafetyreport;
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     @XmlElement(name = "narrativeincludeclinical")
     private String narrativeincludeclinical;
 

@@ -69,11 +69,12 @@ public abstract class AbstractPhvTest extends AbstractJUnit4SpringContextTests {
 
     /**
      * Create a {@link eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message} from a file defined in path
+     *
      * @param path path for the ICSR R2 Message
      * @return {@link eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message}
      * @throws JAXBException
      */
-    protected  ValidIcsrR2Message createIcsrMessage(String path) throws JAXBException {
+    protected ValidIcsrR2Message createIcsrMessage(String path) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(IchicsrMessage.class);
 
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -82,8 +83,6 @@ public abstract class AbstractPhvTest extends AbstractJUnit4SpringContextTests {
         MessageMetadata metadata = new MessageMetadata();
         metadata.setFileName(path);
         metadata.setReceived(new Date());
-        metadata.setUniqueId(UUID.randomUUID());
-
         message.setIcsr(icsr);
         message.setMetadata(metadata);
         return message;

@@ -13,6 +13,10 @@ http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblog
                 <wls:package-name>org.slf4j.*</wls:package-name>
                 <wls:package-name>org.eclipse.*</wls:package-name>
                 <wls:package-name>com.google.*</wls:package-name>
+                <wls:package-name>org.apache.commons.*</wls:package-name>
             </wls:prefer-application-packages>
+            <wls:prefer-application-resources>
+                <wls:resource-name>org/slf4j/impl/StaticLoggerBinder.class</wls:resource-name>
+            </wls:prefer-application-resources>
         </wls:container-descriptor>
     </wls:weblogic-web-app>

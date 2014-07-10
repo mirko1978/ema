@@ -7,13 +7,15 @@
 
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack;
 
+import com.google.common.base.Objects;
+
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 
 /**
- * 
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "ichicsrack")
@@ -25,17 +27,16 @@ public class IchIcsrAck implements Serializable {
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
 
-    @XmlElement(name="ichicsrmessageheader", required = true)
+    @XmlElement(name = "ichicsrmessageheader", required = true)
     protected IchIcsrMessageHeader ichIcsrMessageHeader;
 
-    @XmlElement(name="acknowledgment", required = true)
+    @XmlElement(name = "acknowledgment", required = true)
     protected Acknowledgment acknowledgment;
 
     /**
      * Gets the value of the lang property.
-     * 
+     *
      * @return possible object is {@link String }
-     * 
      */
     public String getLang() {
         return lang;
@@ -43,9 +44,8 @@ public class IchIcsrAck implements Serializable {
 
     /**
      * Sets the value of the lang property.
-     * 
+     *
      * @param value allowed object is {@link String }
-     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -53,9 +53,8 @@ public class IchIcsrAck implements Serializable {
 
     /**
      * Gets the value of the ichicsrmessageheader property.
-     * 
+     *
      * @return possible object is {@link IchIcsrMessageHeader }
-     * 
      */
     public IchIcsrMessageHeader getIchIcsrMessageHeader() {
         return ichIcsrMessageHeader;
@@ -63,9 +62,8 @@ public class IchIcsrAck implements Serializable {
 
     /**
      * Sets the value of the ichicsrmessageheader property.
-     * 
+     *
      * @param value allowed object is {@link IchIcsrMessageHeader }
-     * 
      */
     public void setIchIcsrMessageHeader(IchIcsrMessageHeader value) {
         this.ichIcsrMessageHeader = value;
@@ -73,9 +71,8 @@ public class IchIcsrAck implements Serializable {
 
     /**
      * Gets the value of the acknowledgment property.
-     * 
+     *
      * @return possible object is {@link Acknowledgment }
-     * 
      */
     public Acknowledgment getAcknowledgment() {
         return acknowledgment;
@@ -83,12 +80,19 @@ public class IchIcsrAck implements Serializable {
 
     /**
      * Sets the value of the acknowledgment property.
-     * 
+     *
      * @param value allowed object is {@link Acknowledgment }
-     * 
      */
     public void setAcknowledgment(Acknowledgment value) {
         this.acknowledgment = value;
     }
 
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this)
+                .omitNullValues()
+                .add("Header", ichIcsrMessageHeader)
+                .add("Total ACKS", acknowledgment.getReportAcknowledgment().size())
+                .toString();
+    }
 }

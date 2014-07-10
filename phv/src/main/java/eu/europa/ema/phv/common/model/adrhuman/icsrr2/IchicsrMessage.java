@@ -1,6 +1,7 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
 import com.google.common.base.Objects;
+import eu.europa.ema.phv.common.model.DocumentTypeEnum;
 import eu.europa.ema.phv.common.xmladapter.EvMessageTypeAdapter;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 import eu.europa.ema.phv.common.xmladapter.SafetyReportsAdapter;
@@ -40,14 +41,14 @@ public class IchicsrMessage implements Serializable {
     /**
      * When the system generate the ACK. It is generated automatically from the database
      */
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @XmlTransient
     private Date ackgendate;
 
     /**
      * When the system transmit the ACK. It is generated automatically from the database
      */
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @XmlTransient
     private Date acksenddate;
 
@@ -67,9 +68,10 @@ public class IchicsrMessage implements Serializable {
     private BigDecimal contextsequenceid;
 
     @Column(precision = 3)
+    @Enumerated(EnumType.ORDINAL)
     @XmlPath("ichicsrmessageheader/messagetype/text()")
     @XmlJavaTypeAdapter(EvMessageTypeAdapter.class)
-    private BigDecimal documenttype;
+    private DocumentTypeEnum documenttype;
 
     /**
      * Unused
@@ -90,11 +92,11 @@ public class IchicsrMessage implements Serializable {
      * MDN info is no longer controlled by EV 7
      */
     @Deprecated
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @XmlTransient
     private Date mdnackreceivedate;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @XmlPath("ichicsrmessageheader/messagedate/text()")
     @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
     private Date messagedate;
@@ -123,7 +125,7 @@ public class IchicsrMessage implements Serializable {
     /**
      * Message receiving date from Axway gateway
      */
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     @XmlTransient
     private Date messagereceivedate;
@@ -147,12 +149,12 @@ public class IchicsrMessage implements Serializable {
     @Column(nullable = false, precision = 2)
     @XmlTransient
     @Deprecated
-    private BigDecimal messagetype = new BigDecimal(0);
+    private Integer messagetype = 0;
 
     /**
      * By default is equals to messagereceivedate. The user with EV WEB can change this value
      */
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @XmlTransient
     private Date officialreceivedate;
 
@@ -265,11 +267,11 @@ public class IchicsrMessage implements Serializable {
         this.contextsequenceid = contextsequenceid;
     }
 
-    public BigDecimal getDocumenttype() {
+    public DocumentTypeEnum getDocumenttype() {
         return this.documenttype;
     }
 
-    public void setDocumenttype(BigDecimal documenttype) {
+    public void setDocumenttype(DocumentTypeEnum documenttype) {
         this.documenttype = documenttype;
     }
 
@@ -360,12 +362,12 @@ public class IchicsrMessage implements Serializable {
     }
 
     @Deprecated
-    public BigDecimal getMessagetype() {
+    public Integer getMessagetype() {
         return this.messagetype;
     }
 
     @Deprecated
-    public void setMessagetype(BigDecimal messagetype) {
+    public void setMessagetype(Integer messagetype) {
         this.messagetype = messagetype;
     }
 

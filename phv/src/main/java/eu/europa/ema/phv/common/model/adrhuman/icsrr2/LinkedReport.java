@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 /**
  * The persistent class for the I_LINKEDREPORT database table.
- * 
  */
 @Entity
 @Table(name = "I_LINKEDREPORT")
@@ -19,10 +18,12 @@ public class LinkedReport implements Serializable {
 
     private static final long serialVersionUID = -4164417160556322504L;
 
-    /** Primary key */
+    /**
+     * Primary key
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LinkedReport")
-    @SequenceGenerator(name="LinkedReport",sequenceName="SEQ_LINKEDREPORT")
+    @SequenceGenerator(name = "LinkedReport", sequenceName = "SEQ_LINKEDREPORT", allocationSize = 1)
     @Column(name = "PK_LINKEDREPORT", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkLinkedreport;

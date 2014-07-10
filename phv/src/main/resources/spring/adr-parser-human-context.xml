@@ -5,9 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:annotation-config />
+    <context:annotation-config/>
 
-	<bean id="adrParserHumanRouter" class="eu.europa.ema.phv.adrparserhuman.AdrParserHumanRouter" />
-	<bean id="reportSplitter" class="eu.europa.ema.phv.adrparserhuman.ReportSplitter" />
+    <bean id="adrParserHumanRouter" class="eu.europa.ema.phv.adrparserhuman.AdrParserHumanRouter"/>
+    <bean id="reportSplitter" class="eu.europa.ema.phv.adrparserhuman.ReportSplitter"/>
+    <bean id="adrHumanPersistence" class="eu.europa.ema.phv.adrparserhuman.processor.AdrHumanPersistence"/>
 
 </beans>

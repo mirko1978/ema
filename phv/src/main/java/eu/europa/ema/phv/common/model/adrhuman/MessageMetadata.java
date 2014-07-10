@@ -1,26 +1,34 @@
 package eu.europa.ema.phv.common.model.adrhuman;
 
+import eu.europa.ema.phv.common.xmladapter.DateAdapter;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * Describe the Message metadata like file name, arrival date etc.
- * 
+ *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @since 20 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 20 Jun 2014 $
+ * @since 20 Jun 2014 (creation date)
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "MessageMetadata")
 public class MessageMetadata implements Serializable {
 
     private static final long serialVersionUID = -4085873752167382721L;
 
-    /** Unique identifier for the received message. It is set by Message Handler component */
-    private UUID uniqueId;
-
+    @XmlElement
     private String fileName = "foo.xml";
 
+    @XmlElement
+    @XmlJavaTypeAdapter(DateAdapter.class)
     private Date received = new Date();
 
     /**
@@ -49,22 +57,6 @@ public class MessageMetadata implements Serializable {
      */
     public void setReceived(Date received) {
         this.received = received;
-    }
-
-    /**
-     *
-     * @return {@link #uniqueId}
-     */
-    public UUID getUniqueId() {
-        return uniqueId;
-    }
-
-    /**
-     *
-     * @param uniqueId {@link #uniqueId}
-     */
-    public void setUniqueId(UUID uniqueId) {
-        this.uniqueId = uniqueId;
     }
 
 }

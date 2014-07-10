@@ -167,8 +167,14 @@ public class Patient implements Serializable {
                 drug.setFkSafetyreport(pkSafetyreport);
             }
         }
-        if(ISummary != null) {
+        if (ISummary != null) {
             ISummary.setPkSafetyreport(pkSafetyreport);
+        }
+        if (IPatientdeath != null) {
+            IPatientdeath.setPkSafetyreport(pkSafetyreport);
+        }
+        if (parent != null) {
+            parent.setPkSafetyreport(pkSafetyreport);
         }
     }
 
