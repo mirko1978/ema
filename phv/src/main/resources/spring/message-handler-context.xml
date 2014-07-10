@@ -28,7 +28,7 @@
 		class="eu.europa.ema.phv.messagehandler.processor.HeaderProcessor" />
 			<bean id="MetadataExtractor"
 		class="eu.europa.ema.phv.messagehandler.processor.MetadataExtractor" />
-	<!--  <bean id="XmlValidator" class="eu.europa.ema.phv.messagehandler.processor.XmlValidator" /> -->
+	<bean id="messageDAO" class="eu.europa.ema.phv.common.persistence.JpaMessageDAO" />
 
 	<!-- Translator -->
 	<bean id="AckTranslator"

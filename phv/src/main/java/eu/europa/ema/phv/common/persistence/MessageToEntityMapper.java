@@ -11,9 +11,12 @@ import eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher;
 import org.apache.camel.Exchange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.inject.Inject;
 
 
 
@@ -33,6 +36,9 @@ public class MessageToEntityMapper {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(MessageToEntityMapper.class);
 	
+	@Inject
+	private MessageDAO messageDAO;
+	
 	/**
 	 * Maps the incoming message {@link IchicsrMessage} to {@link InboundMessageEntity}.
 	 * The ICRSMessage object should be held in the exchange under {@link MessageConstants.MESSAGE_HEADER_ICSR} key
@@ -48,25 +54,26 @@ public class MessageToEntityMapper {
 			icsr = (IchicsrMessage) exchange.getIn().getHeader(MessageConstants.MESSAGE_HEADER_ICSR);
 		}
 		if(icsr==null) {
-			return null; //throw exception to rollback?
+			throw new Exception("The camel exchange does not contain the JaxB transformed ICSR Message object"); 
 		}
 		
 		//As per the database constraints incoming message can be saved only if
 		//senderid, receive date and doctype are not null
 		
 		if(icsr.getSenderid() == null ||
-				icsr.getMessagedate() == null){
-			LOG.error("Message not persisted as the mandatory icsr message headers have invalid value - senderId = {} , recevied date = {}",icsr.getSenderid(), icsr.getMessagedate()); //throw exception to rollback?
-			throw new InvalidMessageHeaderException("Message not persisted as the mandatory icsr message headers have invalid value");
+		        exchange.getIn().getHeader(MessageConstants.MESSAGE_RECEIVED_DATE) == null){
+			LOG.error("Message not persisted as the mandatory icsr message headers have invalid value - senderId = {} , recevied date = {}",icsr.getSenderid(), icsr.getMessagedate()); 
+			//throw exception to rollback
+			throw new InvalidMessageHeaderException("Message "+ icsr.getMessagenumber() +"not persisted as the mandatory icsr message headers have invalid value");
 		}
 		
 		InboundMessageEntity entity = new InboundMessageEntity();
-		entity.setDocument((String)exchange.getIn().getBody().toString());
+		entity.setDocument((String)exchange.getIn().getHeader(MessageConstants.MESSAGE_ORIGAL_PAYLOAD));
 		entity.setMessagenumb(icsr.getMessagenumber());
-		entity.setReceivedate(icsr.getMessagedate());
+		entity.setReceivedate((Date)exchange.getIn().getHeader(MessageConstants.MESSAGE_RECEIVED_DATE));//icsr.getMessagedate());
 		entity.setSenderid(icsr.getSenderid());
 		entity.setStatus(exchange.getIn().getHeader(MessageConstants.MESSAGE_HEADER_VALIDATIONRESULT).toString().equalsIgnoreCase(MessageConstants.MESSAGE_HEADER_VALID)? "Y":"N");
-		entity.setStatusStamp((Date)exchange.getIn().getHeader("ValidationDate"));
+		entity.setStatusStamp((Date)exchange.getIn().getHeader(MessageConstants.MESSAGE_HEADER_VALIDATION_DATE));
 		entity.setArchived(0);
 		entity.setDoctype(icsr.getDocumenttype().intValue());
 		
@@ -74,10 +81,9 @@ public class MessageToEntityMapper {
 		//for the time being dummy
 		MessageBoxEntity msgBox = null;
 		try{
-			msgBox = msgBox.findByOwner(icsr.getReceiverid());
+			msgBox = messageDAO.findMessageBoxByOwner(icsr.getReceiverid());
 		}catch(Exception e){
-			LOG.warn("Message Box for the receiver= {} not available, new one will be created",icsr.getReceiverid() ); //no data found exception
-			
+			LOG.warn("Message Box for the receiver= {} not available, new one will be created; Exception: {}",icsr.getReceiverid(), e.getMessage()); //no data found exception
 		}
 		
 		if(msgBox ==null){ //should throw an exception as they should be present, temporary object for sprint1

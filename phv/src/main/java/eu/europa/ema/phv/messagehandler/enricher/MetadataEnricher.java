@@ -38,7 +38,6 @@ public class MetadataEnricher {
 	 */
 	 public IchicsrMessage enrich(IchicsrMessage ichicsr, Exchange exchange) {
 	    	LOG.info("Message Number : " + ichicsr.getMessagenumber() );
-	    	//populate the official received date
 	    	//if gateway is sending authenticated org Id, check in the report and/or populate
 	    	exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_RECEIVER, ichicsr.getReceiverid());
 	    	exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_VALIDATIONRESULT, MessageConstants.MESSAGE_HEADER_VALID);

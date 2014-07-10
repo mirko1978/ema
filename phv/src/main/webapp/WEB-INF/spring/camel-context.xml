@@ -83,12 +83,6 @@
 		</property>
 	</bean>
 
-	<!-- Camel JPA (ref. to JPA section above) -->
-	<bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
-		<property name="entityManagerFactory" ref="entityManagerFactory" />
-		<property name="transactionManager" ref="transactionManager" />
-	</bean>
-
 	<bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
@@ -98,7 +92,26 @@
 		<property name="transactionManager" ref="transactionManager" />
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW" />
 	</bean>
+	
+	<!-- JPA for Message Repository -->
+	<bean id="entityManagerFactoryMsgRepo"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="messageJTA" />
+		<property name="loadTimeWeaver">
+			<bean
+				class="org.springframework.instrument.classloading.weblogic.WebLogicLoadTimeWeaver" />
+		</property>
+	</bean>
+	
+	<!--  JPA Message Repository finish -->
 
+	<!-- Camel JPA (ref. to JPA section above) -->
+	<bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
+		<property name="entityManagerFactory" ref="entityManagerFactoryMsgRepo" />
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
+	
 	<!-- -->
 	<!-- Includes -->
 	<!-- -->

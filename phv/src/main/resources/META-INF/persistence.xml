@@ -10,7 +10,10 @@
 		<class>eu.europa.ema.phv.common.model.adrhuman.InboundMessageEntity</class>
 		<class>eu.europa.ema.phv.common.model.adrhuman.MessageBoxEntity</class>
 		<properties>
-			 <property name="eclipselink.target-server" value="WebLogic"/>		
+           <property name="eclipselink.target-server" value="WebLogic"/>
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>
+            <property name="eclipselink.target-database" value="Oracle"/>	
 		</properties>
 	</persistence-unit>
 

@@ -22,6 +22,10 @@ public class MessageMetadata implements Serializable {
     private String fileName = "foo.xml";
 
     private Date received = new Date();
+    
+    private Long fileSize = 0L;
+
+   
 
     /**
      * @return the fileName
@@ -65,6 +69,18 @@ public class MessageMetadata implements Serializable {
      */
     public void setUniqueId(UUID uniqueId) {
         this.uniqueId = uniqueId;
+    }
+
+    /**
+     * @param header
+     */
+    public void setFileSize(Long size) {
+  
+        this.fileSize = size;
+    }
+    
+    public Long getFileSize() {
+        return fileSize;
     }
 
 }

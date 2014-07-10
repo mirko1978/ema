@@ -3,6 +3,7 @@ package eu.europa.ema.phv.messagehandler;
 import static org.junit.Assert.*;
 
 import java.net.URI;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -73,15 +74,16 @@ public class MessageHandlerRouterTest  extends AbstractPhvTest {
 	}
 
 	private void readSingleMessage() throws Exception{
-		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-single.xml&delete=false&initialDelay=5000&consumer.delay=2000");
+	    URL fileURL = this.getClass().getClassLoader().getResource("data");
+		camelUrl.setGatewayHumanAdr(fileURL.toString()+"?fileName=S2_P_ICHICSR_1r_1.xml&delete=false&initialDelay=5000&consumer.delay=2000");
 		camelUrl.setOutboundMessage("mock:outbound");
-		//camelUrl.setAdrParserHuman("mock:adrParser");
+		camelUrl.setAdrParserHuman("mock:adrParser");
 		context.addRoutes(router);
 		context.start();        
 	}
 	
 	private void readMultipleReportsMessage() throws Exception{
-		camelUrl.setGatewayHumanAdr("file:/devtools/GitLocalRepo/pharmacovigilance/phv/src/test/resources/data?fileName=icsr-multiple.xml&delete=false&consumer.delay=10000&consumer.useFixedDelay=true");
+		camelUrl.setGatewayHumanAdr("file:data?fileName=icsr-multiple.xml&delete=false&consumer.delay=10000&consumer.useFixedDelay=true");
 		camelUrl.setOutboundMessage("mock:outbound");
 		camelUrl.setAdrParserHuman("mock:adrParser");
 		context.addRoutes(router);

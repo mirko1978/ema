@@ -19,5 +19,9 @@ public interface MessageConstants {
     String  MESSAGE_HEADER_INVALID = "invalid";
     String MESSAGE_HEADER_RECEIVER = "receiverid";
     String MESSAGE_HEADER_VALIDATION_DATE = "validationDate";
+    String MESSAGE_RECEIVED_DATE = "receivedDate";
+    String MESSAGE_FILE_SIZE = "fileSize";
+    String MESSAGE_FILE_NAME = "fileName";
+    String MESSAGE_ORIGAL_PAYLOAD = "originalPayload";
 
 }

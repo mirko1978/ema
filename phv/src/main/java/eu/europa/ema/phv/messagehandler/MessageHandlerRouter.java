@@ -18,7 +18,7 @@ import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher;
 
 /**
- * Route definition for the Message Handler component
+ * Route definition for the Message Handler component.  This defines the main workflow for the incoming messages
  * This Router 	reads the messages from source interface like JMS or file system
  * 				a transaction is used or started
  * 				messaged is parsed into JAXB objects, which are basically ICSR2 entity classes
@@ -39,12 +39,18 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     private static final String INVALID_EP ="direct:invalid";
     private static final String MESSAGE_STORE_EP="direct:messageStore";
     private static final String CONTINUE_ROUTING_EP="direct:continueRouting";
+    //the header used for web trader/evhuman routing
     private static final String HEADER_REROUTING_RECEIVER = "receiver";
+    //the header value for the above for EMA consumption
     private static final String RECEIVER_EVHUMAN = "EVHUMAN";
     
+    //destination url conatainer
     @Inject
     private JmsCamelUrl camelUrl;
 
+    /**
+     * The main route configurer called by the camel context
+     */
     @Override
     public void configure() throws Exception {
     	//the JAXB object root creation
@@ -52,13 +58,14 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     	//jaxb.setSchema("schema/icsr21xml.dtd"); //point to the correct dtd instead of embedded dtd
 //    	jaxb.setEncoding("iso-10646-1"); //ICSR2 messages are utf-16 encoded
     	
-    	//reroute on parser exception
+    	//reroute to invalid message handler on any parser exception
     	onException(SAXParseException.class).handled(true).to(INVALID_EP);
 
     	//@formatter:off
+    	//starting route
     	from(camelUrl.getGatewayHumanAdr())
             .transacted()
-            //add UUID that will be used by both valid and invalid path
+            //add UUID and other intial headers that will be used by both valid and invalid path
             .processRef("HeaderProcessor")
             .unmarshal(jaxb)
             .log("Jaxb Validation and transformation complete ")
@@ -106,7 +113,6 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //the message persistent route
         from(MESSAGE_STORE_EP)
             .transacted()
-            //.beanRef("StoreEnricher")
             .bean(MessageToEntityMapper.class, "mapMessageToEntity")
             .log("Persisting the message meta data")
          .to("jpa:eu.europa.ema.phv.common.model.adrhuman.InboundMessageEntity?persistenceUnit=messageJTA");
@@ -114,19 +120,19 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
  
         
         //@formatter:off        
-        from(CONTINUE_ROUTING_EP)
-             .filter(header(HEADER_REROUTING_RECEIVER).isEqualTo(HEADER_REROUTING_RECEIVER)) 
+        from(CONTINUE_ROUTING_EP).log("Message received for rerouting")
+             .filter(header(HEADER_REROUTING_RECEIVER).isEqualTo(RECEIVER_EVHUMAN)) //add a processor to check with db to see if the receiver is not web trader
              .choice()
                 .when(header(HEADER_REROUTING_RECEIVER).isEqualTo(RECEIVER_EVHUMAN)) //EMA
                     .beanRef("MessageEnricher")
-                	.log("Routing the valid enriched message to Human ADR Parser")
+                	.log("Routing the valid enriched message to Human ADR Parser for receiever "+ header(HEADER_REROUTING_RECEIVER) )
                 	.to(camelUrl.getAdrParserHuman())
-                .when(header(HEADER_REROUTING_RECEIVER).isNotEqualTo(RECEIVER_EVHUMAN)) // Web trader
+                .when(header(HEADER_REROUTING_RECEIVER).isNotEqualTo(RECEIVER_EVHUMAN)) // NCA and other receivers
                     .beanRef("RoutingTranslator")
-                    .log("Routing web trader messages to storage handler")
+                    .log("Routing web trader messages to storage handler for receiver " + header(HEADER_REROUTING_RECEIVER))
                     .to(camelUrl.getOutboundMessage())
                 .otherwise()
-                	.log("Exception")
+                	.log("Exception") //as we have filtered we should not reach here
                     .throwException(new UnexpectedResultException("Message not recognized by the router"))
                 .endChoice()
                 .end();

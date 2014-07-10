@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.eclipse.persistence.jpa.JpaQuery;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +25,7 @@ public class MessageBoxEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@PersistenceContext(unitName="messageJTA") 
-	protected EntityManager em;
+	protected transient  EntityManager em;
 	
 	@Id
 	@Column(name="PK_MESSAGEBOX", unique=true, nullable=false, precision=10)
@@ -175,14 +177,6 @@ public class MessageBoxEntity implements Serializable {
 		XInbound.setXMessagebox(null);
 
 		return XInbound;
-	}
-
-	public MessageBoxEntity findByOwner(String receiverid) {
-		
-		TypedQuery<MessageBoxEntity> query =
-			      em.createNamedQuery("MessageBoxEntity.findByOwner", MessageBoxEntity.class).setParameter(0, receiverid);
-			  return query.getSingleResult();
-		
 	}
 	
 
