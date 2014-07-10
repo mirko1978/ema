@@ -28,3 +28,16 @@ This tags are really useful when you are handling the fluent interface and API o
 ICSR are private and it is not possible to public on github.  
 The data used for unit test is on `G:\SharedAreas\IT\Applications\Pharmacovigilance`. 
 The contenct of `data` folder has to be copied into `src/test/resources/data`.
+
+## Avoid weblogic user/password
+
+In many situations weblogic ask for user and password also if it is launched by eclipse / intellij.  
+In order to avoid to type every time the admin user and password:  
+Create `boot.properties` files with
+
+    username=weblogic
+    password=weblogic1
+    
+The file has to be saved inside your security server folder.  
+For example `C:\devtools\weblogic\12.1.2\user_projects\domains\base_domain\servers\Server-1\security`
+

@@ -140,3 +140,14 @@ Where:
 `@GeneratedValue` defines that the attribute is using a sequence.  
 `@SequenceGenerator` defines the sequence name. The allocation size for the database is always 1. Different values can cause oracle errors.
 
+## Database references
+
+The references between different tables have to defined always with the CASCADE. E.G.
+The follow line doesn't work. It was proposed by the code generator
+
+     @OneToMany(mappedBy = "IPatientdeath")
+     
+Correct version
+
+     @OneToMany(mappedBy = "IPatientdeath", cascade = CascadeType.ALL)
+
