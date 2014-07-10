@@ -75,7 +75,7 @@ public class MessageToEntityMapper {
 		entity.setStatus(exchange.getIn().getHeader(MessageConstants.MESSAGE_HEADER_VALIDATIONRESULT).toString().equalsIgnoreCase(MessageConstants.MESSAGE_HEADER_VALID)? "Y":"N");
 		entity.setStatusStamp((Date)exchange.getIn().getHeader(MessageConstants.MESSAGE_HEADER_VALIDATION_DATE));
 		entity.setArchived(0);
-		entity.setDoctype(icsr.getDocumenttype().intValue());
+		entity.setDoctype(icsr.getDocumenttype().ordinal());
 		
 		//populate messagebox foriegn key, need to fetch the pk for the receiver id from db
 		//for the time being dummy
@@ -105,3 +105,4 @@ public class MessageToEntityMapper {
 	}
 
 }
+

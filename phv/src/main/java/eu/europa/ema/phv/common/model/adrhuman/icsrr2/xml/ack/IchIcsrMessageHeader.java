@@ -7,6 +7,7 @@
 
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack;
 
+import com.google.common.base.Objects;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 import org.eclipse.persistence.oxm.annotations.XmlPath;
 
@@ -17,7 +18,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "ichicsrmessageheader")
@@ -29,36 +30,35 @@ public class IchIcsrMessageHeader implements Serializable {
     @XmlJavaTypeAdapter(NormalizedStringAdapter.class)
     protected String lang;
 
-    @XmlElement(name="messagetype", required = true)
+    @XmlElement(name = "messagetype", required = true)
     protected String messageType;
 
-    @XmlElement(name="messageformatversion", required = true)
+    @XmlElement(name = "messageformatversion", required = true)
     protected String messageFormatVersion;
 
-    @XmlElement(name="messageformatrelease", required = true)
+    @XmlElement(name = "messageformatrelease", required = true)
     protected String messageFormatRelease;
 
-    @XmlElement(name="messagenumb", required = true)
+    @XmlElement(name = "messagenumb", required = true)
     protected String messageNumb;
 
-    @XmlElement(name="messagesenderidentifier", required = true)
+    @XmlElement(name = "messagesenderidentifier", required = true)
     protected String messagesenderidentifier;
 
-    @XmlElement(required = true, name="messagereceiveridentifier")
+    @XmlElement(required = true, name = "messagereceiveridentifier")
     protected String messagereceiveridentifier;
 
-    @XmlElement(name="messagedateformat", required = true)
+    @XmlElement(name = "messagedateformat", required = true)
     protected String messageDateFormat;
 
-    @XmlElement(name="messagedate", required = true)
+    @XmlElement(name = "messagedate", required = true)
     @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
     protected Date messageDate;
 
     /**
      * Gets the value of the lang property.
-     * 
+     *
      * @return possible object is {@link String }
-     * 
      */
     public String getLang() {
         return lang;
@@ -66,9 +66,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Sets the value of the lang property.
-     * 
+     *
      * @param value allowed object is {@link String }
-     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -76,9 +75,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messagetype property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getMessageType() {
         return messageType;
@@ -86,9 +84,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Sets the value of the messagetype property.
-     * 
+     *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setMessageType(String value) {
         this.messageType = value;
@@ -96,9 +93,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messageformatversion property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getMessageFormatVersion() {
         return messageFormatVersion;
@@ -108,7 +104,6 @@ public class IchIcsrMessageHeader implements Serializable {
      * Sets the value of the messageformatversion property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setMessageFormatVersion(String value) {
         this.messageFormatVersion = value;
@@ -116,9 +111,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messageformatrelease property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getMessageFormatRelease() {
         return messageFormatRelease;
@@ -128,7 +122,6 @@ public class IchIcsrMessageHeader implements Serializable {
      * Sets the value of the messageformatrelease property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setMessageFormatRelease(String value) {
         this.messageFormatRelease = value;
@@ -136,9 +129,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messagenumb property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getMessageNumb() {
         return messageNumb;
@@ -148,7 +140,6 @@ public class IchIcsrMessageHeader implements Serializable {
      * Sets the value of the messagenumb property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setMessageNumb(String value) {
         this.messageNumb = value;
@@ -156,9 +147,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messagesenderidentifier property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getMessagesenderidentifier() {
         return messagesenderidentifier;
@@ -168,7 +158,6 @@ public class IchIcsrMessageHeader implements Serializable {
      * Sets the value of the messagesenderidentifier property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setMessagesenderidentifier(String value) {
         this.messagesenderidentifier = value;
@@ -176,9 +165,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messagereceiveridentifier property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getMessagereceiveridentifier() {
         return messagereceiveridentifier;
@@ -188,7 +176,6 @@ public class IchIcsrMessageHeader implements Serializable {
      * Sets the value of the messagereceiveridentifier property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setMessagereceiveridentifier(String value) {
         this.messagereceiveridentifier = value;
@@ -196,9 +183,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messagedateformat property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getMessageDateFormat() {
         return messageDateFormat;
@@ -208,7 +194,6 @@ public class IchIcsrMessageHeader implements Serializable {
      * Sets the value of the messagedateformat property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setMessageDateFormat(String value) {
         this.messageDateFormat = value;
@@ -216,9 +201,8 @@ public class IchIcsrMessageHeader implements Serializable {
 
     /**
      * Gets the value of the messagedate property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public Date getMessageDate() {
         return messageDate;
@@ -228,10 +212,21 @@ public class IchIcsrMessageHeader implements Serializable {
      * Sets the value of the messagedate property.
      *
      * @param value allowed object is {@link String }
-     * 
      */
     public void setMessageDate(Date value) {
         this.messageDate = value;
+    }
+
+    @Override
+    public String toString() {
+        return Objects.toStringHelper(this)
+                .omitNullValues()
+                .add("Number", messageNumb)
+                .add("Date", messageDate)
+                .add("Receiver", messagereceiveridentifier)
+                .add("Sender", messagesenderidentifier)
+                .toString();
+
     }
 
 }

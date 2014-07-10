@@ -23,11 +23,11 @@ import org.junit.Test;
 public class QueueReceive {
     public final static String JNDI_FACTORY = "weblogic.jndi.WLInitialContextFactory";
 
-    public final static String WLS_URL = "t3://localhost:7002,localhost:7003";
+    public final static String WLS_URL = "t3://uv1026.emea.eu.int:7827,uv1027.emea.eu.int:7827";
 
-    public final static String JMS_FACTORY = "ud_cf";// "jms/phv/connectionFactory";
+    public final static String JMS_FACTORY = "jms/phv/ConnectionFactory";
 
-    public final static String QUEUE = "ud_queue"; // "jms/phv/gateway/human/adr_UDQ_mig";;
+    public final static String QUEUE = "jms/phv/parser/human/adr_Queue"; // "jms/phv/gateway/human/adr_UDQ_mig";;
 
     public final static long SLEEP = 1000;
 
@@ -72,6 +72,7 @@ public class QueueReceive {
 
     /**
      * Syncrounus read
+     *
      * @throws JMSException
      * @throws NamingException
      */

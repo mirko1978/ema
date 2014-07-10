@@ -37,7 +37,7 @@ public class AdrValidationHumanRouterTest extends AbstractPhvTest {
     @Test
     @DirtiesContext
     public void singleSRTest() throws JAXBException {
-        ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/icsr-single.xml");
+        ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/human/icsr/icsr-single.xml");
         List<IcsrR2ReportMessage> messages = splitter.split(icsrR2Message);
         for (IcsrR2ReportMessage msg : messages) {
             producerTemplate.sendBody(msg);
@@ -48,7 +48,7 @@ public class AdrValidationHumanRouterTest extends AbstractPhvTest {
     @Test
     @DirtiesContext
     public void multipleSRTest() throws JAXBException {
-        ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/icsr-multiple.xml");
+        ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/human/icsr/icsr-multiple.xml");
         List<IcsrR2ReportMessage> messages = splitter.split(icsrR2Message);
         for (IcsrR2ReportMessage msg : messages) {
             producerTemplate.sendBody(msg);

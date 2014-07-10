@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_SAFETYREPORTS database table.
- * 
  */
 @Entity
 @Table(name = "I_SAFETYREPORTS")
@@ -16,17 +15,25 @@ public class SafetyReports implements Serializable {
 
     private static final long serialVersionUID = 2389207372789581954L;
 
-    /** Foreign key from SafetyReport */
+    /**
+     * Foreign key from SafetyReport
+     */
     @Id
-    @Column(name = "FK_SAFETYREPORT")//, insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
+    @Column(name = "FK_SAFETYREPORT")
+    //, insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
     private long fkSafetyreport;
 
-    /** Foreign key from IchicsrMessage */
+    /**
+     * Foreign key from IchicsrMessage
+     */
     @Id
-    @Column(name = "FK_ICHICSRMESSAGE")//, insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
+    @Column(name = "FK_ICHICSRMESSAGE")
+    //, insertable = false, updatable = false, unique = true, nullable = false, precision = 10)
     private long fkIchicsrmessage;
 
-    /** TODO: Reverse engigneering from database */
+    /**
+     * TODO: Reverse engigneering from database
+     */
     @Column(precision = 22)
     private BigDecimal commitrollback;
 
@@ -35,12 +42,21 @@ public class SafetyReports implements Serializable {
     @JoinColumn(name = "FK_ICHICSRMESSAGE", nullable = false, insertable = false, updatable = false)
     private IchicsrMessage ichicsrMessage;
 
-    /** bi-directional many-to-one association to SafetyReport */
-    @ManyToOne(cascade = CascadeType.ALL)
+    /**
+     * bi-directional one-to-one association to SafetyReport
+     */
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_SAFETYREPORT", nullable = false, insertable = false, updatable = false)
     private SafetyReport safetyReport;
 
     public SafetyReports() {
+    }
+
+    @PrePersist
+    public void initializeForeigners() {
+        if (safetyReport != null) {
+            safetyReport.setISafetyreports(this);
+        }
     }
 
     public BigDecimal getCommitrollback() {
@@ -82,6 +98,5 @@ public class SafetyReports implements Serializable {
     public void setFkIchicsrmessage(long fkIchicsrmessage) {
         this.fkIchicsrmessage = fkIchicsrmessage;
     }
-
 
 }

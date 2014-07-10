@@ -3,9 +3,7 @@ package eu.europa.ema.phv.common.util;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
 import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.IchIcsrAck;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.IchIcsrMessageHeader;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.ReportAcknowledgment;
-import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 
 /**
  * Icsr R2 Acknowledge utilities
@@ -19,7 +17,7 @@ public interface IcsrR2AckUtility {
 
     /**
      * Build a new ack message. Doesn't set the transmission code. Please refer
-     * to {@link eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode}.<br/>
+     * to {@link eu.europa.ema.phv.common.model.adrhuman.IcsrAckCodeEnum}.<br/>
      * The follow element are not set:
      * <ul>
      * <li>transmissionacknowledgmentcode</li>

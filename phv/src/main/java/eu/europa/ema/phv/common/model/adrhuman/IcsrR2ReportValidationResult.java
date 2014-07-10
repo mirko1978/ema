@@ -2,8 +2,11 @@ package eu.europa.ema.phv.common.model.adrhuman;
 
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.IchIcsrAck;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * After validation message exchange.
@@ -13,26 +16,31 @@ import java.util.List;
  * @revisionDate $Date: 27/06/2014 $
  * @since 27/06/2014 (creation date)
  */
-public class IcsrR2ReportValidationResult implements Serializable{
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "IcsrR2ReportValidationResult")
+public class IcsrR2ReportValidationResult implements Serializable {
 
     /**
      * Icsr Report message received
      */
+    @XmlElement
     private IcsrR2ReportMessage message;
 
     /**
      * Error message for the report
      */
+    @XmlElement
     private String errorMessage;
 
     /**
      * Ack code
      */
-    private IcsrAckCode ackCode;
+    private IcsrAckCodeEnum ackCode;
 
     /**
      * ICSR Acknwoledge structure. It is populated during the aggregation process with the result from the validaiton
      */
+    @XmlElement
     private IchIcsrAck icsrAcks;
 
     public IcsrR2ReportMessage getMessage() {
@@ -51,16 +59,15 @@ public class IcsrR2ReportValidationResult implements Serializable{
         this.errorMessage = errorMessage;
     }
 
-    public IcsrAckCode getAckCode() {
+    public IcsrAckCodeEnum getAckCode() {
         return ackCode;
     }
 
-    public void setAckCode(IcsrAckCode ackCode) {
+    public void setAckCode(IcsrAckCodeEnum ackCode) {
         this.ackCode = ackCode;
     }
 
     /**
-     *
      * @return {@link #icsrAcks}
      */
     public IchIcsrAck getIcsrAcks() {
@@ -68,7 +75,6 @@ public class IcsrR2ReportValidationResult implements Serializable{
     }
 
     /**
-     *
      * @param icsrAcks {@link #icsrAcks}
      */
     public void setIcsrAcks(IchIcsrAck icsrAcks) {

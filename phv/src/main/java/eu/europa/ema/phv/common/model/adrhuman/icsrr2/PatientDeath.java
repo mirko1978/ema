@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * The persistent class for the I_PATIENTDEATH database table.
- * 
  */
 @Entity
 @Table(name = "I_PATIENTDEATH")
@@ -38,7 +37,7 @@ public class PatientDeath implements Serializable {
     private BigDecimal patientdeathdateformat;
 
     // bi-directional many-to-one association to PatientAutopsy
-    @OneToMany(mappedBy = "IPatientdeath")
+    @OneToMany(mappedBy = "IPatientdeath", cascade = CascadeType.ALL)
     @XmlElement(name = "patientautopsy")
     private List<PatientAutopsy> IPatientautopsies;
 

@@ -31,6 +31,7 @@
             <item name="Weblogic" href="weblogic.html"/>
             <item name="Eclipse" href="eclipse.html"/>
             <item name="HA Testing" href="ha_testing.html"/>
+            <item name="Database and JPA" href="ha_testing.html"/>
         </menu>
 
         <menu ref="reports"/>

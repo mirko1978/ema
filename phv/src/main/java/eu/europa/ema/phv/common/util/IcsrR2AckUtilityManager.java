@@ -97,9 +97,9 @@ public class IcsrR2AckUtilityManager implements IcsrR2AckUtility {
             reportAck.setLocalreportnumb("EU-EC-" + report.getPkSafetyreport());
         }
         catch (Exception e) {
-            LOG.error("Error creating the report ack for Message: {} Report {} with index {} ",
-                    reportMessage.getUniqueId(), report.getPkSafetyreport(),
-                    reportMessage.getIndex());
+            LOG.error("Error creating the report ack for Message: {} Report {} with index {} [{}] ",
+                    reportMessage.getHeader().getIcsr().getPkIchicsrmessage(), report.getPkSafetyreport(),
+                    reportMessage.getIndex(), report);
             throw e;
         }
         return reportAck;

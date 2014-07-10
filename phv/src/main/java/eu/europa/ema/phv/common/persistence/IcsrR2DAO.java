@@ -1,7 +1,7 @@
 package eu.europa.ema.phv.common.persistence;
 
+import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 
 /**
  * DAO for managing the ICSR R2 data to the database
@@ -14,23 +14,26 @@ import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 public interface IcsrR2DAO {
 
     /**
-     * Persist only the Icsr without any report.
-     * @param icsr
+     * Create a new entity in the database.
+     *
+     * @param icsr the received icsr
      * @return The saved icsr without the reports
      */
-    IchicsrMessage saveOnlyIcsr(IchicsrMessage icsr);
+    void persist(IchicsrMessage icsr);
 
     /**
-     * Update all the fields except the Reports on destination copying its from source.
-     * @param source source with the data to copy
-     * @param destination icsr to synconize
+     * Copy a new ICSR message without any reports inside.
+     *
+     * @param source source ICSR message
+     * @return new ICSR without reports
      */
-    void updateIcsr(IchicsrMessage source, IchicsrMessage destination);
+    IchicsrMessage emptyIcsr(IchicsrMessage source);
 
     /**
-     * Add the report to the icsr and save it.
-     * @param icsr the icsr
-     * @param report the report to save and add to icsr
+     * Add all the metadata and set the field in order to prepare for persist the ICSR message
+     *
+     * @param message
+     * @param metadata
      */
-    void saveReport(IchicsrMessage icsr, SafetyReport report);
+    void prepare(IchicsrMessage message, MessageMetadata metadata);
 }

@@ -9,10 +9,8 @@ package eu.europa.ema.phv.adrvalidationhuman;
  * @since 30/06/2014 (creation date)
  */
 public interface AdrValidationHumanCommon {
-    /** Header key for retriving the ICSR R2 original message */
+    /**
+     * Header key for retriving the ICSR R2 original message
+     */
     String FIRST_MESSAGE = "IcsrR2Message";
-
-    /** Message saved in the database */
-    String SAVED_ICSR = "SavedIcsrR2Message";
-
 }

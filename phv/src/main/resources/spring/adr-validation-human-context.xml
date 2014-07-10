@@ -5,12 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:annotation-config />
+    <context:annotation-config/>
 
-	<bean id="adrValidationHumanRouter" class="eu.europa.ema.phv.adrvalidationhuman.AdrValidationHumanRouter" />
-	<bean id="adrReportAggregationStrategy" class="eu.europa.ema.phv.adrvalidationhuman.AdrReportAggregationStrategy" />
-	
-	<!-- Processor -->
-	<bean id="adrHumanBRValidation" class="eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanBRValidation" />
-    <bean id="adrHumanPersistence" class="eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanPersistence" />
+    <bean id="adrValidationHumanRouter" class="eu.europa.ema.phv.adrvalidationhuman.AdrValidationHumanRouter"/>
+    <bean id="adrReportAggregationStrategy" class="eu.europa.ema.phv.adrvalidationhuman.AdrReportAggregationStrategy"/>
+
+    <!-- Processor -->
+    <bean id="adrHumanBRValidation" class="eu.europa.ema.phv.adrvalidationhuman.processor.AdrHumanBRValidation"/>
 </beans>

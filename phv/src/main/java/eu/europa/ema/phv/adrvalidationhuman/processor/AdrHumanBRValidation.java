@@ -3,7 +3,7 @@
  */
 package eu.europa.ema.phv.adrvalidationhuman.processor;
 
-import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCode;
+import eu.europa.ema.phv.common.model.adrhuman.IcsrAckCodeEnum;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
 
@@ -27,7 +27,7 @@ public class AdrHumanBRValidation {
      */
     public IcsrR2ReportValidationResult validate(IcsrR2ReportMessage message) {
         IcsrR2ReportValidationResult result = new IcsrR2ReportValidationResult();
-        result.setAckCode(IcsrAckCode.OK);
+        result.setAckCode(IcsrAckCodeEnum.OK);
         result.setMessage(message);
         return result;
     }

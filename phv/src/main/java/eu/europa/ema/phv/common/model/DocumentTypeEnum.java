@@ -8,6 +8,10 @@ package eu.europa.ema.phv.common.model;
  * @since 24 Jun 2014 (creation date)
  */
 public enum DocumentTypeEnum {
+    /**
+     * Value 0 is not used in the database
+     */
+    NOT_USED,
     ICHICSR,
     BACKLOG,
     SUSAR,
@@ -28,28 +32,8 @@ public enum DocumentTypeEnum {
     MASTER_CTPSUR;
 
     /**
-     * Convert a database code number in DocumentTypeEnum
-     * @param number from the database
-     * @return
-     */
-    public static DocumentTypeEnum fromNumber(int number) {
-        DocumentTypeEnum[] all = DocumentTypeEnum.values();
-        if (number > all.length || number < 1) {
-            throw new IllegalArgumentException("Document type not mapped for " + number);
-        }
-        return all[number - 1];
-    }
-
-    /**
-     * Convert the current DocumentTypeEnum in a database number
-     * @return the database number
-     */
-    public int toNumber() {
-        return this.ordinal() + 1;
-    }
-
-    /**
      * Convert the XML String in a DocumentTypeEnum
+     *
      * @param value the XML String
      * @return
      */
@@ -63,6 +47,7 @@ public enum DocumentTypeEnum {
 
     /**
      * Convert the current DocumentTypeEnum in a XML String
+     *
      * @return the XML String
      */
     public String toXmlString() {

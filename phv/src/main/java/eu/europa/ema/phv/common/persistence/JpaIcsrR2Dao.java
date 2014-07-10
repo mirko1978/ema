@@ -1,5 +1,7 @@
 package eu.europa.ema.phv.common.persistence;
 
+import eu.europa.ema.phv.common.model.adrhuman.icsrr2.CaseTypeEnum;
+import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReports;
@@ -10,12 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Persiste the ICSR R2 using JPA. <br/>
- * Please note that the {@link #saveOnlyIcsr(IchicsrMessage)} method return the context attached entity.
  *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
@@ -31,40 +30,17 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
     @Override
     @ReturnInsert
     @Transactional
-    public IchicsrMessage saveOnlyIcsr(IchicsrMessage icsr) {
-        IchicsrMessage saved = new IchicsrMessage();
-        updateIcsr(icsr, saved);
-        saved.setSafetyReports(null);
-        manager.persist(saved);
-        if(LOG.isDebugEnabled()) {
-            LOG.debug("DAO: ICSR core message saved for {}", saved);
-        }
-        return saved;
-    }
-
-    @Override
-    @ReturnInsert
-    @Transactional
-    public void saveReport(IchicsrMessage icsr, SafetyReport report) {
-        SafetyReports safetyReports = new SafetyReports();
-        safetyReports.setIchicsrMessage(icsr);
-        safetyReports.setSafetyReport(report);
-        if(report.getISafetyreports() == null) {
-            report.setISafetyreports(new LinkedList<SafetyReports>());
-        }
-        report.getISafetyreports().add(safetyReports);
-        if(icsr.getSafetyReports() == null) {
-            icsr.setSafetyReports(new LinkedList<SafetyReports>());
-        }
-        icsr.getSafetyReports().add(safetyReports);
-        manager.persist(safetyReports);
-        if(LOG.isDebugEnabled()) {
-            LOG.debug("DAO: Report saved for {}", report);
+    public void persist(IchicsrMessage icsr) {
+        manager.persist(icsr);
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("DAO: ICSR core message saved for {}", icsr);
         }
     }
 
     @Override
-    public void updateIcsr(IchicsrMessage source, IchicsrMessage destination) {
+    @SuppressWarnings("deprecation")
+    public IchicsrMessage emptyIcsr(IchicsrMessage source) {
+        IchicsrMessage destination = new IchicsrMessage();
         destination.setPkIchicsrmessage(source.getPkIchicsrmessage());
         destination.setAckgendate(source.getAckgendate());
         destination.setAcksenddate(source.getAcksenddate());
@@ -90,9 +66,26 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
         destination.setReceiverid(source.getReceiverid());
         destination.setMessageDateFormat(source.getMessageDateFormat());
         destination.setIMessageack(source.getIMessageack());
-        if(source.getSafetyReports() != destination.getSafetyReports()) {
-            destination.setSafetyReports(source.getSafetyReports());
+        return destination;
+    }
+
+    @Override
+    public void prepare(IchicsrMessage message, MessageMetadata metadata) {
+        // Adding the receiving date to the icsr
+        message.setMessagereceivedate(metadata.getReceived());
+        // Merge company and authority for each report following the database algorithm
+        for (SafetyReports reports : message.getSafetyReports()) {
+            SafetyReport report = reports.getSafetyReport();
+            if (report.getCompanynumb() != null) {
+                report.setCasenumber(report.getCompanynumb());
+                report.setCasetype(CaseTypeEnum.COMPANY);
+            }
+            else {
+                report.setCasenumber(report.getAuthoritynumb());
+                report.setCasetype(CaseTypeEnum.AUTHORITY);
+            }
         }
+
     }
 
 }

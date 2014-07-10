@@ -82,7 +82,7 @@
         <property name="dataSource" ref="dsIcsr"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
-                <property name="showSql" value="true"/>
+                <!--<property name="showSql" value="true"/>-->
                 <property name="databasePlatform" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
             </bean>
         </property>
@@ -104,20 +104,20 @@
 
     <!-- Atomikos data source - Doesn't work properly with eclipse link!!! -->
     <!--<bean id="dsMessage" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" init-method="init" destroy-method="close">-->
-        <!--<property name="uniqueResourceName" value="dsMessage"/>-->
-        <!--<property name="poolSize" value="30"/>-->
-        <!--<property name="maxPoolSize" value="1000"/>-->
-        <!--<property name="borrowConnectionTimeout" value="0"/>-->
-        <!--<property name="url" value="jdbc:hsqldb:mem:message" />-->
-        <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>-->
-        <!--<property name="user" value="sa" />-->
-        <!--<property name="password" value="" />-->
+    <!--<property name="uniqueResourceName" value="dsMessage"/>-->
+    <!--<property name="poolSize" value="30"/>-->
+    <!--<property name="maxPoolSize" value="1000"/>-->
+    <!--<property name="borrowConnectionTimeout" value="0"/>-->
+    <!--<property name="url" value="jdbc:hsqldb:mem:message" />-->
+    <!--<property name="driverClassName" value="org.hsqldb.jdbcDriver"/>-->
+    <!--<property name="user" value="sa" />-->
+    <!--<property name="password" value="" />-->
     <!--</bean>-->
 
     <bean id="dsIcsr" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <!--<property name="url" value="jdbc:hsqldb:mem:icsrdb"/>-->
         <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:file:./temp/icsrdb"/>
+        <!--<property name="url" value="jdbc:hsqldb:file:./temp/icsrdb"/> -->
+        <property name="url" value="jdbc:hsqldb:mem:icsrdb"/>
         <property name="username" value="sa"/>
         <property name="password" value=""/>
     </bean>

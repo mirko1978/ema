@@ -22,15 +22,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 
  * A camel framework processor to extract message and safety report metadata using regular expression
  * when XML parsing / JAXB unmarshalling fails.  The extracted metadata is used for persisting
  * message information and sending any negative acknowldgement
- * 
- * @author  Vinay Rao raov (created by)
+ *
+ * @author Vinay Rao raov (created by)
  * @version $Revision: 1.1 $ (cvs revision)
+ * @revisionDate $Date: 2003/12/19 10:51:34 8 Jul 2014 $
  * @since 8 Jul 2014 (creation date)
- * @revisionDate  $Date: 2003/12/19 10:51:34 8 Jul 2014 $
  */
 public class MetadataExtractor implements Processor {
 
@@ -105,10 +104,10 @@ public class MetadataExtractor implements Processor {
             LOG.debug("Doc Root: {}", pMatcher.group(++pNG));
 
             if (pMatcher.group(++pNG) == null) {
-                icsr.setMessagetype(new BigDecimal(pMatcher.group(++pNG)));
+                icsr.setMessagetype(new Integer(pMatcher.group(++pNG)));
             }
             else {
-                icsr.setMessagetype(new BigDecimal(pMatcher.group(pNG++)));
+                icsr.setMessagetype(new Integer(pMatcher.group(pNG++)));
             }
 
             if (pMatcher.group(++pNG) == null) {
@@ -137,7 +136,7 @@ public class MetadataExtractor implements Processor {
             }
 
         }
-        
+
         LOG.debug("ICSR obj : {}", icsr.toString());
         exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_ICSR, icsr);
         exchange.getIn().setHeader(MessageConstants.MESSAGE_HEADER_RECEIVER, icsr.getReceiverid());
