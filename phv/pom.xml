@@ -341,7 +341,7 @@
                     <source>
                         ${project.build.directory}/${project.build.finalName}.${project.packaging}
                     </source>
-                    <name>${project.build.finalName}</name>
+                    <name>${project.name}</name>
                 </configuration>
                 <executions>
                     <execution>
