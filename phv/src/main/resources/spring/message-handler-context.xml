@@ -19,7 +19,6 @@
 	<!-- Enricher -->
 	<bean id="MetadataEnricher"
 		class="eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher" />
-	<!-- <bean id="StoreEnricher" class="eu.europa.ema.phv.messagehandler.enricher.StoreEnricher" /> -->
 
 	<bean id="MessageEnricher"
 		class="eu.europa.ema.phv.messagehandler.enricher.MessageEnricher" />
@@ -30,7 +29,9 @@
 		class="eu.europa.ema.phv.messagehandler.processor.MetadataExtractor" />
 	<bean id="messageDAO" class="eu.europa.ema.phv.common.persistence.JpaMessageDAO" />
 
+	<bean id="MessageFilterHelper" class="eu.europa.ema.phv.messagehandler.processor.MessageFilterHelper" />
 	<!-- Translator -->
+	<bean id="MessageToEntityMapper" class="eu.europa.ema.phv.common.persistence.MessageToEntityMapper" />
 	<bean id="AckTranslator"
 		class="eu.europa.ema.phv.messagehandler.translator.AckTranslator" />
 	<bean id="RoutingTranslator"

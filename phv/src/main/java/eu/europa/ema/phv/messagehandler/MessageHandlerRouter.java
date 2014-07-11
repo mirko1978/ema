@@ -15,7 +15,9 @@ import org.xml.sax.SAXParseException;
 import eu.europa.ema.phv.common.exception.UnexpectedResultException;
 import eu.europa.ema.phv.common.persistence.MessageToEntityMapper;
 import eu.europa.ema.phv.common.util.JmsCamelUrl;
+import eu.europa.ema.phv.messagehandler.constants.MessageConstants;
 import eu.europa.ema.phv.messagehandler.enricher.MetadataEnricher;
+import eu.europa.ema.phv.messagehandler.processor.MessageFilterHelper;
 
 /**
  * Route definition for the Message Handler component.  This defines the main workflow for the incoming messages
@@ -41,8 +43,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
     private static final String CONTINUE_ROUTING_EP="direct:continueRouting";
     //the header used for web trader/evhuman routing
     private static final String HEADER_REROUTING_RECEIVER = "receiver";
-    //the header value for the above for EMA consumption
-    private static final String RECEIVER_EVHUMAN = "EVHUMAN";
+   
     
     //destination url conatainer
     @Inject
@@ -88,7 +89,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
             .processRef("MetadataExtractor")
             .log("Meta data extracted from the invlaid message")
             .to(MESSAGE_STORE_EP)
-            .beanRef("AckTranslator")
+            .beanRef("AckTranslator", true)
         .to(camelUrl.getOutboundMessage());
         //@formatter:on        
     }
@@ -102,7 +103,7 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //@formatter:off        
         from(VALID_EP)
             .transacted().log("Message is valid.. enriching")
-            .beanRef("MetadataEnricher") //add some headers for valid message rerouting 
+            .beanRef("MetadataEnricher", true) //add some headers for valid message rerouting 
             .log("Routing enriched message ...")
             .multicast()
                 .to(MESSAGE_STORE_EP)
@@ -113,23 +114,24 @@ public class MessageHandlerRouter extends SpringRouteBuilder {
         //the message persistent route
         from(MESSAGE_STORE_EP)
             .transacted()
-            .bean(MessageToEntityMapper.class, "mapMessageToEntity")
+            .beanRef("MessageToEntityMapper", "mapMessageToEntity",true)
             .log("Persisting the message meta data")
-         .to("jpa:eu.europa.ema.phv.common.model.adrhuman.InboundMessageEntity?persistenceUnit=messageJTA");
+         .to("jpa://?persistenceUnit=messageJTA");
         // @formatter:on
  
         
         //@formatter:off        
         from(CONTINUE_ROUTING_EP).log("Message received for rerouting")
-             .filter(header(HEADER_REROUTING_RECEIVER).isEqualTo(RECEIVER_EVHUMAN)) //add a processor to check with db to see if the receiver is not web trader
+             .filter().method("MessageFilterHelper", "isNotWebTrader") //add a processor to check with db to see if the receiver is not web trader
+             .log("Messsage filtered to exclude WebTrader messages")
              .choice()
-                .when(header(HEADER_REROUTING_RECEIVER).isEqualTo(RECEIVER_EVHUMAN)) //EMA
-                    .beanRef("MessageEnricher")
-                	.log("Routing the valid enriched message to Human ADR Parser for receiever "+ header(HEADER_REROUTING_RECEIVER) )
+                .when(header(MessageConstants.MESSAGE_HEADER_RECEIVER).isEqualTo(MessageConstants.MESSAGE_RECEIVER_EVHUMAN)) //EMA
+                    .beanRef("MessageEnricher", true)
+                	.log("Routing the valid enriched message to Human ADR Parser for receiever "+ header(MessageConstants.MESSAGE_HEADER_RECEIVER) )
                 	.to(camelUrl.getAdrParserHuman())
-                .when(header(HEADER_REROUTING_RECEIVER).isNotEqualTo(RECEIVER_EVHUMAN)) // NCA and other receivers
-                    .beanRef("RoutingTranslator")
-                    .log("Routing web trader messages to storage handler for receiver " + header(HEADER_REROUTING_RECEIVER))
+                .when(header(MessageConstants.MESSAGE_HEADER_RECEIVER).isNotEqualTo(MessageConstants.MESSAGE_RECEIVER_EVHUMAN)) // NCA and other receivers
+                    .beanRef("RoutingTranslator", true)
+                    .log("Routing web trader messages to storage handler for receiver " + header(MessageConstants.MESSAGE_HEADER_RECEIVER))
                     .to(camelUrl.getOutboundMessage())
                 .otherwise()
                 	.log("Exception") //as we have filtered we should not reach here

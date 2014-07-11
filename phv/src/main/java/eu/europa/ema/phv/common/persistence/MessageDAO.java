@@ -25,5 +25,7 @@ public interface MessageDAO {
      * @return MessageBoxEntity
      */
     MessageBoxEntity findMessageBoxByOwner(String Owner);
-
+    
+  
+    
 }

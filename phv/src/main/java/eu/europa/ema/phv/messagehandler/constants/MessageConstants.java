@@ -24,4 +24,7 @@ public interface MessageConstants {
     String MESSAGE_FILE_NAME = "fileName";
     String MESSAGE_ORIGAL_PAYLOAD = "originalPayload";
 
+    //the header value for the above for EMA consumption
+    String MESSAGE_RECEIVER_EVHUMAN = "EVHUMAN";
+
 }

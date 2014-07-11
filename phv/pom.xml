@@ -287,6 +287,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+        	<groupId>org.apache.httpcomponents</groupId>
+        	<artifactId>httpcore</artifactId>
+        	<version>4.3.1</version>
+        </dependency>
     </dependencies>
 
     <build>
