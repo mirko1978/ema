@@ -11,9 +11,14 @@ import java.util.Date;
 import java.util.List;
 
 
+
 /**
  * The persistent class for the X_MESSAGEBOX database table in the Repository schema
  * 
+ * @author  Vinay Rao raov (created by)
+ * @version $Revision: 1.1 $ (cvs revision)
+ * @since 11 Jul 2014 (creation date)
+ * @revisionDate  $Date: 2003/12/19 10:51:34 11 Jul 2014 $
  */
 @Entity
 @Table(name="X_MESSAGEBOX")

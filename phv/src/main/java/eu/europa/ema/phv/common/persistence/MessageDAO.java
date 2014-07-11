@@ -19,7 +19,7 @@ import eu.europa.ema.phv.common.model.adrhuman.MessageBoxEntity;
 public interface MessageDAO {
     
     /**
-     * The read only method to get the row entity from X_MESSAGEBOX table for a given owner (sender or receiver)
+     * The  method to get the row entity from X_MESSAGEBOX table for a given owner (sender or receiver)
      * 
      * @param Owner
      * @return MessageBoxEntity
