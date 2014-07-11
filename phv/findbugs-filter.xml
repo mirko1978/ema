@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <Match>
+        <Package name="eu.europa.ema.phv.common.model.adrhuman.icsrr2"/>
+    </Match>
+</FindBugsFilter>

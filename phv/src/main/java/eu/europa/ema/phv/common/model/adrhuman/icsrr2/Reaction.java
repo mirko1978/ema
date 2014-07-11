@@ -259,4 +259,19 @@ public class Reaction implements Serializable {
         this.IPatient = IPatient;
     }
 
+    public String getReactionmeddraversionpt() {
+        return reactionmeddraversionpt;
+    }
+
+    public void setReactionmeddraversionpt(String reactionmeddraversionpt) {
+        this.reactionmeddraversionpt = reactionmeddraversionpt;
+    }
+
+    public String getReactionmeddrapt() {
+        return reactionmeddrapt;
+    }
+
+    public void setReactionmeddrapt(String reactionmeddrapt) {
+        this.reactionmeddrapt = reactionmeddrapt;
+    }
 }
