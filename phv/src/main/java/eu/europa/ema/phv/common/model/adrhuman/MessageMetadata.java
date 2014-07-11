@@ -6,26 +6,26 @@ import java.util.UUID;
 
 /**
  * Describe the Message metadata like file name, arrival date etc.
- * 
+ *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @since 20 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 20 Jun 2014 $
+ * @since 20 Jun 2014 (creation date)
  */
 public class MessageMetadata implements Serializable {
 
     private static final long serialVersionUID = -4085873752167382721L;
 
-    /** Unique identifier for the received message. It is set by Message Handler component */
+    /**
+     * Unique identifier for the received message. It is set by Message Handler component
+     */
     private UUID uniqueId;
 
     private String fileName = "foo.xml";
 
     private Date received = new Date();
-    
-    private Long fileSize = 0L;
 
-   
+    private Long fileSize = 0L;
 
     /**
      * @return the fileName
@@ -56,7 +56,6 @@ public class MessageMetadata implements Serializable {
     }
 
     /**
-     *
      * @return {@link #uniqueId}
      */
     public UUID getUniqueId() {
@@ -64,7 +63,6 @@ public class MessageMetadata implements Serializable {
     }
 
     /**
-     *
      * @param uniqueId {@link #uniqueId}
      */
     public void setUniqueId(UUID uniqueId) {
@@ -72,13 +70,13 @@ public class MessageMetadata implements Serializable {
     }
 
     /**
-     * @param header
+     * @param size {@link #fileSize}
      */
     public void setFileSize(Long size) {
-  
+
         this.fileSize = size;
     }
-    
+
     public Long getFileSize() {
         return fileSize;
     }

@@ -293,13 +293,13 @@ public class Sender implements Serializable {
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-            .omitNullValues()
-            .add("Given Name", sendergivename)
-            .add("Family Name", senderfamilyname)
-            .add("Middle Name", sendermiddlename)
-            .add("Organization", senderorganization)
-            .add("Type", sendertype)
-            .add("State", senderstate)
-            .toString();
+                .omitNullValues()
+                .add("Given Name", sendergivename)
+                .add("Family Name", senderfamilyname)
+                .add("Middle Name", sendermiddlename)
+                .add("Organization", senderorganization)
+                .add("Type", sendertype)
+                .add("State", senderstate)
+                .toString();
     }
 }

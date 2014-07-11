@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_PARENTMEDICALHISTORY database table.
- * 
  */
 @Entity
 @Table(name = "I_PARENTMEDICALHISTORY")
@@ -22,7 +21,7 @@ public class ParentMedicalHistory implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ParentMedicalHistory")
-    @SequenceGenerator(name="ParentMedicalHistory",sequenceName="SEQ_PARENTMEDICALHISTORY", allocationSize=1)
+    @SequenceGenerator(name = "ParentMedicalHistory", sequenceName = "SEQ_PARENTMEDICALHISTORY", allocationSize = 1)
     @Column(name = "PK_PARENTMEDICALHISTORY", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkParentmedicalhistory;

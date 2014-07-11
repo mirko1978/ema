@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class DateAdapter extends XmlAdapter<String, Date> {
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS");
 
     @Override
     public String marshal(Date v) throws Exception {

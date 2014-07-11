@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * The persistent class for the I_NARRATIVE_TRANSLATION database table.
- * 
  */
 @Entity
 @Table(name = "I_NARRATIVE_TRANSLATION")
@@ -17,7 +16,7 @@ public class NarrativeTranslation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NarrativeTranslation")
-    @SequenceGenerator(name="NarrativeTranslation",sequenceName="SEQ_NARRATIVETRANSLATION", allocationSize=1)
+    @SequenceGenerator(name = "NarrativeTranslation", sequenceName = "SEQ_NARRATIVETRANSLATION", allocationSize = 1)
     @Column(name = "PK_TRANSLATION", unique = true, nullable = false, precision = 10)
     private long pkTranslation;
 

@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_PRIMARYSOURCE database table.
- * 
  */
 @Entity
 @Table(name = "I_PRIMARYSOURCE")
@@ -22,7 +21,7 @@ public class PrimarySource implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PrimarySource")
-    @SequenceGenerator(name="PrimarySource",sequenceName="SEQ_PRIMARYSOURCE", allocationSize=1)
+    @SequenceGenerator(name = "PrimarySource", sequenceName = "SEQ_PRIMARYSOURCE", allocationSize = 1)
     @Column(name = "PK_PRIMARYSOURCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkPrimarysource;

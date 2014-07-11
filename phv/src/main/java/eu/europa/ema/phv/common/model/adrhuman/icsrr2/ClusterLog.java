@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * The persistent class for the I_CLUSTERLOG database table.
- * 
  */
 @Entity
 @Table(name = "I_CLUSTERLOG")
@@ -17,7 +16,7 @@ public class ClusterLog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ClusterLog")
-    @SequenceGenerator(name="ClusterLog",sequenceName="SEQ_CLUSTERLOG", allocationSize=1)
+    @SequenceGenerator(name = "ClusterLog", sequenceName = "SEQ_CLUSTERLOG", allocationSize = 1)
     @Column(name = "PK_LOG", unique = true, nullable = false, precision = 10)
     private long pkLog;
 

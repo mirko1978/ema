@@ -13,12 +13,13 @@ import java.io.Serializable;
  *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @revisionDate $Date: 27/06/2014 $
  * @since 27/06/2014 (creation date)
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "IcsrR2ReportValidationResult")
 public class IcsrR2ReportValidationResult implements Serializable {
+
+    private static final long serialVersionUID = -5790866481419401493L;
 
     /**
      * Icsr Report message received

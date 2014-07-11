@@ -1,6 +1,5 @@
 package eu.europa.ema.phv.model;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import org.junit.Assert;
 
 import javax.xml.bind.JAXBContext;
@@ -23,11 +22,11 @@ import java.util.List;
  * @since 09/07/2014 (creation date)
  */
 public class XmlUnmarshall {
-    public static JAXBContext JAXB_CONTEXT;
+    protected static JAXBContext JAXB_CONTEXT;
 
     protected Path path;
 
-    public XmlUnmarshall(Path path) {
+    protected XmlUnmarshall(Path path) {
         this.path = path;
         System.out.println("File: " + path);
     }
@@ -39,7 +38,7 @@ public class XmlUnmarshall {
      * @return
      * @throws java.io.IOException
      */
-    public static List<Object[]> data(final String filesPath) throws IOException {
+    protected static List<Object[]> data(final String filesPath) throws IOException {
         Path sources = FileSystems.getDefault().getPath(filesPath);
         DirectoryStream<Path> xmlFileStream;
         try {
@@ -63,7 +62,7 @@ public class XmlUnmarshall {
     }
 
     @SuppressWarnings("unchecked")
-    public<T> T unmarshall() throws JAXBException {
+    protected <T> T unmarshall() throws JAXBException {
         System.out.println(JAXB_CONTEXT.getClass());
         Assert.assertEquals("org.eclipse.persistence.jaxb.JAXBContext", JAXB_CONTEXT.getClass().getCanonicalName());
         Unmarshaller jaxbUnmarshaller = JAXB_CONTEXT.createUnmarshaller();

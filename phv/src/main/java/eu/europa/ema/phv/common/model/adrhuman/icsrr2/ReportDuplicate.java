@@ -8,7 +8,6 @@ import java.io.Serializable;
 
 /**
  * The persistent class for the I_REPORTDUPLICATE database table.
- * 
  */
 @Entity
 @Table(name = "I_REPORTDUPLICATE")
@@ -21,7 +20,7 @@ public class ReportDuplicate implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReportDuplicate")
-    @SequenceGenerator(name="ReportDuplicate",sequenceName="SEQ_REPORTDUPLICATE", allocationSize=1)
+    @SequenceGenerator(name = "ReportDuplicate", sequenceName = "SEQ_REPORTDUPLICATE", allocationSize = 1)
     @Column(name = "PK_REPORTDUPLICATE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkReportduplicate;

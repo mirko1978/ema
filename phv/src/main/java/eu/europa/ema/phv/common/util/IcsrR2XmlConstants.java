@@ -9,12 +9,20 @@ package eu.europa.ema.phv.common.util;
  * @since 30/06/2014 (creation date)
  */
 public interface IcsrR2XmlConstants {
-    /** Ack version */
+    /**
+     * Ack version
+     */
     String ACK_VERSION = "1.1";
-    /** Ack release number */
+    /**
+     * Ack release number
+     */
     String ACK_RELEASE = "1.0";
-    /** EVHUMAN */
+    /**
+     * EVHUMAN
+     */
     String EVHUMAN = "EVHUMAN";
-    /** Ack message type **/
+    /**
+     * Ack message type *
+     */
     String ACK_TYPE = "ichicsrack";
 }

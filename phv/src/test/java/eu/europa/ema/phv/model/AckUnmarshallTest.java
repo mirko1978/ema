@@ -1,6 +1,5 @@
 package eu.europa.ema.phv.model;
 
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.IchIcsrAck;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -49,6 +48,5 @@ public class AckUnmarshallTest extends XmlUnmarshall {
         System.out.println("Message : " + ack.getIchIcsrMessageHeader().getMessageNumb());
         System.out.println("Results: " + ack.getAcknowledgment().getReportAcknowledgment().size());
     }
-
 
 }

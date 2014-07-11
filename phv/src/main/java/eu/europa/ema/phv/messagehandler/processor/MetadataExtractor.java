@@ -8,15 +8,12 @@ import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.util.XMLRegEx;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
 import eu.europa.ema.phv.messagehandler.constants.MessageConstants;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -80,7 +77,7 @@ public class MetadataExtractor implements Processor {
                                     XMLRegEx.FRE_NodeOKBroken + XMLRegEx.FRE_ContentStopAtNL + XMLRegEx.FRE_ContentTrim,
                             "?") + ".*";
 
-    private Pattern PPattern =
+    private final Pattern PPattern =
             XMLRegEx.compile(P_PATTERN_STRING, Pattern.MULTILINE + Pattern.DOTALL + Pattern.UNICODE_CASE);
 
     @Inject

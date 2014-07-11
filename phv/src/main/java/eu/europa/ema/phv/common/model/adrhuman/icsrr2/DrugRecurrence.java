@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_DRUGRECURRENCE database table.
- * 
  */
 @Entity
 @Table(name = "I_DRUGRECURRENCE")
@@ -20,10 +19,12 @@ public class DrugRecurrence implements Serializable {
 
     private static final long serialVersionUID = 4024259418752657631L;
 
-    /** Primary Key */
+    /**
+     * Primary Key
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DrugRecurrence")
-    @SequenceGenerator(name="DrugRecurrence",sequenceName="SEQ_DRUGRECURRENCE", allocationSize=1)
+    @SequenceGenerator(name = "DrugRecurrence", sequenceName = "SEQ_DRUGRECURRENCE", allocationSize = 1)
     @Column(name = "PK_DRUGRECURRENCE", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkDrugrecurrence;
@@ -32,7 +33,9 @@ public class DrugRecurrence implements Serializable {
     @XmlElement(required = true, name = "drugrecuraction")
     private BigDecimal drugrecuraction;
 
-    /** Meddra code for {@link #drugrecuraction} */
+    /**
+     * Meddra code for {@link #drugrecuraction}
+     */
     @Column(precision = 10)
     @XmlTransient
     private BigDecimal drugrecuractionct;

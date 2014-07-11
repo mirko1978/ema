@@ -1,15 +1,15 @@
 /**
- * 
+ *
  */
 package eu.europa.ema.phv.common.exception;
 
 /**
  * Result not expected from the previous operation
- * 
+ *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @since 12 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 12 Jun 2014 $
+ * @since 12 Jun 2014 (creation date)
  */
 public class UnexpectedResultException extends PhvException {
 
@@ -23,6 +23,7 @@ public class UnexpectedResultException extends PhvException {
 
     /**
      * Constructs a new exception with the specified detail message.
+     *
      * @param message
      */
     public UnexpectedResultException(String message) {

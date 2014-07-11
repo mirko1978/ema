@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * The persistent class for the I_REPORTACK database table.
- * 
  */
 @Entity
 @Table(name = "I_REPORTACK")
@@ -15,7 +14,9 @@ import java.util.List;
 public class ReportAck implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /** Primary key from ICHICSR.I_SAFETYREPORT */
+    /**
+     * Primary key from ICHICSR.I_SAFETYREPORT
+     */
     @Id
     @Column(name = "PK_SAFETYREPORT", unique = true, nullable = false, precision = 10)
     private long pkSafetyreport;
@@ -58,7 +59,8 @@ public class ReportAck implements Serializable {
 
     // bi-directional many-to-many association to MessageAck
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "I_SAFETYREPORTACKS", joinColumns = { @JoinColumn(name = "FK_SAFETYREPORT", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "FK_ICHICSRMESSAGE", nullable = false) })
+    @JoinTable(name = "I_SAFETYREPORTACKS", joinColumns = { @JoinColumn(name = "FK_SAFETYREPORT", nullable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "FK_ICHICSRMESSAGE", nullable = false) })
     private List<MessageAck> IMessageacks;
 
     // bi-directional one-to-one association to SafetyReport

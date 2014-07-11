@@ -3,12 +3,11 @@
  */
 package eu.europa.ema.phv.outboundmessagemanagement;
 
-import javax.inject.Inject;
-
+import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spring.SpringRouteBuilder;
 
-import eu.europa.ema.phv.common.util.JmsCamelUrl;
+import javax.inject.Inject;
 
 /**
  * Route definition for the Outbound Message Management

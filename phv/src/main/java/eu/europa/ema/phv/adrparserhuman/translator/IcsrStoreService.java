@@ -5,8 +5,6 @@ import eu.europa.ema.phv.common.model.adrhuman.icsrr2.CaseTypeEnum;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReports;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Persiste the ICSR R2 using JPA. <br/>
@@ -17,7 +15,6 @@ import org.slf4j.LoggerFactory;
  * @since 30/06/2014 (creation date)
  */
 public class IcsrStoreService {
-    private static final Logger LOG = LoggerFactory.getLogger(IcsrStoreService.class);
 
     @SuppressWarnings("deprecation")
     public IchicsrMessage emptyIcsr(IchicsrMessage source) {

@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * The persistent class for the I_CLUSTER database table.
- * 
  */
 @Entity
 @Table(name = "I_CLUSTER")
@@ -15,10 +14,12 @@ import java.util.Date;
 public class Cluster implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /** TODO: Sujata */
+    /**
+     * TODO: Sujata
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Cluster")
-    @SequenceGenerator(name="Cluster",sequenceName="SEQ_CLUSTERID", allocationSize=100)
+    @SequenceGenerator(name = "Cluster", sequenceName = "SEQ_CLUSTERID", allocationSize = 100)
     @Column(name = "FK_SAFETYREPORT", unique = true, nullable = false, precision = 22)
     private long fkSafetyreport;
 

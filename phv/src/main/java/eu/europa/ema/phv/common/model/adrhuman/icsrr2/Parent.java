@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * The persistent class for the I_PARENT database table.
- * 
  */
 @Entity
 @Table(name = "I_PARENT")

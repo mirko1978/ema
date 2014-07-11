@@ -6,7 +6,6 @@ package eu.europa.ema.phv.common.xmladapter;
 import eu.europa.ema.phv.common.model.DocumentTypeEnum;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
-import java.math.BigDecimal;
 
 /**
  * Convert the integer database document type in the XML String document type and vice versa

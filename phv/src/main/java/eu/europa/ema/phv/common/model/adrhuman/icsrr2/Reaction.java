@@ -21,7 +21,7 @@ public class Reaction implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Reaction")
-    @SequenceGenerator(name="Reaction",sequenceName="SEQ_REACTION", allocationSize=1)
+    @SequenceGenerator(name = "Reaction", sequenceName = "SEQ_REACTION", allocationSize = 1)
     @Column(name = "PK_REACTION", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkReaction;

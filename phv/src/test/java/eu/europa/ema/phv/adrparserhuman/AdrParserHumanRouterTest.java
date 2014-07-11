@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package eu.europa.ema.phv.adrparserhuman;
 
@@ -13,11 +13,11 @@ import javax.xml.bind.JAXBException;
 
 /**
  * TTest the ADR parser human router
- * 
+ *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @since 23 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 23 Jun 2014 $
+ * @since 23 Jun 2014 (creation date)
  */
 public class AdrParserHumanRouterTest extends AbstractPhvTest {
 
@@ -38,7 +38,7 @@ public class AdrParserHumanRouterTest extends AbstractPhvTest {
         producerTemplate.sendBody(message);
         resultEndpoint.setMinimumExpectedMessageCount(1);
     }
-    
+
     @Test
     @DirtiesContext
     public void multipleReportTest() throws JAXBException {

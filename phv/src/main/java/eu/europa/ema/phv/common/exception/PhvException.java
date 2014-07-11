@@ -1,15 +1,15 @@
 /**
- * 
+ *
  */
 package eu.europa.ema.phv.common.exception;
 
 /**
  * Exception base class for phv
- * 
+ *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @since 12 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 12 Jun 2014 $
+ * @since 12 Jun 2014 (creation date)
  */
 public class PhvException extends Exception {
 
@@ -24,6 +24,7 @@ public class PhvException extends Exception {
 
     /**
      * Constructs a new exception with the specified detail message.
+     *
      * @param message
      */
     public PhvException(String message) {
@@ -34,6 +35,7 @@ public class PhvException extends Exception {
      * Constructs a new exception with the specified cause and a detail message
      * of <code>(cause == null ? null : cause.toString())</code> (which
      * typically contains the class and detail message of cause).
+     *
      * @param cause
      */
     public PhvException(Throwable cause) {
@@ -42,6 +44,7 @@ public class PhvException extends Exception {
 
     /**
      * Constructs a new exception with the specified detail message and cause.
+     *
      * @param message
      * @param cause
      */
@@ -53,6 +56,7 @@ public class PhvException extends Exception {
      * Constructs a new exception with the specified detail message, cause,
      * suppression enabled or disabled, and writable stack trace enabled or
      * disabled.
+     *
      * @param message
      * @param cause
      * @param enableSuppression

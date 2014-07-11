@@ -1,35 +1,26 @@
 package eu.europa.ema.phv.cluster;
 
+import org.junit.Test;
+
+import javax.jms.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Hashtable;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.Queue;
-import javax.jms.QueueConnection;
-import javax.jms.QueueConnectionFactory;
-import javax.jms.QueueReceiver;
-import javax.jms.QueueSession;
-import javax.jms.Session;
-import javax.jms.TextMessage;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
-import org.junit.Test;
-
+@SuppressWarnings("Convert2Diamond")
 public class QueueReceive {
-    public final static String JNDI_FACTORY = "weblogic.jndi.WLInitialContextFactory";
+    private final static String JNDI_FACTORY = "weblogic.jndi.WLInitialContextFactory";
 
-    public final static String WLS_URL = "t3://uv1026.emea.eu.int:7827,uv1027.emea.eu.int:7827";
+    private final static String WLS_URL = "t3://uv1026.emea.eu.int:7827,uv1027.emea.eu.int:7827";
 
-    public final static String JMS_FACTORY = "jms/phv/ConnectionFactory";
+    private final static String JMS_FACTORY = "jms/phv/ConnectionFactory";
 
-    public final static String QUEUE = "jms/phv/parser/human/adr_Queue"; // "jms/phv/gateway/human/adr_UDQ_mig";;
+    private final static String QUEUE = "jms/phv/parser/human/adr_Queue"; // "jms/phv/gateway/human/adr_UDQ_mig";;
 
-    public final static long SLEEP = 1000;
+    private final static long SLEEP = 1000;
 
     private QueueConnectionFactory qconFactory;
 
@@ -78,6 +69,7 @@ public class QueueReceive {
      */
     private void readMessages() throws JMSException, NamingException {
         MessageConsumer consumer = qsession.createConsumer(queue);
+        //noinspection InfiniteLoopStatement
         while (true) {
             try {
                 Message msg = consumer.receive(50);
@@ -95,6 +87,7 @@ public class QueueReceive {
                 Thread.sleep(SLEEP);
             }
             catch (InterruptedException e) {
+                e.printStackTrace();
             }
             catch (JMSException je) {
                 je.printStackTrace();

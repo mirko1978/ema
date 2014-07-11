@@ -35,8 +35,6 @@ public class SendValidIcsr {
 
     public final static String WLS_URL = "t3://localhost:7002";
 
-    private QueueConnectionFactory qconFactory;
-
     private QueueConnection qcon;
 
     private QueueSession qsession;
@@ -63,7 +61,8 @@ public class SendValidIcsr {
             e.printStackTrace();
             throw e;
         }
-        qconFactory = (QueueConnectionFactory) initialContext.lookup(properties.getProperty("jms.connection.factory"));
+        QueueConnectionFactory qconFactory = (QueueConnectionFactory) initialContext
+                .lookup(properties.getProperty("jms.connection.factory"));
         qcon = qconFactory.createQueueConnection();
         qsession = qcon.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
         queue = (Queue) initialContext.lookup(properties.getProperty("jms.adr.parser.human"));

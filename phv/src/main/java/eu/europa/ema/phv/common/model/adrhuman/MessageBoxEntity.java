@@ -1,188 +1,182 @@
 package eu.europa.ema.phv.common.model.adrhuman;
 
-import java.io.Serializable;
-
 import javax.persistence.*;
-
-import org.eclipse.persistence.jpa.JpaQuery;
-
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-
-
 /**
  * The persistent class for the X_MESSAGEBOX database table in the Repository schema
- * 
- * @author  Vinay Rao raov (created by)
+ *
+ * @author Vinay Rao raov (created by)
  * @version $Revision: 1.1 $ (cvs revision)
+ * @revisionDate $Date: 2003/12/19 10:51:34 11 Jul 2014 $
  * @since 11 Jul 2014 (creation date)
- * @revisionDate  $Date: 2003/12/19 10:51:34 11 Jul 2014 $
  */
 @Entity
-@Table(name="X_MESSAGEBOX")
+@Table(name = "X_MESSAGEBOX")
 @NamedQueries({
-	@NamedQuery(name="MessageBoxEntity.findAll", query="SELECT m FROM MessageBoxEntity m"),
-	@NamedQuery(name="MessageBoxEntity.findByOwner", query="SELECT m FROM MessageBoxEntity m where m.owner = :owner")
+        @NamedQuery(name = "MessageBoxEntity.findAll", query = "SELECT m FROM MessageBoxEntity m"),
+        @NamedQuery(name = "MessageBoxEntity.findByOwner",
+                query = "SELECT m FROM MessageBoxEntity m where m.owner = :owner")
 })
 public class MessageBoxEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@PersistenceContext(unitName="messageJTA") 
-	protected transient  EntityManager em;
-	
-	@Id
-	@Column(name="PK_MESSAGEBOX", unique=true, nullable=false, precision=10)
-	private long pkMessagebox;
+    @PersistenceContext(unitName = "messageJTA")
+    protected transient EntityManager em;
 
-	@Column(precision=4)
-	private BigDecimal archiveinterval;
+    @Id
+    @Column(name = "PK_MESSAGEBOX", unique = true, nullable = false, precision = 10)
+    private long pkMessagebox;
 
-	@Temporal(TemporalType.DATE)
-	@Column(nullable=false)
-	private Date creationdate;
+    @Column(precision = 4)
+    private BigDecimal archiveinterval;
 
-	@Column(nullable=false, length=60)
-	private String messageboxname;
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    private Date creationdate;
 
-	@Column(nullable=false, precision=10)
-	private BigDecimal numarchivedin;
+    @Column(nullable = false, length = 60)
+    private String messageboxname;
 
-	@Column(nullable=false, precision=10)
-	private BigDecimal numarchivedout;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal numarchivedin;
 
-	@Column(precision=10)
-	private BigDecimal nummaxmessagein;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal numarchivedout;
 
-	@Column(precision=10)
-	private BigDecimal nummaxmessageout;
+    @Column(precision = 10)
+    private BigDecimal nummaxmessagein;
 
-	@Column(nullable=false, precision=10)
-	private BigDecimal nummessagein;
+    @Column(precision = 10)
+    private BigDecimal nummaxmessageout;
 
-	@Column(nullable=false, precision=10)
-	private BigDecimal nummessageout;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal nummessagein;
 
-	@Column(nullable=false, length=60)
-	private String owner;
+    @Column(nullable = false, precision = 10)
+    private BigDecimal nummessageout;
 
-	//bi-directional many-to-one association to InboundMessageEntity
-	@OneToMany(mappedBy="XMessagebox")
-	private List<InboundMessageEntity> XInbounds;
+    @Column(nullable = false, length = 60)
+    private String owner;
 
-	public MessageBoxEntity() {
-	}
+    //bi-directional many-to-one association to InboundMessageEntity
+    @OneToMany(mappedBy = "XMessagebox")
+    private List<InboundMessageEntity> XInbounds;
 
-	public long getPkMessagebox() {
-		return this.pkMessagebox;
-	}
+    public MessageBoxEntity() {
+    }
 
-	public void setPkMessagebox(long pkMessagebox) {
-		this.pkMessagebox = pkMessagebox;
-	}
+    public long getPkMessagebox() {
+        return this.pkMessagebox;
+    }
 
-	public BigDecimal getArchiveinterval() {
-		return this.archiveinterval;
-	}
+    public void setPkMessagebox(long pkMessagebox) {
+        this.pkMessagebox = pkMessagebox;
+    }
 
-	public void setArchiveinterval(BigDecimal archiveinterval) {
-		this.archiveinterval = archiveinterval;
-	}
+    public BigDecimal getArchiveinterval() {
+        return this.archiveinterval;
+    }
 
-	public Date getCreationdate() {
-		return this.creationdate;
-	}
+    public void setArchiveinterval(BigDecimal archiveinterval) {
+        this.archiveinterval = archiveinterval;
+    }
 
-	public void setCreationdate(Date creationdate) {
-		this.creationdate = creationdate;
-	}
+    public Date getCreationdate() {
+        return this.creationdate;
+    }
 
-	public String getMessageboxname() {
-		return this.messageboxname;
-	}
+    public void setCreationdate(Date creationdate) {
+        this.creationdate = creationdate;
+    }
 
-	public void setMessageboxname(String messageboxname) {
-		this.messageboxname = messageboxname;
-	}
+    public String getMessageboxname() {
+        return this.messageboxname;
+    }
 
-	public BigDecimal getNumarchivedin() {
-		return this.numarchivedin;
-	}
+    public void setMessageboxname(String messageboxname) {
+        this.messageboxname = messageboxname;
+    }
 
-	public void setNumarchivedin(BigDecimal numarchivedin) {
-		this.numarchivedin = numarchivedin;
-	}
+    public BigDecimal getNumarchivedin() {
+        return this.numarchivedin;
+    }
 
-	public BigDecimal getNumarchivedout() {
-		return this.numarchivedout;
-	}
+    public void setNumarchivedin(BigDecimal numarchivedin) {
+        this.numarchivedin = numarchivedin;
+    }
 
-	public void setNumarchivedout(BigDecimal numarchivedout) {
-		this.numarchivedout = numarchivedout;
-	}
+    public BigDecimal getNumarchivedout() {
+        return this.numarchivedout;
+    }
 
-	public BigDecimal getNummaxmessagein() {
-		return this.nummaxmessagein;
-	}
+    public void setNumarchivedout(BigDecimal numarchivedout) {
+        this.numarchivedout = numarchivedout;
+    }
 
-	public void setNummaxmessagein(BigDecimal nummaxmessagein) {
-		this.nummaxmessagein = nummaxmessagein;
-	}
+    public BigDecimal getNummaxmessagein() {
+        return this.nummaxmessagein;
+    }
 
-	public BigDecimal getNummaxmessageout() {
-		return this.nummaxmessageout;
-	}
+    public void setNummaxmessagein(BigDecimal nummaxmessagein) {
+        this.nummaxmessagein = nummaxmessagein;
+    }
 
-	public void setNummaxmessageout(BigDecimal nummaxmessageout) {
-		this.nummaxmessageout = nummaxmessageout;
-	}
+    public BigDecimal getNummaxmessageout() {
+        return this.nummaxmessageout;
+    }
 
-	public BigDecimal getNummessagein() {
-		return this.nummessagein;
-	}
+    public void setNummaxmessageout(BigDecimal nummaxmessageout) {
+        this.nummaxmessageout = nummaxmessageout;
+    }
 
-	public void setNummessagein(BigDecimal nummessagein) {
-		this.nummessagein = nummessagein;
-	}
+    public BigDecimal getNummessagein() {
+        return this.nummessagein;
+    }
 
-	public BigDecimal getNummessageout() {
-		return this.nummessageout;
-	}
+    public void setNummessagein(BigDecimal nummessagein) {
+        this.nummessagein = nummessagein;
+    }
 
-	public void setNummessageout(BigDecimal nummessageout) {
-		this.nummessageout = nummessageout;
-	}
+    public BigDecimal getNummessageout() {
+        return this.nummessageout;
+    }
 
-	public String getOwner() {
-		return this.owner;
-	}
+    public void setNummessageout(BigDecimal nummessageout) {
+        this.nummessageout = nummessageout;
+    }
 
-	public void setOwner(String owner) {
-		this.owner = owner;
-	}
+    public String getOwner() {
+        return this.owner;
+    }
 
-	public List<InboundMessageEntity> getXInbounds() {
-		return this.XInbounds;
-	}
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
-	public void setXInbounds(List<InboundMessageEntity> XInbounds) {
-		this.XInbounds = XInbounds;
-	}
+    public List<InboundMessageEntity> getXInbounds() {
+        return this.XInbounds;
+    }
 
-	public InboundMessageEntity addXInbound(InboundMessageEntity XInbound) {
-		getXInbounds().add(XInbound);
-		XInbound.setXMessagebox(this);
+    public void setXInbounds(List<InboundMessageEntity> XInbounds) {
+        this.XInbounds = XInbounds;
+    }
 
-		return XInbound;
-	}
+    public InboundMessageEntity addXInbound(InboundMessageEntity XInbound) {
+        getXInbounds().add(XInbound);
+        XInbound.setXMessagebox(this);
 
-	public InboundMessageEntity removeXInbound(InboundMessageEntity XInbound) {
-		getXInbounds().remove(XInbound);
-		XInbound.setXMessagebox(null);
+        return XInbound;
+    }
 
-		return XInbound;
-	}
-	
+    public InboundMessageEntity removeXInbound(InboundMessageEntity XInbound) {
+        getXInbounds().remove(XInbound);
+        XInbound.setXMessagebox(null);
+
+        return XInbound;
+    }
 
 }

@@ -8,7 +8,6 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack;
 
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
-import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
@@ -17,7 +16,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "reportacknowledgment")
@@ -32,36 +31,35 @@ public class ReportAcknowledgment implements Serializable {
     @XmlElement(name = "safetyreportversion")
     private String safetyreportversion;
 
-    @XmlElement(name="safetyreportid")
+    @XmlElement(name = "safetyreportid")
     private String safetyreportid;
 
-    @XmlElement(name="localreportnumb")
+    @XmlElement(name = "localreportnumb")
     private String localreportnumb;
 
-    @XmlElement(name="authoritynumb")
+    @XmlElement(name = "authoritynumb")
     private String authoritynumb;
 
-    @XmlElement(name="companynumb")
+    @XmlElement(name = "companynumb")
     private String companynumb;
 
-    @XmlElement(name="receiptdateformat")
+    @XmlElement(name = "receiptdateformat")
     private String receiptdateformat;
 
-    @XmlElement(name="receiptdate")
+    @XmlElement(name = "receiptdate")
     @XmlJavaTypeAdapter(IcsrR2DateAdapter.class)
     private Date receiptdate;
 
-    @XmlElement(name="reportacknowledgmentcode")
+    @XmlElement(name = "reportacknowledgmentcode")
     private String reportacknowledgmentcode;
 
-    @XmlElement(name="errormessagecomment")
+    @XmlElement(name = "errormessagecomment")
     private String errormessagecomment;
 
     /**
      * Gets the value of the lang property.
-     * 
+     *
      * @return possible object is {@link String }
-     * 
      */
     public String getLang() {
         return lang;
@@ -69,9 +67,8 @@ public class ReportAcknowledgment implements Serializable {
 
     /**
      * Sets the value of the lang property.
-     * 
+     *
      * @param value allowed object is {@link String }
-     * 
      */
     public void setLang(String value) {
         this.lang = value;

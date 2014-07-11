@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_RECEIVER database table.
- * 
  */
 @Entity
 @Table(name = "I_RECEIVER")

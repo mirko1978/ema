@@ -8,7 +8,6 @@ import java.util.Date;
 /**
  * The persistent class for the I_ALERTS database table.<br/>
  * No data are present in the database, consider to refactor.
- * 
  */
 @Deprecated
 @Entity
@@ -19,7 +18,7 @@ public class Alert implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Alert")
-    @SequenceGenerator(name="Alert",sequenceName="SEQ_PK_I_ALERTS", allocationSize=1)
+    @SequenceGenerator(name = "Alert", sequenceName = "SEQ_PK_I_ALERTS", allocationSize = 1)
     @Column(name = "PK_ALERTS", unique = true, nullable = false, precision = 10)
     private long pkAlerts;
 

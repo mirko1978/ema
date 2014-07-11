@@ -1,13 +1,10 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
  * The primary key class for the I_FLAGSTATUS database table.
  * Look at the stored procedure ICHICSR.EV_ICHICSR_STATUS
- *
  */
 public class FlagStatusPK implements Serializable {
     // default serial version id, required for serializable classes.
@@ -44,7 +41,7 @@ public class FlagStatusPK implements Serializable {
             return false;
         }
         FlagStatusPK castOther = (FlagStatusPK) other;
-        return (this.fkSafetyreport == castOther.fkSafetyreport) && (this.flagcode == castOther.flagcode);
+        return this.fkSafetyreport == castOther.fkSafetyreport && this.flagcode == castOther.flagcode;
     }
 
     public int hashCode() {

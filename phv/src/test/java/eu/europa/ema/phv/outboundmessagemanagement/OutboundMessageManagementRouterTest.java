@@ -1,7 +1,6 @@
 package eu.europa.ema.phv.outboundmessagemanagement;
 
 import eu.europa.ema.phv.AbstractPhvTest;
-import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack.IchIcsrAck;
 import org.junit.Test;
 import org.springframework.test.annotation.DirtiesContext;
@@ -37,7 +36,8 @@ public class OutboundMessageManagementRouterTest extends AbstractPhvTest {
         JAXBContext jaxbContext = JAXBContext.newInstance(IchIcsrAck.class);
 
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        IchIcsrAck ack = (IchIcsrAck) jaxbUnmarshaller.unmarshal(getClass().getResourceAsStream("/data/human/icsr-ack/ack.01.xml"));
+        IchIcsrAck ack = (IchIcsrAck) jaxbUnmarshaller
+                .unmarshal(getClass().getResourceAsStream("/data/human/icsr-ack/ack.01.xml"));
         producerTemplate.sendBody(ack);
         resultEndpoint.expectedMessageCount(1);
     }

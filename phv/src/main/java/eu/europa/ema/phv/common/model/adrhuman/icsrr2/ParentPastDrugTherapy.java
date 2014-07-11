@@ -10,7 +10,6 @@ import java.util.Date;
 
 /**
  * The persistent class for the I_PARENTPASTDRUGTHERAPY database table.
- * 
  */
 @Entity
 @Table(name = "I_PARENTPASTDRUGTHERAPY")
@@ -23,20 +22,23 @@ public class ParentPastDrugTherapy implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ParentPastDrugTherapy")
-    @SequenceGenerator(name="ParentPastDrugTherapy",sequenceName="SEQ_PARENTPASTDRUGTHERAPY", allocationSize=1)
+    @SequenceGenerator(name = "ParentPastDrugTherapy", sequenceName = "SEQ_PARENTPASTDRUGTHERAPY", allocationSize = 1)
     @Column(name = "PK_PARENTPASTDRUGTHERAPY", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkParentpastdrugtherapy;
 
-    /** Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
+    /**
+     * Recoding set to 1 (true) when medicinal product contains blinded phrase<br/>
      * k_IS_BLINDED_TRUE             CONSTANT NUMBER := 1; <br/>
      * k_IS_BLINDED_FALSE            CONSTANT NUMBER := 2;
-     * */
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blinded;
 
-    /** Blinded flag setted from the user manually (UI - EV WEB) via manual recoding */
+    /**
+     * Blinded flag setted from the user manually (UI - EV WEB) via manual recoding
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal blindedmrec;
@@ -53,37 +55,51 @@ public class ParentPastDrugTherapy implements Serializable {
     @XmlTransient
     private BigDecimal fkQiparentdrugreaction;
 
-    /** Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)*/
+    /**
+     * Automatic recoding reprocess the report. If there are changes on blinded flag this is set to 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isblindedchanged;
 
-    /** Automatic recoding reprocess the report. If there are changes on parentdrugindication this is set to 1 (true)*/
+    /**
+     * Automatic recoding reprocess the report. If there are changes on parentdrugindication this is set to 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isparentdrugindicationchanged;
 
-    /** Populate by automatic recoding. If parentdrugindication has been recoded the value is 1 (true)*/
+    /**
+     * Populate by automatic recoding. If parentdrugindication has been recoded the value is 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isparentdrugindicationrecoded;
 
-    /** Automatic recoding reprocess the report. If there are changes on parentdrugname this is set to 1 (true)*/
+    /**
+     * Automatic recoding reprocess the report. If there are changes on parentdrugname this is set to 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isparentdrugnamechanged;
 
-    /** Populate by automatic recoding. If parentdrugname has been recoded the value is 1 (true)*/
+    /**
+     * Populate by automatic recoding. If parentdrugname has been recoded the value is 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isparentdrugnamerecoded;
 
-    /** Automatic recoding reprocess the report. If there are changes on parentdrugreaction this is set to 1 (true)*/
+    /**
+     * Automatic recoding reprocess the report. If there are changes on parentdrugreaction this is set to 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isparentdrugreactionchanged;
 
-    /** Populate by automatic recoding. If parentdrugreaction has been recoded the value is 1 (true)*/
+    /**
+     * Populate by automatic recoding. If parentdrugreaction has been recoded the value is 1 (true)
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal isparentdrugreactionrecoded;
@@ -112,12 +128,16 @@ public class ParentPastDrugTherapy implements Serializable {
     @XmlTransient
     private BigDecimal parentdrugindicationct;
 
-    /** parentdrugindication set from the user manually (UI - EV WEB) via manual recoding */
+    /**
+     * parentdrugindication set from the user manually (UI - EV WEB) via manual recoding
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal parentdrugindicationmrec;
 
-    /** Recoded version of parentdrugindication */
+    /**
+     * Recoded version of parentdrugindication
+     */
     @Column(length = 250)
     @XmlTransient
     private String parentdrugindicationrecoded;
@@ -130,12 +150,16 @@ public class ParentPastDrugTherapy implements Serializable {
     @XmlElement(name = "parentdrugname")
     private String parentdrugname;
 
-    /** parentdrugname set from the user manually (UI - EV WEB) via manual recoding */
+    /**
+     * parentdrugname set from the user manually (UI - EV WEB) via manual recoding
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal parentdrugnamemrec;
 
-    /** Recoded version of parentdrugname */
+    /**
+     * Recoded version of parentdrugname
+     */
     @Column(length = 200)
     @XmlTransient
     private String parentdrugnamerecoded;
@@ -148,12 +172,16 @@ public class ParentPastDrugTherapy implements Serializable {
     @XmlTransient
     private BigDecimal parentdrugreactionct;
 
-    /** parentdrugreaction set from the user manually (UI - EV WEB) via manual recoding */
+    /**
+     * parentdrugreaction set from the user manually (UI - EV WEB) via manual recoding
+     */
     @Column(precision = 1)
     @XmlTransient
     private BigDecimal parentdrugreactionmrec;
 
-    /** Recoded version of parentdrugreaction */
+    /**
+     * Recoded version of parentdrugreaction
+     */
     @Column(length = 250)
     @XmlTransient
     private String parentdrugreactionrecoded;
@@ -178,12 +206,16 @@ public class ParentPastDrugTherapy implements Serializable {
     @XmlTransient
     private BigDecimal productindexcode;
 
-    /** Populated by recoding. It is the stage when the recoding found the match */
+    /**
+     * Populated by recoding. It is the stage when the recoding found the match
+     */
     @Column(name = "RECODING_STAGE", precision = 22)
     @XmlTransient
     private BigDecimal recodingStage;
 
-    /** Populated by recoding. It is the timestamp when the recoding populate */
+    /**
+     * Populated by recoding. It is the timestamp when the recoding populate
+     */
     @Temporal(TemporalType.DATE)
     @Column(name = "RECODING_STAMP")
     private Date recodingStamp;

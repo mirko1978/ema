@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_CLUSTERDUPLICATE database table.
- * 
  */
 @Entity
 @IdClass(value = ClusterDuplicate.class)
@@ -63,25 +62,32 @@ public class ClusterDuplicate implements Serializable {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         ClusterDuplicate other = (ClusterDuplicate) obj;
         if (duplicateId == null) {
-            if (other.duplicateId != null)
+            if (other.duplicateId != null) {
                 return false;
+            }
         }
-        else if (!duplicateId.equals(other.duplicateId))
+        else if (!duplicateId.equals(other.duplicateId)) {
             return false;
+        }
         if (fkSafetyreport == null) {
-            if (other.fkSafetyreport != null)
+            if (other.fkSafetyreport != null) {
                 return false;
+            }
         }
-        else if (!fkSafetyreport.equals(other.fkSafetyreport))
+        else if (!fkSafetyreport.equals(other.fkSafetyreport)) {
             return false;
+        }
         return true;
     }
 

@@ -7,7 +7,6 @@ import java.sql.Timestamp;
 
 /**
  * The persistent class for the I_R_LOG database table.
- * 
  */
 @Entity
 @Table(name = "I_R_LOG")
@@ -17,7 +16,7 @@ public class RLog implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RLog")
-    @SequenceGenerator(name="RLog",sequenceName="SEQ_I_R_LOG", allocationSize=1)
+    @SequenceGenerator(name = "RLog", sequenceName = "SEQ_I_R_LOG", allocationSize = 1)
     @Column(name = "LOGID", unique = true, nullable = false, precision = 10)
     private long logid;
 

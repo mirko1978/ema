@@ -1,21 +1,22 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
  * The primary key class for the I_SAFETYREPORTS database table.
- * 
  */
 public class SafetyReportsPK implements Serializable {
     // default serial version id, required for serializable classes.
     private static final long serialVersionUID = 1L;
 
-    /** Foreign key from SafetyReport */
+    /**
+     * Foreign key from SafetyReport
+     */
     private long fkSafetyreport;
 
-    /** Foreign key from IchicsrMessage */
+    /**
+     * Foreign key from IchicsrMessage
+     */
     private long fkIchicsrmessage;
 
     public SafetyReportsPK() {
@@ -45,8 +46,8 @@ public class SafetyReportsPK implements Serializable {
             return false;
         }
         SafetyReportsPK castOther = (SafetyReportsPK) other;
-        return (this.fkSafetyreport == castOther.fkSafetyreport)
-                && (this.fkIchicsrmessage == castOther.fkIchicsrmessage);
+        return this.fkSafetyreport == castOther.fkSafetyreport
+                && this.fkIchicsrmessage == castOther.fkIchicsrmessage;
     }
 
     public int hashCode() {

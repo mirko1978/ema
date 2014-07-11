@@ -8,7 +8,6 @@
 package eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack;
 
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
-import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
@@ -17,7 +16,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "messageacknowledgment")
@@ -32,7 +31,7 @@ public class Messageacknowledgment implements Serializable {
     @XmlElement(required = true, name = "icsrmessagenumb")
     protected String icsrmessagenumb;
 
-    @XmlElement(name="localmessagenumb")
+    @XmlElement(name = "localmessagenumb")
     protected String localmessagenumb;
 
     @XmlElement(required = true, name = "icsrmessagesenderidentifier")
@@ -50,14 +49,14 @@ public class Messageacknowledgment implements Serializable {
 
     @XmlElement(required = true)
     protected String transmissionacknowledgmentcode;
-    @XmlElement(name="parsingerrormessage")
+
+    @XmlElement(name = "parsingerrormessage")
     protected String parsingerrormessage;
 
     /**
      * Gets the value of the lang property.
-     * 
+     *
      * @return possible object is {@link String }
-     * 
      */
     public String getLang() {
         return lang;
@@ -65,9 +64,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Sets the value of the lang property.
-     * 
+     *
      * @param value allowed object is {@link String }
-     * 
      */
     public void setLang(String value) {
         this.lang = value;
@@ -75,9 +73,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the icsrmessagenumb property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getIcsrmessagenumb() {
         return icsrmessagenumb;
@@ -87,7 +84,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the icsrmessagenumb property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setIcsrmessagenumb(String value) {
         this.icsrmessagenumb = value;
@@ -95,9 +91,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the localmessagenumb property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getLocalmessagenumb() {
         return localmessagenumb;
@@ -107,7 +102,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the localmessagenumb property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setLocalmessagenumb(String value) {
         this.localmessagenumb = value;
@@ -115,9 +109,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the icsrmessagesenderidentifier property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getIcsrmessagesenderidentifier() {
         return icsrmessagesenderidentifier;
@@ -127,7 +120,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the icsrmessagesenderidentifier property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setIcsrmessagesenderidentifier(String value) {
         this.icsrmessagesenderidentifier = value;
@@ -135,9 +127,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the icsrmessagereceiveridentifier property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getIcsrmessagereceiveridentifier() {
         return icsrmessagereceiveridentifier;
@@ -147,7 +138,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the icsrmessagereceiveridentifier property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setIcsrmessagereceiveridentifier(String value) {
         this.icsrmessagereceiveridentifier = value;
@@ -155,9 +145,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the icsrmessagedateformat property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getIcsrmessagedateformat() {
         return icsrmessagedateformat;
@@ -167,7 +156,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the icsrmessagedateformat property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setIcsrmessagedateformat(String value) {
         this.icsrmessagedateformat = value;
@@ -175,9 +163,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the icsrmessagedate property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public Date getIcsrmessagedate() {
         return icsrmessagedate;
@@ -187,7 +174,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the icsrmessagedate property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setIcsrmessagedate(Date value) {
         this.icsrmessagedate = value;
@@ -195,9 +181,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the transmissionacknowledgmentcode property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getTransmissionacknowledgmentcode() {
         return transmissionacknowledgmentcode;
@@ -207,7 +192,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the transmissionacknowledgmentcode property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setTransmissionacknowledgmentcode(String value) {
         this.transmissionacknowledgmentcode = value;
@@ -215,9 +199,8 @@ public class Messageacknowledgment implements Serializable {
 
     /**
      * Gets the value of the parsingerrormessage property.
-     * 
+     *
      * @return possible object is {@link java.lang.String }
-     * 
      */
     public String getParsingerrormessage() {
         return parsingerrormessage;
@@ -227,7 +210,6 @@ public class Messageacknowledgment implements Serializable {
      * Sets the value of the parsingerrormessage property.
      *
      * @param value allowed object is {@link java.lang.String }
-     * 
      */
     public void setParsingerrormessage(String value) {
         this.parsingerrormessage = value;

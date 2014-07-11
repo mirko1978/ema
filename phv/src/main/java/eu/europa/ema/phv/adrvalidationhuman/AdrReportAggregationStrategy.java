@@ -78,7 +78,7 @@ public class AdrReportAggregationStrategy implements AggregationStrategy {
                     IcsrAckCodeEnum code = null;
                     // Check if there are ERRORS in the ack list
                     for (ReportAcknowledgment rack : icsrAck.getAcknowledgment().getReportAcknowledgment()) {
-                        if (IcsrAckCodeEnum.ICSR_ERROR.equals(rack.getReportacknowledgmentcode())) {
+                        if (IcsrAckCodeEnum.ICSR_ERROR.getCode().equals(rack.getReportacknowledgmentcode())) {
                             code = IcsrAckCodeEnum.ICSR_ERROR;
                             break;
                         }

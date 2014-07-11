@@ -17,19 +17,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.util.Date;
-import java.util.UUID;
 
 /**
  * Junit configuration class
  *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @revisionDate $Date: 01/07/2014 $
  * @since 01/07/2014 (creation date)
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -45,7 +44,7 @@ public abstract class AbstractPhvTest extends AbstractJUnit4SpringContextTests {
     protected JmsCamelUrl camelUrl;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
-    @Inject
+    @Resource(name = "camelContext")
     protected CamelContext context;
 
     @Produce(uri = START_EP)

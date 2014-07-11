@@ -8,7 +8,6 @@ import java.util.Date;
 /**
  * The persistent class for the I_FLAGSTATUS database table. <br/>
  * Look at the stored procedure ICHICSR.EV_ICHICSR_STATUS. <br/>
- * 
  */
 @Entity
 @Table(name = "I_FLAGSTATUS")
@@ -25,7 +24,9 @@ public class FlagStatus implements Serializable {
     @Column(unique = true, nullable = false, precision = 3)
     private long flagcode;
 
-    /** Foregein key from METABASE.LK_FLAGVALUE */
+    /**
+     * Foregein key from METABASE.LK_FLAGVALUE
+     */
     @Column(nullable = false, precision = 3)
     private BigDecimal flagvalue;
 
@@ -40,11 +41,15 @@ public class FlagStatus implements Serializable {
      * INT = Interpretation
      *
      */
-    /** TODO: Andrea */
+    /**
+     * TODO: Andrea
+     */
     @Column(length = 3)
     private String origin;
 
-    /** Date when the record was created */
+    /**
+     * Date when the record was created
+     */
     @Temporal(TemporalType.DATE)
     @Column(name = "\"WHEN\"")
     private Date when;

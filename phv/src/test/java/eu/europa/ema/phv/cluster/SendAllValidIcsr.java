@@ -5,7 +5,6 @@ import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.model.XmlUnmarshall;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -17,7 +16,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.SocketException;
@@ -39,8 +37,6 @@ public class SendAllValidIcsr extends XmlUnmarshall {
 
     public final static String WLS_URL = "t3://localhost:7002";
 
-    private QueueConnectionFactory qconFactory;
-
     private QueueConnection qcon;
 
     private QueueSession qsession;
@@ -49,7 +45,7 @@ public class SendAllValidIcsr extends XmlUnmarshall {
 
     private InitialContext initialContext;
 
-    private Properties properties = new Properties();
+    private final Properties properties = new Properties();
 
     public SendAllValidIcsr(Path path) throws NamingException {
         super(path);
@@ -85,7 +81,8 @@ public class SendAllValidIcsr extends XmlUnmarshall {
             e.printStackTrace();
             throw e;
         }
-        qconFactory = (QueueConnectionFactory) initialContext.lookup(properties.getProperty("jms.connection.factory"));
+        QueueConnectionFactory qconFactory = (QueueConnectionFactory) initialContext
+                .lookup(properties.getProperty("jms.connection.factory"));
         qcon = qconFactory.createQueueConnection();
         qsession = qcon.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
         queue = (Queue) initialContext.lookup(properties.getProperty("jms.adr.parser.human"));

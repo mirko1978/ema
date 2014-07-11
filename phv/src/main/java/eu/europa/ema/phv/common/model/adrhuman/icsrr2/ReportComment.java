@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * The persistent class for the I_REPORTCOMMENT database table.
- * 
  */
 @Entity
 @Table(name = "I_REPORTCOMMENT")
@@ -17,7 +16,7 @@ public class ReportComment implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ReportComment")
-    @SequenceGenerator(name="ReportComment",sequenceName="SEQ_REPORTCOMMENT", allocationSize=1)
+    @SequenceGenerator(name = "ReportComment", sequenceName = "SEQ_REPORTCOMMENT", allocationSize = 1)
     @Column(name = "PK_REPORTCOMMENT", unique = true, nullable = false, precision = 10)
     private long pkReportcomment;
 

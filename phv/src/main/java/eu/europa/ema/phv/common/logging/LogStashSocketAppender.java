@@ -1,23 +1,7 @@
 /**
- * 
+ *
  */
 package eu.europa.ema.phv.common.logging;
-
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.ConnectException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.TimeUnit;
-
-import javax.net.SocketFactory;
 
 import ch.qos.logback.classic.ClassicConstants;
 import ch.qos.logback.classic.net.LoggingEventPreSerializationTransformer;
@@ -33,6 +17,16 @@ import ch.qos.logback.core.status.ErrorStatus;
 import ch.qos.logback.core.util.CloseUtil;
 import ch.qos.logback.core.util.Duration;
 
+import javax.net.SocketFactory;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.ConnectException;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.concurrent.*;
+
 /**
  * This class is a modification of {@link SocketAppender}. The queue type and
  * the dispatch method is different than the original version. The application
@@ -41,12 +35,12 @@ import ch.qos.logback.core.util.Duration;
  * TODO: Fix the class in order to close the thread and the connection properly
  * with
  * <code>logger.info(ClassicConstants.FINALIZE_SESSION_MARKER, "About to end the job");</code>
- * 
+ *
  * @author Mirko Bernardoni bernardonim (created by)
  * @author $Author: replacedWhenCheckedIn $ (last change by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @since 9 Jun 2014 (creation date)
  * @revisionDate $Date: 2003/12/19 10:51:34 9 Jun 2014 $
+ * @since 9 Jun 2014 (creation date)
  */
 public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implements Runnable,
         SocketConnector.ExceptionHandler {
@@ -126,6 +120,7 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
     /**
      * Get the pre-serialization transformer that will be used to transform each
      * event into a Serializable object before delivery to the remote receiver.
+     *
      * @return transformer object
      */
     public PreSerializationTransformer<ILoggingEvent> getPST() {
@@ -139,7 +134,8 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
             }
             catch (IOException ioe) {
                 this.started = false;
-                addStatus(new ErrorStatus("Failed to initialize encoder for appender named [" + name + "].", this, ioe));
+                addStatus(
+                        new ErrorStatus("Failed to initialize encoder for appender named [" + name + "].", this, ioe));
             }
         }
     }
@@ -160,8 +156,9 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
      * {@inheritDoc}
      */
     public void start() {
-        if (isStarted())
+        if (isStarted()) {
             return;
+        }
         int errorCount = 0;
         if (port <= 0) {
             errorCount++;
@@ -186,7 +183,7 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
         }
 
         if (errorCount == 0) {
-            queue = new LinkedBlockingQueue<ILoggingEvent>();
+            queue = new LinkedBlockingQueue<>();
             peerId = "remote peer " + remoteHost + ":" + port + ": ";
             task = getContext().getExecutorService().submit(this);
             super.start();
@@ -198,12 +195,14 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
      */
     @Override
     public void stop() {
-        if (!isStarted())
+        if (!isStarted()) {
             return;
+        }
         CloseUtil.closeQuietly(socket);
         task.cancel(true);
-        if (connectorTask != null)
+        if (connectorTask != null) {
             connectorTask.cancel(true);
+        }
         super.stop();
     }
 
@@ -212,8 +211,9 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
      */
     @Override
     protected void append(ILoggingEvent event) {
-        if (event == null || !isStarted())
+        if (event == null || !isStarted()) {
             return;
+        }
 
         try {
             final boolean inserted = queue.offer(event, eventDelayLimit.getMilliseconds(), TimeUnit.MILLISECONDS);
@@ -235,12 +235,14 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
                 SocketConnector connector = createConnector(address, port, 0, reconnectionDelay.getMilliseconds());
 
                 connectorTask = activateConnector(connector);
-                if (connectorTask == null)
+                if (connectorTask == null) {
                     break;
+                }
 
                 socket = waitForConnectorToReturnASocket();
-                if (socket == null)
+                if (socket == null) {
                     break;
+                }
                 dispatchEvents();
             }
         }
@@ -279,6 +281,7 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
 
     /**
      * Inifinte loop that send the messages from the queue to the remote host
+     *
      * @throws InterruptedException
      */
     private void dispatchEvents() throws InterruptedException {
@@ -335,15 +338,15 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
 
     /**
      * Creates a new {@link SocketConnector}.
-     * <p>
+     * <p/>
      * The default implementation creates an instance of
      * {@link DefaultSocketConnector}. A subclass may override to provide a
      * different {@link SocketConnector} implementation.
-     * 
-     * @param address target remote address
-     * @param port target remote port
+     *
+     * @param address      target remote address
+     * @param port         target remote port
      * @param initialDelay delay before the first connection attempt
-     * @param retryDelay delay before a reconnection attempt
+     * @param retryDelay   delay before a reconnection attempt
      * @return socket connector
      */
     protected SocketConnector newConnector(InetAddress address, int port, long initialDelay, long retryDelay) {
@@ -352,7 +355,7 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
 
     /**
      * Gets the default {@link SocketFactory} for the platform.
-     * <p>
+     * <p/>
      * Subclasses may override to provide a custom socket factory.
      */
     protected SocketFactory getSocketFactory() {
@@ -393,8 +396,8 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
      * The <b>reconnectionDelay</b> property takes a positive {@link Duration}
      * value representing the time to wait between each failed connection
      * attempt to the server. The default value of this option is to 30 seconds.
-     * 
-     * <p>
+     * <p/>
+     * <p/>
      * Setting this option to zero turns off reconnection capability.
      */
     public void setReconnectionDelay(Duration delay) {
@@ -412,7 +415,7 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
      * The <b>eventDelayLimit</b> takes a non-negative integer representing the
      * number of milliseconds to allow the appender to block if the underlying
      * BlockingQueue is full. Once this limit is reached, the event is dropped.
-     * 
+     *
      * @param eventDelayLimit the event delay limit
      */
     public void setEventDelayLimit(Duration eventDelayLimit) {
@@ -429,10 +432,10 @@ public class LogStashSocketAppender extends AppenderBase<ILoggingEvent> implemen
     /**
      * Sets the timeout that controls how long we'll wait for the remote peer to
      * accept our connection attempt.
-     * <p>
+     * <p/>
      * This property is configurable primarily to support instrumentation for
      * unit testing.
-     * 
+     *
      * @param acceptConnectionTimeout timeout value in milliseconds
      */
     void setAcceptConnectionTimeout(int acceptConnectionTimeout) {

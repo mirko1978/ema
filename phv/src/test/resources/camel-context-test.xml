@@ -15,7 +15,7 @@
     <!-- CAMEL -->
     <!-- -->
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring"/>
+    <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring"/>
 
 
     <!-- JPA -->

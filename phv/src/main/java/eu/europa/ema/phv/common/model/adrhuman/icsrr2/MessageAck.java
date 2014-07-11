@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * The persistent class for the I_MESSAGEACK database table.
- * 
  */
 @Entity
 @Table(name = "I_MESSAGEACK")
@@ -15,28 +14,40 @@ import java.util.List;
 public class MessageAck implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /** Primary key from ICHICSR.I_ICHICSRMESSAGE.PK_ICHICSRMESSAGE */
+    /**
+     * Primary key from ICHICSR.I_ICHICSRMESSAGE.PK_ICHICSRMESSAGE
+     */
     @Id
     @Column(name = "PK_ICHICSRMESSAGE", unique = true, nullable = false, precision = 10)
     private long pkIchicsrmessage;
 
-    /** Icsr message date */
+    /**
+     * Icsr message date
+     */
     @Column(length = 56)
     private String icsrmessagedate;
 
-    /** Icsr date format */
+    /**
+     * Icsr date format
+     */
     @Column(precision = 3)
     private BigDecimal icsrmessagedateformat;
 
-    /** Icsr number */
+    /**
+     * Icsr number
+     */
     @Column(length = 400)
     private String icsrmessagenumb;
 
-    /** Ack sender ID. It is always EVHUMAN */
+    /**
+     * Ack sender ID. It is always EVHUMAN
+     */
     @Column(length = 240)
     private String icsrmessagereceiveridentifier;
 
-    /** Ack receiver ID */
+    /**
+     * Ack receiver ID
+     */
     @Column(length = 240)
     private String icsrmessagesenderidentifier;
 

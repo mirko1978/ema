@@ -6,7 +6,6 @@ import java.sql.Timestamp;
 
 /**
  * The persistent class for the I_R_LOCKING database table.
- * 
  */
 @Entity
 @Table(name = "I_R_LOCKING")

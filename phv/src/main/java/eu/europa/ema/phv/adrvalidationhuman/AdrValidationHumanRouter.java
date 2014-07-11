@@ -3,12 +3,12 @@
  */
 package eu.europa.ema.phv.adrvalidationhuman;
 
-import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportValidationResult;
 import eu.europa.ema.phv.common.util.CamelProperties;
 import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import org.apache.camel.processor.aggregate.AggregationStrategy;
 import org.apache.camel.spring.SpringRouteBuilder;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 /**
@@ -24,7 +24,7 @@ public class AdrValidationHumanRouter extends SpringRouteBuilder {
     @Inject
     private JmsCamelUrl camelUrl;
 
-    @Inject
+    @Resource(name = "adrReportAggregationStrategy")
     private AggregationStrategy adrAggregationStrategy;
 
     @Inject

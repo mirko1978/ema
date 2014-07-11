@@ -9,7 +9,6 @@ package eu.europa.ema.phv.common.model.adrhuman.icsrr2.xml.ack;
 
 import com.google.common.base.Objects;
 import eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter;
-import org.eclipse.persistence.oxm.annotations.XmlPath;
 
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;

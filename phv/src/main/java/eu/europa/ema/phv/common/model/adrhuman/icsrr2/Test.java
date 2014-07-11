@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 
 /**
  * The persistent class for the I_TEST database table.
- * 
  */
 @Entity
 @Table(name = "I_TEST")
@@ -22,7 +21,7 @@ public class Test implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Test")
-    @SequenceGenerator(name="Test",sequenceName="SEQ_TEST", allocationSize=1)
+    @SequenceGenerator(name = "Test", sequenceName = "SEQ_TEST", allocationSize = 1)
     @Column(name = "PK_TEST", unique = true, nullable = false, precision = 10)
     @XmlTransient
     private long pkTest;

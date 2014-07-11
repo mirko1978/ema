@@ -1,21 +1,20 @@
 package eu.europa.ema.phv.common.logging;
 
-import java.io.IOException;
-
-import net.logstash.logback.LogstashFormatter;
-import net.logstash.logback.encoder.LogstashEncoder;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.encoder.EncoderBase;
+import net.logstash.logback.LogstashFormatter;
+import net.logstash.logback.encoder.LogstashEncoder;
+
+import java.io.IOException;
 
 /**
- * 
  * Encoder for logastash. The class is a modification of {@link LogstashEncoder}
- * 
- * @author  Mirko Bernardoni bernardonim (created by)
- * @author  $Author: replacedWhenCheckedIn $ (last change by)
+ *
+ * @author Mirko Bernardoni bernardonim (created by)
+ * @author $Author: replacedWhenCheckedIn $ (last change by)
  * @version $Revision: 1.1 $ (cvs revision)
+ * @revisionDate $Date: 2003/12/19 10:51:34 10 Jun 2014 $
  * @since 10 Jun 2014 (creation date)
- * @revisionDate  $Date: 2003/12/19 10:51:34 10 Jun 2014 $
  */
 public class LogStashEncoder extends EncoderBase<ILoggingEvent> {
 
@@ -75,6 +74,7 @@ public class LogStashEncoder extends EncoderBase<ILoggingEvent> {
 
     /**
      * Define the encoding used for sending the logs
+     *
      * @param encoding the encoding to set
      */
     public void setEncoding(String encoding) {
@@ -94,6 +94,7 @@ public class LogStashEncoder extends EncoderBase<ILoggingEvent> {
      * SYSTEM operating system new line. <br/>
      * UNIX is the \n combination (default). <br/>
      * WINDOWS is \n\r combination
+     *
      * @param newLine the newLine to set
      */
     public void setNewLine(String newLine) {
