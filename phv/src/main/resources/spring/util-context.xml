@@ -5,19 +5,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:annotation-config />
-	<context:component-scan base-package="eu.europa.ema.phv.common.util" />
+    <context:annotation-config/>
+    <context:component-scan base-package="eu.europa.ema.phv.common.util"/>
 
-	<context:property-placeholder location="classpath:/jms-${spring.profiles.default}.properties, classpath:/camel.properties" order="2"/>
+    <context:property-placeholder
+            location="classpath:/jms-${spring.profiles.default}.properties, classpath:/camel.properties" order="2"/>
 
-	<bean id="jmsCamelUrl" class="eu.europa.ema.phv.common.util.JmsCamelUrl" />
-	
-	<bean id="camelProperties" class="eu.europa.ema.phv.common.util.CamelProperties" />
+    <bean id="jmsCamelUrl" class="eu.europa.ema.phv.common.util.JmsCamelUrl"/>
 
-    <bean id="icsrR2DAO" class="eu.europa.ema.phv.common.persistence.JpaIcsrR2Dao" />
+    <bean id="camelProperties" class="eu.europa.ema.phv.common.util.CamelProperties"/>
 
     <bean id="icsrR2DateAdapter" class="eu.europa.ema.phv.common.xmladapter.IcsrR2DateAdapter"/>
 
-    <bean id="icsrR2AckUtility" class="eu.europa.ema.phv.common.util.IcsrR2AckUtilityManager" />
+    <bean id="icsrR2AckUtility" class="eu.europa.ema.phv.common.util.IcsrR2AckUtilityManager"/>
 
 </beans>

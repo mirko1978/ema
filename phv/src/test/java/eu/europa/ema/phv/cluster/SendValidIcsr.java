@@ -29,7 +29,7 @@ import java.util.Properties;
  * @since 03/07/2014 (creation date)
  */
 public class SendValidIcsr {
-    public final static String VALID_ICSR = "/data/human/icsr/safety-report2009046_20131105051232_EVHUMAN.XML";
+    public final static String VALID_ICSR = "/data/human/icsr/icsr-single.xml";
 
     public final static String JNDI_FACTORY = "weblogic.jndi.WLInitialContextFactory";
 

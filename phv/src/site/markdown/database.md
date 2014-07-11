@@ -63,11 +63,11 @@ The main table is **I_ICHMESSAGE** that contains all the message headers and the
 
 **RECODED** suffix indicates a field that is changed by the automatic recoding process.
 
-**IS<something>CHANGED** indicates that the recoding process has changed the value for the field <SOMETHING>. 
-The new value can be find inside <SOMETHING>RECODED. The value of **1** means **TRUE**
+**IS-something-CHANGED** indicates that the recoding process has changed the value for the field -SOMETHING-. 
+The new value can be find inside -SOMETHING-RECODED. The value of **1** means **TRUE**
 
-**IS<something>RECODED** indicates that the recoding process has recoded the field <SOMETHING>. 
-The new value can be find inside <SOMETHING>RECODED. The value of **1** means **TRUE**
+**IS-something-RECODED** indicates that the recoding process has recoded the field -SOMETHING-. 
+The new value can be find inside -SOMETHING-RECODED. The value of **1** means **TRUE**
 
 
 ## Database and JPA notes

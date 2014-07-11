@@ -32,7 +32,7 @@
         </properties>
     </persistence-unit>
 
-    <persistence-unit name="icsrJta" transaction-type="JTA">
+    <persistence-unit name="icsrJta" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>dsIcsr</jta-data-source>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.ActiveSubstance</class>
@@ -73,15 +73,20 @@
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Summary</class>
         <class>eu.europa.ema.phv.common.model.adrhuman.icsrr2.Test</class>
         <properties>
+            <property name="javax.persistence.sql-load-script-source" value="ddl/createIcsrSchema.sql"/>
+            <!-- Creates database and ddl files
             <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+            <property name="eclipselink.create-ddl-jdbc-file-name" value="src/test/resources/ddl/createIcsrDDL.jdbc"/>
+            <property name="eclipselink.drop-ddl-jdbc-file-name" value="src/test/resources/ddl/dropIcsrDDL.jdbc"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="both"/>
+            -->
             <property name="eclipselink.weaving" value="false"/>
-            <!--<property name="eclipselink.logging.level" value="FINEST" />-->
-            <!--<property name="eclipselink.logging.level.cache" value="FINEST" />-->
+
             <!--<property name="eclipselink.jdbc.exclusive-connection.mode" value="Isolated"/>-->
             <!--<property name="eclipselink.jdbc.exclusive-connection.is-lazy" value="false"/>-->
             <!--<property name="eclipselink.cache.coordination.remove-connection-on-error" value="true"/>-->
+
             <property name="eclipselink.target-database" value="HSQL"/>
-            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
             <!--
                 LOGGIN VALUES =
                 OFF	 This setting disables the generation of the log output. You may want to set logging to OFF during production to avoid the overhead of logging.
@@ -97,7 +102,9 @@
             <property name="eclipselink.logging.level" value="FINE"/>
             <property name="eclipselink.logging.sql" value="FINE"/>
             <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.level.cache" value="FINE"/>
             <property name="eclipselink.logging.parameters" value="true"/>
+
         </properties>
     </persistence-unit>
 

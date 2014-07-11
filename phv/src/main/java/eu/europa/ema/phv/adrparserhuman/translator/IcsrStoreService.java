@@ -1,17 +1,12 @@
-package eu.europa.ema.phv.common.persistence;
+package eu.europa.ema.phv.adrparserhuman.translator;
 
+import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.CaseTypeEnum;
-import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReports;
-import org.eclipse.persistence.annotations.ReturnInsert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  * Persiste the ICSR R2 using JPA. <br/>
@@ -21,23 +16,9 @@ import javax.persistence.PersistenceContext;
  * @revisionDate $Date: 30/06/2014 $
  * @since 30/06/2014 (creation date)
  */
-public class JpaIcsrR2Dao implements IcsrR2DAO {
-    private static final Logger LOG = LoggerFactory.getLogger(JpaIcsrR2Dao.class);
+public class IcsrStoreService {
+    private static final Logger LOG = LoggerFactory.getLogger(IcsrStoreService.class);
 
-    @PersistenceContext(unitName = "icsrJta")
-    private EntityManager manager;
-
-    @Override
-    @ReturnInsert
-    @Transactional
-    public void persist(IchicsrMessage icsr) {
-        manager.persist(icsr);
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("DAO: ICSR core message saved for {}", icsr);
-        }
-    }
-
-    @Override
     @SuppressWarnings("deprecation")
     public IchicsrMessage emptyIcsr(IchicsrMessage source) {
         IchicsrMessage destination = new IchicsrMessage();
@@ -69,12 +50,18 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
         return destination;
     }
 
-    @Override
-    public void prepare(IchicsrMessage message, MessageMetadata metadata) {
+    /**
+     * Prepare and convert a ValidIcsrR2Message to IchicsrMessage in order to persist it on the database.
+     *
+     * @param message the received message
+     * @return IchicsrMessage entity
+     */
+    public void prepareForStoring(ValidIcsrR2Message message) {
+        IchicsrMessage icsr = message.getIcsr();
         // Adding the receiving date to the icsr
-        message.setMessagereceivedate(metadata.getReceived());
+        icsr.setMessagereceivedate(message.getMetadata().getReceived());
         // Merge company and authority for each report following the database algorithm
-        for (SafetyReports reports : message.getSafetyReports()) {
+        for (SafetyReports reports : icsr.getSafetyReports()) {
             SafetyReport report = reports.getSafetyReport();
             if (report.getCompanynumb() != null) {
                 report.setCasenumber(report.getCompanynumb());
@@ -85,7 +72,6 @@ public class JpaIcsrR2Dao implements IcsrR2DAO {
                 report.setCasetype(CaseTypeEnum.AUTHORITY);
             }
         }
-
     }
 
 }

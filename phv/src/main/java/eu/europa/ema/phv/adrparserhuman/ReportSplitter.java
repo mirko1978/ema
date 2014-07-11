@@ -3,13 +3,13 @@
  */
 package eu.europa.ema.phv.adrparserhuman;
 
+import eu.europa.ema.phv.adrparserhuman.translator.IcsrStoreService;
 import eu.europa.ema.phv.common.model.adrhuman.IcsrR2ReportMessage;
 import eu.europa.ema.phv.common.model.adrhuman.MessageMetadata;
 import eu.europa.ema.phv.common.model.adrhuman.ValidIcsrR2Message;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.IchicsrMessage;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReport;
 import eu.europa.ema.phv.common.model.adrhuman.icsrr2.SafetyReports;
-import eu.europa.ema.phv.common.persistence.IcsrR2DAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +31,7 @@ public class ReportSplitter {
     private static final Logger LOG = LoggerFactory.getLogger(ReportSplitter.class);
 
     @Inject
-    private IcsrR2DAO dao;
+    private IcsrStoreService storeService;
 
     /**
      * Create a List of Icsr R2 reports ready to send to ADR Validation Human component. <br/>
@@ -53,7 +53,7 @@ public class ReportSplitter {
 
         // For each report all the icsr headers are attached
         ValidIcsrR2Message header = new ValidIcsrR2Message();
-        header.setIcsr(dao.emptyIcsr(icsr));
+        header.setIcsr(storeService.emptyIcsr(icsr));
         header.setMetadata(metadata);
 
         for (SafetyReports entityReport : icsr.getSafetyReports()) {

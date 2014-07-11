@@ -69,8 +69,8 @@ public class MessageHandlerRouterTest  extends AbstractPhvTest {
 
 	@After
 	public void tearDown() throws Exception {
-		Thread.sleep(100000);
-		context.stop();
+        Thread.sleep(5000);
+        context.stop();
 	}
 
 	private void readSingleMessage() throws Exception{

@@ -12,11 +12,10 @@ import javax.xml.bind.JAXBException;
 import java.util.List;
 
 /**
- * TODO: comment
+ * Test the Adr Validation Human rout
  *
  * @author Mirko Bernardoni bernardonim (created by)
  * @version $Revision: 1.1 $ (cvs revision)
- * @revisionDate $Date: 01/07/2014 $
  * @since 01/07/2014 (creation date)
  */
 public class AdrValidationHumanRouterTest extends AbstractPhvTest {
@@ -38,17 +37,17 @@ public class AdrValidationHumanRouterTest extends AbstractPhvTest {
     @DirtiesContext
     public void singleSRTest() throws JAXBException {
         ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/human/icsr/icsr-single.xml");
-        List<IcsrR2ReportMessage> messages = splitter.split(icsrR2Message);
-        for (IcsrR2ReportMessage msg : messages) {
-            producerTemplate.sendBody(msg);
-        }
-        resultEndpoint.expectedMessageCount(1);
+        sendBody(icsrR2Message);
     }
 
     @Test
     @DirtiesContext
     public void multipleSRTest() throws JAXBException {
         ValidIcsrR2Message icsrR2Message = createIcsrMessage("/data/human/icsr/icsr-multiple.xml");
+        sendBody(icsrR2Message);
+    }
+
+    private void sendBody(ValidIcsrR2Message icsrR2Message) {
         List<IcsrR2ReportMessage> messages = splitter.split(icsrR2Message);
         for (IcsrR2ReportMessage msg : messages) {
             producerTemplate.sendBody(msg);

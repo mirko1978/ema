@@ -9,6 +9,6 @@
 
     <bean id="adrParserHumanRouter" class="eu.europa.ema.phv.adrparserhuman.AdrParserHumanRouter"/>
     <bean id="reportSplitter" class="eu.europa.ema.phv.adrparserhuman.ReportSplitter"/>
-    <bean id="adrHumanPersistence" class="eu.europa.ema.phv.adrparserhuman.processor.AdrHumanPersistence"/>
+    <bean id="icsrStoreService" class="eu.europa.ema.phv.adrparserhuman.translator.IcsrStoreService"/>
 
 </beans>

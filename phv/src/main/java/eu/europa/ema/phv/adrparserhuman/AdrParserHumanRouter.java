@@ -3,11 +3,10 @@
  */
 package eu.europa.ema.phv.adrparserhuman;
 
-import javax.inject.Inject;
-
+import eu.europa.ema.phv.common.util.JmsCamelUrl;
 import org.apache.camel.spring.SpringRouteBuilder;
 
-import eu.europa.ema.phv.common.util.JmsCamelUrl;
+import javax.inject.Inject;
 
 /**
  * Route definition for the ADR pareser Human route.<br/>
@@ -18,6 +17,9 @@ import eu.europa.ema.phv.common.util.JmsCamelUrl;
  * @since 13 Jun 2014 (creation date)
  */
 public class AdrParserHumanRouter extends SpringRouteBuilder {
+    public static final String PERSIST = "direct:persistIcsr";
+
+    private static final String SAVE_HEADER = "Save received message";
 
     @Inject
     private JmsCamelUrl camelUrl;
@@ -28,12 +30,26 @@ public class AdrParserHumanRouter extends SpringRouteBuilder {
         from(camelUrl.getAdrParserHuman())
             .transacted()           
             .log("Message received: ${body.icsr.toString()}")
-            .beanRef("adrHumanPersistence")
-            .split()                                
+
+            // Save in the header the body in order to restore after the persist action
+            .setHeader(SAVE_HEADER, body())
+            .to(PERSIST)
+            .setBody(header(SAVE_HEADER))
+
+            .split()
                 .method("reportSplitter")
                 .parallelProcessing()
         .to(camelUrl.getAdrValidationHuman());
+
+        // Prepare the message for storing
+        from(PERSIST)
+            .transacted()
+            .log("Persisting: ${body.icsr.toString()}")
+            .beanRef("icsrStoreService", "prepareForStoring", true)
+            .transform(simple("${body.icsr}"))
+        .to("jpaIcsr://?persistenceUnit=icsrJta");
         //@formatter:on
+
     }
 
 }

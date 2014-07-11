@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Configures the Camel Context -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:camel="http://camel.apache.org/schema/spring" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jee="http://www.springframework.org/schema/jee"
-	xsi:schemaLocation="
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:camel="http://camel.apache.org/schema/spring" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
@@ -13,108 +11,113 @@
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-	<!-- -->
-	<!-- Simple JTA example just to commit the results -->
-	<!-- -->
+    <!-- -->
+    <!-- Simple JTA example just to commit the results -->
+    <!-- -->
 
-	<bean id="transactionManager"
-		class="org.springframework.transaction.jta.WebLogicJtaTransactionManager">
-		<property name="transactionManagerName" value="javax.transaction.TransactionManager" />
-	</bean>
+    <bean id="transactionManager"
+          class="org.springframework.transaction.jta.WebLogicJtaTransactionManager">
+        <property name="transactionManagerName" value="javax.transaction.TransactionManager"/>
+    </bean>
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
-	<!-- -->
-	<!-- CAMEL -->
-	<!-- -->
+    <!-- -->
+    <!-- CAMEL -->
+    <!-- -->
 
-	<camelContext xmlns="http://camel.apache.org/schema/spring">
-		<contextScan />
-	</camelContext>
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <contextScan/>
+    </camelContext>
 
-	<bean id="weblogic" class="org.apache.camel.component.jms.JmsComponent">
-		<property name="configuration" ref="jmsConfiguration" />
-	</bean>
+    <bean id="weblogic" class="org.apache.camel.component.jms.JmsComponent">
+        <property name="configuration" ref="jmsConfiguration"/>
+    </bean>
 
-	<bean id="jmsJndiTemplate" class="org.springframework.jndi.JndiTemplate">
-		<property name="environment">
-			<props>
-				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
-				<prop key="java.naming.provider.url">${jms.naming.provider}</prop>
-			</props>
-		</property>
-	</bean>
+    <bean id="jmsJndiTemplate" class="org.springframework.jndi.JndiTemplate">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+                <prop key="java.naming.provider.url">${jms.naming.provider}</prop>
+            </props>
+        </property>
+    </bean>
 
-	<bean id="jndiDestinationResolver"
-		class="org.springframework.jms.support.destination.JndiDestinationResolver">
-		<property name="jndiTemplate" ref="jmsJndiTemplate" />
-	</bean>
+    <bean id="jndiDestinationResolver"
+          class="org.springframework.jms.support.destination.JndiDestinationResolver">
+        <property name="jndiTemplate" ref="jmsJndiTemplate"/>
+    </bean>
 
-	<bean id="jmsConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiTemplate" ref="jmsJndiTemplate" />
-		<property name="jndiName" value="${jms.connection.factory}" />
-	</bean>
+    <bean id="jmsConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiTemplate" ref="jmsJndiTemplate"/>
+        <property name="jndiName" value="${jms.connection.factory}"/>
+    </bean>
 
-	<!-- Queue not transactional -->
-	<!-- <bean id="jmsConfiguration" class="org.apache.camel.component.jms.JmsConfiguration"> 
-		<property name="connectionFactory" ref="jmsConnectionFactory" /> <property 
-		name="destinationResolver" ref="jndiDestinationResolver" /> </bean> -->
+    <!-- Queue not transactional -->
+    <!-- <bean id="jmsConfiguration" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="connectionFactory" ref="jmsConnectionFactory" /> <property
+        name="destinationResolver" ref="jndiDestinationResolver" /> </bean> -->
 
-	<!-- Transactional queue -->
-	<bean id="jmsConfiguration" class="org.apache.camel.component.jms.JmsConfiguration">
-		<property name="connectionFactory" ref="jmsConnectionFactory" />
-		<property name="destinationResolver" ref="jndiDestinationResolver" />
-		<property name="transacted" value="true" />
-		<property name="transactionManager" ref="transactionManager" />
-	</bean>
+    <!-- Transactional queue -->
+    <bean id="jmsConfiguration" class="org.apache.camel.component.jms.JmsConfiguration">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destinationResolver" ref="jndiDestinationResolver"/>
+        <property name="transacted" value="true"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
 
 
-	<!-- -->
-	<!-- Persistence Layer -->
-	<!-- -->
+    <!-- -->
+    <!-- Persistence Layer -->
+    <!-- -->
 
-	<!-- JPA -->
-	<bean id="entityManagerFactory"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="icsrJta" />
-		<property name="loadTimeWeaver">
-			<bean
-				class="org.springframework.instrument.classloading.weblogic.WebLogicLoadTimeWeaver" />
-		</property>
-	</bean>
+    <!-- JPA -->
 
-	<bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
-	</bean>
+    <bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
+    </bean>
 
-	<bean id="PROPAGATION_REQUIRES_NEW" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
-		<property name="transactionManager" ref="transactionManager" />
-		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW" />
-	</bean>
-	
-	<!-- JPA for Message Repository -->
-	<bean id="entityManagerFactoryMsgRepo"
-		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="messageJTA" />
-		<property name="loadTimeWeaver">
-			<bean
-				class="org.springframework.instrument.classloading.weblogic.WebLogicLoadTimeWeaver" />
-		</property>
-	</bean>
-	
-	<!--  JPA Message Repository finish -->
+    <bean id="PROPAGATION_REQUIRES_NEW" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>
+    </bean>
 
-	<!-- Camel JPA (ref. to JPA section above) -->
-	<bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
-		<property name="entityManagerFactory" ref="entityManagerFactoryMsgRepo" />
-		<property name="transactionManager" ref="transactionManager" />
-	</bean>
+    <!-- JPA for Message Repository -->
+    <bean id="emfMessage"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="messageJTA"/>
+        <property name="loadTimeWeaver">
+            <bean
+                    class="org.springframework.instrument.classloading.weblogic.WebLogicLoadTimeWeaver"/>
+        </property>
+    </bean>
 
-	
-	<!-- -->
-	<!-- Includes -->
-	<!-- -->
+    <!-- JPA for ICSR tables -->
+    <bean id="emfIcsr"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="icsrJta"/>
+        <property name="loadTimeWeaver">
+            <bean
+                    class="org.springframework.instrument.classloading.weblogic.WebLogicLoadTimeWeaver"/>
+        </property>
+    </bean>
+
+    <!-- Camel JPA (ref. to JPA section above) -->
+
+    <bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
+        <property name="entityManagerFactory" ref="emfMessage"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <bean id="jpaIcsr" class="org.apache.camel.component.jpa.JpaComponent">
+        <property name="entityManagerFactory" ref="emfIcsr"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <!-- -->
+    <!-- Includes -->
+    <!-- -->
 
     <import resource="classpath:/spring/util-context.xml"/>
     <import resource="classpath:/spring/adr-parser-human-context.xml"/>

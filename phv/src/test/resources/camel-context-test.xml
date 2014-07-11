@@ -128,6 +128,11 @@
         <property name="transactionManager" ref="transactionManager"/>
     </bean>
 
+    <bean id="jpaIcsr" class="org.apache.camel.component.jpa.JpaComponent">
+        <property name="entityManagerFactory" ref="emfIcsr"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
     <bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
         <property name="transactionManager" ref="transactionManager"/>
         <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"/>
